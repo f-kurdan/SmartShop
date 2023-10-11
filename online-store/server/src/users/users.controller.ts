@@ -1,6 +1,5 @@
 import { Controller, Get, Param, Post, Body } from "@nestjs/common";
-import { User } from "src/models/user.model";
-import { brotliDecompressSync } from "zlib";
+import { User } from "src/users/model/user.model";
 import { UsersService } from "./users.service";
  
 @Controller('users')
