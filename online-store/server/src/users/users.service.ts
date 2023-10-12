@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import { User } from 'src/models/user.model';
 
 @Injectable()
 export class UsersService {
     getUser(id: string) {
-        return " this method returns User";
+        return new User();
     }
 
     getAllUsers() {
