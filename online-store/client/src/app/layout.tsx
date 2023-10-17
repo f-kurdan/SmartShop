@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Header from '../components/header'
+import Navbar from '../components/navbar'
 import Footer from '@/components/footer'
 
 
@@ -13,11 +13,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>SmartShop</title>
-        <meta name="description" content={"Магазин смартфонов, планшетов, ноутбуков"} />
+        <meta name="description" content={"Магазин смартфонов, планшетов, ноутбуков b других гаджетов"} />
       </head>
       <body>
-        <Header />
         <main>
+        <Navbar />
           {children}
         </main>
         <Footer />
