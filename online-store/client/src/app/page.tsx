@@ -1,10 +1,11 @@
+import Banner from '@/components/banner'
 import Categories from '@/components/categories'
 import Image from 'next/image'
 
 export default function Home() {
   return (
     <>
-    
+    <Banner />
     <Categories />
     </>
   )
