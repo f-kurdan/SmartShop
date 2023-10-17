@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Header from '../components/header'
+import Footer from '@/components/footer'
 
 
 export default function RootLayout({
@@ -12,13 +13,14 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>SmartShop</title>
-        <meta name="description" content={"Магазин смартфонов, смартчасов, ноутбуков"} />
+        <meta name="description" content={"Магазин смартфонов, планшетов, ноутбуков"} />
       </head>
       <body>
         <Header />
         <main>
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   )
