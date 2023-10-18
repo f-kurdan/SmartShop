@@ -12,7 +12,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>SmartShop</title>
+        <title>Магазин гаджетов | SmartShop</title>
         <meta name="description" content={"Магазин смартфонов, планшетов, ноутбуков b других гаджетов"} />
         <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet"></link>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"></link>
