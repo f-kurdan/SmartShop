@@ -2,5 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    font-family: 'Montserrat', 'Rubik', sans-serif;
+}
+
 
 
