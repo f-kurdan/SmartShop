@@ -4,10 +4,10 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <>
-    <Banner />
-    <Categories />
-    </>
+    <div>
+      <Banner />
+      <Categories />
+    </div>
   )
 }
 

@@ -15,7 +15,7 @@ export default function RootLayout({
         <title>SmartShop</title>
         <meta name="description" content={"Магазин смартфонов, планшетов, ноутбуков b других гаджетов"} />
       </head>
-      <body>
+      <body className='bg-amber-50 fon'>
         <main>
         <Navbar />
           {children}
