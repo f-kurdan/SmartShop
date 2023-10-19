@@ -1,5 +1,5 @@
-import Banner from '@/components/banner'
-import Categories from '@/components/categories'
+import Banner from '@/components/main-page/banner'
+import Categories from '@/components/main-page/categories'
 import Image from 'next/image'
 
 export default function Home() {
