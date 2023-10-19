@@ -14,10 +14,12 @@ export default function RootLayout({
       <head>
         <title>Магазин гаджетов | SmartShop</title>
         <meta name="description" content={"Магазин смартфонов, ноутбуков, планшетов  и других гаджетов"} />
-        <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet"></link>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.cdnfonts.com/css/intro" rel="stylesheet"/>
+        <link href="https://fonts.cdnfonts.com/css/kano" rel="stylesheet"></link>
       </head>
-      <body>
+      <body className='bg-gradient-to-r from-purple-500 to-yellow-400'>
         <main>
         <Navbar />
           {children}

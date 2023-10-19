@@ -2,7 +2,7 @@ import React from 'react'
 
 const textStyle = 'text-black px-0.5';
 const iconStyle = 'w-5 h-5';
-const linkStyle = 'bg-gradient-to-r hover:from-sky-200 hover:to-indigo-100 flex flex-col justify-center items-center mx-1 rounded-lg pt-1 mb-5 hover:cursor-pointer';
+const linkStyle = 'hover:bg-gradient-to-r hover:from-sky-200 hover:to-indigo-100 flex flex-col justify-center items-center mx-1 rounded-lg pt-1 mb-5 hover:cursor-pointer';
 
 const Navbar = () => {
     return (
