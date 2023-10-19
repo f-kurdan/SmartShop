@@ -17,7 +17,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet"></link>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"></link>
       </head>
-      <body className='bg-amber-50'>
+      <body>
         <main>
         <Navbar />
           {children}
