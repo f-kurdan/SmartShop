@@ -3,7 +3,8 @@ import React from 'react'
 const items = [
     {
         "name": "iPhone 15",
-        "description": 
+        "price": 139900,
+        "photo":  
     }
 ]
 
