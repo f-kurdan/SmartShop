@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react'
 
 const textStyle = 'text-black text-sm';
@@ -7,14 +8,16 @@ const linkStyle = 'hover:invert hover:bg-gradient-to-br hover:from-yellow-300 ho
 const Navbar = () => {
     return (
         <div className="fixed top-0 flex flex-row align-middle items-center border-solid w-full h-14 bg-white z-10 shadow-sm">
-            <h3 className='mx-3 bg-gradient-to-br from-indigo-500 via-sky-600 to-blue-700 hover:from-purple-950 hover:via-red-700 hover:to-yellow-600 rounded-2xl p-2 text-white hover:cursor-pointer'>SmartShop</h3>
+            <Link href='/'>
+                <h3 className='mx-3 bg-gradient-to-br from-indigo-500 via-sky-600 to-blue-700 hover:from-purple-950 hover:via-red-700 hover:to-yellow-600 rounded-2xl p-2 text-white hover:cursor-pointer'>SmartShop</h3>
+            </Link>
             <div className='absolute right-2 flex flex-row justify-items-end'>
                 <div className={linkStyle}>
                     <img className={iconStyle} src="icons/admin.svg" alt="" />
                     <h3 className={textStyle}>Админ</h3>
                 </div>
                 <div className={linkStyle}>
-                    <img className={iconStyle}  src="icons/login.svg" alt="" />
+                    <img className={iconStyle} src="icons/login.svg" alt="" />
                     <h3 className={textStyle}>Войти</h3>
                 </div>
                 <div className={linkStyle}>
@@ -22,7 +25,7 @@ const Navbar = () => {
                     <h3 className={textStyle}>Выйти</h3>
                 </div>
                 <div className={linkStyle}>
-                <img className={iconStyle} src="icons/cart.svg" alt="" />
+                    <img className={iconStyle} src="icons/cart.svg" alt="" />
                     <h3 className={textStyle}>Корзина</h3>
                 </div>
             </div>
