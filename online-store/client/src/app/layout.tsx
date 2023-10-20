@@ -18,8 +18,10 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"/>
         <link href="https://fonts.cdnfonts.com/css/intro" rel="stylesheet"/>
         <link href="https://fonts.cdnfonts.com/css/kano" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet"></link>
       </head>
-      <body className='bg-gradient-to-r from-purple-500 to-yellow-400'>
+      <body className='bg-gradient-to-r from-blue-500 via-purple-500 to-yellow-400'>
         <main>
         <Navbar />
           {children}
