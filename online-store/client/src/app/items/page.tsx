@@ -1,10 +1,10 @@
-import Phones from '@/components/lists/phones'
+import List from '@/components/items/list'
 import React from 'react'
 
 const Page = () => {
   return (
     <div className='flex flex-col justify-center items-center'>
-      <Phones />
+      <List />
     </div>
   )
 }

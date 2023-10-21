@@ -39,7 +39,7 @@ const items = [
     }
 ]
 
-const Phones = () => {
+const List = () => {
     return (
         <div className='flex flex-col self-end w-2/3 min-h-fit my-20 mr-8'>
             {items.map((item, index) =>
@@ -65,4 +65,4 @@ const Phones = () => {
     )
 }
 
-export default Phones
+export default List
