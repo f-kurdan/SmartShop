@@ -1,10 +1,10 @@
-import PhonesList from '@/components/lists/phones'
+import PhonesList from '@/components/product-lists/phones'
 import React from 'react'
 
-const Page = ({params}: {params: {slug: string} }) => {
+const Page = () => {
   return (
     <div className='flex flex-col justify-center items-center'>
-      <PhonesList slug={params.slug} />
+      <PhonesList />
     </div>
   )
 }
