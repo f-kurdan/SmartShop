@@ -1,13 +1,20 @@
-import Filter from '@/components/product-lists/filter'
-import PhonesList from '@/components/product-lists/phones'
+import FilterContainer from '@/components/products-catalog/filters/filter-container'
+import PhonesList from '@/components/products-catalog/lists/phones-list'
+import ListContainer from '@/components/products-catalog/lists/list-container'
 import React from 'react'
+import PhonesFilter from '@/components/products-catalog/filters/phones-filter'
+import CatalogContainer from '@/components/products-catalog/catalog-container'
 
 const Page = () => {
   return (
-    <div className='flex flex-row justify-around items-start'>
-      <Filter />
-      <PhonesList />
-    </div>
+    <CatalogContainer>
+      <FilterContainer >
+        <PhonesFilter/>     
+      </FilterContainer>
+      <ListContainer>
+        <PhonesList />
+      </ListContainer>
+    </CatalogContainer>
   )
 }
 

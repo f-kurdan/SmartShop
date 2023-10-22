@@ -41,7 +41,7 @@ const items = [
 
 const PhonesList = () => {
     return (
-        <div className='flex flex-col self-end w-2/3 min-h-fit my-20 mr-10'>
+        <>
             {items.map((item, index) =>
             (<div key={index} className='flex flex-row justify-
             between items-start px-10 py-7 bg-white mb-1 rounded-xl shadow-lg shadow-black/30'>
@@ -61,8 +61,7 @@ const PhonesList = () => {
                 </div>
             </div>)
             )}
-
-        </div>
+        </>
     )
 }
 

@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className='flex flex-row justify-between items-center h-5/6'>
+    <div className='flex flex-col justify-between items-center h-5/6'>
       <Banner />
       <Categories />
     </div>
