@@ -1,50 +1,11 @@
 import React from 'react'
-
-const items = [
-    {
-        "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
-        "display": '6,1" (2556x1179), OLED',
-        "chip": 'A17 Pro',
-        "capacity": '128GB',
-        "price": "204 990 ₽",
-        "camera": '48/12/12',
-        "photo": "https://static.re-store.ru/upload/resize_cache/iblock/854/100500_800_140cd750bba9870f18aada2478b24840a/8s2om4rct21wlhl30nwpbhcx731mvxup.jpeg",
-    },
-    {
-        "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
-        "display": '6,1" (2556x1179), OLED',
-        "chip": 'A17 Pro',
-        "capacity": '128GB',
-        "price": "204 990 ₽",
-        "camera": '48/12/12',
-        "photo": "https://static.re-store.ru/upload/resize_cache/iblock/854/100500_800_140cd750bba9870f18aada2478b24840a/8s2om4rct21wlhl30nwpbhcx731mvxup.jpeg",
-    },
-    {
-        "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
-        "display": '6,1" (2556x1179), OLED',
-        "chip": 'A17 Pro',
-        "capacity": '128GB',
-        "price": "204 990 ₽",
-        "camera": '48/12/12',
-        "photo": "https://static.re-store.ru/upload/resize_cache/iblock/854/100500_800_140cd750bba9870f18aada2478b24840a/8s2om4rct21wlhl30nwpbhcx731mvxup.jpeg",
-    },
-    {
-        "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
-        "display": '6,1" (2556x1179), OLED',
-        "chip": 'A17 Pro',
-        "capacity": '128GB',
-        "price": "204 990 ₽",
-        "camera": '48/12/12',
-        "photo": "https://static.re-store.ru/upload/resize_cache/iblock/854/100500_800_140cd750bba9870f18aada2478b24840a/8s2om4rct21wlhl30nwpbhcx731mvxup.jpeg",
-    }
-]
+import { phones } from '@/test-products'
 
 const PhonesList = () => {
-    return (
+    return phones && (
         <>
-            {items.map((item, index) =>
-            (<div key={index} className='flex flex-row justify-
-            between items-start px-10 py-7 bg-white mb-1 rounded-xl shadow-lg shadow-black/30'>
+            {phones.map((item, index) =>
+            (<div key={index} className='flex flex-row justify-evenly items-start px-10 py-7 bg-white mb-1 rounded-xl shadow-lg shadow-black/30 '>
                 <img className='max-w-48 max-h-48' src={item.photo} alt="" />
                 <div className='flex flex-col justify-start items-start text-sm px-3'>
                     <p className='mb-5 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>{item.name}</p>
