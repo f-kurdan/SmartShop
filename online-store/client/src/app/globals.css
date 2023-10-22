@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 body {
-    font-family:  'Unbounded' ,'Montserrat', 'Rubik', sans-serif;
+    font-family: 'Unbounded', 'Montserrat', 'Rubik', sans-serif;
+    -ms-overflow-style: none;/* IE and Edge */
+    scrollbar-width: none;/* Firefox */
+    
 }
 
-
-
+body::-webkit-scrollbar {
+    display: none;
+}

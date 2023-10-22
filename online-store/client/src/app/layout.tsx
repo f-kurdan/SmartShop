@@ -21,7 +21,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet"></link>
         <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300&display=swap" rel="stylesheet"></link>
       </head>
-      <body className='bg-gradient-to-r from-blue-500 via-purple-500 to-yellow-400'>
+      <body className='bg-gradient-to-r from-lime-100 via-blue-200 to-purple-200'>
         <main>
         <Navbar />
           {children}

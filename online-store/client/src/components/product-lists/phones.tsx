@@ -41,10 +41,10 @@ const items = [
 
 const PhonesList = () => {
     return (
-        <div className='flex flex-col self-end w-2/3 min-h-fit my-20 mr-8'>
+        <div className='flex flex-col self-end w-2/3 min-h-fit my-20 mr-10'>
             {items.map((item, index) =>
             (<div key={index} className='flex flex-row justify-
-            between items-start px-10 py-7 bg-white my-0.5 rounded-xl shadow-lg shadow-black/30'>
+            between items-start px-10 py-7 bg-white mb-1 rounded-xl shadow-lg shadow-black/30'>
                 <img className='max-w-48 max-h-48' src={item.photo} alt="" />
                 <div className='flex flex-col justify-start items-start text-sm px-3'>
                     <p className='mb-5 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>{item.name}</p>
