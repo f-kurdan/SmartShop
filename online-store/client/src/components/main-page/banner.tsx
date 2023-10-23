@@ -3,7 +3,7 @@ import React from 'react'
 
 const Banner = () => {
   return (
-    <div className='text-white relative mt-20 bg-transparent rounded-3xl'>
+    <div className='text-white relative bg-transparent rounded-3xl'>
       <div style={{"fontFamily": "Syne"}} className='text-7xl'>
         SmartShop
       </div>

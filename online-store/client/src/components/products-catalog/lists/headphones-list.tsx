@@ -7,7 +7,7 @@ const HeadphonesList = () => {
     <>
       {headphones.map((item, index) =>
       (<div key={index} className='flex flex-row justify-evenly items-start px-10 py-7 bg-white rounded-xl shadow-lg shadow-black/30 mb-2'>
-        <img className='max-w-48 max-h-48' src={item.photo} alt="Наушники" />
+        <img className='max-w-48 max-h-48 object-cover' src={item.photo} alt="Наушники" />
         <div className='flex flex-col justify-start items-start text-sm px-3'>
           <p className='mb-5 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>{item.name}</p>
           <p className='mb-3'><span className='font-semibold'>Диапазон частот: </span>{item.frequency_range}</p>
