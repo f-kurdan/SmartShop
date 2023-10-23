@@ -1,19 +1,6 @@
 import React from 'react'
 import NoItems from './no-items'
-// import { headphones } from '@/test-products'
-type headphone = {
-  "name": string,
-  "frequency_range": string,
-  "connection_type": string,
-  "mic": string,
-  "battery_life": string,
-  "price": string,
-  "photo": string
-
-}
-
-const headphones: Array<headphone> = []
-
+import { headphones } from '@/test-products'
 
 const HeadphonesList = () => {
   return headphones.length ? (
