@@ -1,9 +1,10 @@
 import React from 'react'
 import { phones } from '@/test-products'
+import NoItems from './no-items'
 
 const PhonesList = () => {
-    return phones && (
-        <>
+    return phones ? (
+        <div>
             {phones.map((item, index) =>
             (<div key={index} className='flex flex-row justify-evenly items-start px-10 py-7 bg-white mb-2 rounded-xl shadow-lg shadow-black/30 '>
                 <img className='max-w-48 max-h-48' src={item.photo} alt="" />
@@ -22,8 +23,8 @@ const PhonesList = () => {
                 </div>
             </div>)
             )}
-        </>
-    )
+        </div>
+    ) :  (<NoItems/>)
 }
 
 export default PhonesList

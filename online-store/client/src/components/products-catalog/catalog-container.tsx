@@ -2,7 +2,7 @@ import React from 'react'
 
 const CatalogContainer = ({children}:{children: JSX.Element[]}) => {
   return (
-    <div className='flex flex-row justify-around items-start min-h-full mt-16'>
+    <div className='flex flex-row justify-around items-start mt-16 min-h-screen'>
         {children}
     </div>
   )
