@@ -3,7 +3,7 @@ import Categories from '@/components/main-page/categories'
 
 export default function Home() {
   return (
-    <div className='flex flex-col justify-evenly items-center h-5/6 min-h-screen'>
+    <div className='flex flex-col justify-evenly items-center h-5/6'>
       <Banner />
       <Categories />
     </div>
