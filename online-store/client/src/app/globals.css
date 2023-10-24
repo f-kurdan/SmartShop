@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    font-family: 'Unbounded', 'Montserrat', 'Rubik', sans-serif;
+    font-family: var(--var-unbounded), var(--var-mont), var(--var-rubik), sans-serif;
     -ms-overflow-style: none;/* IE and Edge */
     scrollbar-width: none;/* Firefox */
     
@@ -11,4 +11,8 @@ body {
 
 body::-webkit-scrollbar {
     display: none;
+}
+
+.syne {
+    font-family: var(--var-syne), var(--var-unbounded);
 }
