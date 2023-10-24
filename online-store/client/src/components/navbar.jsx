@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import React from 'react'
+import React from 'react';
+import {WrenchScrewdriverIcon, ArrowRightOnRectangleIcon, ArrowLeftOnRectangleIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
 
 const textStyle = 'text-black text-sm';
 const iconStyle = 'w-5 h-5';
@@ -13,19 +14,19 @@ const Navbar = () => {
             </Link>
             <div className='absolute right-2 flex flex-row justify-items-end'>
                 <div className={linkStyle}>
-                    <img className={iconStyle} src="icons/admin.svg" alt="" />
+                    <WrenchScrewdriverIcon  className={iconStyle}  />
                     <h3 className={textStyle}>Админ</h3>
                 </div>
                 <div className={linkStyle}>
-                    <img className={iconStyle} src="icons/login.svg" alt="" />
+                    <ArrowRightOnRectangleIcon className={iconStyle} />
                     <h3 className={textStyle}>Войти</h3>
                 </div>
                 <div className={linkStyle}>
-                    <img className={`${iconStyle} rotate-180`} src="icons/logout.svg" alt="" />
+                    <ArrowLeftOnRectangleIcon className={`${iconStyle} rotate-180`} />
                     <h3 className={textStyle}>Выйти</h3>
                 </div>
                 <div className={linkStyle}>
-                    <img className={iconStyle} src="icons/cart.svg" alt="" />
+                    <ShoppingCartIcon className={iconStyle} />
                     <h3 className={textStyle}>Корзина</h3>
                 </div>
             </div>
