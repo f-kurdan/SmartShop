@@ -11,17 +11,17 @@ export const metadata: Metadata = {
   description: "Наушники беспроводные, проводные, вакуумные, капельные"
 }
 
-const Page = () => {
-  return (
-    <CatalogContainer>
-      <FilterContainer >
-        <HeadphoneFilter/>     
-      </FilterContainer>
-      <ListContainer>
-        <HeadphonesList />
-      </ListContainer>
-    </CatalogContainer>
-  )
-}
+// const Page = () => {
+//   return (
+//     <CatalogContainer>
+//       <FilterContainer >
+//         <HeadphoneFilter/>     
+//       </FilterContainer>
+//       <ListContainer>
+//         <HeadphonesList />
+//       </ListContainer>
+//     </CatalogContainer>
+//   )
+// }
 
-export default Page
+// export default Page

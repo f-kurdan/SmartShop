@@ -3,12 +3,14 @@ import { phones } from '@/test-products'
 import NoItems from './no-items'
 import Image from 'next/image'
 
-const PhonesList = () => {
+const PhonesList = ({filteredBrands}:{filteredBrands: Array<string>}) => {
+    const filteredPhones = filteredBrands.length ? phones : phones.filter(p => filteredBrands.includes(p.brand));
+
     return phones ? (
-        <div>
-            {phones.map((item, index) =>
+        <div className='flex flex-col w-2/3 min-h-fit mr-10'>
+            {filteredPhones.map((item, index) =>
             (<div key={index} className='flex flex-row justify-evenly items-start px-10 py-7 bg-white mb-2 rounded-xl shadow-lg shadow-black/30 '>
-                <Image className='max-w-48 max-h-48' src={item.photo} alt={item.name}  width={160} height={160} />
+                <Image className='max-w-48 max-h-48' src={item.photo} alt={item.name} width={160} height={160} />
                 <div className='flex flex-col justify-start items-start text-sm px-3'>
                     <p className='mb-5 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>{item.name}</p>
                     <p className='mb-3'><span className='font-semibold'>Дисплей: </span>{item.display}</p>
@@ -25,7 +27,7 @@ const PhonesList = () => {
             </div>)
             )}
         </div>
-    ) :  (<NoItems/>)
+    ) : (<NoItems />)
 }
 
 export default PhonesList

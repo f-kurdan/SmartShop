@@ -1,7 +1,7 @@
 import './globals.css'
 import { Unbounded, Montserrat, Rubik, Syne } from 'next/font/google'
 import Navbar from '../components/navbar'
-import Footer from '@/components/home-page/footer'
+import Footer from '@/components/main-page/footer'
 import { Metadata } from 'next';
 
 const unbounded = Unbounded({ subsets: ["cyrillic", "latin"], weight: "300", display: "swap", variable: '--var-unbounded' });

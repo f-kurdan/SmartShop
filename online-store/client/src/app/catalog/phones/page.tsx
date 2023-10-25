@@ -4,22 +4,16 @@ import ListContainer from '@/components/products-catalog/lists/list-container'
 import React from 'react'
 import PhonesFilter from '@/components/products-catalog/filters/phones-filter'
 import CatalogContainer from '@/components/products-catalog/catalog-container'
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title : "Смартфоны | SmartShop",
-  description: "Смартфоны iphone, samsung, xiaomi, huawei"
-}
+import { useRouter } from 'next/navigation'
 
 const Page = () => {
+  const f = useRouter();
   return (
     <CatalogContainer>
       <FilterContainer >
         <PhonesFilter/>     
       </FilterContainer>
-      <ListContainer>
         <PhonesList />
-      </ListContainer>
     </CatalogContainer>
   )
 }
