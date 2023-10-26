@@ -1,13 +1,13 @@
-import PhonesList from '@/components/item-lists/phone-list'
 import React, { ReactNode, useState } from 'react'
 
 
-const getCategory = (category: string, brands: string[] ) => {
-    switch (category) {
-        case "phones": 
-        return (<PhonesList filteredBrands={brands}/>);
-    }
-}
+// const getCategory = (category: string, brands: string[] ) => {
+//     switch (category) {
+//         case "phones": 
+//         return (<PhonesList filteredBrands={brands}/>);
+//     }
+// }
+
 const Category = ({category}:{category: string}) => {
     const [filteredBrands, setFilteredBrands] = useState<string[]>([]);
 

@@ -1,7 +1,13 @@
+// import { Metadata } from 'next';
 import { Montserrat, Rubik, Syne, Unbounded } from 'next/font/google';
 import React from 'react'
 import Footer from './footer'
 import Navbar from './navbar'
+
+// export const metadata: Metadata = {
+//   title : "Магазин гаджетов | SmartShop",
+//   description: "Магазин смартфонов, ноутбуков, планшетов  и других гаджетов"
+// }
 
 const unbounded = Unbounded({ subsets: ["cyrillic", "latin"], weight: "300", display: "swap", variable: '--var-unbounded' });
 const montserrat = Montserrat({ subsets: ["cyrillic", "latin"], weight: "500", display: "swap", variable: '--var-mont' });
