@@ -18,11 +18,11 @@ const Navbar = () => {
                     <h3 className={textStyle}>Админ</h3>
                 </div>
                 <div className={linkStyle}>
-                    <ArrowRightOnRectangleIcon className={iconStyle} />
+                    <ArrowLeftOnRectangleIcon className={`${iconStyle} rotate-180`}/>
                     <h3 className={textStyle}>Войти</h3>
                 </div>
                 <div className={linkStyle}>
-                    <ArrowLeftOnRectangleIcon className={`${iconStyle} rotate-180`} />
+                    <ArrowRightOnRectangleIcon className={`${iconStyle} rotate-180`} />
                     <h3 className={textStyle}>Выйти</h3>
                 </div>
                 <div className={linkStyle}>
