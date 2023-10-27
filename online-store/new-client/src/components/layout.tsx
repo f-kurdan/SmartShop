@@ -1,6 +1,6 @@
 // import { Metadata } from 'next';
 import { Montserrat, Rubik, Syne, Unbounded } from 'next/font/google';
-import React from 'react'
+import React, { useState} from 'react'
 import Footer from './footer'
 import Navbar from './navbar'
 
@@ -15,15 +15,17 @@ const rubik = Rubik({ subsets: ["cyrillic", "latin"], display: "swap", variable:
 const syne = Syne({ subsets: ["latin"], weight: "800", display: "swap", variable: '--var-syne' });
 
 export default function RootLayout({
-  children,
+  children, 
 }: {
   children: React.ReactNode
 }) {
+  const [categories, setCategories] = useState<{}[]>([]);
+
   return (
     <html lang="en" className={`${unbounded.variable} ${montserrat.variable} ${rubik.variable} ${syne.variable}`}>
       <body className='bg-gradient-to-br from-white via-black to-purple-700'>
         <main className='min-h-screen'>
-          <Navbar />
+          
           {children}
         </main>
         <Footer />
