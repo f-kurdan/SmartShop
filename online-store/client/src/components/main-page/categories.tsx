@@ -1,15 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
 
-const categories = [
-  { slug: "phones", name: "ТЕЛЕФОНЫ", src: "phone.png" },
-  { slug: "headphones", name: "НАУШНИКИ", src: "headphone.png" },
-  { slug: "tablet", name: "ПЛАНШЕТЫ", src: "tablet.png" },
-  { slug: "watch",name: "СМАРТ-ЧАСЫ", src: "watch.png" },
-  { slug: "laptop",name: "НОУТБУКИ", src: "laptop.png" },
-  { slug: "camera",name: "КАМЕРЫ", src: "camera.png" },
-]
-
 const Categories = () => {
   return (
     <div className='flex flex-wrap justify-evenly gap-6 max-w-3xl mt-8 mb-14 relative '>

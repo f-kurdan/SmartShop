@@ -1,14 +1,21 @@
-import { category } from '@/types'
+import categoryService from '@/services/category.service'
 import Link from 'next/link'
 import React from 'react'
+import { useQuery } from 'react-query'
 
-const CatalogDropdown = ({categories}:{categories: category[]}) => {
+
+const CatalogDropdown = () => {
+    const { isLoading, error, data} = useQuery('categories', () => categoryService.getCategories() )
+
     return (
         <div className="absolute left-16 group border-black border-2 border-solid p-1 inline-block w-32 text-center">
             <button className="group-hover:opacity-0">Категории</button>
             <div className="absolute w-40 bg-white hidden z-10 transition duration-500 group-hover:block">
-                {categories?.map((cat, index) => 
+                {isLoading ?? (<span>Идет загрузка...</span>)}
+                {data?.length ? data?.map((cat, index) =>
                     (<Link key={index} className='block' href="/catalog">{cat.name}</Link>)
+                ) : (
+                    <span>Нет данных...</span>
                 )}
             </div>
         </div>
