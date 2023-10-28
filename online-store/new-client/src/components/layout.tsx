@@ -22,7 +22,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${unbounded.variable} ${montserrat.variable} ${rubik.variable} ${syne.variable}`}>
-      <body className='bg-gradient-to-br from-white via-black to-purple-700'>
+      <body className='bg-gradient-to-br from-white via-black to-blue-700'>
         <main className='min-h-screen'>
           <Navbar />
           {children}
