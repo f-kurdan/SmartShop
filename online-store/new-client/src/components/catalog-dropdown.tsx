@@ -1,11 +1,9 @@
-import categoryService from '@/services/category.service'
+import useCategories from '@/hooks/useCategories'
 import Link from 'next/link'
 import React from 'react'
-import { useQuery } from 'react-query'
-
 
 const CatalogDropdown = () => {
-    const { isLoading, error, data} = useQuery('categories', () => categoryService.getCategories() )
+    const { isLoading, data} = useCategories();
 
     return (
         <div className="absolute left-16 group border-black border-2 border-solid p-1 inline-block w-32 text-center">
