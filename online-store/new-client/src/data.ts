@@ -1,13 +1,13 @@
 export const categories = [
-    { slug: "phones", name: "ТЕЛЕФОНЫ", src: "phone.png" },
-    { slug: "headphones", name: "НАУШНИКИ", src: "headphone.png" },
-    { slug: "tablet", name: "ПЛАНШЕТЫ", src: "tablet.png" },
-    { slug: "watch", name: "СМАРТ-ЧАСЫ", src: "watch.png" },
-    { slug: "laptop", name: "НОУТБУКИ", src: "laptop.png" },
-    { slug: "camera", name: "КАМЕРЫ", src: "camera.png" },
+    { id: 1, slug: "phones", name: "ТЕЛЕФОНЫ", src: "phone.png" },
+    { id: 2, slug: "headphones", name: "НАУШНИКИ", src: "headphone.png" },
+    { id: 3, slug: "tablet", name: "ПЛАНШЕТЫ", src: "tablet.png" },
+    { id: 4, slug: "watch", name: "СМАРТ-ЧАСЫ", src: "watch.png" },
+    { id: 5, slug: "laptop", name: "НОУТБУКИ", src: "laptop.png" },
+    { id: 6, slug: "camera", name: "КАМЕРЫ", src: "camera.png" },
 ]
 
-export const phones = [
+export const products = [
     {
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
         "brand": "Apple",
@@ -17,6 +17,7 @@ export const phones = [
         "price": "204 990 ₽",
         "camera": '48/12/12',
         "photo": "/phones/iphone15.jpeg",
+        "category_id": 1,
     },
     {
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
@@ -27,6 +28,7 @@ export const phones = [
         "price": "204 990 ₽",
         "camera": '48/12/12',
         "photo": "/phones/iphone15.jpeg",
+        "category_id": 1,
     },
     {
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
@@ -37,6 +39,7 @@ export const phones = [
         "price": "204 990 ₽",
         "camera": '48/12/12',
         "photo": "/phones/iphone15.jpeg",
+        "category_id": 1,
     },
     {
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
@@ -47,18 +50,7 @@ export const phones = [
         "price": "204 990 ₽",
         "camera": '48/12/12',
         "photo": "/phones/iphone15.jpeg",
-    }
-]
-
-export const headphones = [
-    {
-        "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
-        "frequency_range": 'от 20 Гц до 15 кГц',
-        "connection_type": 'беспроводные bluetooth, True Wireless',
-        "mic": 'встроенный',
-        "battery_life": '5 ч',
-        "price": "12 990 ₽",
-        "photo": "/headphones/airpods.webp"
+        "category_id": 1,
     },
     {
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
@@ -67,8 +59,9 @@ export const headphones = [
         "mic": 'встроенный',
         "battery_life": '5 ч',
         "price": "12 990 ₽",
-        "photo": "/headphones/airpods.webp"
-
+        "photo": "/headphones/airpods.webp",
+        "category_id": 2,
+        
     },
     {
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
@@ -77,7 +70,17 @@ export const headphones = [
         "mic": 'встроенный',
         "battery_life": '5 ч',
         "price": "12 990 ₽",
-        "photo": "/headphones/airpods.webp"
-
+        "photo": "/headphones/airpods.webp",
+        "category_id": 2,
+    },
+    {
+        "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
+        "frequency_range": 'от 20 Гц до 15 кГц',
+        "connection_type": 'беспроводные bluetooth, True Wireless',
+        "mic": 'встроенный',
+        "battery_life": '5 ч',
+        "price": "12 990 ₽",
+        "photo": "/headphones/airpods.webp",
+        "category_id": 2,
     },
 ]
