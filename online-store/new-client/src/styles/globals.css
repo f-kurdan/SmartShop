@@ -2,17 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
 body {
-    font-family: var(--var-unbounded), var(--var-mont), var(--var-rubik), sans-serif;
+    font-family: var(--font-unbounded), var(--font-mont), var(--font-rubik), sans-serif;
     -ms-overflow-style: none;/* IE and Edge */
     scrollbar-width: none;/* Firefox */
-    
 }
 
 body::-webkit-scrollbar {
     display: none;
 }
 
-.syne {
-    font-family: var(--var-syne), var(--var-unbounded);
-}
+

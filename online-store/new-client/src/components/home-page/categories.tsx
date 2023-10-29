@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import {categories} from '../../data'
+import { categories } from '../../data'
 
 const Categories = () => {
   return (
