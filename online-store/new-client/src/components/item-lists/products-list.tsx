@@ -2,11 +2,12 @@ import Image from 'next/image'
 import React from 'react'
 import NoItems from './no-items'
 import { productsList } from '@/types'
+import Filter from './filter'
 
 const ProductsList = ({products}:{products:productsList}) => {
   return (
     <div className='flex flex-row justify-around items-start mt-3'>
-      {/* <div className='flex flex-col w-2/3 min-h-fit mr-10'> */}
+        <Filter />
         {products?.length ? (
           <div className='flex flex-col w-2/3 min-h-fit mr-10'>
             {products.map((item, index) => 
@@ -28,7 +29,6 @@ const ProductsList = ({products}:{products:productsList}) => {
             )}
           </div>
         ) : (<NoItems />)}
-      {/* </div> */}
     </div>
   )
 }
