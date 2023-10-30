@@ -1,4 +1,5 @@
 import NoItems from '@/components/item-lists/no-items'
+import ProductsList from '@/components/item-lists/products-list'
 import { products } from '@/data'
 import React from 'react'
 import { QueryClient, dehydrate, useQuery } from 'react-query'
@@ -19,9 +20,9 @@ export async function getStaticPaths() {
   //   const categories = await res.json()
   const products = await getProducts();  
 
-  const paths = products?.map(product => ({
+  const paths = [...products?.map(product => ({
     params: { category: product.category_id.toString() },
-  }))
+  }))]
 
   return { paths, fallback: false }
 }
@@ -32,11 +33,9 @@ export async function getStaticProps({ params }: { params: { category: number } 
 
   await queryClient.prefetchQuery(["products", params.category], () => getProductByCategory(params.category.toString()))
 
-  // надо создать хук, который будет получать продукты по id
-
   return {
     props: {
-      dehydratedState: dehydrate(queryClient),
+      dehydratedSState: dehydrate(queryClient),
       categoryId: params.category,
     },
 
@@ -47,9 +46,10 @@ export async function getStaticProps({ params }: { params: { category: number } 
 const Category = ({ categoryId }: { categoryId: string }) => {
   const { isLoading, data } = useQuery(["products", categoryId], () => getProductByCategory(categoryId))
 
-  return isLoading ? (<span>Идет загрузка...</span>) :
-    (data?.length ? data?.map((product) => 
-    (<div>{product.name}</div>)) : (<NoItems />))
+  if (!data) return <span>Нет товаров!</span>
+  return isLoading ? (<span>Идет загрузка...</span>) : (
+    <ProductsList products={data} />
+  )
     
 }
 
