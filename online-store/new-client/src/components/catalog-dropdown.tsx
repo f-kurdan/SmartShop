@@ -11,7 +11,7 @@ const CatalogDropdown = () => {
             <div className="absolute w-40 bg-white hidden z-10 transition duration-500 group-hover:block">
                 {isCategoriesLoading ? (<span>Идет загрузка...</span>)
                 : categories?.length ? categories?.map((cat) =>
-                    (<Link key={cat.id} className='block' href="/catalog">{cat.name}</Link>)
+                    (<Link key={cat.id} className='block' href={`/catalog/${cat.id}`}>{cat.name}</Link>)
                 ) : (
                     <span>Нет данных...</span>
                 )}
