@@ -9,6 +9,7 @@ export const categories = [
 
 export const products = [
     {
+        "id": 1,
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
         "brand": "Apple",
         "price": "204 990 ₽",
@@ -22,6 +23,7 @@ export const products = [
         ],
     },
     {
+        "id": 2,
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
         "brand": "Apple",
         "price": "204 990 ₽",
@@ -35,6 +37,7 @@ export const products = [
         ],
     },
     {
+        "id": 3,
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
         "brand": "Apple",
         "price": "204 990 ₽",
@@ -48,6 +51,7 @@ export const products = [
         ],
     },
     {
+        "id": 4,
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
         "brand": "Apple",
         "price": "204 990 ₽",
@@ -61,6 +65,7 @@ export const products = [
         ],
     },
     {
+        "id": 5,
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "price": "12 990 ₽",
         "photo": "/headphones/airpods.webp",
@@ -73,6 +78,7 @@ export const products = [
         ],
     },
     {
+        "id": 6,
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "price": "12 990 ₽",
         "photo": "/headphones/airpods.webp",
@@ -85,6 +91,7 @@ export const products = [
         ],
     },
     {
+        "id": 7,
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "price": "12 990 ₽",
         "photo": "/headphones/airpods.webp",
