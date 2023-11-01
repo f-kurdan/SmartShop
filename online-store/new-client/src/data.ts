@@ -123,9 +123,9 @@ export const variations = [
     { id: 4, category_id: 1, name: "Процессор"},
     { id: 5, category_id: 1, name: "Камера"},
     {id: 6, category_id: 1, name: "ОС"}, 
-    {id: 7, category_id: 2, name : 'от 20 Гц до 15 кГц'},
-    { id: 8, category_id: 2, name: "connection_type" },
-    { id: 9, category_id: 2, name: "микрофон" },
+    {id: 7, category_id: 2, name : 'Диапазон частот'},
+    { id: 8, category_id: 2, name: "Тип подключения" },
+    { id: 9, category_id: 2, name: "Микрофон" },
     { id: 10, category_id: 2, name: "Время работы от одного заряда" },
 ]
 

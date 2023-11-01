@@ -9,13 +9,15 @@ const Filter = ({categoryId}:{categoryId:string}) => {
   const { data: characteristics} = useCharacteristics(categoryId)
 
   return (
-    <div className='flex flex-col bg-white w-1/4 ml-10 rounded-xl shadow-lg shadow-black/30 px-10 py-7'>
-        <h2 className='font-bold mb-2'>Бренд</h2>
+    <div className='flex flex-col gap-4 bg-white w-1/4 ml-10 rounded-xl shadow-lg shadow-black/30 px-10 py-7'>
+        <div>
+          <h2 className='font-bold mb-2'>Бренд</h2>
         {brands?.map(brand => 
           (<div key={brand.id} className='ml-2'>
           <input  className={checkboxStyle} type="checkbox" id={brand.name}/>
           <label htmlFor={brand.name}>{brand.name}</label>
         </div>))}  
+          </div>
         {characteristics?.map(char => 
         (<div>          
           <h2 key={char.id} className='font-bold mb-2'>{char.charactehcisticName}</h2>
