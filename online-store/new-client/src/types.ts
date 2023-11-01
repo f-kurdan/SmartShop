@@ -4,7 +4,7 @@ export type productsList =
     {
         id: number;
         name: string;
-        brand: string;
+        brand_id: Number
         price: string;
         photo: string;
         category_id: number;
@@ -15,6 +15,7 @@ export type productsList =
     }[] | {
         id: number;
         name: string;
+        brand_id: Number
         price: string;
         photo: string;
         category_id: number;

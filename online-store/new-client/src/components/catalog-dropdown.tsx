@@ -1,4 +1,4 @@
-import useCategories from '@/hooks/useCategories'
+import useCategories from '@/hooks/useCategories';
 import Link from 'next/link'
 import React from 'react'
 
