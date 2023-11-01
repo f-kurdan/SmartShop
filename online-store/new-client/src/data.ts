@@ -148,4 +148,5 @@ export const variation_options= [
     {id: 16, variation_id: 8, name : 'беспроводные bluetooth, True Wireless'},
     { id: 17, variation_id: 9, name : 'встроенный'},
     { id: 18, variation_id: 10, name : '5 ч'},
+    { id: 19, variation_id: 10, name : '6 ч'},
 ]
