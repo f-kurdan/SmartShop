@@ -5,9 +5,9 @@ const getCharacteristics = async (categoryId: string) => {
     let categoryVariations = variations.filter(v => v.category_id.toString() === categoryId)
     const result = categoryVariations.map(v => {
         const options = variation_options.filter(o => o.variation_id === v.id);
-        return { 
+        return {
             id: v.id,
-            charactehcisticName : v.name, 
+            charactehcisticName: v.name,
             options: options
         }
     })
@@ -16,13 +16,6 @@ const getCharacteristics = async (categoryId: string) => {
 }
 
 export const useCharacteristics = (categoryId: string) => {
-    return useQuery(["characteristics", categoryId], () => getCharacteristics(
-        categoryId
-    ),);
-        
-}
+    return useQuery(["characteristics", categoryId], () => getCharacteristics(categoryId), { enabled: !!categoryId });
 
-const l = {
-    "dff": [1,3,4],
-    "dff2": [2,4,5],
 }
