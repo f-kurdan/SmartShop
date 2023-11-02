@@ -4,7 +4,6 @@ import NoItems from './no-items'
 import { productsList } from '@/types'
 import Filter from './filter'
 
-
 const ProductsList = ({products, categoryId}:{products:productsList, categoryId:string}) => {
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([])
 
@@ -17,7 +16,9 @@ const ProductsList = ({products, categoryId}:{products:productsList, categoryId:
   }
 
   if (selectedCharacteristics.length > 0) {
-    products = products?.filter(product => product.characteristics.some(characteristic => selectedCharacteristics.includes(characteristic.name)))
+    // console.log(selectedCharacteristics)
+    products = products?.filter(product => product.characteristics.some(characteristic => {
+      return selectedCharacteristics.includes(characteristic.value)}))
   }
 
   return (

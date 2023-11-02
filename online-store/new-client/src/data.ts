@@ -10,7 +10,7 @@ export const categories = [
 export const products = [
     {
         "id": 1,
-        "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
+        "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
         "photo": "/phones/iphone15.jpeg",
@@ -18,13 +18,13 @@ export const products = [
         "characteristics": [
             {name: "display", value : '6,1" (2556x1179), OLED'},
             {name: "chip", value : 'A17 Pro'},
-            {name:  "capacity", value : '128GB'},
-            {name: "camera", value : '48/12/12'},
+            {name:  "capacity", value : '128гб'},
+            {name: "camera", value : '48/12/12 Мп'},
         ],
     },
     {
         "id": 2,
-        "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
+        "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
         "photo": "/phones/iphone15.jpeg",
@@ -32,8 +32,8 @@ export const products = [
         "characteristics": [
             {name: "display", value : '6,1" (2556x1179), OLED'},
             {name: "chip", value : 'A17 Pro'},
-            {name:  "capacity", value : '128GB'},
-            {name: "camera", value : '48/12/12'},
+            {name:  "capacity", value : '128Гб'},
+            {name: "camera", value : '48/12/12 Мп'},
         ],
     },
     {
@@ -46,8 +46,8 @@ export const products = [
         "characteristics": [
             {name: "display", value : '6,1" (2556x1179), OLED'},
             {name: "chip", value : 'A17 Pro'},
-            {name:  "capacity", value : '128GB'},
-            {name: "camera", value : '48/12/12'},
+            {name:  "capacity", value : '256Гб'},
+            {name: "camera", value : '48/12/12 Мп'},
         ],
     },
     {
@@ -60,8 +60,8 @@ export const products = [
         "characteristics": [
             {name: "display", value : '6,1" (2556x1179), OLED'},
             {name: "chip", value : 'A17 Pro'},
-            {name:  "capacity", value : '128GB'},
-            {name: "camera", value : '48/12/12'},
+            {name:  "capacity", value : '256Гб'},
+            {name: "camera", value : '48/12/12 Мп'},
         ],
     },
     {
@@ -140,8 +140,7 @@ export const variation_options= [
     { id: 8, variation_id: 3, name: "12Гб"},
     { id: 9, variation_id: 4, name: "Snapdragon"},
     { id: 10, variation_id: 4, name: "Exynos"},
-    { id: 11, variation_id: 5, name: "48Мп"},
-    { id: 12, variation_id: 5, name: "12Мп"},
+    { id: 11, variation_id: 5, name: "48/12/12 Мп"},
     { id: 13, variation_id: 6, name: "iOS"},
     { id: 14, variation_id: 6, name: "Android"},
     { id: 15, variation_id: 7, name : 'от 20 Гц до 15 кГц'},
