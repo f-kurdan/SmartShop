@@ -32,7 +32,7 @@ const ProductsList = ({products, categoryId}:{products:productsList, categoryId:
               <Image className='max-w-48 max-h-48' src={item.photo} alt={item.name} width={160} height={160} />
               <div className='flex flex-col justify-start items-start text-sm px-3'>
                 <p className='mb-5 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>{item.name}</p>
-                {!!item.characteristics.length && item.characteristics.map(char => (
+                {!!item.characteristics.length && item.characteristics.slice(0, 5).map(char => (
                   <p className='mb-3'><span className='font-semibold'>{char.name}: </span>{char.value}</p>
                 ))}
               </div>
