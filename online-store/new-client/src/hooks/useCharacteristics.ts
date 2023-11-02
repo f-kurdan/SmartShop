@@ -17,5 +17,4 @@ const getCharacteristics = async (categoryId: string) => {
 
 export const useCharacteristics = (categoryId: string) => {
     return useQuery(["characteristics", categoryId], () => getCharacteristics(categoryId), { enabled: !!categoryId });
-
 }

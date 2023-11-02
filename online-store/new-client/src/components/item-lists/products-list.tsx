@@ -1,14 +1,29 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import NoItems from './no-items'
 import { productsList } from '@/types'
 import Filter from './filter'
 
 
 const ProductsList = ({products, categoryId}:{products:productsList, categoryId:string}) => {
+  const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([])
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked){
+      setSelectedCharacteristics([...selectedCharacteristics, e.target.value])    
+    } else {
+      setSelectedCharacteristics(selectedCharacteristics.filter(characteristic => characteristic!== e.target.value))
+    }
+  }
+
+  if (selectedCharacteristics.length > 0) {
+    products = products?.filter(product => product.characteristics.some(characteristic => selectedCharacteristics.includes(characteristic.name)))
+  }
+
   return (
     <div className='flex flex-row justify-around items-start mt-3'>
-        <Filter categoryId={categoryId} />
+        <Filter categoryId={categoryId} 
+        handleChange={handleChange}/>
         {products?.length ? (
           <div className='flex flex-col w-2/3 min-h-fit mr-10'>
             {products.map((item, index) => 
