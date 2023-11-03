@@ -6,7 +6,7 @@ import BrandsFilter from './brands-filter';
 const checkboxStyle = 'mr-2 scale-125 hover:cursor-pointer';
 
 const Filter = ({categoryId, handleChange, handleBrandsChange}:{
-  categoryId:string, 
+  categoryId?:string, 
   handleChange:(e:React.ChangeEvent<HTMLInputElement>)=>void,
   handleBrandsChange:(e:React.ChangeEvent<HTMLInputElement>)=>void}) => {
   const { data: brands } = useBrands()

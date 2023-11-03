@@ -1,4 +1,4 @@
-import ProductsList from '@/components/item-lists/products-list'
+import ProductsList from '@/components/products/products-list';
 import useProductByCategory from '@/hooks/useProductByCategory';
 import { getProductByCategory, getProducts } from '@/services/product.service';
 import React, { useState, ChangeEvent } from 'react'
@@ -35,7 +35,6 @@ export async function getStaticProps({ params }: { params: { category: number } 
 const Category = ({ categoryId }: { categoryId: string }) => {
   let { isLoading, data } = useProductByCategory(categoryId)
   
-
   if (!data) return <span>Нет товаров!</span>
   return isLoading ? (<span>Идет загрузка...</span>) : (
     <ProductsList products={data} 

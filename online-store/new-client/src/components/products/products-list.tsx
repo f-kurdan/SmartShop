@@ -4,7 +4,7 @@ import NoItems from './no-items'
 import { productsList } from '@/types'
 import Filter from './filters/filter'
 
-const ProductsList = ({ products, categoryId }: { products: productsList, categoryId: string }) => {
+const ProductsList = ({ products, categoryId }: { products: productsList, categoryId?: string }) => {
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([])
   const [selectedBrands, setSelectedBrands] = useState<string[]>([])
 
@@ -36,13 +36,13 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
 
 
   return (
-    <div className='flex flex-row justify-around items-start mt-3'>
+    <div className='flex flex-row justify-around items-start my-3'>
       <Filter categoryId={categoryId}
         handleChange={handleChange}
         handleBrandsChange={handleBrandsChange} />
       {products?.length ? (
         <div className='flex flex-col w-2/3 min-h-fit mr-10'>
-          {products.map((item, index) =>
+          {products.map((item) =>
           (<div key={item.id} className='flex flex-row justify-evenly items-start px-10 py-7 bg-white mb-2 rounded-xl shadow-lg shadow-black/30 '>
             <Image className='max-w-48 max-h-48' src={item.photo} alt={item.name} width={160} height={160} />
             <div className='flex flex-col justify-start items-start text-sm px-3'>

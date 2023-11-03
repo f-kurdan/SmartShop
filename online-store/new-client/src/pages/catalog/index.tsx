@@ -1,9 +1,8 @@
-import ProductsList from '@/components/item-lists/products-list';
-import { products } from '@/data'
+import ProductsList from '@/components/products/products-list';
 import useProducts from '@/hooks/useProducts';
 import { getProducts } from '@/services/product.service';
 import React from 'react'
-import { QueryClient, dehydrate, useQuery } from 'react-query'
+import { QueryClient, dehydrate } from 'react-query'
 
 export async function getStatincProps() {
   const queryClient = new QueryClient();
