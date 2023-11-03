@@ -18,10 +18,12 @@ export const products = [
         "characteristics": [
             {name: "display", value : '6,1" (2556x1179), OLED'},
             {name: "chip", value : 'A17 Pro'},
-            {name:  "capacity", value : '128гб'},
+            {name:  "capacity", value : '128Гб'},
             {name: "camera", value : '48/12/12 Мп'},
             {name: "Система", value : 'iOS'},
             {name: "Цвет", value : 'титановый бежевый'},
+            {name: "Оперативная память", value : '8Гб'},
+            
             
         ],
     },
@@ -39,6 +41,8 @@ export const products = [
             {name: "camera", value : '48/12/12 Мп'},
             {name: "Система", value : 'iOS'},
             {name: "Цвет", value : 'титановый бежевый'},
+            {name: "Оперативная память", value : '8Гб'},
+
         ],
     },
     {
@@ -55,6 +59,8 @@ export const products = [
             {name: "camera", value : '48/12/12 Мп'},
             {name: "Система", value : 'iOS'},
             {name: "Цвет", value : 'титановый бежевый'},
+            {name: "Оперативная память", value : '8Гб'},
+
         ],
     },
     {
@@ -71,6 +77,8 @@ export const products = [
             {name: "camera", value : '48/12/12 Мп'},
             {name: "Система", value : 'iOS'},
             {name: "Цвет", value : 'титановый бежевый'},
+            {name: "Оперативная память", value : '8Гб'},
+
 
         ],
     },
@@ -127,7 +135,6 @@ export const brands = [
 
 
 export const variations = [
-    {id: 6, category_id: 1, name: "ОС"}, 
     {id: 1, category_id: 1, name: "Цвет"},
     { id: 2, category_id: 1, name: "Память"},
     { id: 3, category_id: 1,  name: "Оперативная память"},
@@ -152,8 +159,6 @@ export const variation_options= [
     { id: 10, variation_id: 4, name: "Exynos"},
     { id: 11, variation_id: 5, name: "48/12/12 Мп"},
     { id: 12, variation_id: 4, name: "A17 Pro"},
-    { id: 13, variation_id: 6, name: "iOS"},
-    { id: 14, variation_id: 6, name: "Android"},
     { id: 15, variation_id: 7, name : 'от 20 Гц до 15 кГц'},
     {id: 16, variation_id: 8, name : 'беспроводные bluetooth, True Wireless'},
     { id: 17, variation_id: 9, name : 'встроенный'},
