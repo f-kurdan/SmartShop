@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export type category = { slug: string, name: string, src: string };
 
 export type productsList = 
@@ -24,3 +26,10 @@ export type productsList =
             value: string;
         }[]
     }[]
+
+export type brands = {
+    id: number;
+    name: string;
+    slug: string;
+    logo: string;
+}[] | undefined

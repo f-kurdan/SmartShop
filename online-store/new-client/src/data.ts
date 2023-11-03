@@ -20,6 +20,9 @@ export const products = [
             {name: "chip", value : 'A17 Pro'},
             {name:  "capacity", value : '128гб'},
             {name: "camera", value : '48/12/12 Мп'},
+            {name: "Система", value : 'iOS'},
+            {name: "Цвет", value : 'титановый бежевый'},
+            
         ],
     },
     {
@@ -34,6 +37,8 @@ export const products = [
             {name: "chip", value : 'A17 Pro'},
             {name:  "capacity", value : '128Гб'},
             {name: "camera", value : '48/12/12 Мп'},
+            {name: "Система", value : 'iOS'},
+            {name: "Цвет", value : 'титановый бежевый'},
         ],
     },
     {
@@ -48,11 +53,13 @@ export const products = [
             {name: "chip", value : 'A17 Pro'},
             {name:  "capacity", value : '256Гб'},
             {name: "camera", value : '48/12/12 Мп'},
+            {name: "Система", value : 'iOS'},
+            {name: "Цвет", value : 'титановый бежевый'},
         ],
     },
     {
         "id": 4,
-        "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
+        "name": "Apple iPhone 15 Pro Max eSIM 512 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
         "photo": "/phones/iphone15.jpeg",
@@ -60,8 +67,11 @@ export const products = [
         "characteristics": [
             {name: "display", value : '6,1" (2556x1179), OLED'},
             {name: "chip", value : 'A17 Pro'},
-            {name:  "capacity", value : '256Гб'},
+            {name:  "capacity", value : '512Гб'},
             {name: "camera", value : '48/12/12 Мп'},
+            {name: "Система", value : 'iOS'},
+            {name: "Цвет", value : 'титановый бежевый'},
+
         ],
     },
     {
@@ -117,12 +127,12 @@ export const brands = [
 
 
 export const variations = [
+    {id: 6, category_id: 1, name: "ОС"}, 
     {id: 1, category_id: 1, name: "Цвет"},
     { id: 2, category_id: 1, name: "Память"},
     { id: 3, category_id: 1,  name: "Оперативная память"},
     { id: 4, category_id: 1, name: "Процессор"},
     { id: 5, category_id: 1, name: "Камера"},
-    {id: 6, category_id: 1, name: "ОС"}, 
     {id: 7, category_id: 2, name : 'Диапазон частот'},
     { id: 8, category_id: 2, name: "Тип подключения" },
     { id: 9, category_id: 2, name: "Микрофон" },
@@ -132,7 +142,7 @@ export const variations = [
 export const variation_options= [
     {id: 1, variation_id: 1, name: "черный цвет"},
     {id: 2, variation_id: 1, name: "белые цвет"},
-    {id: 3, variation_id: 1, name: "красный цве"},
+    {id: 3, variation_id: 1, name: "красный цвет"},
     {id: 4, variation_id: 2, name: "128Гб"},
     {id: 5, variation_id: 2, name: "256Гб"},
     {id: 6, variation_id: 2, name: "512Гб"},
@@ -141,6 +151,7 @@ export const variation_options= [
     { id: 9, variation_id: 4, name: "Snapdragon"},
     { id: 10, variation_id: 4, name: "Exynos"},
     { id: 11, variation_id: 5, name: "48/12/12 Мп"},
+    { id: 12, variation_id: 4, name: "A17 Pro"},
     { id: 13, variation_id: 6, name: "iOS"},
     { id: 14, variation_id: 6, name: "Android"},
     { id: 15, variation_id: 7, name : 'от 20 Гц до 15 кГц'},
@@ -148,4 +159,5 @@ export const variation_options= [
     { id: 17, variation_id: 9, name : 'встроенный'},
     { id: 18, variation_id: 10, name : '5 ч'},
     { id: 19, variation_id: 10, name : '6 ч'},
+    {id: 20, variation_id: 1, name: "титановый бежевый"},
 ]
