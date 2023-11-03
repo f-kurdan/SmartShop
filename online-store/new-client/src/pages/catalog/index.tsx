@@ -22,7 +22,8 @@ const Component = () => {
   
   if (!data) return <span>Нет товаров!</span>
   return isLoading ? (<span>Идет загрузка...</span>) : (
-    <ProductsList products={data} />
+    <ProductsList products={data} 
+    />
   )
 }
 

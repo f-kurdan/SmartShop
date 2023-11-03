@@ -1,7 +1,8 @@
 import { variation_options, variations } from "@/data"
 import { useQuery } from "react-query";
 
-const getCharacteristics = async (categoryId?: string) => {
+const getCharacteristics = (categoryId?: string) => {
+    // console.log('это здесь '+ categoryId)
     const categoryVariations = categoryId ? variations.filter(v => v.category_id.toString() === categoryId) : variations;
     
     const result = categoryVariations.map(v => {
@@ -17,5 +18,5 @@ const getCharacteristics = async (categoryId?: string) => {
 }
 
 export const useCharacteristics = (categoryId?: string) => {
-    return useQuery(["characteristics", categoryId], () => getCharacteristics(categoryId), { enabled: !!categoryId });
+    return useQuery(["characteristics", categoryId], () => getCharacteristics(categoryId));
 }
