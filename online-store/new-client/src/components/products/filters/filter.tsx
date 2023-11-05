@@ -5,9 +5,9 @@ import BrandsFilter from './brands-filter';
 import CategoriesFilter from './categories-filter';
 import CharacteristicsFilter from './characteristics-filter';
 
-const Filter = ({ categoryId, handleChange, handleBrandsChange, handleCategoriesChange }: {
+const Filter = ({ categoryId, handleCharacteristicsChange: handleChange, handleBrandsChange, handleCategoriesChange }: {
   categoryId?: string,
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  handleCharacteristicsChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
   handleBrandsChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleCategoriesChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) => {

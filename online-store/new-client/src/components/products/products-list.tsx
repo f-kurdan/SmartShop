@@ -3,6 +3,7 @@ import React, { useState, ChangeEvent } from 'react'
 import NoItems from './no-items'
 import { productsList } from '@/types'
 import Filter from './filters/filter'
+import FilterService  from '@/services/firter.service'
 
 const ProductsList = ({ products, categoryId }: { products: productsList, categoryId?: string }) => {
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([]);
@@ -10,35 +11,24 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setSelectedCharacteristics([...selectedCharacteristics, e.target.value])
-    } else {
-      setSelectedCharacteristics(selectedCharacteristics.filter(characteristic => characteristic !== e.target.value))
-    }
+  const handleCharacteristicsChange = (e: ChangeEvent<HTMLInputElement>) => {
+   FilterService.handleChange(e, setSelectedCharacteristics, selectedCharacteristics)
   }
 
   const handleBrandsChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setSelectedBrands([...selectedBrands, e.target.value])
-    } else {
-      setSelectedBrands(selectedBrands.filter(brand => brand !== e.target.value))
-    }
+    FilterService.handleChange(e, setSelectedBrands, selectedBrands)
   }
 
-  const handleCategoriesChange = (e:ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setSelectedCategories([...selectedCategories, e.target.value])
-    } else {
-      setSelectedCategories(selectedCategories.filter(category => category !== e.target.value))
-    }
+  const handleCategoriesChange = (e: ChangeEvent<HTMLInputElement>) => {
+    FilterService.handleChange(e, setSelectedCategories, selectedCategories)
   }
 
   if (selectedCategories.length > 0) {
-    products = products.filter(product => selectedCategories.includes(product.category_id.toString()))}
+    products = products.filter(product => selectedCategories.includes(product.category_id.toString()))
+  }
 
   if (selectedBrands.length > 0) {
-      products = products.filter(product => selectedBrands.includes(product.brand_id.toString()))
+    products = products.filter(product => selectedBrands.includes(product.brand_id.toString()))
   }
 
   if (selectedCharacteristics.length > 0) {
@@ -49,9 +39,9 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   return (
     <div className='flex flex-row justify-around items-start my-3'>
       <Filter categoryId={categoryId}
-        handleChange={handleChange}
-        handleBrandsChange={handleBrandsChange} 
-        handleCategoriesChange={handleCategoriesChange}/>
+        handleCharacteristicsChange={handleCharacteristicsChange}
+        handleBrandsChange={handleBrandsChange}
+        handleCategoriesChange={handleCategoriesChange} />
       {products?.length ? (
         <div className='flex flex-col w-2/3 min-h-fit mr-10'>
           {products.map((item) =>
