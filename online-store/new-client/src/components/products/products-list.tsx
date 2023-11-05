@@ -5,8 +5,10 @@ import { productsList } from '@/types'
 import Filter from './filters/filter'
 
 const ProductsList = ({ products, categoryId }: { products: productsList, categoryId?: string }) => {
-  const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([])
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([])
+  const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([]);
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
@@ -24,14 +26,23 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
     }
   }
 
+  const handleCategoriesChange = (e:ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSelectedCategories([...selectedCategories, e.target.value])
+    } else {
+      setSelectedCategories(selectedCategories.filter(category => category !== e.target.value))
+    }
+  }
+
+  if (selectedCategories.length > 0) {
+    products = products.filter(product => selectedCategories.includes(product.category_id.toString()))}
+
   if (selectedBrands.length > 0) {
       products = products.filter(product => selectedBrands.includes(product.brand_id.toString()))
   }
 
   if (selectedCharacteristics.length > 0) {
-    products = products?.filter(product => product.characteristics.some(characteristic => {
-      return selectedCharacteristics.includes(characteristic.value)
-    }))
+    products = products?.filter(product => selectedCharacteristics.every(selectedChar => product.characteristics.some(productChar => selectedChar === productChar.value)))
   }
 
 
@@ -39,7 +50,8 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
     <div className='flex flex-row justify-around items-start my-3'>
       <Filter categoryId={categoryId}
         handleChange={handleChange}
-        handleBrandsChange={handleBrandsChange} />
+        handleBrandsChange={handleBrandsChange} 
+        handleCategoriesChange={handleCategoriesChange}/>
       {products?.length ? (
         <div className='flex flex-col w-2/3 min-h-fit mr-10'>
           {products.map((item) =>

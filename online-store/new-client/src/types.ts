@@ -33,3 +33,13 @@ export type brands = {
     slug: string;
     logo: string;
 }[] | undefined
+
+export type characteristics = {
+    id: number;
+    charactehcisticName: string;
+    options: {
+        id: number;
+        variation_id: number;
+        name: string;
+    }[];
+}[] | undefined
