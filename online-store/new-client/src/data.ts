@@ -1,10 +1,10 @@
 export const categories = [
-    { id: 1, slug: "phones", name: "ТЕЛЕФОНЫ", src: "phone.png" },
-    { id: 2, slug: "headphones", name: "НАУШНИКИ", src: "headphone.png" },
-    { id: 3, slug: "tablet", name: "ПЛАНШЕТЫ", src: "tablet.png" },
-    { id: 4, slug: "watch", name: "СМАРТ-ЧАСЫ", src: "watch.png" },
-    { id: 5, slug: "laptop", name: "НОУТБУКИ", src: "laptop.png" },
-    { id: 6, slug: "camera", name: "КАМЕРЫ", src: "camera.png" },
+    { id: 1, slug: "phones", name: "Телефоны", src: "phone.png" },
+    { id: 2, slug: "headphones", name: "Наушники", src: "headphone.png" },
+    { id: 3, slug: "tablet", name: "Планшеты", src: "tablet.png" },
+    { id: 4, slug: "watch", name: "Смарт-часы", src: "watch.png" },
+    { id: 5, slug: "laptop", name: "Ноутбуки", src: "laptop.png" },
+    { id: 6, slug: "camera", name: "Камеры", src: "camera.png" },
 ]
 
 export const products = [

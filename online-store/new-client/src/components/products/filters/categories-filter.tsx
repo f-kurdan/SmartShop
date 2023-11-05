@@ -8,7 +8,7 @@ const CategoriesFilter = ({ handleCategoriesChange }: { handleCategoriesChange: 
             <h2 className='font-bold mb-2'>Категории</h2>
             {categories?.map(category =>
             (<div key={category.id} className='ml-2'>
-                <input onChange={handleCategoriesChange} className='mr-2 scale-125 hover:cursor-pointer' type="checkbox" id={category.name} value={category.id} />
+                <input onChange={handleCategoriesChange} className='mr-2 scale-125 hover:cursor-pointer' type="checkbox" id={category.id.toString()} value={category.name} />
                 <label htmlFor={category.name}>{category.name}</label>
             </div>))}
         </div>

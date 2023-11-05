@@ -4,24 +4,36 @@ import NoItems from './no-items'
 import { productsList } from '@/types'
 import Filter from './filters/filter'
 import FilterService  from '@/services/firter.service'
+import { type } from 'os'
+
+type tuple = {
+  name: string,
+  variationId: string  
+}
 
 const ProductsList = ({ products, categoryId }: { products: productsList, categoryId?: string }) => {
-  const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([]);
+  const [selectedCharacteristics, setSelectedCharacteristics] = useState<tuple[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
 
-  const handleCharacteristicsChange = (e: ChangeEvent<HTMLInputElement>) => {
-   FilterService.handleChange(e, setSelectedCharacteristics, selectedCharacteristics)
+  const handleCategoriesChange = (e: ChangeEvent<HTMLInputElement>) => {
+    FilterService.handleChange(e, setSelectedCategories, selectedCategories)
   }
 
   const handleBrandsChange = (e: ChangeEvent<HTMLInputElement>) => {
     FilterService.handleChange(e, setSelectedBrands, selectedBrands)
   }
 
-  const handleCategoriesChange = (e: ChangeEvent<HTMLInputElement>) => {
-    FilterService.handleChange(e, setSelectedCategories, selectedCategories)
+  const handleCharacteristicsChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSelectedCharacteristics([...selectedCharacteristics, { name: e.target.value, variationId: e.target.id}])
+    } else {
+      setSelectedCharacteristics(selectedCharacteristics.filter(characteristic => characteristic.name !== e.target.value))
+    }
   }
+  
+  
 
   if (selectedCategories.length > 0) {
     products = products.filter(product => selectedCategories.includes(product.category_id.toString()))
@@ -32,7 +44,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   }
 
   if (selectedCharacteristics.length > 0) {
-    products = products?.filter(product => selectedCharacteristics.every(selectedChar => product.characteristics.some(productChar => selectedChar === productChar.value)))
+    products = products?.filter(product => selectedCharacteristics.every(selectedChar => product.characteristics.some(productChar => selectedChar.name === productChar.value)))
   }
 
 
