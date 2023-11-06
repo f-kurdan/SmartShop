@@ -10,6 +10,7 @@ export const categories = [
 export const products = [
     {
         "id": 1,
+        "SKU": 123456,
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -29,6 +30,7 @@ export const products = [
     },
     {
         "id": 2,
+        "SKU": 123456,
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -47,6 +49,7 @@ export const products = [
     },
     {
         "id": 3,
+        "SKU": 123456,
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -65,6 +68,7 @@ export const products = [
     },
     {
         "id": 4,
+        "SKU": 123456,
         "name": "Apple iPhone 15 Pro Max eSIM 512 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -84,6 +88,7 @@ export const products = [
     },
     {
         "id": 5,
+        "SKU": 123456,
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -98,6 +103,7 @@ export const products = [
     },
     {
         "id": 6,
+        "SKU": 123456,
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -112,6 +118,7 @@ export const products = [
     },
     {
         "id": 7,
+        "SKU": 123456,
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
