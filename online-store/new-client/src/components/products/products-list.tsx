@@ -6,35 +6,28 @@ import Filter from './filters/filter'
 import FilterService  from '@/services/firter.service'
 import { type } from 'os'
 
-type tuple = {
-  name: string,
-  variationId: string  
-}
+// type tuple = {
+//   [key:string] : string[]
+// }
 
 const ProductsList = ({ products, categoryId }: { products: productsList, categoryId?: string }) => {
-  const [selectedCharacteristics, setSelectedCharacteristics] = useState<tuple[]>([]);
+  const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
 
-  const handleCategoriesChange = (e: ChangeEvent<HTMLInputElement>) => {
-    FilterService.handleChange(e, setSelectedCategories, selectedCategories)
+  const handleCharacteristicsChange = (e: ChangeEvent<HTMLInputElement>) => {
+   FilterService.handleChange(e, setSelectedCharacteristics, selectedCharacteristics)
   }
 
   const handleBrandsChange = (e: ChangeEvent<HTMLInputElement>) => {
     FilterService.handleChange(e, setSelectedBrands, selectedBrands)
   }
 
-  const handleCharacteristicsChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setSelectedCharacteristics([...selectedCharacteristics, { name: e.target.value, variationId: e.target.id}])
-    } else {
-      setSelectedCharacteristics(selectedCharacteristics.filter(characteristic => characteristic.name !== e.target.value))
-    }
+  const handleCategoriesChange = (e: ChangeEvent<HTMLInputElement>) => {
+    FilterService.handleChange(e, setSelectedCategories, selectedCategories)
   }
   
-  
-
   if (selectedCategories.length > 0) {
     products = products.filter(product => selectedCategories.includes(product.category_id.toString()))
   }
@@ -44,9 +37,10 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   }
 
   if (selectedCharacteristics.length > 0) {
-    products = products?.filter(product => selectedCharacteristics.every(selectedChar => product.characteristics.some(productChar => selectedChar.name === productChar.value)))
+    for (let i = 0; i < selectedCharacteristics.length; i++) {
+      products = products.filter(prod => prod.characteristics.some(char => selectedCharacteristics[i] === char.value))
+    }
   }
-
 
   return (
     <div className='flex flex-row justify-around items-start my-3'>
@@ -57,7 +51,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
       {products?.length ? (
         <div className='flex flex-col w-2/3 min-h-fit mr-10'>
           {products.map((item) =>
-          (<div key={item.id} className='flex flex-row justify-evenly items-start px-10 py-7 bg-white mb-2 rounded-xl shadow-lg shadow-black/30 '>
+          (<div key={item.id} className='flex flex-row justify-evenly items-start px-10 py-7 bg-slate-50 mb-2 rounded-xl shadow-lg shadow-black/30 '>
             <Image className='max-w-48 max-h-48' src={item.photo} alt={item.name} width={160} height={160} />
             <div className='flex flex-col justify-start items-start text-sm px-3'>
               <p className='mb-5 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>{item.name}</p>

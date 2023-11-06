@@ -1,5 +1,3 @@
-import { useBrands } from '@/hooks/useBrands';
-import { useCharacteristics } from '@/hooks/useCharacteristics';
 import React from 'react'
 import BrandsFilter from './brands-filter';
 import CategoriesFilter from './categories-filter';
@@ -12,11 +10,10 @@ const Filter = ({ categoryId, handleCharacteristicsChange, handleBrandsChange, h
   handleCategoriesChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) => {
   return (
-    <div className='flex flex-col text-sm gap-4 bg-white w-1/4 ml-10 rounded-xl shadow-lg shadow-black/30 px-10 py-7'>
+    <div className='flex flex-col text-sm gap-4 bg-slate-50 w-1/4 ml-10 rounded-xl shadow-lg shadow-black/30 px-10 py-7'>
       <CategoriesFilter handleCategoriesChange={handleCategoriesChange} />
       <BrandsFilter handleBrandsChange={handleBrandsChange} />
-      <CharacteristicsFilter
-        categoryId={categoryId}
+      <CharacteristicsFilter categoryId={categoryId}
         handleCharacteristicsChange={handleCharacteristicsChange}
       />
     </div>
