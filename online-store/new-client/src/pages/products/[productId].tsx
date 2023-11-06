@@ -1,5 +1,6 @@
 import useProductById from '@/hooks/useProductById';
 import { getProductById, getProducts } from '@/services/product.service';
+import { useRouter } from 'next/router';
 import React from 'react'
 import { dehydrate, QueryClient } from 'react-query';
 
@@ -30,14 +31,19 @@ export async function  getStaticProps({ params }: { params: { productId: string 
 }
 
 const Product = ({productId}:{productId:string}) => {
+  const router = useRouter()
     const {isLoading, data} = useProductById(productId);
 
-  return data && ( 
+  return (
+    <>
+      <div onClick={() => router.back()} className='border-solid border-black border-2 rounded-lg inline-block p-3'>Назад</div>
+      {data && ( 
     <div>
         {data.name}
         {data.price}
-    </div>
-    
+    </div>    
+  )}
+    </>
   )
 }
 
