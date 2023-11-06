@@ -4,7 +4,7 @@ import NoItems from './no-items'
 import { productsList } from '@/types'
 import Filter from './filters/filter'
 import FilterService  from '@/services/firter.service'
-import { type } from 'os'
+import Link from 'next/link'
 
 // type tuple = {
 //   [key:string] : string[]
@@ -27,6 +27,8 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   const handleCategoriesChange = (e: ChangeEvent<HTMLInputElement>) => {
     FilterService.handleChange(e, setSelectedCategories, selectedCategories)
   }
+
+  // products = FilterService.filterProducts(products);
   
   if (selectedCategories.length > 0) {
     products = products.filter(product => selectedCategories.includes(product.category_id.toString()))
@@ -37,7 +39,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   }
 
   if (selectedCharacteristics.length > 0) {
-    for (let i = 0; i < selectedCharacteristics.length; i++) {
+    for (let i = 0; i < selectedCharacteristics.length; i++) {     
       products = products.filter(prod => prod.characteristics.some(char => selectedCharacteristics[i] === char.value))
     }
   }
@@ -50,18 +52,20 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
         handleCategoriesChange={handleCategoriesChange} />
       {products?.length ? (
         <div className='flex flex-col w-2/3 min-h-fit mr-10'>
-          {products.map((item) =>
-          (<div key={item.id} className='flex flex-row justify-evenly items-start px-10 py-7 bg-slate-50 mb-2 rounded-xl shadow-lg shadow-black/30 '>
-            <Image className='max-w-48 max-h-48' src={item.photo} alt={item.name} width={160} height={160} />
+          {products.map((product) =>
+          (<div key={product.id} className='flex flex-row justify-evenly items-start px-10 py-7 bg-slate-50 mb-2 rounded-xl shadow-lg shadow-black/30 '>
+            <Image className='max-w-48 max-h-48' src={product.photo} alt={product.name} width={160} height={160} />
             <div className='flex flex-col justify-start items-start text-sm px-3'>
-              <p className='mb-5 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>{item.name}</p>
-              {!!item.characteristics.length && item.characteristics.slice(0, 5).map(char => (
+              <Link href={`/products/${product.id}`}>
+              <p className='mb-5 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>{product.name}</p>
+              </Link>
+              {!!product.characteristics.length && product.characteristics.slice(0, 5).map(char => (
                 <p className='mb-3'><span className='font-semibold'>{char.name}: </span>{char.value}</p>
               ))}
             </div>
             <div className='min-w-fit self-end text-center'>
               <p className='border-2 border-black border-solid  p-1 '>
-                {item.price}
+                {product.price}
               </p>
               <p className='bg-lime-400 hover:invert p-1 transition duration-400 hover:cursor-pointer'>В корзину</p>
             </div>

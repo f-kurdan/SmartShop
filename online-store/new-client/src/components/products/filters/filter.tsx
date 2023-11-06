@@ -11,7 +11,7 @@ const Filter = ({ categoryId, handleCharacteristicsChange, handleBrandsChange, h
 }) => {
   return (
     <div className='flex flex-col text-sm gap-4 bg-slate-50 w-1/4 ml-10 rounded-xl shadow-lg shadow-black/30 px-10 py-7'>
-      <CategoriesFilter handleCategoriesChange={handleCategoriesChange} />
+      {!categoryId && (<CategoriesFilter handleCategoriesChange={handleCategoriesChange} />)}      
       <BrandsFilter handleBrandsChange={handleBrandsChange} />
       <CharacteristicsFilter categoryId={categoryId}
         handleCharacteristicsChange={handleCharacteristicsChange}

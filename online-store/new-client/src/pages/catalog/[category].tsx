@@ -1,7 +1,7 @@
 import ProductsList from '@/components/products/products-list';
 import useProductByCategory from '@/hooks/useProductByCategory';
 import { getProductByCategory, getProducts } from '@/services/product.service';
-import React, { useState, ChangeEvent } from 'react'
+import React from 'react'
 import { QueryClient, dehydrate } from 'react-query'
 
 export async function getStaticPaths() {
@@ -24,7 +24,7 @@ export async function getStaticProps({ params }: { params: { category: number } 
 
   return {
     props: {
-      dehydratedSState: dehydrate(queryClient),
+      dehydratedState: dehydrate(queryClient),
       categoryId: params.category,
     },
 
@@ -34,11 +34,11 @@ export async function getStaticProps({ params }: { params: { category: number } 
 
 const Category = ({ categoryId }: { categoryId: string }) => {
   let { isLoading, data } = useProductByCategory(categoryId)
-  
+
   if (!data) return <span>Нет товаров!</span>
   return isLoading ? (<span>Идет загрузка...</span>) : (
-    <ProductsList products={data} 
-    categoryId={categoryId}/>
+    <ProductsList products={data}
+      categoryId={categoryId} />
   )
 
 }
