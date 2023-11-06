@@ -3,7 +3,7 @@ import React from 'react'
 
 const GoBackButton = ({router}:{router:NextRouter}) => {
   return (
-    <div onClick={() => router.back()} className='bg-slate-50 border-solid w-1/12 text-center border-black border-2 rounded-lg inline-block p-3'>Назад</div>
+    <div onClick={() => router.back()} className='bg-slate-50 rounded-xl w-fit text-center inline-block p-3 hover:cursor-pointer hover:outline hover:outline-2 hover:outline-blue-700'>Назад к списку</div>
   )
 }
 
