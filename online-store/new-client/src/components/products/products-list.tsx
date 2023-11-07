@@ -55,12 +55,12 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
           {products.map((product) =>
           (<div key={product.id} className='flex flex-row justify-evenly items-start px-10 py-7 bg-slate-50 mb-2 rounded-xl shadow-lg shadow-black/30 '>
             <Image className='max-w-48 max-h-48' src={product.photo} alt={product.name} width={160} height={160} />
-            <div className='flex flex-col justify-start items-start text-sm px-3'>
+            <div className='flex flex-col gap-3 justify-start items-start text-sm px-3'>
               <Link href={`/products/${product.id}`}>
-              <p className='mb-5 text-sm font-semibold hover:text-blue-600 hover:cursor-pointer'>{product.name}</p>
+              <p className='text-sm font-semibold hover:text-blue-600 active:text-lime-400 hover:cursor-pointer'>{product.name}</p>
               </Link>
               {!!product.characteristics.length && product.characteristics.slice(0, 5).map(char => (
-                <p className='mb-3'><span className='font-semibold'>{char.name}: </span>{char.value}</p>
+                <p className=''><span className='font-semibold'>{char.name}: </span>{char.value}</p>
               ))}
             </div>
             <div className='min-w-fit self-end text-center'>

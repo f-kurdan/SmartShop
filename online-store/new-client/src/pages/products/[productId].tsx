@@ -47,8 +47,8 @@ const Product = ({ productId }: { productId: string }) => {
               <Suspense fallback={<ProductImageFiller />}>
                 <Image src={data!.photo} alt={data!.name} width={400} height={400} />
               </Suspense>
-              <div className='flex flex-col justify-start items-start text-lg px-3'>
-                <p className='mb-5 font-semibold hover:text-blue-600 hover:cursor-pointer'>{data!.name}</p>
+              <div className='flex flex-col justify-start items-start text-base px-3'>
+                <p className='font-semibold text-lg'>{data!.name}</p>
                 <div className='my-5 min-w-fit text-center'>
                   <p className='border-2 border-black border-solid  p-1 '>
                     {data!.price}
