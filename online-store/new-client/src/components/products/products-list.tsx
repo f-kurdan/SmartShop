@@ -5,6 +5,7 @@ import { productsList } from '@/types'
 import Filter from './filters/filter'
 import FilterService from '@/services/firter.service'
 import Link from 'next/link'
+import { montserrat } from '@/styles/fonts'
 
 // type tuple = {
 //   [key:string] : string[]
@@ -45,7 +46,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   }
 
   return (
-    <div className='flex flex-row justify-center h-max gap-4 items-start my-3'>
+    <div className={`${montserrat.className} flex flex-row justify-center h-max gap-4 items-start my-3`}>
       <Filter categoryId={categoryId}
         handleCharacteristicsChange={handleCharacteristicsChange}
         handleBrandsChange={handleBrandsChange}
@@ -53,9 +54,9 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
       {products?.length ? (
         <div className='flex flex-row flex-wrap justify-start items-center gap-4 w-2/3 min-h-fit mr-10'>
           {products.map((product) =>
-          (<Link href={`/products/${product.id}`}>
-            <div key={product.id} className='flex flex-col gap-2 w-72 justify-center items-center p-5 bg-slate-50  rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer'>
-              <p className='text-xs text-center font-semibold hover:text-blue-600 active:text-lime-400 '>{product.name}</p>
+          (<Link href={`/products/${product.id}`}> 
+            <div key={product.id} className='flex flex-col gap-2 w-72 justify-center items-center p-5 bg-slate-50  rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80'>
+              <p className='text-xs text-center font-black hover:text-blue-600 active:text-lime-400 '>{product.name}</p>
               <Image className='max-w-48 max-h-48' src={product.photo} alt={product.name} width={160} height={160} />
             </div>
           </Link>)
