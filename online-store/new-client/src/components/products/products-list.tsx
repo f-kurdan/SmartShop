@@ -45,30 +45,19 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   }
 
   return (
-    <div className='flex flex-row justify-around items-start my-3'>
+    <div className='flex flex-row justify-center h-max gap-4 items-start my-3'>
       <Filter categoryId={categoryId}
         handleCharacteristicsChange={handleCharacteristicsChange}
         handleBrandsChange={handleBrandsChange}
         handleCategoriesChange={handleCategoriesChange} />
       {products?.length ? (
-        <div className='flex flex-col w-2/3 min-h-fit mr-10'>
+        <div className='flex flex-row flex-wrap justify-start items-center gap-4 w-2/3 min-h-fit mr-10'>
           {products.map((product) =>
-          (<div key={product.id} className='flex flex-row justify-evenly items-start px-10 py-7 bg-slate-50 mb-2 rounded-xl shadow-lg shadow-black/30 '>
-            <Image className='max-w-48 max-h-48' src={product.photo} alt={product.name} width={160} height={160} />
-            <div className='flex flex-col gap-3 justify-start items-start text-sm px-3'>
-              <Link href={`/products/${product.id}`}>
+          (<div key={product.id} className='flex flex-col  w-60  justify-center items-center p-5 bg-slate-50  rounded-xl shadow-lg shadow-black/30 '>
+            <Link href={`/products/${product.id}`}>
               <p className='text-sm font-semibold hover:text-blue-600 active:text-lime-400 hover:cursor-pointer'>{product.name}</p>
               </Link>
-              {!!product.characteristics.length && product.characteristics.slice(0, 5).map(char => (
-                <p className=''><span className='font-semibold'>{char.name}: </span>{char.value}</p>
-              ))}
-            </div>
-            <div className='min-w-fit self-end text-center'>
-              <p className='border-2 border-black border-solid  p-1 '>
-                {product.price}
-              </p>
-              <p className='bg-lime-400 hover:invert p-1 transition duration-400 hover:cursor-pointer'>В корзину</p>
-            </div>
+            <Image className='max-w-48 max-h-48' src={product.photo} alt={product.name} width={160} height={160} />              
           </div>)
           )}
         </div>
