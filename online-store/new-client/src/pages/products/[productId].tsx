@@ -45,7 +45,7 @@ const Product = ({ productId }: { productId: string }) => {
           (
             <>
               <Suspense fallback={<ProductImageFiller />}>
-                <Image src={data!.photo} alt={data!.name} width={400} height={400} />
+                <Image src={data!.photo} alt={data!.name} width={350} height={350} />
               </Suspense>
               <div className='flex flex-col justify-start items-start text-base px-3'>
                 <p className='font-semibold text-lg'>{data!.name}</p>

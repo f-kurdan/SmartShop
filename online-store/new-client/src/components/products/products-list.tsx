@@ -3,7 +3,7 @@ import React, { useState, ChangeEvent } from 'react'
 import NoItems from './no-items'
 import { productsList } from '@/types'
 import Filter from './filters/filter'
-import FilterService  from '@/services/firter.service'
+import FilterService from '@/services/firter.service'
 import Link from 'next/link'
 
 // type tuple = {
@@ -17,7 +17,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
 
 
   const handleCharacteristicsChange = (e: ChangeEvent<HTMLInputElement>) => {
-   FilterService.handleChange(e, setSelectedCharacteristics, selectedCharacteristics)
+    FilterService.handleChange(e, setSelectedCharacteristics, selectedCharacteristics)
   }
 
   const handleBrandsChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +29,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   }
 
   // products = FilterService.filterProducts(products);
-  
+
   if (selectedCategories.length > 0) {
     products = products.filter(product => selectedCategories.includes(product.category_id.toString()))
   }
@@ -39,7 +39,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   }
 
   if (selectedCharacteristics.length > 0) {
-    for (let i = 0; i < selectedCharacteristics.length; i++) {     
+    for (let i = 0; i < selectedCharacteristics.length; i++) {
       products = products.filter(prod => prod.characteristics.some(char => selectedCharacteristics[i] === char.value))
     }
   }
@@ -53,12 +53,12 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
       {products?.length ? (
         <div className='flex flex-row flex-wrap justify-start items-center gap-4 w-2/3 min-h-fit mr-10'>
           {products.map((product) =>
-          (<div key={product.id} className='flex flex-col  w-60  justify-center items-center p-5 bg-slate-50  rounded-xl shadow-lg shadow-black/30 '>
-            <Link href={`/products/${product.id}`}>
-              <p className='text-sm font-semibold hover:text-blue-600 active:text-lime-400 hover:cursor-pointer'>{product.name}</p>
-              </Link>
-            <Image className='max-w-48 max-h-48' src={product.photo} alt={product.name} width={160} height={160} />              
-          </div>)
+          (<Link href={`/products/${product.id}`}>
+            <div key={product.id} className='flex flex-col gap-2 w-72 justify-center items-center p-5 bg-slate-50  rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer'>
+              <p className='text-xs text-center font-semibold hover:text-blue-600 active:text-lime-400 '>{product.name}</p>
+              <Image className='max-w-48 max-h-48' src={product.photo} alt={product.name} width={160} height={160} />
+            </div>
+          </Link>)
           )}
         </div>
       ) : (<NoItems />)}
