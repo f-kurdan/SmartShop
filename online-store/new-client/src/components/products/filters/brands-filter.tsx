@@ -10,7 +10,7 @@ const BrandsFilter = ({handleBrandsChange: handleBrandsChange}:{handleBrandsChan
       <h2 className='font-bold mb-2'>Бренд</h2>
       {brands?.map(brand =>
       (<div key={brand.id} className='ml-2'>
-        <input onChange={handleBrandsChange} className='mr-2 scale-125 hover:cursor-pointer' type="checkbox" id={brand.id.toString()} value={brand.name}/>
+        <input onChange={handleBrandsChange} className='mr-2 scale-125 hover:cursor-pointer' name='brand' type="checkbox" id={brand.id.toString()} value={brand.name}/>
         <label htmlFor={brand.name}>{brand.name}</label>
       </div>))}
     </div>
