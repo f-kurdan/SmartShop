@@ -20,17 +20,19 @@ const Navbar = () => {
                     <h3 className={textStyle}>Админ</h3>
                 </div>
                 <div className={linkStyle}>
-                    <ArrowLeftOnRectangleIcon className={`${iconStyle} rotate-180`}/>
+                    <ArrowLeftOnRectangleIcon className={`${iconStyle} rotate-180`} />
                     <h3 className={textStyle}>Войти</h3>
                 </div>
                 <div className={linkStyle}>
                     <ArrowRightOnRectangleIcon className={`${iconStyle} rotate-180`} />
                     <h3 className={textStyle}>Выйти</h3>
                 </div>
-                <div className={linkStyle}>
-                    <ShoppingCartIcon className={iconStyle} />
-                    <h3 className={textStyle}>Корзина</h3>
-                </div>
+                <Link href='/cart'>
+                    <div className={linkStyle}>
+                        <ShoppingCartIcon className={iconStyle} />
+                        <h3 className={textStyle}>Корзина</h3>
+                    </div>
+                </Link>
             </div>
         </div>
     )
