@@ -46,7 +46,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   }
 
   return (
-    <div className={`${montserrat.className} flex flex-row justify-center h-max gap-4 items-start my-3`}>
+    <div className={`${montserrat.className} flex flex-row w-full justify-center h-max gap-4 items-start my-3`}>
       <Filter categoryId={categoryId}
         handleCharacteristicsChange={handleCharacteristicsChange}
         handleBrandsChange={handleBrandsChange}
