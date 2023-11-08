@@ -10,10 +10,12 @@ export default function RootLayout({
 }) {
 
   return (
-    <div className={`${unbounded.className} bg-gradient-to-br from-white via-black to-blue-700 `}>
+    <div className={`${unbounded.className}  bg-gradient-to-br from-white via-black to-blue-700 `}>
       <main className='min-h-screen'>
         <Navbar />
-        {children}
+        <div className='flex flex-col justify-center items-center'>
+          {children}
+        </div>
       </main>
       <Footer />
     </div>
