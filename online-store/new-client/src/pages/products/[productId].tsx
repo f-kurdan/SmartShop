@@ -39,7 +39,7 @@ const Product = ({ productId }: { productId: string }) => {
   const { isLoading, data } = useProductById(productId);
 
   return (
-    <div className={`${montserrat.className} flex flex-col justify-around items-stretch m-5 gap-5`}>
+    <div className={`${montserrat.className} flex flex-col justify-around items-stretch m-5 gap-5 text-gray-700`}>
       <GoBackButton router={router} />
       <div className='flex flex-row  bg-white rounded-xl gap-10 py-10  justify-center items-stretch'>
         {isLoading ? (<div>Идет загрузка</div>) : (

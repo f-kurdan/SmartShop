@@ -19,14 +19,18 @@ const Navbar = () => {
                     <WrenchScrewdriverIcon className={iconStyle} />
                     <h3 className={textStyle}>Админ</h3>
                 </div>
+                <Link href='/auth'>
                 <div className={linkStyle}>
                     <ArrowLeftOnRectangleIcon className={`${iconStyle} rotate-180`} />
                     <h3 className={textStyle}>Войти</h3>
                 </div>
+                </Link>
+                <Link href='/auth'>
                 <div className={linkStyle}>
                     <ArrowRightOnRectangleIcon className={`${iconStyle} rotate-180`} />
                     <h3 className={textStyle}>Выйти</h3>
                 </div>
+                </Link>
                 <Link href='/cart'>
                     <div className={linkStyle}>
                         <ShoppingCartIcon className={iconStyle} />

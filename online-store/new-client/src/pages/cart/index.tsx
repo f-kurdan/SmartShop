@@ -7,10 +7,10 @@ import React from 'react'
 
 const Cart = () => {
     return (
-        <div className={`${montserrat.className} flex flex-col justify-center items-center px-10 py-5 my-3 w-11/12 ounded-sm border border-gray-200 bg-white shadow-lg rounded-2xl`}>
+        <div className={`${montserrat.className} flex flex-col justify-center items-center px-10 py-5 my-3 w-11/12 ounded-sm border border-gray-200 bg-white shadow-lg rounded-2xl text-gray-700`}>
             <div className=' flex flex-col gap-4 w-9/12 justify-center items-stretch'>
                 <header className="border-b border-gray-100 py-2 ">
-                    <h1 className="font-black text-gray-800 text-2xl">
+                    <h1 className="font-black  text-2xl">
                         Корзина
                     </h1>
                 </header>
