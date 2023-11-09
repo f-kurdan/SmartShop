@@ -2,7 +2,7 @@ import React from 'react'
 
 const ShippingInfo = () => {
     return (
-        <div className='flex flex-col gap-2 justify-start p-2 border border-solid rounded-lg'>
+        <div className='flex flex-col gap-2 justify-start p-2 border border-solid rounded-lg shadow-md'>
             <div className='grid grid-cols-2'>
                 <h1>Адрес</h1>
                 <div className='grid grid-cols-2 gap-2'>

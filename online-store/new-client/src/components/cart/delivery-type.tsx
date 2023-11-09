@@ -2,7 +2,7 @@ import React from 'react'
 
 const DeliveryType = () => {
     return (
-        <div className='flex flex-col justify-start p-2'>
+        <div className='flex flex-col justify-start p-2 shadow-md'>
             <h3>Способ доставки</h3>
             <hr />
             <div className='flex flex-col gap-2 mt-2'>

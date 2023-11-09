@@ -2,7 +2,7 @@ import React from 'react'
 
 const CartTable = () => {
         return (
-            <table className='table-auto border border-solid rounded-lg'>
+            <table className='table-auto border border-solid rounded-lg shadow-md'>
                 <thead className='bg-gray-50 text-xs font-semibold uppercase text-gray-400'>
                     <tr>
                         <th></th>
