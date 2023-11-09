@@ -1,3 +1,4 @@
+import { TrashIcon } from '@heroicons/react/24/solid'
 import React from 'react'
 
 const CartTable = () => {
@@ -23,7 +24,7 @@ const CartTable = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-100 text-sm">
                     <tr>
-                        <td className="p-2">
+                        <td className="px-4">
                             <input type="checkbox" className="h-5 w-5 shadow-inner" value="id-1" />
                         </td>
                         <td className="p-2">
@@ -32,10 +33,12 @@ const CartTable = () => {
                         <td className="p-2"> 100</td>
                         <td className="p-2"> 1</td>
                         <td className="p-2"> 100</td>
-                        <td className="p-2"> **</td>
+                        <td className="hover:cursor-pointer">
+                            <TrashIcon className='w-5 h-5'/>
+                        </td>
                     </tr>
                     <tr>
-                        <td className="p-2">
+                        <td className="px-4">
                             <input type="checkbox" className="h-5 w-5 shadow-inner" value="id-1" />
                         </td>
                         <td className="p-2">
@@ -44,10 +47,12 @@ const CartTable = () => {
                         <td className="p-2"> 100</td>
                         <td className="p-2"> 1</td>
                         <td className="p-2"> 100</td>
-                        <td className="p-2"> **</td>
+                        <td className="hover:cursor-pointer">
+                            <TrashIcon className='w-5 h-5' />
+                        </td>
                     </tr>
                     <tr>
-                        <td className="p-2">
+                        <td className="px-4">
                             <input type="checkbox" className="h-5 w-5 shadow-inner" value="id-1" />
                         </td>
                         <td className="p-2">
@@ -56,10 +61,12 @@ const CartTable = () => {
                         <td className="p-2"> 100</td>
                         <td className="p-2"> 1</td>
                         <td className="p-2"> 100</td>
-                        <td className="p-2"> **</td>
+                        <td className="hover:cursor-pointer">
+                            <TrashIcon className='w-5 h-5' />
+                        </td>
                     </tr>
                     <tr>
-                        <td className="p-2">
+                        <td className="px-4">
                             <input type="checkbox" className="h-5 w-5" value="id-1" />
                         </td>
                         <td className="p-2">
@@ -68,7 +75,9 @@ const CartTable = () => {
                         <td className="p-2"> 100</td>
                         <td className="p-2"> 1</td>
                         <td className="p-2"> 100</td>
-                        <td className="p-2"> **</td>
+                        <td className="hover:cursor-pointer">
+                            <TrashIcon className='w-5 h-5' />
+                        </td>
                     </tr>
                     <tr>
                         <td className="p-2">
@@ -77,7 +86,7 @@ const CartTable = () => {
                         </td>
                         <td className="p-2"> </td>
                         <td className="p-2 text-lg">Итого:</td>
-                        <td className="p-2">400</td>
+                        <td className="p-2 text-lg">400</td>
                         <td className="p-2"> </td>
                     </tr>
                 </tbody>

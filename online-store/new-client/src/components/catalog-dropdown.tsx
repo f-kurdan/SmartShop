@@ -8,10 +8,10 @@ const CatalogDropdown = () => {
     return (
         <div className="absolute opacity-100 left-12 group shadow-md p-1 inline-block w-40 text-center rounded-md">
             <button className="group-hover:opacity-0">Категории</button>
-            <div className="shadow-md left-0 top-8 absolute w-40 bg-slate-50 hidden z-10  group-hover:block">
+            <div className="shadow-md left-0 top-8 absolute w-40 bg-white hidden z-10 group-hover:block rounded-md">
                 {isCategoriesLoading ? (<span>Идет загрузка...</span>)
                 : categories?.length ? categories?.map((cat) =>
-                    (<Link key={cat.id} className='hover:bg-lime-200 block active:bg-lime-400' href={`/catalog/${cat.id}`}>{cat.name}</Link>)
+                    (<Link key={cat.id} className='hover:bg-lime-200 block active:bg-lime-400  rounded-md' href={`/catalog/${cat.id}`}>{cat.name}</Link>)
                 ) : (
                     <span>Нет данных...</span>
                 )}
