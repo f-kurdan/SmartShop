@@ -10,7 +10,7 @@ const Filter = ({ categoryId, handleCharacteristicsChange, handleBrandsChange, h
   handleCategoriesChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) => {
   return (
-    <div className='flex flex-col sticky top-16 text-sm gap-4 bg-slate-50 w-1/4 ml-10 rounded-xl shadow-lg shadow-black/30 px-10 py-7'>
+    <div className='flex flex-col sticky top-16 text-sm gap-4  bg-white w-1/4 ml-10 rounded-xl shadow-lg shadow-black/30 px-10 py-7'>
       {!categoryId && (<CategoriesFilter handleCategoriesChange={handleCategoriesChange} />)}      
       <BrandsFilter handleBrandsChange={handleBrandsChange} />
       <CharacteristicsFilter categoryId={categoryId}

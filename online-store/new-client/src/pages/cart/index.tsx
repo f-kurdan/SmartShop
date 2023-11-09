@@ -21,7 +21,7 @@ const Cart = () => {
                 </div>
                 <ShippingInfo />
                 <div className='self-end '>
-                    <button className='transition-all duration-300 text-center shadow-md hover:invert active:blur-sm shadow-gray-300 p-2 bg-lime-300 rounded-lg'>Оформить заказ</button>
+                    <button className='transition-all duration-300 text-center shadow-md hover:invert active:blur-sm shadow-gray-300/70 p-2 bg-lime-300 rounded-lg'>Оформить заказ</button>
                 </div>
                 {/* <div>Корзина пуста</div> */}
             </div>
