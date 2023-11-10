@@ -6,7 +6,7 @@ import Logout from './logout';
 
 const textStyle = 'text-black text-sm';
 const iconStyle = 'w-5 h-5';
-const linkStyle = 'hover:invert hover:bg-gradient-to-br hover:from-yellow-300 hover:via-red-500 hover:to-yellow-300 flex flex-col justify-center items-center mx-1 p-1 rounded-md hover:cursor-pointer hover:cursor-pointer ';
+const linkStyle = 'hover:invert hover:bg-gradient-to-br hover:from-yellow-400 hover:to-white flex flex-col justify-center items-center mx-1 p-1 rounded-md hover:cursor-pointer hover:cursor-pointer ';
 
 const Navbar = () => {
     return (
