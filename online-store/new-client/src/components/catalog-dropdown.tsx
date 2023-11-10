@@ -11,7 +11,7 @@ const CatalogDropdown = () => {
             <div className="shadow-md left-0 top-8 absolute w-40 bg-white hidden z-10 group-hover:block rounded-md">
                 {isCategoriesLoading ? (<span>Идет загрузка...</span>)
                 : categories?.length ? categories?.map((cat) =>
-                    (<Link key={cat.id} className='hover:bg-lime-200 block active:bg-lime-400  rounded-md' href={`/catalog/${cat.id}`}>{cat.name}</Link>)
+                    (<Link key={cat.id} className='hover:bg-gradient-to-br hover:text-white hover:from-indigo-500 hover:via-sky-600 hover:to-blue-700 block active:from-purple-950 active:via-red-700 active:to-yellow-600 rounded-md' href={`/catalog/${cat.id}`}>{cat.name}</Link>)
                 ) : (
                     <span>Нет данных...</span>
                 )}
