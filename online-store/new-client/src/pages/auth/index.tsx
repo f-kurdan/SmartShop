@@ -9,11 +9,11 @@ const Login = () => {
       </div>
       <div className='flex flex-col w-96 gap-2'>
         <h1 className=''>Email*</h1>
-        <input type="email" className='bg-slate-100 rounded-lg p-4  focus:bg-slate-200 focus:outline-none' placeholder='qwerty@pochta.ru' />
+        <input type="email" className='bg-slate-100 rounded-2xl p-4  focus:bg-slate-200 focus:outline-none' placeholder='qwerty@pochta.ru' />
       </div>
       <div className='flex flex-col w-96 gap-2'>
         <h1 className=''>Пароль*</h1>
-        <input type="password" className='bg-slate-100 rounded-lg p-4 focus:bg-slate-200 focus:outline-none' placeholder='Введите пароль' />
+        <input type="password" className='bg-slate-100 rounded-2xl p-4 focus:bg-slate-200 focus:outline-none' placeholder='Введите пароль' />
         <div className='grid grid-cols-2 gap-2 w-96 text-violet-800 font-medium'>
           <div>
             <input type="checkbox" id='save' className='hover:cursor-pointer mr-3 scale-125' />
@@ -24,7 +24,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className='transition-all duration-400 col-span-2 w-96 gap-2 bg-violet-600 rounded-lg p-4 text-white  hover:bg-violet-800 hover:cursor-pointer active:blur-sm '>
+      <div className='transition-all duration-400 col-span-2 w-96 gap-2 bg-violet-600 rounded-2xl p-4 text-white  hover:bg-violet-800 hover:cursor-pointer active:blur-sm '>
         <h1 className='text-center'>Войти</h1>
       </div>
       <div className='col-span-2 w-96 text-center'>
