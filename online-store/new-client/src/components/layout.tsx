@@ -1,6 +1,6 @@
 import React from 'react'
 import Footer from './footer'
-import Navbar from './navbar'
+import Navbar from './navbar/navbar'
 import { montserrat, rubik, syne, unbounded } from '@/styles/fonts'
 
 export default function RootLayout({
