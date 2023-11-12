@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
 import { WrenchScrewdriverIcon, ArrowRightOnRectangleIcon, ArrowLeftOnRectangleIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
-import CatalogDropdown from './catalog-dropdown';
-import Logout from './logout';
+import CatalogDropdown from '../catalog-dropdown';
+import Logout from '../logout';
 
 const textStyle = 'text-sm';
 const iconStyle = 'w-5 h-5';
