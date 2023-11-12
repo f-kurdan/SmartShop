@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import React from 'react';
 import { WrenchScrewdriverIcon, ArrowRightOnRectangleIcon, ArrowLeftOnRectangleIcon, ShoppingCartIcon } from '@heroicons/react/24/solid';
-import CatalogDropdown from '../catalog-dropdown';
-import Logout from '../logout';
+import CatalogDropdown from './catalog-dropdown';
+import Logout from './logout';
+import Search from './search';
 
 const textStyle = 'text-sm';
 const iconStyle = 'w-5 h-5';
@@ -15,6 +16,7 @@ const Navbar = () => {
             <Link href='/'>
                 <h3 className='transition duration-500 mx-3 bg-gradient-to-br from-indigo-500 via-sky-600 to-blue-700 hover:from-purple-950 hover:via-red-700 hover:to-yellow-600 rounded-2xl p-2 text-white hover:cursor-pointer active:blur-sm'>SmartShop</h3>
             </Link>
+            <Search />
             <div className='flex flex-row absolute right-2 gap-1'>
                 <div className={`${linkStyle} hover:cursor-pointer  active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
                     <WrenchScrewdriverIcon className={iconStyle} />
