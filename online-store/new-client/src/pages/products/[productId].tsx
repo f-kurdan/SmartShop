@@ -45,9 +45,7 @@ const Product = ({ productId }: { productId: string }) => {
         {isLoading ? (<div>Идет загрузка</div>) : (
           (
             <>
-              <Suspense fallback={<ProductImageFiller />}>
-                <Image src={data!.photo} alt={data!.name} width={350} height={350} />
-              </Suspense>
+              <Image src={data!.photo} alt={data!.name} width={350} height={350} />
               <div className='flex flex-col justify-start items-start text-base px-3'>
                 <p className='font-black text-lg'>{data!.name}</p>
                 <div className='my-5 min-w-fit text-center'>

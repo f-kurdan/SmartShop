@@ -1,13 +1,14 @@
 import ProductsList from '@/components/products/products-list';
 import useProducts from '@/hooks/useProducts';
 import { getProducts } from '@/services/product.service';
+import { useSearchParams } from 'next/navigation';
 import React from 'react'
 import { QueryClient, dehydrate } from 'react-query'
 
 export async function getStatincProps() {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(["products"], getProducts);
+  await queryClient.prefetchQuery(["products"], () => getProducts());
 
   return {
     props: {
@@ -18,7 +19,10 @@ export async function getStatincProps() {
 }
 
 const Component = () => {
-  const { isLoading, data } = useProducts();
+  const searchParams = useSearchParams()
+  const params = new URLSearchParams(searchParams)
+
+  const { isLoading, data } = useProducts(params.get('query')?.toString());
   
   if (!data) return <span>Нет товаров!</span>
   return isLoading ? (<span>Идет загрузка...</span>) : (
