@@ -6,15 +6,14 @@ import Filter from './filters/filter'
 import FilterService from '@/services/firter.service'
 import Link from 'next/link'
 import { montserrat } from '@/styles/fonts'
-
-// type tuple = {
-//   [key:string] : string[]
-// }
+import { useSearchParams } from 'next/navigation'
 
 const ProductsList = ({ products, categoryId }: { products: productsList, categoryId?: string }) => {
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const searchParams = useSearchParams()
+  const params = new URLSearchParams(searchParams)
 
 
   const handleCharacteristicsChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +62,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
           </Link>)
           )}
         </div>
-      ) : (<NoItems />)}
+      ) : (<NoItems query={params.get('query')?.toString()} />)}
     </div>
   )
 }

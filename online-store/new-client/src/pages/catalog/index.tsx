@@ -1,3 +1,4 @@
+import NoItems from '@/components/products/no-items';
 import ProductsList from '@/components/products/products-list';
 import useProducts from '@/hooks/useProducts';
 import { getProducts } from '@/services/product.service';
@@ -21,12 +22,12 @@ export async function getStatincProps() {
 const Component = () => {
   const searchParams = useSearchParams()
   const params = new URLSearchParams(searchParams)
+  const query = params.get('query')?.toString() ?? ''
 
-  const { isLoading, data } = useProducts(params.get('query')?.toString());
+  const { isLoading, data } = useProducts(query);
   
-  if (!data) return <span>Нет товаров!</span>
   return isLoading ? (<span>Идет загрузка...</span>) : (
-    <ProductsList products={data} 
+    <ProductsList products={data!} 
     />
   )
 }

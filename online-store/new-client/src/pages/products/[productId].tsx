@@ -5,7 +5,7 @@ import { getProductById, getProducts } from '@/services/product.service';
 import { montserrat } from '@/styles/fonts';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import React, { Suspense } from 'react'
+import React from 'react'
 import { dehydrate, QueryClient } from 'react-query';
 
 export async function getStaticPaths() {
