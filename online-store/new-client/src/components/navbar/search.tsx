@@ -2,7 +2,7 @@ import useProducts from '@/hooks/useProducts'
 import { montserrat } from '@/styles/fonts'
 import { productsList } from '@/types'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
@@ -78,7 +78,7 @@ const Search = () => {
                 {!!searchOptions?.length && searchOptions.map(option =>
                     (typeof option === "string") ? (<div className='p-3'>{option}</div>) :
                         (
-                            <div className='hover:cursor-pointer text-sm p-2 my-2 hover:bg-gradient-to-br hover:text-white hover:from-indigo-500 hover:via-sky-600 hover:to-blue-700 block active:from-purple-950 active:via-red-700 active:to-yellow-600 rounded-md ' onClick={() => onOptionClick(option?.name.toLowerCase())}>{option?.name}</div>
+                            <div key={option.id} className='hover:cursor-pointer text-sm p-2 my-2 hover:bg-gradient-to-br hover:text-white hover:from-indigo-500 hover:via-sky-600 hover:to-blue-700 block active:from-purple-950 active:via-red-700 active:to-yellow-600 rounded-md ' onClick={() => onOptionClick(option?.name.toLowerCase())}>{option?.name}</div>
                         ))}
             </div>
         </div>
