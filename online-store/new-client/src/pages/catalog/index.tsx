@@ -1,4 +1,3 @@
-import NoItems from '@/components/products/no-items';
 import ProductsList from '@/components/products/products-list';
 import useProducts from '@/hooks/useProducts';
 import { getProducts } from '@/services/product.service';
@@ -24,7 +23,7 @@ const Component = () => {
   const params = new URLSearchParams(searchParams)
   const query = params.get('query')?.toString() ?? ''
 
-  const { isLoading, data } = useProducts(query);
+  const { isLoading, data } = useProducts(query);  
   
   return isLoading ? (<span>Идет загрузка...</span>) : (
     <ProductsList products={data!} 

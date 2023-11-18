@@ -7,6 +7,7 @@ import FilterService from '@/services/firter.service'
 import Link from 'next/link'
 import { montserrat } from '@/styles/fonts'
 import { useSearchParams } from 'next/navigation'
+import Pagination from './pagination'
 
 const ProductsList = ({ products, categoryId }: { products: productsList, categoryId?: string }) => {
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([]);
@@ -28,8 +29,6 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
     FilterService.handleChange(e, setSelectedCategories, selectedCategories)
   }
 
-  // products = FilterService.filterProducts(products);
-
   if (selectedCategories.length > 0) {
     products = products.filter(product => selectedCategories.includes(product.category_id.toString()))
   }
@@ -43,6 +42,8 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
       products = products.filter(prod => prod.characteristics.some(char => selectedCharacteristics[i] === char.value))
     }
   }
+
+  const totalPages = products?.length ? Math.ceil(products.length / 12) : 1
 
   return (
     <div className={`${montserrat.className} flex flex-row w-full justify-center h-max gap-4 items-start my-3 text-gray-700`}>
@@ -61,6 +62,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
             </div>
           </Link>)
           )}
+          <Pagination totalPages={totalPages}/>
         </div>
       ) : (<NoItems query={params.get('query')?.toString()} />)}
     </div>
