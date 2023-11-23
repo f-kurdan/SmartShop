@@ -1,4 +1,5 @@
 import useTotalProducts from '@/hooks/useTotalProducts';
+import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react'
 
@@ -33,7 +34,21 @@ const Pagination = () => {
 
     return (
         <div className='flex gap-2 items-center justify-center'>
+            <div>
+            {prevPage ? (
+                <Link href={prevPage}> 
+                <div className='p-4 bg-white'>Назад</div>
+                </Link>
+            ) : null}
+            </div>
             {pages.map(page => page)}
+            <div>
+            {nextPage ? (
+                <Link href={nextPage}> 
+                <div className='p-4 bg-white'>Вперед</div>
+                </Link>
+            ) : null}
+            </div>
         </div>
     )
 }
