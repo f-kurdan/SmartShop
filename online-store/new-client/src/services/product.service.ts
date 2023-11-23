@@ -1,9 +1,11 @@
 import { products } from "@/data";
 
-export function getProducts(query?: string) {
-    console.log('here: ' + query)
+export function getProducts(page?: number, query?: string) {
+    console.log(page)
+    const productsStart = page === undefined || 1? 0 : (page * 12) - 1;
+    const productsEnd = productsStart? productsStart + 12 : 12
     if (query)
-        return Promise.resolve(products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())));
+        return Promise.resolve(products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).slice(productsStart, productsEnd));
     return Promise.resolve(products)
 }
 

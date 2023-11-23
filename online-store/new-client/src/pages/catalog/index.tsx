@@ -21,9 +21,10 @@ export async function getStatincProps() {
 const Component = () => {
   const searchParams = useSearchParams()
   const params = new URLSearchParams(searchParams)
-  const query = params.get('query')?.toString() ?? ''
+  const query = params.get('query')?.toString() ?? ''  
+  const page = params.get('page') ?? 1  
 
-  const { isLoading, data } = useProducts(query);  
+  const { isLoading, data } = useProducts(+page, query);  
   
   return isLoading ? (<span>Идет загрузка...</span>) : (
     <ProductsList products={data!} 
