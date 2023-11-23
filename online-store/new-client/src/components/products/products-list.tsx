@@ -14,7 +14,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const searchParams = useSearchParams()
-  const params = new URLSearchParams(searchParams)
+  const params = new URLSearchParams(searchParams) 
 
 
   const handleCharacteristicsChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -43,8 +43,6 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
     }
   }
 
-  const totalPages = products?.length ? Math.ceil(products.length / 12) : 1
-
   return (
     <div className={`${montserrat.className} flex flex-row w-full justify-center h-max gap-4 items-start my-3 text-gray-700`}>
       <Filter categoryId={categoryId}
@@ -62,7 +60,7 @@ const ProductsList = ({ products, categoryId }: { products: productsList, catego
             </div>
           </Link>)
           )}
-          <Pagination totalPages={totalPages}/>
+          <Pagination />
         </div>
       ) : (<NoItems query={params.get('query')?.toString()} />)}
     </div>
