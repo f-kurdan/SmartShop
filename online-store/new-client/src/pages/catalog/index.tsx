@@ -22,9 +22,7 @@ const Component = () => {
   const searchParams = useSearchParams()
   const params = new URLSearchParams(searchParams)
   const query = params.get('query')?.toString() ?? ''  
-  const page = params.get('page')?.toString() ?? 1  
-
-  console.log('page №: '  + query + page)
+  const page = params.get('page') ?? 1  
 
   const { isLoading, data } = useProducts(+page, query);  
   
