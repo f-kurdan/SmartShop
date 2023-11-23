@@ -27,9 +27,9 @@ const Pagination = () => {
     const nextPage = currentPage < totalPages? createPageURL(currentPage + 1) : null;
 
     const pages = Array.from({ length: totalPages }, (_, i) => (
-        <div key={i} onClick={() => onClick(i + 1)}>
+        <Link href={createPageURL(i + 1)} key={i}>
                 <div className='p-4 bg-white'>{i + 1}</div>
-        </div>
+        </Link>
     ))
 
     return (
