@@ -23,8 +23,9 @@ const Component = () => {
   const params = new URLSearchParams(searchParams)
   const query = params.get('query')?.toString() ?? ''  
   const page = params.get('page') ?? 1  
+  const categoryId = Number( params.get('categoryId'))
 
-  const { isLoading, data } = useProducts(+page, query);  
+  const { isLoading, data } = useProducts(+page, query, categoryId);  
   
   return isLoading ? (<span>Идет загрузка...</span>) : (
     <ProductsList products={data?.products!}

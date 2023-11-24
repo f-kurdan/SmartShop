@@ -1,13 +1,19 @@
 import { products } from "@/data";
 
-export function getProducts(page?: number, query?: string) {
+export function getProducts(page?: number, query?: string, categoryId?: number) {
     const productsEnd = page ? page * 12 : 12;
     const productsStart = productsEnd - 12
-    if (query) {
-        const filteredProducts = products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
-        return Promise.resolve({ products: filteredProducts.slice(productsStart, productsEnd), totalProducts: filteredProducts.length });
+
+    let filteredProducts = products;
+
+    if (categoryId) {
+        filteredProducts = filteredProducts.filter(p => p.category_id === categoryId);
     }
-    return Promise.resolve({ products: products.slice(productsStart, productsEnd), totalProducts: products.length })
+    if (query) {
+        filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
+    }
+
+    return Promise.resolve({ products: filteredProducts.slice(productsStart, productsEnd), totalProducts: filteredProducts.length })
 }
 
 export function getTotalProducts() {
