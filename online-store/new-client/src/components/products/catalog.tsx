@@ -1,13 +1,12 @@
-import Image from 'next/image'
 import React, { useState, ChangeEvent } from 'react'
 import NoItems from './no-items'
 import { productsList } from '@/types'
 import Filter from './filters/filter'
 import FilterService from '@/services/firter.service'
-import Link from 'next/link'
 import { montserrat } from '@/styles/fonts'
 import { useSearchParams } from 'next/navigation'
 import Pagination from './pagination'
+import ProductsList from './products-list'
 
 const Catalog = ({ products, categoryId, totalProducts }: { products: productsList, categoryId?: string, totalProducts?: number }) => {
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([]);
@@ -51,17 +50,7 @@ const Catalog = ({ products, categoryId, totalProducts }: { products: productsLi
         handleCategoriesChange={handleCategoriesChange} />
       {products?.length ? (
         <div className='flex flex-col gap-2 w-2/3 min-h-fit mr-10'>
-          <div className='flex flex-row gap-2 flex-wrap justify-start items-center'>
-            {products.map((product) =>
-            (<Link href={`/products/${product.id}`}>
-              <div key={product.id} className='flex flex-col gap-2 w-72 justify-center items-center p-5 bg-white  rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80'>
-                <Image className='max-w-48 max-h-48' src={product.photo} alt={product.name} width={160} height={160} />
-                <p className='text-sm text-center  hover:text-blue-600 active:text-lime-400 '>{product.name}</p>
-                <p className='text-md text-center font-bold'>{product.price}</p>
-              </div>
-            </Link>)
-            )}
-          </div>
+          <ProductsList products={products} />
           <Pagination totalProducts={totalProducts} />
         </div>
       ) : (<NoItems query={params.get('query')?.toString()} />)}
