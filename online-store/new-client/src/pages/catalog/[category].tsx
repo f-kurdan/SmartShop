@@ -7,9 +7,9 @@ import { QueryClient, dehydrate } from 'react-query'
 export async function getStaticPaths() {
   //   const res = await fetch('http://example.com/categories')
   //   const categories = await res.json()
-  const products = await getProducts();
+  const data = await getProducts();
 
-  const paths = [...products?.map(product => ({
+  const paths = [...data.products?.map(product => ({
     params: { category: product.category_id.toString() },
   }))]
 

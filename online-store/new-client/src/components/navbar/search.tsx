@@ -19,7 +19,7 @@ const Search = () => {
 
     const handleChange = useDebouncedCallback((value: string) => {
         if (value) {
-            const products = data?.filter(product => product.name.toLowerCase().includes(value.toLowerCase()))
+            const products = data?.products?.filter(product => product.name.toLowerCase().includes(value.toLowerCase()))
                 .slice(0, 5)
             setSearchOptions(!!products?.length ? products : [`По запросу ${value} ичего не найдено`])
         }
@@ -33,7 +33,8 @@ const Search = () => {
             } else {
                 params.delete('query')
             }
-
+            
+            params.set('page', '1')
             replace(`${catalog}?${params.toString()}`)
         }
     }
@@ -45,6 +46,7 @@ const Search = () => {
             params.delete('query')
         }
 
+        params.set('page', '1')
         replace(`${catalog}?${params.toString()}`)
     }
 
@@ -55,6 +57,7 @@ const Search = () => {
             params.delete('query')
         }
 
+        params.set('page', '1')
         replace(`${catalog}?${params.toString()}`)
     }
 

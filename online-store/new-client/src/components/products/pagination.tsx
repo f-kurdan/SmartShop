@@ -3,13 +3,11 @@ import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react'
 
-const Pagination = () => {
+const Pagination = ({totalProducts}:{totalProducts?: number}) => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
-    const { replace } = useRouter()
     const currentPage = Number(searchParams.get('page')) || 1;
     const params = new URLSearchParams(searchParams);
-    const {data: totalProducts} = useTotalProducts()
     const postsPerPage = 12;
     const totalPages = totalProducts ? Math.ceil(totalProducts / postsPerPage) : 1
 
@@ -17,10 +15,6 @@ const Pagination = () => {
         params.set('page', pageNumber.toString());
         return `${pathname}?${params.toString()}`;
       };
-
-    const onClick = (pageNum: number) => {
-        replace(createPageURL(pageNum))
-    }
 
     const prevPage = currentPage > 1? createPageURL(currentPage - 1) : null;
 

@@ -1,13 +1,13 @@
 import { products } from "@/data";
 
 export function getProducts(page?: number, query?: string) {
-    console.log('zashel page: ' + page)
     const productsEnd = page ? page * 12 : 12;
     const productsStart = productsEnd - 12
-    console.log(`start: ${productsStart} end: ${productsEnd}`)
-    if (query)
-        return Promise.resolve(products.filter(p => p.name.toLowerCase().includes(query.toLowerCase())).slice(productsStart, productsEnd));
-    return Promise.resolve(products.slice(productsStart, productsEnd))
+    if (query) {
+        const filteredProducts = products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
+        return Promise.resolve({ products: filteredProducts.slice(productsStart, productsEnd), totalProducts: filteredProducts.length });
+    }
+    return Promise.resolve({ products: products.slice(productsStart, productsEnd), totalProducts: products.length })
 }
 
 export function getTotalProducts() {

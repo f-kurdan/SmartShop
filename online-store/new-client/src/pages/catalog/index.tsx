@@ -27,7 +27,8 @@ const Component = () => {
   const { isLoading, data } = useProducts(+page, query);  
   
   return isLoading ? (<span>Идет загрузка...</span>) : (
-    <ProductsList products={data!} 
+    <ProductsList products={data?.products!}
+    totalProducts={data?.totalProducts} 
     />
   )
 }
