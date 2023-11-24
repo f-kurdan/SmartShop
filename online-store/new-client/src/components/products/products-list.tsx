@@ -14,7 +14,7 @@ const ProductsList = ({ products, categoryId, totalProducts }: { products: produ
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const searchParams = useSearchParams()
-  const params = new URLSearchParams(searchParams) 
+  const params = new URLSearchParams(searchParams)
 
 
   const handleCharacteristicsChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -50,17 +50,19 @@ const ProductsList = ({ products, categoryId, totalProducts }: { products: produ
         handleBrandsChange={handleBrandsChange}
         handleCategoriesChange={handleCategoriesChange} />
       {products?.length ? (
-        <div className='flex flex-row flex-wrap justify-start items-center gap-2 w-2/3 min-h-fit mr-10'>
-          {products.map((product) =>
-          (<Link href={`/products/${product.id}`}> 
-            <div key={product.id} className='flex flex-col gap-2 w-72 justify-center items-center p-5 bg-white  rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80'>
-              <Image className='max-w-48 max-h-48' src={product.photo} alt={product.name} width={160} height={160} />
-              <p className='text-sm text-center  hover:text-blue-600 active:text-lime-400 '>{product.name}</p>
-              <p className='text-md text-center font-bold'>{product.price}</p>
-            </div>
-          </Link>)
-          )}
-          <Pagination totalProducts={totalProducts}/>
+        <div className='flex flex-col gap-2 w-2/3 min-h-fit mr-10'>
+          <div className='flex flex-row gap-2 flex-wrap justify-start items-center'>
+            {products.map((product) =>
+            (<Link href={`/products/${product.id}`}>
+              <div key={product.id} className='flex flex-col gap-2 w-72 justify-center items-center p-5 bg-white  rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80'>
+                <Image className='max-w-48 max-h-48' src={product.photo} alt={product.name} width={160} height={160} />
+                <p className='text-sm text-center  hover:text-blue-600 active:text-lime-400 '>{product.name}</p>
+                <p className='text-md text-center font-bold'>{product.price}</p>
+              </div>
+            </Link>)
+            )}
+          </div>
+          <Pagination totalProducts={totalProducts} />
         </div>
       ) : (<NoItems query={params.get('query')?.toString()} />)}
     </div>
