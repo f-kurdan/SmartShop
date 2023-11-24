@@ -9,7 +9,7 @@ import { montserrat } from '@/styles/fonts'
 import { useSearchParams } from 'next/navigation'
 import Pagination from './pagination'
 
-const ProductsList = ({ products, categoryId, totalProducts }: { products: productsList, categoryId?: string, totalProducts?: number }) => {
+const Catalog = ({ products, categoryId, totalProducts }: { products: productsList, categoryId?: string, totalProducts?: number }) => {
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -69,4 +69,4 @@ const ProductsList = ({ products, categoryId, totalProducts }: { products: produ
   )
 }
 
-export default ProductsList
+export default Catalog

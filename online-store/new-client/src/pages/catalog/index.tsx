@@ -1,4 +1,4 @@
-import ProductsList from '@/components/products/products-list';
+import Catalog from '@/components/products/catalog';
 import useProducts from '@/hooks/useProducts';
 import { getProducts } from '@/services/product.service';
 import { useSearchParams } from 'next/navigation';
@@ -18,7 +18,7 @@ export async function getStatincProps() {
   }
 }
 
-const Component = () => {
+const Page = () => {
   const searchParams = useSearchParams()
   const params = new URLSearchParams(searchParams)
   const query = params.get('query')?.toString() ?? ''  
@@ -28,10 +28,10 @@ const Component = () => {
   const { isLoading, data } = useProducts(+page, query, categoryId);  
   
   return isLoading ? (<span>Идет загрузка...</span>) : (
-    <ProductsList products={data?.products!}
+    <Catalog products={data?.products!}
     totalProducts={data?.totalProducts} 
     />
   )
 }
 
-export default Component
+export default Page
