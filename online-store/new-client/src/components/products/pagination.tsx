@@ -1,9 +1,8 @@
-import useTotalProducts from '@/hooks/useTotalProducts';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React from 'react'
 
-const Pagination = ({totalProducts}:{totalProducts?: number}) => {
+const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const currentPage = Number(searchParams.get('page')) || 1;
@@ -14,34 +13,34 @@ const Pagination = ({totalProducts}:{totalProducts?: number}) => {
     const createPageURL = (pageNumber: number | string) => {
         params.set('page', pageNumber.toString());
         return `${pathname}?${params.toString()}`;
-      };
+    };
 
-    const prevPage = currentPage > 1? createPageURL(currentPage - 1) : null;
+    const prevPage = currentPage > 1 ? createPageURL(currentPage - 1) : null;
 
-    const nextPage = currentPage < totalPages? createPageURL(currentPage + 1) : null;
+    const nextPage = currentPage < totalPages ? createPageURL(currentPage + 1) : null;
 
     const pages = Array.from({ length: totalPages }, (_, i) => (
         <Link href={createPageURL(i + 1)} key={i}>
-                <div className='p-4 bg-white'>{i + 1}</div>
+            <div className='py-3 px-5 bg-white  rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80'>{i + 1}</div>
         </Link>
     ))
 
     return (
         <div className='flex gap-2 items-center justify-center'>
             <div>
-            {prevPage ? (
-                <Link href={prevPage}> 
-                <div className='p-4 bg-white'>Назад</div>
-                </Link>
-            ) : null}
+                {prevPage ? (
+                    <Link href={prevPage}>
+                        <div className='p-3 bg-white rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80'>Назад</div>
+                    </Link>
+                ) : null}
             </div>
             {pages.map(page => page)}
             <div>
-            {nextPage ? (
-                <Link href={nextPage}> 
-                <div className='p-4 bg-white'>Вперед</div>
-                </Link>
-            ) : null}
+                {nextPage ? (
+                    <Link href={nextPage}>
+                        <div className='p-3 bg-white rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80'>Вперед</div>
+                    </Link>
+                ) : null}
             </div>
         </div>
     )
