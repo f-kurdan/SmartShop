@@ -21,7 +21,7 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
 
     const pages = Array.from({ length: totalPages }, (_, i) => (
         <Link href={createPageURL(i + 1)} key={i}>
-            <div className='py-3 px-5 bg-white  rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80'>{i + 1}</div>
+            <div className={`py-3 px-5 ${currentPage === i + 1? 'bg-black text-white' : 'bg-white '} rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80`}>{i + 1}</div>
         </Link>
     ))
 
@@ -34,7 +34,7 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
                     </Link>
                 ) : null}
             </div>
-            {pages.map(page => page)}
+            { pages.length > 1 ? pages.map(page => page) : null}
             <div>
                 {nextPage ? (
                     <Link href={nextPage}>
