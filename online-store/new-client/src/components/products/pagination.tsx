@@ -15,13 +15,13 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
         return `${pathname}?${params.toString()}`;
     };
 
+    const buttoStyle = 'transition-all duration-300 p-3 bg-white rounded-xl hover:shadow-lg hover:shadow-black/30 hover:cursor-pointer active:opacity-50';
     const prevPage = currentPage > 1 ? createPageURL(currentPage - 1) : null;
-
     const nextPage = currentPage < totalPages ? createPageURL(currentPage + 1) : null;
 
     const pages = Array.from({ length: totalPages }, (_, i) => (
         <Link href={createPageURL(i + 1)} key={i}>
-            <div className={`py-3 px-5 ${currentPage === i + 1? 'bg-black text-white' : 'bg-white '} rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80`}>{i + 1}</div>
+            <div className={`py-3 px-5 ${currentPage === i + 1? 'bg-black text-white' : 'bg-white '} ${buttoStyle}`}>{i + 1}</div>
         </Link>
     ))
 
@@ -30,7 +30,7 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
             <div>
                 {prevPage ? (
                     <Link href={prevPage}>
-                        <div className='p-3 bg-white rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80'>Назад</div>
+                        <div className={buttoStyle}>Назад</div>
                     </Link>
                 ) : null}
             </div>
@@ -38,7 +38,7 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
             <div>
                 {nextPage ? (
                     <Link href={nextPage}>
-                        <div className='p-3 bg-white rounded-xl shadow-lg shadow-black/30 hover:cursor-pointer active:opacity-80'>Вперед</div>
+                        <div className={buttoStyle}>Вперед</div>
                     </Link>
                 ) : null}
             </div>
