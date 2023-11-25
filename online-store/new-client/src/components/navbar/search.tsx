@@ -2,7 +2,7 @@ import useProducts from '@/hooks/useProducts'
 import { montserrat } from '@/styles/fonts'
 import { productsList } from '@/types'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import React, { useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
@@ -12,14 +12,14 @@ function onlyUnique(value: string, index: number, array: string[]) {
 
 const Search = () => {
     const searchParams = useSearchParams()
+    const params = new URLSearchParams(searchParams)
+    const pathName = usePathname()
     const { replace } = useRouter()
     const inputRef = useRef<HTMLInputElement>(null)
-    const params = new URLSearchParams(searchParams)
     const { data } = useProducts()
     const [searchOptions, setSearchOptions] = useState<string[]>()
 
     const placeholder = 'Введите название товара'
-    const catalog = '/catalog'
 
     const handleChange = useDebouncedCallback((value: string) => {
         if (value) {
@@ -43,7 +43,7 @@ const Search = () => {
                 params.delete('query')
             }
 
-            replace(`${catalog}?${params.toString()}`)
+            replace(`${pathName}?${params.toString()}`)
         }
     }
 
@@ -54,7 +54,7 @@ const Search = () => {
             params.delete('query')
         }
 
-        replace(`${catalog}?${params.toString()}`)
+        replace(`${pathName}?${params.toString()}`)
     }
 
     const onOptionClick = (value: string) => {
@@ -64,7 +64,7 @@ const Search = () => {
             params.delete('query')
         }
 
-        replace(`${catalog}?${params.toString()}`)
+        replace(`${pathName}?${params.toString()}`)
     }
 
     return (

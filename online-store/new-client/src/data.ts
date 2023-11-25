@@ -11,7 +11,7 @@ export const products = [
     {
         "id": 1,
         "SKU": 123456,
-        "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
+        "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый синий",
         "brand_id": 1,
         "price": "204 990 ₽",
         "photo": "/phones/iphone15.jpeg",
@@ -22,7 +22,7 @@ export const products = [
             {name:  "Память", value : '128Гб'},
             {name: "Камеры", value : '48/12/12 Мп'},
             {name: "Система", value : 'iOS'},
-            {name: "Цвет", value : 'титановый бежевый'},
+            {name: "Цвет", value : 'титановый синий'},
             {name: "Оперативная память", value : '8Гб'},
             
             

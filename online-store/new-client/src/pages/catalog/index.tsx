@@ -23,9 +23,8 @@ const Page = () => {
   const params = new URLSearchParams(searchParams)
   const query = params.get('query')?.toString() ?? ''  
   const page = params.get('page') ?? 1  
-  const categoryId = Number( params.get('categoryId'))
-
-  const { isLoading, data } = useProducts(+page, query, categoryId);  
+  const categoriesId = params.get('categoryId')?.split(',').map(id => +id)
+  const { isLoading, data } = useProducts(+page, query, categoriesId);  
   
   return isLoading ? (<span>Идет загрузка...</span>) : (
     <Catalog products={data?.products!}
