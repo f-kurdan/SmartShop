@@ -3,17 +3,12 @@ import BrandsFilter from './brands-filter';
 import CategoriesFilter from './categories-filter';
 import CharacteristicsFilter from './characteristics-filter';
 
-const Filter = ({ categoryId, handleCharacteristicsChange }: {
-  categoryId?: string,
-  handleCharacteristicsChange: (e: React.ChangeEvent<HTMLInputElement>) => void 
-}) => {
+const Filter = () => {
   return (
     <div className='flex flex-col sticky top-16 text-lg gap-4 bg-white w-1/4 ml-10 transition-all duration-300 hover:shadow-lg hover:shadow-black/30 px-10 py-7'>
-      {!categoryId && (<CategoriesFilter />)}      
+      <CategoriesFilter />    
       <BrandsFilter />
-      <CharacteristicsFilter categoryId={categoryId}
-        handleCharacteristicsChange={handleCharacteristicsChange}
-      />
+      <CharacteristicsFilter />
     </div>
   )
 }
