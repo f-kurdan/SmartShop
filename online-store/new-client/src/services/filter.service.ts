@@ -6,18 +6,18 @@ class FilterService {
         if (e.target.checked) {
             if (params.has(searchParam)) {
                 const prevParams = params.get(searchParam)?.toString();
-                params.set(searchParam, !!prevParams ? `${prevParams},${e.target.id}` : `${e.target.id}`);
+                params.set(searchParam, !!prevParams ? `${prevParams};${e.target.id}` : `${e.target.id}`);
             }
             else {
                 params.set(searchParam, e.target.id)
             }
         }
         else {
-            let paramsArr = params.get(searchParam)?.split(',')
+            let paramsArr = params.get(searchParam)?.split(';')
             paramsArr = paramsArr?.filter(p => !(p === e.target.id))
 
             if (paramsArr && paramsArr.length)
-                params.set(searchParam, paramsArr.join(','));
+                params.set(searchParam, paramsArr.join(';'));
             else
                 params.delete(searchParam)
         }

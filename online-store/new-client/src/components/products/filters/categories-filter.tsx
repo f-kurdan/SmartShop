@@ -1,7 +1,7 @@
 import useCategories from '@/hooks/useCategories';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { ChangeEvent, memo } from 'react'
-import FilterService from '@/services/firter.service'
+import FilterService from '@/services/filter.service'
 
 const CategoriesFilter = memo(() => {
     const { isLoading: isCategoriesLoading, data: categories } = useCategories();
@@ -9,7 +9,7 @@ const CategoriesFilter = memo(() => {
     const params = new URLSearchParams(searchParams);
     const pathName = usePathname()
     const router = useRouter()
-    const selectedCategories = searchParams.get('category')?.split(',')
+    const selectedCategories = searchParams.get('category')?.split(';')
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => FilterService.handleFilterChange(e, params, pathName, router, 'category');
 

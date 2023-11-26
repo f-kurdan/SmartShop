@@ -2,7 +2,7 @@ import { useBrands } from '@/hooks/useBrands'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import React, { ChangeEvent } from 'react'
-import FilterService from '@/services/firter.service'
+import FilterService from '@/services/filter.service'
 
 
 const BrandsFilter = () => {
@@ -11,7 +11,7 @@ const BrandsFilter = () => {
     const params = new URLSearchParams(searchParams);
     const pathName = usePathname()
     const router = useRouter()
-    const selectedBrands = searchParams.get('brand')?.split(',');
+    const selectedBrands = searchParams.get('brand')?.split(';');
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => FilterService.handleFilterChange(e, params, pathName, router, 'brand');
 
