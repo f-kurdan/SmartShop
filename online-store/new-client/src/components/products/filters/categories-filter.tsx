@@ -33,6 +33,7 @@ const CategoriesFilter = memo(() => {
                 params.delete('categoryId')
         }
 
+        params.delete('page')
         replace(`${pathName}?${params.toString()}`);
     };
 
