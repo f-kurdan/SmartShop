@@ -1,5 +1,4 @@
 import useCategories from '@/hooks/useCategories';
-import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { ChangeEvent, memo } from 'react'
 
@@ -9,28 +8,26 @@ const CategoriesFilter = memo(() => {
     const params = new URLSearchParams(searchParams);
     const pathName = usePathname()
     const { replace } = useRouter()
-    const selectedCategories = searchParams.get('categoryId')?.split(',')
-    console.log(selectedCategories)
+    const selectedCategories = searchParams.get('category')?.split(',')
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.checked)
         if (e.target.checked) {
-            if (params.has('categoryId')) {
-                const prevParams = params.get('categoryId')?.toString();
-                params.set('categoryId', !!prevParams ? `${prevParams},${e.target.id}` : `${e.target.id}`);
+            if (params.has('category')) {
+                const prevParams = params.get('category')?.toString();
+                params.set('category', !!prevParams ? `${prevParams},${e.target.id}` : `${e.target.id}`);
             }
             else {
-                params.set('categoryId', e.target.id)
+                params.set('category', e.target.id)
             }
         }
         else {
-            let paramsArr = params.get('categoryId')?.split(',')
+            let paramsArr = params.get('category')?.split(',')
             paramsArr = paramsArr?.filter(p => !(p === e.target.id))
 
             if (paramsArr && paramsArr.length)
-                params.set('categoryId', paramsArr.join(','));
+                params.set('category', paramsArr.join(','));
             else
-                params.delete('categoryId')
+                params.delete('category')
         }
 
         params.delete('page')

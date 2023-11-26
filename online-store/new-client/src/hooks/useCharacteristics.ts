@@ -2,7 +2,6 @@ import { variation_options, variations } from "@/data"
 import { useQuery } from "react-query";
 
 const getCharacteristics = (categoryId?: string) => {
-    // console.log('это здесь '+ categoryId)
     const categoryVariations = categoryId ? variations.filter(v => v.category_id.toString() === categoryId) : variations;
     
     const result = categoryVariations.map(v => {

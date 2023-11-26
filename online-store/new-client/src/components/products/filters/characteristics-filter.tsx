@@ -1,8 +1,9 @@
 import { useCharacteristics } from '@/hooks/useCharacteristics'
-import { characteristics } from '@/types'
 import React from 'react'
 
 const CharacteristicsFilter = ({ categoryId, handleCharacteristicsChange }: { categoryId?: string, handleCharacteristicsChange: (e: React.ChangeEvent<HTMLInputElement>) => void }) => {
+    console.log('это здесь '+ categoryId)
+
     const { data: characteristics } = useCharacteristics(categoryId)
     return (
         <>
