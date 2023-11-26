@@ -1,38 +1,17 @@
 import useCategories from '@/hooks/useCategories';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { ChangeEvent, memo } from 'react'
+import FilterService from '@/services/firter.service'
 
 const CategoriesFilter = memo(() => {
     const { isLoading: isCategoriesLoading, data: categories } = useCategories();
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const pathName = usePathname()
-    const { replace } = useRouter()
+    const router = useRouter()
     const selectedCategories = searchParams.get('category')?.split(',')
 
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.checked) {
-            if (params.has('category')) {
-                const prevParams = params.get('category')?.toString();
-                params.set('category', !!prevParams ? `${prevParams},${e.target.id}` : `${e.target.id}`);
-            }
-            else {
-                params.set('category', e.target.id)
-            }
-        }
-        else {
-            let paramsArr = params.get('category')?.split(',')
-            paramsArr = paramsArr?.filter(p => !(p === e.target.id))
-
-            if (paramsArr && paramsArr.length)
-                params.set('category', paramsArr.join(','));
-            else
-                params.delete('category')
-        }
-
-        params.delete('page')
-        replace(`${pathName}?${params.toString()}`);
-    };
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => FilterService.handleFilterChange(e, params, pathName, router, 'category');
 
     return (
         <div>

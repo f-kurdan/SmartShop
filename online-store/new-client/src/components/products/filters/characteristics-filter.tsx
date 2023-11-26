@@ -1,13 +1,17 @@
 import { useCharacteristics } from '@/hooks/useCharacteristics'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React from 'react'
+import React, { ChangeEvent } from 'react'
+import FilterService from '@/services/firter.service'
 
 const CharacteristicsFilter = () => {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const pathName = usePathname()
-    const { replace } = useRouter()
+    const router = useRouter()
     const selectedCategories = searchParams.get('category')?.split(',')
+    const selectedCharacteristics = searchParams.get('characteristics')?.split(',')
+
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => FilterService.handleFilterChange(e, params, pathName, router, 'characteristics');
 
     const { data: characteristics } = useCharacteristics(selectedCategories)
     return (

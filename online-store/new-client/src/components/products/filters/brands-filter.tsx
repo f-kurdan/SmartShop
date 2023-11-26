@@ -1,40 +1,19 @@
 import { useBrands } from '@/hooks/useBrands'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import React, { ChangeEvent } from 'react'
+import FilterService from '@/services/firter.service'
+
 
 const BrandsFilter = () => {
   const { data: brands } = useBrands()
   const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const pathName = usePathname()
-    const { replace } = useRouter()
+    const router = useRouter()
     const selectedBrands = searchParams.get('brand')?.split(',');
 
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-      console.log(e.target.checked)
-      if (e.target.checked) {
-          if (params.has('brand')) {
-              const prevParams = params.get('brand')?.toString();
-              params.set('brand', !!prevParams ? `${prevParams},${e.target.id}` : `${e.target.id}`);
-          }
-          else {
-              params.set('brand', e.target.id)
-          }
-      }
-      else {
-          let paramsArr = params.get('brand')?.split(',')
-          paramsArr = paramsArr?.filter(p => !(p === e.target.id))
-
-          if (paramsArr && paramsArr.length)
-              params.set('brand', paramsArr.join(','));
-          else
-              params.delete('brand')
-      }
-
-      params.delete('page')
-      replace(`${pathName}?${params.toString()}`);
-  };
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => FilterService.handleFilterChange(e, params, pathName, router, 'brand');
 
   return (
     <div>
