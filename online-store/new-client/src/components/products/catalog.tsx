@@ -20,14 +20,6 @@ const Catalog = ({ products, categoryId, totalProducts }: { products: productsLi
     FilterService.handleChange(e, setSelectedCharacteristics, selectedCharacteristics)
   }
 
-  const handleBrandsChange = (e: ChangeEvent<HTMLInputElement>) => {
-    FilterService.handleChange(e, setSelectedBrands, selectedBrands)
-  }
-
-  const handleCategoriesChange = (e: ChangeEvent<HTMLInputElement>) => {
-    FilterService.handleChange(e, setSelectedCategories, selectedCategories)
-  }
-
   if (selectedCategories.length > 0) {
     products = products.filter(product => selectedCategories.includes(product.category_id.toString()))
   }
@@ -45,9 +37,7 @@ const Catalog = ({ products, categoryId, totalProducts }: { products: productsLi
   return (
     <div className={`${montserrat.className} flex flex-row w-full justify-center h-max gap-4 items-start my-3 text-gray-700`}>
       <Filter categoryId={categoryId}
-        handleCharacteristicsChange={handleCharacteristicsChange}
-        handleBrandsChange={handleBrandsChange}
-        handleCategoriesChange={handleCategoriesChange} />
+        handleCharacteristicsChange={handleCharacteristicsChange}/>
       {products?.length ? (
         <div className='flex flex-col gap-2 w-2/3 min-h-fit mr-10'>
           <ProductsList products={products} />
