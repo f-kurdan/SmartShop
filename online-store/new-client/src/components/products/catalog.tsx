@@ -10,22 +10,12 @@ import ProductsList from './products-list'
 
 const Catalog = ({ products, categoryId, totalProducts }: { products: productsList, categoryId?: string, totalProducts?: number }) => {
   const [selectedCharacteristics, setSelectedCharacteristics] = useState<string[]>([]);
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const searchParams = useSearchParams()
   const params = new URLSearchParams(searchParams)
 
 
   const handleCharacteristicsChange = (e: ChangeEvent<HTMLInputElement>) => {
     FilterService.handleChange(e, setSelectedCharacteristics, selectedCharacteristics)
-  }
-
-  if (selectedCategories.length > 0) {
-    products = products.filter(product => selectedCategories.includes(product.category_id.toString()))
-  }
-
-  if (selectedBrands.length > 0) {
-    products = products.filter(product => selectedBrands.includes(product.brand_id.toString()))
   }
 
   if (selectedCharacteristics.length > 0) {
