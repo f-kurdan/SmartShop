@@ -1,6 +1,6 @@
 import { products } from "@/data";
 
-export function getProducts(page?: number, query?: string, categoriesId?: number[], brands?: number[]) {
+export function getProducts(page?: number, query?: string, categoriesId?: number[], brands?: number[], chars?: string[]) {
     const productsEnd = page ? page * 12 : 12;
     const productsStart = productsEnd - 12
 

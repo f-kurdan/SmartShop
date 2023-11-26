@@ -1,6 +1,5 @@
 import useProducts from '@/hooks/useProducts'
 import { montserrat } from '@/styles/fonts'
-import { productsList } from '@/types'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import React, { useRef, useState } from 'react'
