@@ -13,8 +13,9 @@ export function getProducts(page?: number, query?: string, categoriesId?: number
     if (brands) {
         filteredProducts = filteredProducts.filter(p => brands.some(id => id === p.brand_id));
     }
+
     if(characteristics) {
-        filteredProducts = filteredProducts.filter(p => p.characteristics.some(c => characteristics.includes(c.name)))
+        filteredProducts = filteredProducts.filter(product => product.characteristics.some(productChar => characteristics.some(char => productChar.value.includes(char))))
     }
 
     if (query) {

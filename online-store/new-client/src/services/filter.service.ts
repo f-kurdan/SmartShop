@@ -2,7 +2,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 import { ChangeEvent } from "react"
 
 class FilterService {
-    handleFilterChange = (e: ChangeEvent<HTMLInputElement>, params: URLSearchParams, pathName:string, router:AppRouterInstance, searchParam:string) => {
+    handleFilterChange = (e: ChangeEvent<HTMLInputElement>, params: URLSearchParams, router:AppRouterInstance, searchParam:string) => {
         if (e.target.checked) {
             if (params.has(searchParam)) {
                 const prevParams = params.get(searchParam)?.toString();
@@ -22,8 +22,7 @@ class FilterService {
                 params.delete(searchParam)
         }
 
-        params.delete('page')
-        router.replace(`${pathName}?${params.toString()}`);
+        params.delete('page') 
     };
 }
 
