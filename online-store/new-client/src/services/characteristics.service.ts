@@ -1,7 +1,6 @@
 import { variations, variation_options } from "@/data";
 
-export const getCharacteristics = (categories?: string[]) => {
-    // console.log('это здесь '+ categoryId)
+export const getCharacteristics = (categories?: string[], selectedCharacteristics?: string[]) => {
     const categoryVariations = categories ? variations.filter(v => categories.some(cat => cat === v.category_id.toString())) : variations;
     
     const result = categoryVariations.map(v => {

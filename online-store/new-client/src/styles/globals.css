@@ -10,6 +10,10 @@
   }
 }
 
+html {
+ scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-unbounded), var(--font-mont), var(--font-rubik), sans-serif;
   -ms-overflow-style: none;/* IE and Edge */

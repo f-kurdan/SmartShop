@@ -16,7 +16,7 @@ const Filter = () => {
   const onChange = (e: ChangeEvent<HTMLInputElement>,searchParam:string) => filterService.handleFilterChange(e, params,  router, searchParam);
 
   const onClick = () => {
-    router.replace(`${pathName}?${params.toString()}`);
+    router.push(`${pathName}?${params.toString()}`);
   }
 
 

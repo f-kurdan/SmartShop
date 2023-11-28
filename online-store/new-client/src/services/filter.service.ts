@@ -23,6 +23,7 @@ class FilterService {
         }
 
         params.delete('page') 
+        router.replace(`/catalog?${params.toString()}`);
     };
 }
 
