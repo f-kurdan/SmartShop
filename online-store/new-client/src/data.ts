@@ -776,9 +776,9 @@ export const variations = [
 ]
 
 export const variation_options= [
-    {id: 1, variation_id: 1, name: "черный цвет"},
-    {id: 2, variation_id: 1, name: "белые цвет"},
-    {id: 3, variation_id: 1, name: "красный цвет"},
+    {id: 1, variation_id: 1, name: "черный"},
+    {id: 2, variation_id: 1, name: "белый"},
+    {id: 3, variation_id: 1, name: "красный"},
     {id: 4, variation_id: 2, name: "128Гб"},
     {id: 5, variation_id: 2, name: "256Гб"},
     {id: 6, variation_id: 2, name: "512Гб"},

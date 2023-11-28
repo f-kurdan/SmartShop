@@ -23,9 +23,9 @@ const Page = () => {
   const params = new URLSearchParams(searchParams)
   const query = params.get('query')?.toString() ?? ''  
   const page = params.get('page') ?? 1  
-  const categoriesId = params.get('category')?.split(',').map(id => +id)
-  const brands = params.get('brand')?.split(',').map(id => +id)
-  const characteristics = params.get('characteristics')?.split(',').map(name => name)
+  const categoriesId = params.get('category')?.split(';').map(id => +id)
+  const brands = params.get('brand')?.split(';').map(id => +id)
+  const characteristics = params.get('characteristics')?.split(';').map(name => name)
   const { isLoading, data } = useProducts(+page, query, categoriesId, brands, characteristics);  
 
   return isLoading ? (<span>Идет загрузка...</span>) : (
