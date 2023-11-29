@@ -6,10 +6,13 @@ class FilterService {
         if (e.target.checked) {
             if (params.has(searchParam)) {
                 const prevParams = params.get(searchParam)?.toString();
-                params.set(searchParam, !!prevParams ? `${prevParams};${e.target.id}` : `${e.target.id}`);
+            console.log('prevParams: ' + prevParams)
+                params.set(searchParam, !!prevParams ? `${prevParams};${e.target.id}` : e.target.id);
+                console.log('new params: ' + params.get(searchParam)?.split(';'))
             }
             else {
                 params.set(searchParam, e.target.id)
+                console.log('new params: ' + params.get(searchParam))
             }
         }
         else {
@@ -23,7 +26,7 @@ class FilterService {
         }
 
         params.delete('page') 
-        router.replace(`/catalog?${params.toString()}`);
+        // router.replace(`/catalog?${params.toString()}`);
     };
 }
 

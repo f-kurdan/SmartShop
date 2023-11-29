@@ -3,6 +3,8 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
 import { useState } from 'react'
+import Head from 'next/head'
+import Script from 'next/script'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient({
@@ -14,12 +16,19 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }))
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <RootLayout>
-          <Component {...pageProps} />
-        </RootLayout>
-      </Hydrate>
-    </QueryClientProvider>
+    <>
+      <Head>
+        <Script>
+          {`window.onunload = function(){ window.scrollTo(0,0)}`}
+        </Script>
+      </Head>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <RootLayout>
+            <Component {...pageProps} />
+          </RootLayout>
+        </Hydrate>
+      </QueryClientProvider>
+    </>
   )
 }

@@ -7,7 +7,9 @@ const CharacteristicsFilter = ({ onFilterChange }: { onFilterChange: (e: ChangeE
     const selectedCategories = searchParams.get('category')?.split(';')
     const selectedCharacteristics = searchParams.get('characteristics')?.split(';')
 
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => onFilterChange(e, 'characteristics')
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        onFilterChange(e, 'characteristics')
+    }
 
     const { data: characteristics } = useCharacteristics(selectedCategories)
     return (
@@ -16,8 +18,11 @@ const CharacteristicsFilter = ({ onFilterChange }: { onFilterChange: (e: ChangeE
             (<div>
                 <h2 key={char.id} className='font-bold mb-2'>{char.charactehcisticName}</h2>
                 {char.options.map(option => (
-                    <div className='ml-2'>
-                        <input checked={!!selectedCharacteristics?.includes(option.name)} onChange={onChange} className='mr-2 scale-125 hover:cursor-pointer' type="checkbox" name='characteristic' value={option.name} id={option.name} />
+                    <div className='ml-2'>{                       
+                        !!selectedCharacteristics?.length?
+                        (<input defaultChecked={!!selectedCharacteristics?.includes(option.name)} onChange={onChange} className='mr-2 scale-125 hover:cursor-pointer' type="checkbox" name='characteristic' value={option.name} id={option.name} />) : 
+                        (<input  onChange={onChange} className='mr-2 scale-125 hover:cursor-pointer' type="checkbox" name='characteristic' value={option.name} id={option.name} />)
+                        }
                         <label htmlFor={option.name}>{option.name}</label>
                     </div>
                 ))}
