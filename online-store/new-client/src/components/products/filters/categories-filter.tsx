@@ -2,12 +2,20 @@ import useCategories from '@/hooks/useCategories';
 import { useSearchParams } from 'next/navigation';
 import React, { ChangeEvent, memo } from 'react'
 
-const CategoriesFilter = memo(({ onFilterChange }: { onFilterChange: (e: ChangeEvent<HTMLInputElement>, searchParam: string) => void }) => {
-    const { isLoading: isCategoriesLoading, data: categories } = useCategories();
+const CategoriesFilter = ({ onFilterChange, increment }: { onFilterChange: (e: ChangeEvent<HTMLInputElement>, searchParam: string) => void, increment: (toIncrement: boolean) => void }) => {
+    const { data: categories } = useCategories();
     const searchParams = useSearchParams();
     const selectedCategories = searchParams.get('category')?.split(';')
 
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => onFilterChange(e, 'category')
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        onFilterChange(e, 'category');
+        console.log('before rerender: ' + selectedCategories)
+        // if (e.target.checked) {
+        //     increment(true)
+        // } else {
+        //     increment(false)
+        // }
+    }
 
     return (
         <div>
@@ -19,6 +27,6 @@ const CategoriesFilter = memo(({ onFilterChange }: { onFilterChange: (e: ChangeE
             </div>))}
         </div>
     )
-})
+}
 
 export default CategoriesFilter

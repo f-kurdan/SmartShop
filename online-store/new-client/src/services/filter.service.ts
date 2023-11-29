@@ -3,16 +3,15 @@ import { ChangeEvent } from "react"
 
 class FilterService {
     handleFilterChange = (e: ChangeEvent<HTMLInputElement>, params: URLSearchParams, router:AppRouterInstance, searchParam:string) => {
+        console.log('checked?: ' + e.target.checked)
         if (e.target.checked) {
+            console.log(`${searchParam}: ` + params.has(searchParam))
             if (params.has(searchParam)) {
                 const prevParams = params.get(searchParam)?.toString();
-            console.log('prevParams: ' + prevParams)
                 params.set(searchParam, !!prevParams ? `${prevParams};${e.target.id}` : e.target.id);
-                console.log('new params: ' + params.get(searchParam)?.split(';'))
             }
             else {
                 params.set(searchParam, e.target.id)
-                console.log('new params: ' + params.get(searchParam))
             }
         }
         else {
@@ -25,6 +24,7 @@ class FilterService {
                 params.delete(searchParam)
         }
 
+        console.log(`вот так вот ${searchParam}: ` + params.get(searchParam))
         params.delete('page') 
         // router.replace(`/catalog?${params.toString()}`);
     };

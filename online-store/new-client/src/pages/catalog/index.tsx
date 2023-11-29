@@ -29,7 +29,7 @@ const Page = () => {
   const { isLoading, data } = useProducts(+page, query, categoriesId, brands, characteristics);  
 
   return isLoading ? (<span>Идет загрузка...</span>) : (
-    <Catalog products={data?.products!}
+    <Catalog products={data?.products!} 
     totalProducts={data?.totalProducts} 
     />
   )
