@@ -9,12 +9,11 @@ const CategoriesFilter = ({ onFilterChange, increment }: { onFilterChange: (e: C
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         onFilterChange(e, 'category');
-        console.log('before rerender: ' + selectedCategories)
-        // if (e.target.checked) {
-        //     increment(true)
-        // } else {
-        //     increment(false)
-        // }
+        if (e.target.checked) {
+            increment(true)
+        } else {
+            increment(false)
+        }
     }
 
     return (
