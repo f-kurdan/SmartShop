@@ -3,12 +3,19 @@ import { useSearchParams } from 'next/navigation'
 import React, { ChangeEvent } from 'react'
 
 
-const BrandsFilter = ({ onFilterChange }: { onFilterChange: (e: ChangeEvent<HTMLInputElement>, searchParam: string) => void }) => {
+const BrandsFilter = ({ onFilterChange, increment }: { onFilterChange: (e: ChangeEvent<HTMLInputElement>, searchParam: string) => void, increment: (toIncrement: boolean) => void }) => {
   const { data: brands } = useBrands()
   const searchParams = useSearchParams();
   const selectedBrands = searchParams.get('brand')?.split(';');
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => onFilterChange(e, 'brand')
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    onFilterChange(e, 'brand')
+    if (e.target.checked) {
+      increment(true)
+    } else {
+      increment(false)
+    }
+  }
 
   return (
     <div>
