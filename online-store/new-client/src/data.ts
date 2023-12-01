@@ -16,6 +16,7 @@ export const products = [
         "price": "204 990 ₽",
         "photo": "/phones/iphone15.jpeg",
         "category_id": 1,
+        "color_id": 21,
         "characteristics": [
             {name: "Дисплей", value : '6,1" (2556x1179), OLED'},
             {name: "Процессор", value : 'A17 Pro'},
@@ -24,8 +25,6 @@ export const products = [
             {name: "Система", value : 'iOS'},
             {name: "Цвет", value : 'титановый синий'},
             {name: "Оперативная память", value : '8Гб'},
-            
-            
         ],
     },
     {
@@ -36,6 +35,7 @@ export const products = [
         "price": "204 990 ₽",
         "photo": "/phones/iphone15.jpeg",
         "category_id": 1,
+        "color_id": 20,
         "characteristics": [
             {name: "Дисплей", value : '6,1" (2556x1179), OLED'},
             {name: "Процессор", value : 'A17 Pro'},
@@ -55,6 +55,7 @@ export const products = [
         "price": "204 990 ₽",
         "photo": "/phones/iphone15.jpeg",
         "category_id": 1,
+        "color_id": 20,
         "characteristics": [
             {name: "Дисплей", value : '6,1" (2556x1179), OLED'},
             {name: "Процессор", value : 'A17 Pro'},
@@ -73,6 +74,7 @@ export const products = [
         "price": "204 990 ₽",
         "photo": "/phones/iphone15.jpeg",
         "category_id": 1,
+        "color_id": 20,
         "characteristics": [
             {name: "Дисплей", value : '6,1" (2556x1179), OLED'},
             {name: "Процессор", value : 'A17 Pro'},
@@ -93,6 +95,7 @@ export const products = [
         "price": "12 990 ₽",
         "photo": "/headphones/airpods.webp",
         "category_id": 2,
+        "color_id": 2,
         "characteristics": [
             {name: "Диапазон чистот", value : 'от 20 Гц до 15 кГц'},
             {name:"Тип соединения", value : 'беспроводные bluetooth, True Wireless'},
@@ -108,6 +111,7 @@ export const products = [
         "price": "12 990 ₽",
         "photo": "/headphones/airpods.webp",
         "category_id": 2,
+        "color_id": 2,
         "characteristics": [
             {name: "Диапазон чистот", value : 'от 20 Гц до 15 кГц'},
             {name:"Тип соединения", value : 'беспроводные bluetooth, True Wireless'},
@@ -794,4 +798,5 @@ export const variation_options= [
     { id: 18, variation_id: 10, name : '5 ч'},
     { id: 19, variation_id: 10, name : '6 ч'},
     {id: 20, variation_id: 1, name: "титановый бежевый"},
+    {id: 21, variation_id: 1, name: "титановый синий"},
 ]

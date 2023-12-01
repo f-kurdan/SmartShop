@@ -5,6 +5,8 @@ import CategoriesFilter from './categories-filter';
 import CharacteristicsFilter from './characteristics-filter';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import FilterButton from './filter-button';
+import ColorsFilter from './colors-filter';
+import GenericFilter from './genericFilter';
 
 const Filter = () => {
   const searchParams = useSearchParams();
@@ -32,11 +34,22 @@ const Filter = () => {
   }
   return (
     <div className='flex flex-col sticky top-16 text-lg gap-4 bg-white w-1/4 ml-10 transition-all duration-300 hover:shadow-lg hover:shadow-black/30 px-10 py-7'>
-      <CategoriesFilter onFilterChange={onChange}
+      <GenericFilter onFilterChange={onChange}
+        increment={increment}
+        param={'category'} />
+        <GenericFilter onFilterChange={onChange}
+        increment={increment}
+        param={'brand'} />
+        <GenericFilter onFilterChange={onChange}
+        increment={increment}
+        param={'color'} />
+      {/* <CategoriesFilter onFilterChange={onChange}
         increment={increment} />
       <BrandsFilter onFilterChange={onChange}
         increment={increment} />
-      <CharacteristicsFilter onFilterChange={onChange} />
+      <ColorsFilter  onFilterChange={onChange}
+        increment={increment} /> */}
+      {/* <CharacteristicsFilter onFilterChange={onChange} /> */}
       <FilterButton setNewCount={setNewCount}
         onClick={onClick}
         selectedOptionsCount={Array.from(params?.values())[0]?.split(';').length} />
