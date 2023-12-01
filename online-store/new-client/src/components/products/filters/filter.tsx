@@ -4,7 +4,6 @@ import BrandsFilter from './brands-filter';
 import CategoriesFilter from './categories-filter';
 import CharacteristicsFilter from './characteristics-filter';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { CurrencyEuroIcon } from '@heroicons/react/24/solid';
 import FilterButton from './filter-button';
 
 const Filter = () => {
