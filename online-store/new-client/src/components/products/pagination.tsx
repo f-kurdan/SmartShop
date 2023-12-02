@@ -15,15 +15,12 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
         return `${pathname}?${params.toString()}`;
     };
 
-    const buttonStyle = 'transition-all duration-300 p-3 bg-white rounded-xl hover:shadow-lg hover:shadow-black/30 hover:cursor-pointer active:opacity-50';
+    const buttonStyle = 'transition-all duration-300 p-3 bg-white rounded-xl hover:shadow-lg hover:shadow-black/30 hover:cursor-pointer active:opacity-50 ';
 
     const prevPage = currentPage > 1 ? createPageURL(currentPage - 1) : null;
     const nextPage = currentPage < totalPages ? createPageURL(currentPage + 1) : null;
 
     const pages = Array.from({ length: totalPages }, (_, i) => (i))
-
-    const startIndex = pages[0]
-    const endIndex = pages.length - 10
 
     return (
         <div className='flex gap-2 items-center justify-center'>
@@ -42,7 +39,7 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
                 }
                 else
                     return (<Link href={createPageURL(page + 1)} key={page}>
-                        <div className={`py-3 px-5 ${currentPage === page + 1 ? 'bg-purple-300 text-white' : 'bg-white '} ${buttonStyle}`}>{page + 1}</div>
+                        <div className={`py-3 px-5 ${currentPage === page + 1 ? ' bg-cyan-200 text-cyan-700' : 'bg-white '} ${buttonStyle}`}>{page + 1}</div>
                     </Link>)
             }) : null}
             <div>

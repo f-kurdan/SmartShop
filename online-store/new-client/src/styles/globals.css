@@ -21,8 +21,8 @@ body {
   scroll-behavior: smooth;
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
     display: none;
-}
+} */
 
 
