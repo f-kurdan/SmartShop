@@ -20,11 +20,10 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
     const prevPage = currentPage > 1 ? createPageURL(currentPage - 1) : null;
     const nextPage = currentPage < totalPages ? createPageURL(currentPage + 1) : null;
 
-    const pages = Array.from({ length: totalPages }, (_, i) => (
-        <Link href={createPageURL(i + 1)} key={i}>
-            <div className={`py-3 px-5 ${currentPage === i + 1? 'bg-purple-300 text-white' : 'bg-white '} ${buttonStyle}`}>{i + 1}</div>
-        </Link>
-    ))
+    const pages = Array.from({ length: totalPages }, (_, i) => (i))
+
+    const startIndex = pages[0]
+    const endIndex = pages.length - 10
 
     return (
         <div className='flex gap-2 items-center justify-center'>
@@ -35,7 +34,17 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
                     </Link>
                 ) : null}
             </div>
-            { pages.length > 1 ? pages.map(page => page) : null}
+            {pages.length > 1 ? pages.map(page => {
+                if ((pages.length >= 5) && ((currentPage + 3 < pages.length && page === currentPage + 2) 
+                || (currentPage > pages.length - 1 && page === currentPage - 4))
+                ) {
+                    return (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>)
+                }
+                else
+                    return (<Link href={createPageURL(page + 1)} key={page}>
+                        <div className={`py-3 px-5 ${currentPage === page + 1 ? 'bg-purple-300 text-white' : 'bg-white '} ${buttonStyle}`}>{page + 1}</div>
+                    </Link>)
+            }) : null}
             <div>
                 {nextPage ? (
                     <Link href={nextPage}>
