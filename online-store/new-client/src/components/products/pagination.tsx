@@ -22,7 +22,7 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
 
     const pages = Array.from({ length: totalPages }, (_, i) => (
         <Link href={createPageURL(i + 1)} key={i}>
-            <div className={`py-3 px-5 ${currentPage === i + 1? 'bg-purple-200 text-white' : 'bg-white '} ${buttonStyle}`}>{i + 1}</div>
+            <div className={`py-3 px-5 ${currentPage === i + 1? 'bg-purple-300 text-white' : 'bg-white '} ${buttonStyle}`}>{i + 1}</div>
         </Link>
     ))
 

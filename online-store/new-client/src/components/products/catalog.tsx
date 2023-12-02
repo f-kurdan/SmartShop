@@ -6,6 +6,7 @@ import { montserrat } from '@/styles/fonts'
 import { useSearchParams } from 'next/navigation'
 import Pagination from './pagination'
 import ProductsList from './products-list'
+import GoToTopButton from './go-to-top-button'
 
 const Catalog = ({ products, categoryId, totalProducts }: { products: productsList, categoryId?: string, totalProducts?: number }) => {
   const searchParams = useSearchParams()
@@ -20,6 +21,7 @@ const Catalog = ({ products, categoryId, totalProducts }: { products: productsLi
           <Pagination totalProducts={totalProducts} />
         </div>
       ) : (<NoItems query={params.get('query')?.toString()} />)}
+      <GoToTopButton />
     </div>
   )
 }
