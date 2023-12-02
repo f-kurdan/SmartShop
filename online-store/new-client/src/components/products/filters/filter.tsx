@@ -1,12 +1,9 @@
 import filterService from '@/services/filter.service';
-import React, { ChangeEvent, useRef, useState } from 'react'
-import BrandsFilter from './brands-filter';
-import CategoriesFilter from './categories-filter';
-import CharacteristicsFilter from './characteristics-filter';
+import React, { ChangeEvent, useRef } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import FilterButton from './filter-button';
-import ColorsFilter from './colors-filter';
 import GenericFilter from './genericFilter';
+import CharacteristicsFilter from './characteristics-filter';
 
 const Filter = () => {
   const searchParams = useSearchParams();
@@ -32,6 +29,7 @@ const Filter = () => {
     if (buttonIncrement)
       incRef.current = (toIncrement: boolean) => buttonIncrement(toIncrement)
   }
+  
   return (
     <div className='flex flex-col sticky top-16 text-lg gap-4 bg-white w-1/4 ml-10 transition-all duration-300 hover:shadow-lg hover:shadow-black/30 px-10 py-7'>
       <GenericFilter onFilterChange={onChange}
@@ -43,7 +41,7 @@ const Filter = () => {
       <GenericFilter onFilterChange={onChange}
         increment={increment}
         param={'color'} />
-      {/* <CharacteristicsFilter onFilterChange={onChange} /> */}
+      <CharacteristicsFilter onFilterChange={onChange} />
       <FilterButton setNewCount={setNewCount}
         onClick={onClick}
         selectedOptionsCount={Array.from(params?.values())[0]?.split(';').length} />

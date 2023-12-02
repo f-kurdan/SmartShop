@@ -8,7 +8,7 @@ const Categories = () => {
     const params = new URLSearchParams(searchParams);
 
     const createURL = (categoryId: number | string) => {
-      params.set('categoryId', categoryId.toString());
+      params.set('category', categoryId.toString());
         return `/catalog/?${params.toString()}`;
       };
     
