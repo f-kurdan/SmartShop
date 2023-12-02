@@ -2,13 +2,18 @@ import { useCharacteristics } from '@/hooks/useCharacteristics'
 import { useSearchParams } from 'next/navigation';
 import React, { ChangeEvent } from 'react'
 
-const CharacteristicsFilter = ({ onFilterChange }: { onFilterChange: (e: ChangeEvent<HTMLInputElement>, searchParam: string) => void }) => {
+const CharacteristicsFilter = ({ onFilterChange, increment }: { onFilterChange: (e: ChangeEvent<HTMLInputElement>, searchParam: string) => void, increment: (toIncrement: boolean) => void }) => {
     const searchParams = useSearchParams();
     const selectedCategories = searchParams.get('category')?.split(';')
     const selectedCharacteristics = searchParams.get('characteristics')?.split(';')
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         onFilterChange(e, 'characteristics')
+        if (e.target.checked) {
+            increment(true)
+        } else {
+            increment(false)
+        }
     }
 
     const { data: characteristics } = useCharacteristics(selectedCategories)

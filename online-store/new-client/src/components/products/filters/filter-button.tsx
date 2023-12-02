@@ -17,7 +17,7 @@ const FilterButton = (
 
 
     return (
-        <div className={`flex flex-row justify-center gap-2 items-center transition-all duration-300 sticky text-center rounded-md bg-black text-white p-2 active:outline active:outline-4 active:outline-purple-300 hover:cursor-pointer hover:outline hover:outline-4 hover:outline-cyan-200 bottom-3`} onClick={onClick}>
+        <div className={`flex flex-row justify-center gap-2 items-center transition-all duration-300 sticky text-center rounded-md bg-black text-white p-2 active:outline active:outline-8 active:outline-purple-300 hover:cursor-pointer hover:outline hover:outline-8 hover:outline-cyan-200 bottom-3`} onClick={onClick}>
                 <AdjustmentsHorizontalIcon width={21} height={20} />
             {count?'Применить': 'Показать все товары'} </div>
     ) 

@@ -41,7 +41,8 @@ const Filter = () => {
       <GenericFilter onFilterChange={onChange}
         increment={increment}
         param={'color'} />
-      <CharacteristicsFilter onFilterChange={onChange} />
+      <CharacteristicsFilter onFilterChange={onChange} 
+      increment={increment}/>
       <FilterButton setNewCount={setNewCount}
         onClick={onClick}
         selectedOptionsCount={Array.from(params?.values())[0]?.split(';').length} />
