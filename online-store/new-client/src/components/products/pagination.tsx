@@ -20,7 +20,7 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
     const prevPage = currentPage > 1 ? createPageURL(currentPage - 1) : null;
     const nextPage = currentPage < totalPages ? createPageURL(currentPage + 1) : null;
 
-    const pages = Array.from({ length: 15 }, (_, i) => (i + 1))
+    const pages = Array.from({ length: totalPages }, (_, i) => (i + 1))
     const links = pages.map(page => {
         if ((pages.length >= 5) && (page !== 1) && (page !== pages.length) && (page > currentPage - 2 && page < currentPage + 2)
         ) {
@@ -45,7 +45,7 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
             </Link>
             {currentPage - 2 > 1 ? (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>) : null}
             {links.length > 1 ? links.map(link => link) : null}
-            {currentPage + 3 < pages.length ? (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>) : null}
+            {currentPage + 2 < pages.length ? (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>) : null}
             <Link href={createPageURL(pages.length)}>
                 <div className={`py-3 px-5 ${currentPage === pages.length ? ' bg-cyan-200 text-cyan-700' : 'bg-white '} ${buttonStyle}`}>{pages.length}</div>
             </Link>
