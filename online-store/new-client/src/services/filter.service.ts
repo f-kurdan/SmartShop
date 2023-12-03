@@ -23,9 +23,7 @@ class FilterService {
                 params.delete(pathName)
         }
 
-        console.log(`вот так вот ${pathName}: ` + params.get(pathName))
         params.delete('page') 
-        // router.replace(`/catalog?${params.toString()}`);
     };
 }
 
