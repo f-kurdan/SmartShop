@@ -1,5 +1,6 @@
+import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import React from 'react'
 
 const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
@@ -24,9 +25,8 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
     const links = pages.map(page => {
         if ((pages.length >= 5) && (page !== 1) && (page !== pages.length) && (page > currentPage - 2 && page < currentPage + 2)
         ) {
-            // return (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>)
             return (<Link href={createPageURL(page)} key={page}>
-                <div className={`py-3 px-5 ${currentPage === page ? ' bg-cyan-200 text-cyan-700' : 'bg-white '} ${buttonStyle}`}>{page}</div>
+                <div className={` ${currentPage === page ? 'py-4 px-6 bg-pink-100 text-cyan-500' : 'bg-white py-3 px-5'} ${buttonStyle}`}>{page}</div>
             </Link>)
         }
     })
@@ -36,23 +36,27 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
             <div>
                 {prevPage ? (
                     <Link href={prevPage}>
-                        <div className={buttonStyle}>Назад</div>
+                        <div className={buttonStyle}>
+                            <ArrowLeftIcon width={20} height={20} color='black'/>
+                        </div>
                     </Link>
                 ) : null}
             </div>
             <Link href={createPageURL(1)}>
-                <div className={`py-3 px-5 ${currentPage === 1 ? ' bg-cyan-200 text-cyan-700' : 'bg-white '} ${buttonStyle}`}>{1}</div>
+                <div className={`py-3 px-5 ${currentPage === 1 ? 'py-4 px-6 bg-pink-100 text-cyan-500' : 'bg-white  py-3 px-5  '} ${buttonStyle}`}>{1}</div>
             </Link>
             {currentPage - 2 > 1 ? (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>) : null}
             {links.length > 1 ? links.map(link => link) : null}
             {currentPage + 2 < pages.length ? (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>) : null}
             <Link href={createPageURL(pages.length)}>
-                <div className={`py-3 px-5 ${currentPage === pages.length ? ' bg-cyan-200 text-cyan-700' : 'bg-white '} ${buttonStyle}`}>{pages.length}</div>
+                <div className={`py-3 px-5 ${currentPage === pages.length ? 'py-4 px-6 bg-pink-100 text-cyan-500' : 'bg-white py-3 px-5 '} ${buttonStyle}`}>{pages.length}</div>
             </Link>
             <div>
                 {nextPage ? (
                     <Link href={nextPage}>
-                        <div className={buttonStyle}>Вперед</div>
+                        <div className={buttonStyle}>
+                            <ArrowRightIcon width={20} height={20} color='black'/>  
+                        </div>
                     </Link>
                 ) : null}
             </div>
