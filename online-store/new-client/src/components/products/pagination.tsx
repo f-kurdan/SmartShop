@@ -20,7 +20,16 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
     const prevPage = currentPage > 1 ? createPageURL(currentPage - 1) : null;
     const nextPage = currentPage < totalPages ? createPageURL(currentPage + 1) : null;
 
-    const pages = Array.from({ length: totalPages }, (_, i) => (i))
+    const pages = Array.from({ length: 15 }, (_, i) => (i + 1))
+    const links = pages.map(page => {
+        if ((pages.length >= 5) && (page !== 1) && (page !== pages.length) && (page > currentPage - 2 && page < currentPage + 2)
+        ) {
+            // return (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>)
+            return (<Link href={createPageURL(page)} key={page}>
+                <div className={`py-3 px-5 ${currentPage === page ? ' bg-cyan-200 text-cyan-700' : 'bg-white '} ${buttonStyle}`}>{page}</div>
+            </Link>)
+        }
+    })
 
     return (
         <div className='flex gap-2 items-center justify-center'>
@@ -31,17 +40,15 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
                     </Link>
                 ) : null}
             </div>
-            {pages.length > 1 ? pages.map(page => {
-                if ((pages.length >= 5) && ((currentPage + 3 < pages.length && page === currentPage + 2) 
-                || (currentPage > pages.length - 1 && page === currentPage - 4))
-                ) {
-                    return (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>)
-                }
-                else
-                    return (<Link href={createPageURL(page + 1)} key={page}>
-                        <div className={`py-3 px-5 ${currentPage === page + 1 ? ' bg-cyan-200 text-cyan-700' : 'bg-white '} ${buttonStyle}`}>{page + 1}</div>
-                    </Link>)
-            }) : null}
+            <Link href={createPageURL(1)}>
+                <div className={`py-3 px-5 ${currentPage === 1 ? ' bg-cyan-200 text-cyan-700' : 'bg-white '} ${buttonStyle}`}>{1}</div>
+            </Link>
+            {currentPage - 2 > 1 ? (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>) : null}
+            {links.length > 1 ? links.map(link => link) : null}
+            {currentPage + 3 < pages.length ? (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>) : null}
+            <Link href={createPageURL(pages.length)}>
+                <div className={`py-3 px-5 ${currentPage === pages.length ? ' bg-cyan-200 text-cyan-700' : 'bg-white '} ${buttonStyle}`}>{pages.length}</div>
+            </Link>
             <div>
                 {nextPage ? (
                     <Link href={nextPage}>
