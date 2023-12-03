@@ -5,8 +5,8 @@ import { ArrowSmallLeftIcon } from '@heroicons/react/24/solid';
 
 const GoBackButton = ({ router }: { router: NextRouter }) => {
   return (
-    <div onClick={() => router.back()} className='bg-slate-50 rounded-xl w-fit text-center inline-block p-3  hover:cursor-pointer hover:outline hover:outline-4 hover:outline-lime-200 active:outline-lime-400 '>
-      <ArrowSmallLeftIcon className='w-5 h-5' />
+    <div onClick={() => router.back()} className='transition-all duration-300 bg-white rounded-xl flex justify-center w-60 p-3  hover:shadow-lg hover:shadow-black/30 hover:cursor-pointer active:blur-sm  '>
+      <ArrowSmallLeftIcon width={100} height={40} className='text-cyan-400' />
     </div>
   )
 }

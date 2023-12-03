@@ -33,6 +33,10 @@ export function getProductById(productId: string) {
     return Promise.resolve(products.find(p => p.id.toString() === productId))
 }
 
+export function getAllProducts() {
+    return Promise.resolve(products)
+}
+
 export function getProductsByName(string: string) {
     return Promise.resolve(products.filter(p => p.name.toLowerCase().includes(string.toLowerCase())))
 }

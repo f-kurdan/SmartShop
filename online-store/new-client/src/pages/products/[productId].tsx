@@ -1,7 +1,7 @@
 import GoBackButton from '@/components/go-back-button';
 import ProductImageFiller from '@/components/products/fillers/product-image-filler';
 import useProductById from '@/hooks/useProductById';
-import { getProductById, getProducts } from '@/services/product.service';
+import { getAllProducts, getProductById } from '@/services/product.service';
 import { montserrat } from '@/styles/fonts';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -9,11 +9,11 @@ import React from 'react'
 import { dehydrate, QueryClient } from 'react-query';
 
 export async function getStaticPaths() {
-  const products = await getProducts();
+  const products = await getAllProducts();
 
-  const paths = [...products?.map(product => ({
+  const paths = products?.map(product => ({
     params: { productId: product.id.toString() },
-  }))]
+  }))
 
   return { paths, fallback: false }
 }
@@ -31,7 +31,6 @@ export async function getStaticProps({ params }: { params: { productId: string }
 
     revalidate: 60 * 60
   }
-
 }
 
 const Product = ({ productId }: { productId: string }) => {
@@ -41,11 +40,11 @@ const Product = ({ productId }: { productId: string }) => {
   return (
     <div className={`${montserrat.className} flex flex-col justify-around items-stretch m-5 gap-5 text-gray-700`}>
       <GoBackButton router={router} />
-      <div className='flex flex-row  bg-white rounded-xl gap-10 py-10  justify-center items-stretch'>
+      <div className='flex flex-row  bg-white  gap-10 p-10  justify-center items-stretch'>
         {isLoading ? (<div>Идет загрузка</div>) : (
           (
             <>
-              <Image src={data!.photo} alt={data!.name} width={350} height={350} />
+              <Image className='max-h-96 max-w-min' src={data!.photo} alt={data!.name} width={400} height={400} />
               <div className='flex flex-col justify-start items-start text-base px-3'>
                 <p className='font-black text-lg'>{data!.name}</p>
                 <div className='my-5 min-w-fit text-center'>

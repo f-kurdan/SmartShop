@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import React from 'react'
 import { QueryClient, dehydrate } from 'react-query'
 
-export async function getStatincProps() {
+export const getStaticProps = async () => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(["products"], () => getProducts());
