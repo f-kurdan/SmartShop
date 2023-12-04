@@ -4,7 +4,6 @@ import Link from 'next/link'
 import React from 'react'
 
 const ProductsList = ({ products }: { products: productsList }) => {
-    products.forEach(p => console.log(p.id))
     return (
         <div className='flex flex-row gap-2 flex-wrap justify-start items-center'>
             {products.map((product) =>

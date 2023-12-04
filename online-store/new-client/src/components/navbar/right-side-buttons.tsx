@@ -11,10 +11,10 @@ const linkStyle = 'hover:bg-gradient-to-br hover:text-white hover:from-indigo-50
 const RightSideButtons = () => {
     return (
         <div className='flex flex-row absolute right-2 gap-1'>
-            <div className={`${linkStyle} hover:cursor-pointer  active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
+            <Link href={'/admin'} className={`${linkStyle} hover:cursor-pointer  active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
                 <WrenchScrewdriverIcon className={iconStyle} />
                 <h3 className={textStyle}>Админ</h3>
-            </div>
+            </Link>
             <Link href='/auth'>
                 <div className={`${linkStyle} hover:cursor-pointer active:from-purple-950 active:via-red-700 active:to-yellow-600 `}>
                     <ArrowLeftOnRectangleIcon className={`${iconStyle} rotate-180`} />
