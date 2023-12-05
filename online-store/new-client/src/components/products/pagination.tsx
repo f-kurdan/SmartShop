@@ -29,7 +29,7 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
                 <div className={` ${currentPage === page ? 'py-4 px-6 bg-pink-100 text-cyan-500' : 'bg-white py-3 px-5'} ${buttonStyle}`}>{page}</div>
             </Link>)
         }
-        else if ((page !== 1) && (page !== pages.length))
+        else if ((pages.length < 5) && (page !== 1) && (page !== pages.length))
             return (<Link href={createPageURL(page)} key={page}>
                 <div className={` ${currentPage === page ? 'py-4 px-6 bg-pink-100 text-cyan-500' : 'bg-white py-3 px-5'} ${buttonStyle}`}>{page}</div>
             </Link>)
