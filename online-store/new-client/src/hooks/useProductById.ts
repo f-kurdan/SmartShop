@@ -1,8 +1,8 @@
-import { getProductById } from '@/services/product.service'
+import { getProduct } from '@/services/product.service'
 import { useQuery } from 'react-query'
 
-const useProductById = (productId:string) => {
-  return useQuery(['products', productId], () => getProductById(productId))
+const useProductById = (sku:string) => {
+  return useQuery(['products', sku], () => getProduct(sku))
 }
 
 export default useProductById

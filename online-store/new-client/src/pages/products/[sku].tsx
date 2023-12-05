@@ -2,8 +2,9 @@ import GoBackButton from '@/components/go-back-button';
 import Carousel from '@/components/products/carousel';
 import ProductInfo from '@/components/products/product-info';
 import useProductById from '@/hooks/useProductById';
-import { getAllProducts, getProductById } from '@/services/product.service';
+import { getAllProducts, getProduct } from '@/services/product.service';
 import { montserrat } from '@/styles/fonts';
+import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import React from 'react'
 import { dehydrate, QueryClient } from 'react-query';
@@ -12,35 +13,37 @@ export async function getStaticPaths() {
   const products = await getAllProducts();
 
   const paths = products?.map(product => ({
-    params: { productId: product.id.toString() },
+    params: { sku: product.SKU },
   }))
 
   return { paths, fallback: false }
 }
 
-export async function getStaticProps({ params }: { params: { productId: string } }) {
+export async function getStaticProps({ params }: { params: { sku: string } }) {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(['products', params.productId], () => getProductById(params.productId))
+  await queryClient.prefetchQuery(['products', params.sku], () => getProduct(params.sku))
 
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
-      productId: params.productId,
+      sku: params.sku,
     },
 
     revalidate: 60 * 60
   }
 }
 
-const Product = ({ productId }: { productId: string }) => {
+const Product = ({ sku }: { sku: string }) => {
+  const searchParams = useSearchParams()
+  const params = new URLSearchParams(searchParams)
   const router = useRouter()
-  const { isLoading, data } = useProductById(productId);
+  const { isLoading, data } = useProductById(sku);
 
   return (
     <div className={`${montserrat.className} flex flex-col justify-around items-stretch m-5 gap-5 text-gray-700`}>
       <GoBackButton router={router} />
-      <div className='flex flex-row  bg-white  gap-10 p-10  justify-center items-stretch'>
+      <div className='flex flex-row  bg-white  gap-10 p-10  justify-center items-center'>
         {isLoading ? (<div>Идет загрузка</div>) : (
           (
             <>

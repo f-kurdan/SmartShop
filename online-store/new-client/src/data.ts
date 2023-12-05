@@ -10,13 +10,14 @@ export const categories = [
 export const products = [
     {
         "id": 1,
-        "SKU": 123456,
+        "SKU": '10115MAX128BLUE',
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый синий",
         "brand_id": 1,
         "price": "204 990 ₽",
         "photo": "/phones/iphone15.jpeg",
         "category_id": 1,
         "color_id": 21,
+        "variation_options": ["«титановый синий",],
         "characteristics": [
             {name: "Дисплей", value : '6,1" (2556x1179), OLED'},
             {name: "Процессор", value : 'A17 Pro'},
@@ -29,13 +30,14 @@ export const products = [
     },
     {
         "id": 2,
-        "SKU": 123456,
+        "SKU": '10115MAX128BG',
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
         "photo": "/phones/iphone15.jpeg",
         "category_id": 1,
         "color_id": 20,
+        "variation_options": ["титановый бежевый",],
         "characteristics": [
             {name: "Дисплей", value : '6,1" (2556x1179), OLED'},
             {name: "Процессор", value : 'A17 Pro'},
@@ -49,7 +51,7 @@ export const products = [
     },
     {
         "id": 3,
-        "SKU": 123456,
+        "SKU": '10115MAX256BG',
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -68,7 +70,7 @@ export const products = [
     },
     {
         "id": 4,
-        "SKU": 123456,
+        "SKU": '10115MAX512BG',
         "name": "Apple iPhone 15 Pro Max eSIM 512 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -89,7 +91,7 @@ export const products = [
     },
     {
         "id": 5,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -105,7 +107,7 @@ export const products = [
     },
     {
         "id": 6,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -121,7 +123,7 @@ export const products = [
     },
     {
         "id": 7,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -136,7 +138,7 @@ export const products = [
     },
     {
         "id": 8,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -156,7 +158,7 @@ export const products = [
     },
     {
         "id": 9,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -175,7 +177,7 @@ export const products = [
     },
     {
         "id": 10,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -193,7 +195,7 @@ export const products = [
     },
     {
         "id": 11,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 512 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -213,7 +215,7 @@ export const products = [
     },
     {
         "id": 12,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -228,7 +230,7 @@ export const products = [
     },
     {
         "id": 13,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -243,7 +245,7 @@ export const products = [
     },
     {
         "id": 14,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -258,7 +260,7 @@ export const products = [
     },
     {
         "id": 15,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -278,7 +280,7 @@ export const products = [
     },
     {
         "id": 16,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -297,7 +299,7 @@ export const products = [
     },
     {
         "id": 17,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -315,7 +317,7 @@ export const products = [
     },
     {
         "id": 18,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 512 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -335,7 +337,7 @@ export const products = [
     },
     {
         "id": 19,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -350,7 +352,7 @@ export const products = [
     },
     {
         "id": 20,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -365,7 +367,7 @@ export const products = [
     },
     {
         "id": 21,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -380,7 +382,7 @@ export const products = [
     },
     {
         "id": 22,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -400,7 +402,7 @@ export const products = [
     },
     {
         "id": 23,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -419,7 +421,7 @@ export const products = [
     },
     {
         "id": 24,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -437,7 +439,7 @@ export const products = [
     },
     {
         "id": 25,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 512 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -457,7 +459,7 @@ export const products = [
     },
     {
         "id": 26,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -472,7 +474,7 @@ export const products = [
     },
     {
         "id": 27,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -487,7 +489,7 @@ export const products = [
     },
     {
         "id": 28,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -502,7 +504,7 @@ export const products = [
     },
     {
         "id": 29,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -522,7 +524,7 @@ export const products = [
     },
     {
         "id": 30,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -541,7 +543,7 @@ export const products = [
     },
     {
         "id": 31,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -559,7 +561,7 @@ export const products = [
     },
     {
         "id": 32,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 512 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -579,7 +581,7 @@ export const products = [
     },
     {
         "id": 33,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -594,7 +596,7 @@ export const products = [
     },
     {
         "id": 34,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -609,7 +611,7 @@ export const products = [
     },
     {
         "id": 35,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -624,7 +626,7 @@ export const products = [
     },
     {
         "id": 36,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -644,7 +646,7 @@ export const products = [
     },
     {
         "id": 37,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -663,7 +665,7 @@ export const products = [
     },
     {
         "id": 38,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый синий»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -681,7 +683,7 @@ export const products = [
     },
     {
         "id": 39,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -696,7 +698,7 @@ export const products = [
     },
     {
         "id": 40,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -711,7 +713,7 @@ export const products = [
     },
     {
         "id": 41,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -726,7 +728,7 @@ export const products = [
     },
     {
         "id": 42,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -741,7 +743,7 @@ export const products = [
     },    
     {
         "id": 43,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": '6.1" Samsung Galaxy S23 128 ГБ черный',
         "brand_id": 2,
         "price": "74 999 ₽",
@@ -759,7 +761,7 @@ export const products = [
     },
     {
         "id": 44,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 128 ГБ, «титановый бежевый»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -778,7 +780,7 @@ export const products = [
     },
     {
         "id": 45,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Apple iPhone 15 Pro Max eSIM 256 ГБ, «титановый синий»",
         "brand_id": 1,
         "price": "204 990 ₽",
@@ -796,7 +798,7 @@ export const products = [
     },
     {
         "id": 46,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -811,7 +813,7 @@ export const products = [
     },
     {
         "id": 47,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -826,7 +828,7 @@ export const products = [
     },
     {
         "id": 48,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -841,7 +843,7 @@ export const products = [
     },
     {
         "id": 49,
-        "SKU": 123456,
+        "SKU": "12345",
         "name": "Наушники Apple AirPods 2, Bluetooth, вкладыши, белый ",
         "brand_id": 1,
         "price": "12 990 ₽",
@@ -856,8 +858,98 @@ export const products = [
     },    
     {
         "id": 50,
-        "SKU": 123456,
+        "SKU": '201S23128BLCK',
         "name": '6.1" Samsung Galaxy S23 128 ГБ черный',
+        "brand_id": 2,
+        "price": "74 999 ₽",
+        "photo": "/phones/galaxys23.webp",
+        "category_id": 1,
+        "characteristics": [
+            {name: "Дисплей", value : '6,1" (2556x1179), OLED'},
+            {name: "Процессор", value : 'Qualcomm Snapdragon 8 Gen2'},
+            {name:  "Память", value : '128Гб'},
+            {name: "Камеры", value : '50/12/10 Мп'},
+            {name: "Система", value : 'Android 13'},
+            {name: "Цвет", value : 'черный'},
+            {name: "Оперативная память", value : '8Гб'},
+        ],
+    },
+    {
+        "id": 51,
+        "SKU": '201S23128WHT',
+        "name": '6.1" Samsung Galaxy S23 128 ГБ белый',
+        "brand_id": 2,
+        "price": "74 999 ₽",
+        "photo": "/phones/galaxys23.webp",
+        "category_id": 1,
+        "characteristics": [
+            {name: "Дисплей", value : '6,1" (2556x1179), OLED'},
+            {name: "Процессор", value : 'Qualcomm Snapdragon 8 Gen2'},
+            {name:  "Память", value : '128Гб'},
+            {name: "Камеры", value : '50/12/10 Мп'},
+            {name: "Система", value : 'Android 13'},
+            {name: "Цвет", value : 'белый'},
+            {name: "Оперативная память", value : '8Гб'},
+        ],
+    },
+    {
+        "id": 52,
+        "SKU": '201S23256BLCK',
+        "name": '6.1" Samsung Galaxy S23 256 ГБ черный',
+        "brand_id": 2,
+        "price": "74 999 ₽",
+        "photo": "/phones/galaxys23.webp",
+        "category_id": 1,
+        "characteristics": [
+            {name: "Дисплей", value : '6,1" (2556x1179), OLED'},
+            {name: "Процессор", value : 'Qualcomm Snapdragon 8 Gen2'},
+            {name:  "Память", value : '128Гб'},
+            {name: "Камеры", value : '50/12/10 Мп'},
+            {name: "Система", value : 'Android 13'},
+            {name: "Цвет", value : 'черный'},
+            {name: "Оперативная память", value : '8Гб'},
+        ],
+    },
+    {
+        "id": 53,
+        "SKU": '201S23256WHT',
+        "name": '6.1" Samsung Galaxy S23 256 ГБ белый',
+        "brand_id": 2,
+        "price": "74 999 ₽",
+        "photo": "/phones/galaxys23.webp",
+        "category_id": 1,
+        "characteristics": [
+            {name: "Дисплей", value : '6,1" (2556x1179), OLED'},
+            {name: "Процессор", value : 'Qualcomm Snapdragon 8 Gen2'},
+            {name:  "Память", value : '128Гб'},
+            {name: "Камеры", value : '50/12/10 Мп'},
+            {name: "Система", value : 'Android 13'},
+            {name: "Цвет", value : 'черный'},
+            {name: "Оперативная память", value : '8Гб'},
+        ],
+    },
+    {
+        "id": 54,
+        "SKU": '201S23512WHT',
+        "name": '6.1" Samsung Galaxy S23 512 ГБ белый',
+        "brand_id": 2,
+        "price": "74 999 ₽",
+        "photo": "/phones/galaxys23.webp",
+        "category_id": 1,
+        "characteristics": [
+            {name: "Дисплей", value : '6,1" (2556x1179), OLED'},
+            {name: "Процессор", value : 'Qualcomm Snapdragon 8 Gen2'},
+            {name:  "Память", value : '128Гб'},
+            {name: "Камеры", value : '50/12/10 Мп'},
+            {name: "Система", value : 'Android 13'},
+            {name: "Цвет", value : 'черный'},
+            {name: "Оперативная память", value : '8Гб'},
+        ],
+    },
+    {
+        "id": 55,
+        "SKU": '201S23512BLCK',
+        "name": '6.1" Samsung Galaxy S23 512 ГБ черный',
         "brand_id": 2,
         "price": "74 999 ₽",
         "photo": "/phones/galaxys23.webp",

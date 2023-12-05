@@ -29,8 +29,9 @@ export function getProducts(page?: number, query?: string, categoriesId?: number
     return Promise.resolve({ products: filteredProducts.slice(productsStart, productsEnd), totalProducts: filteredProducts.length })
 }
 
-export function getProductById(productId: string) {
-    return Promise.resolve(products.find(p => p.id.toString() === productId))
+export function getProduct(sku:string) {
+    
+    return Promise.resolve(products.find(p => p.SKU === sku))
 }
 
 export function getAllProducts() {
