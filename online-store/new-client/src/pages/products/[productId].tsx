@@ -1,9 +1,8 @@
 import GoBackButton from '@/components/go-back-button';
-import ProductImageFiller from '@/components/products/fillers/product-image-filler';
+import Carousel from '@/components/products/carousel';
 import useProductById from '@/hooks/useProductById';
 import { getAllProducts, getProductById } from '@/services/product.service';
 import { montserrat } from '@/styles/fonts';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react'
 import { dehydrate, QueryClient } from 'react-query';
@@ -44,7 +43,7 @@ const Product = ({ productId }: { productId: string }) => {
         {isLoading ? (<div>Идет загрузка</div>) : (
           (
             <>
-              <Image className='max-h-96 max-w-min' src={data!.photo} alt={data!.name} width={400} height={400} />
+            <Carousel />
               <div className='flex flex-col justify-start items-start text-base px-3'>
                 <p className='font-black text-lg'>{data!.name}</p>
                 <div className='my-5 min-w-fit text-center'>
