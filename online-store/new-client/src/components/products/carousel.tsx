@@ -30,11 +30,11 @@ const Carousel = () => {
     }
 
     return (
-        <div className='transition-all duration-300 group relative'>
+        <div className='transition-all duration-300 group relative '>
             <div onClick={onLeftClick} className='transition-all duration-300 group-hover:block hidden cursor-pointer p-4 absolute left-1 top-1/2 rounded-full bg-white opacity-70' >
                 <ArrowLeftIcon width={20} height={20} />
             </div>
-            <Image className='max-h-96 max-w-min object-cover transition duration-500' src={urls[currentIndex]} alt={'data!.name'} width={400} height={400} />
+            <Image className='max-h-96 max-w-min object-cover' src={urls[currentIndex]} alt={'data!.name'} width={400} height={400} />
             <div onClick={onRightClick} className='group-hover:block hidden cursor-pointer p-4 absolute right-1 top-1/2 rounded-full bg-white opacity-70' >
                 <ArrowRightIcon width={20} height={20} />
             </div>

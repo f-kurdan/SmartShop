@@ -1,5 +1,6 @@
 import GoBackButton from '@/components/go-back-button';
 import Carousel from '@/components/products/carousel';
+import ProductInfo from '@/components/products/product-info';
 import useProductById from '@/hooks/useProductById';
 import { getAllProducts, getProductById } from '@/services/product.service';
 import { montserrat } from '@/styles/fonts';
@@ -43,20 +44,10 @@ const Product = ({ productId }: { productId: string }) => {
         {isLoading ? (<div>Идет загрузка</div>) : (
           (
             <>
-            <Carousel />
-              <div className='flex flex-col justify-start items-start text-base px-3'>
-                <p className='font-black text-lg'>{data!.name}</p>
-                <div className='my-5 min-w-fit text-center'>
-                  <p className='border-2 border-black border-solid  p-1 '>
-                    {data!.price}
-                  </p>
-                  <p className='bg-lime-400 hover:invert p-1 transition duration-400 hover:cursor-pointer'>Купить</p>
-                </div>
-                {!!data!.characteristics.length && data!.characteristics.map(char => (
-                  <p className='mb-3'><span className='font-black'>{char.name}: </span>{char.value}</p>
-                ))}
-              </div>
-
+              <Carousel />
+              <ProductInfo price={data!.price}
+                name={data!.name}
+                characteristics={data!.characteristics} />
             </>
           )
         )}
