@@ -1,10 +1,10 @@
 import React from 'react'
 
 const colors = ['white', 'black', 'blue', 'green']
-const storageSizes = ["128 Гб", "256 Гб", "512 Гб", "1 Тб"]
+const storageSizes = [128, 256, 512, 1]
 
 const ProductInfo = ({ price, name, characteristics } : {
-    price: string, name: string, characteristics: {
+    price?: string, name?: string, characteristics?: {
         name: string;
         value: string;
     }[] | {
@@ -25,7 +25,7 @@ const ProductInfo = ({ price, name, characteristics } : {
             <div className='flex flex-row gap-2 justify-center items-center mt-5'>
                 {storageSizes.map(size =>
                 (
-                    <div key={size} className='border-2 p-3 rounded-3xl cursor-pointer'>{size}</div>
+                    <div key={size} className='border-2 p-3 rounded-3xl cursor-pointer'>{size} {size > 32? `Гб` : 'Тб'}</div>
                 ))}
             </div>
             <div className='my-5 min-w-fit text-center'>
@@ -34,7 +34,7 @@ const ProductInfo = ({ price, name, characteristics } : {
                 </p>
                 <p className='bg-lime-400 hover:invert p-1 transition duration-400 hover:cursor-pointer'>Купить</p>
             </div>
-            {!!characteristics.length && characteristics.map(char => (
+            {!!characteristics?.length && characteristics.map(char => (
                 <p className='mb-3'><span className='font-black'>{char.name}: </span>{char.value}</p>
             ))}
         </div>

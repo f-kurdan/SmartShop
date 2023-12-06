@@ -8,7 +8,7 @@ import Pagination from './pagination'
 import ProductsList from './products-list'
 import GoToTopButton from './go-to-top-button'
 
-const Catalog = ({ products, categoryId, totalProducts }: { products: productsList, categoryId?: string, totalProducts?: number }) => {
+const Catalog = ({ products, totalProducts }: { products: productsList, totalProducts?: number }) => {
   const searchParams = useSearchParams()
   const params = new URLSearchParams(searchParams)
 

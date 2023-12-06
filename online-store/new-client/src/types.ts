@@ -5,24 +5,31 @@ export type category = { slug: string, name: string, src: string };
 export type productsList = 
     {
         id: number;
-        SKU: number;
+        SKU: string;
+        model: string,
         name: string;
         brand_id: Number
+        category_id:number,
         price: string;
         photo: string;
-        category_id: number;
+        color: string,
+        storage: number,  
         characteristics: {
             name: string;
             value: string;
         }[]
+        
     }[] | {
         id: number;
-        SKU: number;
+        SKU: string;
+        model: string,
         name: string;
         brand_id: Number
+        category_id:number,
         price: string;
         photo: string;
-        category_id: number;
+        color: string,
+        storage: number, 
         characteristics: {
             name: string;
             value: string;

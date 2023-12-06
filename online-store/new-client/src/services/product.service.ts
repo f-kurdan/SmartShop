@@ -1,6 +1,6 @@
 import { products } from "@/data";
 
-export function getProducts(page?: number, query?: string, categoriesId?: number[], brands?: number[], color?: number[], characteristics?: string[]) {
+export function getProducts(page?: number, query?: string, categoriesId?: number[], brands?: number[], color?: string[], characteristics?: string[]) {
     const productsEnd = page ? page * 12 : 12;
     const productsStart = productsEnd - 12
 
@@ -15,10 +15,10 @@ export function getProducts(page?: number, query?: string, categoriesId?: number
     }
 
     if (color) {
-        filteredProducts = filteredProducts.filter(p => color.some(id => id === p.color_id))
+        filteredProducts = filteredProducts.filter(p => color.some(color => color === p.color))
     }
 
-    if(characteristics) {
+    if (characteristics) {
         filteredProducts = filteredProducts.filter(product => product.characteristics.some(productChar => characteristics.some(char => productChar.value.includes(char))))
     }
 
@@ -29,9 +29,14 @@ export function getProducts(page?: number, query?: string, categoriesId?: number
     return Promise.resolve({ products: filteredProducts.slice(productsStart, productsEnd), totalProducts: filteredProducts.length })
 }
 
-export function getProduct(sku:string) {
-    
-    return Promise.resolve(products.find(p => p.SKU === sku))
+export function getProduct(model: string, color?: string, storageSize?: string) {
+    if (color && storageSize) {
+        console.log(products.find(p => (p.model.toLowerCase() === model)))
+        return Promise.resolve(products.find(p => (p.model.toLowerCase() === model.toLowerCase())
+            && (p.color === color) && (p.storage.toString() === storageSize)));
+    }
+    else 
+    return Promise.resolve(products.find(p => p.model === model))
 }
 
 export function getAllProducts() {

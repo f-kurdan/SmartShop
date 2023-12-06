@@ -25,7 +25,7 @@ const Page = () => {
   const page = params.get('page') ?? 1  
   const categoriesId = params.get('category')?.split(';').map(id => +id)
   const brands = params.get('brand')?.split(';').map(id => +id)
-  const colors = params.get('color')?.split(';').map(id => +id)
+  const colors = params.get('color')?.split(';');
   const characteristics = params.get('characteristics')?.split(';').map(name => name)
   const { isLoading, data } = useProducts(+page, query, categoriesId, brands, colors, characteristics);  
 
