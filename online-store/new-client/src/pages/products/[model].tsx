@@ -39,7 +39,7 @@ const Product = ({ model }: { model: string }) => {
   const params = new URLSearchParams(searchParams)
   const router = useRouter()
   const selectedColor = params?.get('color')?? "white";
-  const selectedStorageSize = params?.get('storage')?.toString()?? '128';
+  const selectedStorageSize = params?.get('storage')?.toString();
   const { isLoading, data } = useProduct(model, selectedColor, selectedStorageSize);
 
   console.log(data)

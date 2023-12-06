@@ -1,3 +1,4 @@
+import { useRouter, useSearchParams } from 'next/navigation'
 import React from 'react'
 
 const colors = ['white', 'black', 'blue', 'green']
@@ -12,13 +13,19 @@ const ProductInfo = ({ price, name, characteristics } : {
         value: string;
     }[]
 }) => {
+    const searchParams = useSearchParams()
+  const params = new URLSearchParams(searchParams)
+  const router = useRouter()
+  const selectedColor = params?.get('color')?? "white";
+  const selectedStorageSize = params?.get('storage')?.toString();
+
     return (
         <div className='flex flex-col justify-start items-start text-base px-3'>
             <p className='font-black text-lg'>{name}</p>
             <div className='flex flex-row gap-2 justify-center items-center mt-5'>
                 {colors.map(color =>
                 (
-                    <div key={color} className={`border-2 p-4 ${color === 'white' || color === 'black' ? `bg-${color}` : `bg-${color}-500`} rounded-full cursor-pointer`}></div>
+                    <div key={color} className={`border-2 p-4 ${color === 'white' || color === 'black' ? `bg-${color}` : `bg-${color}-500`}  ${color === selectedColor? "outline outline-[3] outline-blue-500" : ""} rounded-full cursor-pointer`}></div>
 
                 ))}
             </div>
