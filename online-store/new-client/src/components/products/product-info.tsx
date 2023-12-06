@@ -1,6 +1,9 @@
 import React from 'react'
 
-const ProductInfo = ({ price, name, characteristics }: {
+const colors = ['white', 'black', 'blue', 'green']
+const storageSizes = ["128 Гб", "256 Гб", "512 Гб", "1 Тб"]
+
+const ProductInfo = ({ price, name, characteristics } : {
     price: string, name: string, characteristics: {
         name: string;
         value: string;
@@ -13,14 +16,17 @@ const ProductInfo = ({ price, name, characteristics }: {
         <div className='flex flex-col justify-start items-start text-base px-3'>
             <p className='font-black text-lg'>{name}</p>
             <div className='flex flex-row gap-2 justify-center items-center mt-5'>
-                <div className='border-2 p-4 bg-white rounded-full cursor-pointer'></div>
-                <div className='border-2 p-4 bg-black rounded-full cursor-pointer'></div>
-                <div className='border-2 p-4 bg-blue-400 rounded-full cursor-pointer'></div>
+                {colors.map(color =>
+                (
+                    <div key={color} className={`border-2 p-4 ${color === 'white' || color === 'black' ? `bg-${color}` : `bg-${color}-500`} rounded-full cursor-pointer`}></div>
+
+                ))}
             </div>
             <div className='flex flex-row gap-2 justify-center items-center mt-5'>
-                <div className='border-2 p-2 rounded-3xl cursor-pointer'>128 Гб</div>
-                <div className='border-2 p-2 rounded-3xl cursor-pointer'>256 Гб</div>
-                <div className='border-2 p-2 rounded-3xl cursor-pointer'>512 Гб</div>
+                {storageSizes.map(size =>
+                (
+                    <div key={size} className='border-2 p-3 rounded-3xl cursor-pointer'>{size}</div>
+                ))}
             </div>
             <div className='my-5 min-w-fit text-center'>
                 <p className='border-2 border-black border-solid  p-1 '>
