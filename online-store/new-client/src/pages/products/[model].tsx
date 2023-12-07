@@ -42,8 +42,6 @@ const Product = ({ model }: { model: string }) => {
   const selectedStorageSize = params?.get('storage')?.toString();
   const { isLoading, data } = useProduct(model, selectedColor, selectedStorageSize);
 
-  console.log(data)
-
   return (
     <div className={`${montserrat.className} flex flex-col justify-around items-stretch m-5 gap-5 text-gray-700`}>
       <GoBackButton router={router} />
@@ -52,7 +50,9 @@ const Product = ({ model }: { model: string }) => {
           (
             <>
               <Carousel />
-              <ProductInfo price={data?.price}
+              <ProductInfo 
+              model={model}
+              price={data?.price}
                 name={data?.name}
                 characteristics={data?.characteristics} />
             </>
