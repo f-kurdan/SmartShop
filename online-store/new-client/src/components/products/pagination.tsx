@@ -46,15 +46,19 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
                     </Link>
                 ) : null}
             </div>
-            <Link href={createPageURL(1)}>
-                <div className={`py-3 px-5 ${currentPage === 1 ? 'py-4 px-6 bg-pink-100 text-cyan-500' : 'bg-white  py-3 px-5  '} ${buttonStyle}`}>{1}</div>
-            </Link>
-            {currentPage - 2 > 1 ? (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>) : null}
-            {links.length > 1 ? links.map(link => link) : null}
-            {currentPage + 2 < pages.length ? (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>) : null}
-            <Link href={createPageURL(pages.length)}>
-                <div className={`py-3 px-5 ${currentPage === pages.length ? 'py-4 px-6 bg-pink-100 text-cyan-500' : 'bg-white py-3 px-5 '} ${buttonStyle}`}>{pages.length}</div>
-            </Link>
+            {totalPages > 1 ?
+                (<>
+                    <Link href={createPageURL(1)}>
+                        <div className={`py-3 px-5 ${currentPage === 1 ? 'py-4 px-6 bg-pink-100 text-cyan-500' : 'bg-white  py-3 px-5  '} ${buttonStyle}`}>{1}</div>
+                    </Link>
+                    {currentPage - 2 > 1 ? (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>) : null}
+                    {links.length > 1 ? links.map(link => link) : null}
+                    {currentPage + 2 < pages.length ? (<div className={`py-3 px-5 bg-white ${buttonStyle}`}>...</div>) : null}
+                    <Link href={createPageURL(pages.length)}>
+                        <div className={`py-3 px-5 ${currentPage === pages.length ? 'py-4 px-6 bg-pink-100 text-cyan-500' : 'bg-white py-3 px-5 '} ${buttonStyle}`}>{pages.length}</div>
+
+                    </Link>
+                </>) : null}
             <div>
                 {nextPage ? (
                     <Link href={nextPage}>
