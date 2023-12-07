@@ -34,18 +34,18 @@ const ProductInfo = ({model, price, name, characteristics }: {model:string,
     }
 
     return (
-        <div className='flex flex-col w-[512px] justify-start items-start text-base px-3'>
+        <div className='flex flex-col w-[400px] justify-start items-start text-base px-3'>
             <p className='font-black text-lg w-full'>{name}</p>
             <div className='flex flex-row gap-2 justify-center items-center mt-5'>
                 {colors?.map(color =>
                 (
-                    <div onClick={() => changeColor(color)} key={color} className={`border-2 p-4 ${color === 'white' || color === 'black' ? `bg-${color}` : 'bg-'+ color + '-200'}  ${color === selectedColor ? "outline outline-[3] outline-blue-500" : ""} rounded-full cursor-pointer`}></div>
+                    <div onClick={() => changeColor(color)} key={color} className={`border-2 p-4 ${color === 'white' || color === 'black' ? `bg-${color}` : 'bg-'+ color + '-200'}  ${color === selectedColor ? "outline outline-[3] outline-cyan-200" : ""} rounded-full cursor-pointer`}></div>
                 ))}
             </div>
             <div className='flex flex-row gap-2 justify-center items-center mt-5'>
                 {storageSizes?.map(size =>
                 (
-                    <div onClick={() => changeStorageSize(size.toString())} key={size} className={`border-2 p-3 rounded-3xl cursor-pointer ${size === selectedStorageSize ? "outline outline-[3] outline-blue-500" : ""}`}>{size} {size > 32 ? `Гб` : 'Тб'}</div>
+                    <div onClick={() => changeStorageSize(size.toString())} key={size} className={`border-2 p-3 rounded-3xl cursor-pointer ${size === selectedStorageSize ? "outline outline-[3] outline-cyan-200" : ""}`}>{size} {size > 32 ? `Гб` : 'Тб'}</div>
                 ))}
             </div>
             <div className='my-5 min-w-fit text-center'>

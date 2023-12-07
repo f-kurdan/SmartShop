@@ -23,8 +23,6 @@ const Carousel = () => {
 
     const onRightClick = () => {
         const isLastImage = currentIndex === urls.length - 1;
-        console.log('currentIndex: ' + currentIndex)
-        console.log(currentIndex + 1)
         const newIndex = isLastImage ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex);
     }
