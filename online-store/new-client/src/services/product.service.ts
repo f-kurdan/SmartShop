@@ -31,7 +31,6 @@ export function getProducts(page?: number, query?: string, categoriesId?: number
 
 export function getProduct(model: string, color?: string, storageSize?: string) {
     if (color && storageSize) {
-        console.log(products.find(p => (p.model.toLowerCase() === model)))
         return Promise.resolve(products.find(p => (p.model.toLowerCase() === model.toLowerCase())
             && (p.color === color) && (p.storage.toString() === storageSize)));
     }

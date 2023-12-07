@@ -3,7 +3,6 @@ import { ChangeEvent } from "react"
 
 class FilterService {
     handleFilterChange = (e: ChangeEvent<HTMLInputElement>, params: URLSearchParams, router:AppRouterInstance, pathName:string) => {
-        console.log(`in handleFilterChange render: ${pathName}?${params.toString()} ${e.target.id}`)
         if (e.target.checked) {
             if (params.has(pathName)) {
                 const prevParams = params.get(pathName)?.toString();

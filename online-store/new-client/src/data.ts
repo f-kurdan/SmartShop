@@ -10,7 +10,7 @@ export const categories = [
 export const products = [
     {
         "id": 50,
-        "SKU": '201S23128BLCK',
+        "SKU": '201S23',
         "model": "Samsung_Galaxy_S23",
         "name": '6.1" Samsung Galaxy S23 128 ГБ черный',
         "brand_id": 2,
@@ -22,7 +22,7 @@ export const products = [
         "characteristics": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
-            { name: "Память", value: '128Гб' },
+            { name: "Память", value: '128 Гб' },
             { name: "Камеры", value: '50/12/10 Мп' },
             { name: "Система", value: 'Android 13' },
             { name: "Цвет", value: 'черный' },
@@ -31,7 +31,7 @@ export const products = [
     },
     {
         "id": 51,
-        "SKU": '201S23128WHT',
+        "SKU": '201S23',
         "model": "Samsung_Galaxy_S23",
         "name": '6.1" Samsung Galaxy S23 128 ГБ белый',
         "brand_id": 2,
@@ -43,7 +43,7 @@ export const products = [
         "characteristics": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
-            { name: "Память", value: '128Гб' },
+            { name: "Память", value: '128 Гб' },
             { name: "Камеры", value: '50/12/10 Мп' },
             { name: "Система", value: 'Android 13' },
             { name: "Цвет", value: 'белый' },
@@ -52,7 +52,7 @@ export const products = [
     },
     {
         "id": 52,
-        "SKU": '201S23256BLCK',
+        "SKU": '201S23',
         "model": "Samsung_Galaxy_S23",
 
         "name": '6.1" Samsung Galaxy S23 256 ГБ синий',
@@ -65,7 +65,7 @@ export const products = [
         "characteristics": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
-            { name: "Память", value: '128Гб' },
+            { name: "Память", value: '256 Гб' },
             { name: "Камеры", value: '50/12/10 Мп' },
             { name: "Система", value: 'Android 13' },
             { name: "Цвет", value: 'синий' },
@@ -74,7 +74,7 @@ export const products = [
     },
     {
         "id": 53,
-        "SKU": '201S23256WHT',
+        "SKU": '201S23',
         "model": "Samsung_Galaxy_S23",
 
         "name": '6.1" Samsung Galaxy S23 256 ГБ белый',
@@ -87,7 +87,7 @@ export const products = [
         "characteristics": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
-            { name: "Память", value: '128Гб' },
+            { name: "Память", value: '256 Гб' },
             { name: "Камеры", value: '50/12/10 Мп' },
             { name: "Система", value: 'Android 13' },
             { name: "Цвет", value: 'белый' },
@@ -96,7 +96,7 @@ export const products = [
     },
     {
         "id": 54,
-        "SKU": '201S23512WHT',
+        "SKU": '201S23',
         "model": "Samsung_Galaxy_S23",
         "name": '6.1" Samsung Galaxy S23 512 ГБ белый',
         "brand_id": 2,
@@ -108,7 +108,7 @@ export const products = [
         "characteristics": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
-            { name: "Память", value: '128Гб' },
+            { name: "Память", value: '512 Гб' },
             { name: "Камеры", value: '50/12/10 Мп' },
             { name: "Система", value: 'Android 13' },
             { name: "Цвет", value: 'белый' },
@@ -117,7 +117,7 @@ export const products = [
     },
     {
         "id": 55,
-        "SKU": '201S23512BLCK',
+        "SKU": '201S23',
         "model": "Samsung_Galaxy_S23",
         "name": '6.1" Samsung Galaxy S23 512 ГБ черный',
         "brand_id": 2,
@@ -129,7 +129,7 @@ export const products = [
         "characteristics": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
-            { name: "Память", value: '128Гб' },
+            { name: "Память", value: '512 Гб' },
             { name: "Камеры", value: '50/12/10 Мп' },
             { name: "Система", value: 'Android 13' },
             { name: "Цвет", value: 'черный' },
