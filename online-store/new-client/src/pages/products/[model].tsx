@@ -43,9 +43,9 @@ const Product = ({ model }: { model: string }) => {
   const { isLoading, data } = useProduct(model, selectedColor, selectedStorageSize);
 
   return (
-    <div className={`${montserrat.className} flex flex-col justify-around items-stretch m-5 gap-5 text-gray-700`}>
+    <div className={`${montserrat.className} flex flex-col w-4/5 justify-around items-stretch m-5 gap-5 text-gray-700`}>
       <GoBackButton router={router} />
-      <div className='flex flex-row  bg-white  gap-10 p-10  justify-center items-center'>
+      <div className='flex flex-row  bg-white  gap-5 p-10 w-full justify-center items-start'>
         {isLoading ? (<div>Идет загрузка</div>) : (
           (
             <>

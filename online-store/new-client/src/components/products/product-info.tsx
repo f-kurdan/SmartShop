@@ -1,19 +1,7 @@
-import { products } from '@/data'
+import { getColors, getStorageSizes } from '@/services/charachteristics.service'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import React from 'react'
 import { useQuery } from 'react-query'
-
-function getColors(model: string, storage: number) {
-    if (storage)
-        return Promise.resolve(products.filter(p => p.model === model && p.storage === storage).map(p => p.color).sort())
-    return Promise.resolve(products.filter(p => p.model === model).map(p => p.color).sort())
-}
-
-function getStorageSizes(model: string, color: string) {
-    if (color)
-        return Promise.resolve(products.filter(p => p.model === model && p.color === color ).map(p => p.storage))
-    return Promise.resolve(products.filter(p => p.model === model).map(p => p.storage))
-}
 
 const ProductInfo = ({model, price, name, characteristics }: {model:string,
     price?: string, name?: string, characteristics?: {
@@ -46,8 +34,8 @@ const ProductInfo = ({model, price, name, characteristics }: {model:string,
     }
 
     return (
-        <div className='flex flex-col justify-start items-start text-base px-3'>
-            <p className='font-black text-lg'>{name}</p>
+        <div className='flex flex-col w-[512px] justify-start items-start text-base px-3'>
+            <p className='font-black text-lg w-full'>{name}</p>
             <div className='flex flex-row gap-2 justify-center items-center mt-5'>
                 {colors?.map(color =>
                 (
