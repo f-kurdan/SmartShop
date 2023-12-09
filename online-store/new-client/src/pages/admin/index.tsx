@@ -1,4 +1,3 @@
-import CancelButton from '@/components/admin/cancel-button';
 import Dialog from '@/components/admin/dialog';
 import { HandlerContext } from '@/contexts/HandlerContexts';
 import { NameContext } from '@/contexts/NameContext';
@@ -14,11 +13,11 @@ const index = () => {
     e.preventDefault();
     if (e.target === e.currentTarget) {
       if (showCategoryModal)
-        setShowCategoryModal(show => show = false)
+        setShowCategoryModal(false)
       if (showBrandModal)
-        setShowBrandModal(show => show = false)
+        setShowBrandModal(false)
       if (showProductAddingModal)
-        setShowProductAddingModal(show => show = false)
+        setShowProductAddingModal(false)
     }
   }
 
@@ -43,7 +42,7 @@ const index = () => {
         Создать категорию
       </div>
       <HandlerContext.Provider value={handleCancelClick}>
-        <NameContext.Provider value='category' >
+        <NameContext.Provider  value='category' >
           <Dialog state={showCategoryModal}
             title='Создание категории' />
         </NameContext.Provider>
@@ -53,21 +52,15 @@ const index = () => {
       </div>
       <HandlerContext.Provider value={handleCancelClick}>
         <NameContext.Provider value='brand' >
-
           <Dialog state={showBrandModal}
             title='Создание бренда' />
         </NameContext.Provider>
-      </HandlerContext.Provider>
-      <HandlerContext.Provider value={handleCancelClick}>
-        <Dialog state={showCategoryModal}
-          title='Создание категории' />
       </HandlerContext.Provider>
       <div onClick={() => setShowProductAddingModal(true)} className='transition-all duration-300 text-white bg-cyan-300  p-4 text-center w-1/2 rounded-xl hover:cursor-pointer active:blur-sm'>
         Добавить товар
       </div>
       <HandlerContext.Provider value={handleCancelClick}>
         <NameContext.Provider value='product' >
-
           <Dialog state={showProductAddingModal}
             title='Добавить товар' />
         </NameContext.Provider>
