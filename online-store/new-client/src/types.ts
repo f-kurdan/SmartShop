@@ -14,7 +14,7 @@ export type productsList =
         photo: string;
         color: string,
         storage: number,  
-        characteristics: {
+        specifications: {
             name: string;
             value: string;
         }[]
@@ -30,7 +30,7 @@ export type productsList =
         photo: string;
         color: string,
         storage: number, 
-        characteristics: {
+        specifications: {
             name: string;
             value: string;
         }[]
@@ -43,7 +43,7 @@ export type brands = {
     logo: string;
 }[] | undefined
 
-export type characteristics = {
+export type specifications = {
     id: number;
     charactehcisticName: string;
     options: {

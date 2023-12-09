@@ -3,7 +3,7 @@ import React, { ChangeEvent, useRef } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import FilterButton from './filter-button';
 import GenericFilter from './genericFilter';
-import CharacteristicsFilter from './characteristics-filter';
+import SpecificationsFilter from './characteristics-filter';
 
 const Filter = () => {
   const searchParams = useSearchParams();
@@ -41,7 +41,7 @@ const Filter = () => {
       <GenericFilter onFilterChange={onChange}
         increment={increment}
         param={'color'} />
-      <CharacteristicsFilter onFilterChange={onChange} 
+      <SpecificationsFilter onFilterChange={onChange} 
       increment={increment}/>
       <FilterButton setNewCount={setNewCount}
         onClick={onClick}

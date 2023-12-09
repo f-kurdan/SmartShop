@@ -1,6 +1,6 @@
 import { products } from "@/data";
 
-export function getProducts(page?: number, query?: string, categoriesId?: number[], brands?: number[], color?: string[], characteristics?: string[]) {
+export function getProducts(page?: number, query?: string, categoriesId?: number[], brands?: number[], color?: string[], specifications?: string[]) {
     const productsEnd = page ? page * 12 : 12;
     const productsStart = productsEnd - 12
 
@@ -18,8 +18,8 @@ export function getProducts(page?: number, query?: string, categoriesId?: number
         filteredProducts = filteredProducts.filter(p => color.some(color => color === p.color))
     }
 
-    if (characteristics) {
-        filteredProducts = filteredProducts.filter(product => product.characteristics.some(productChar => characteristics.some(char => productChar.value.includes(char))))
+    if (specifications) {
+        filteredProducts = filteredProducts.filter(product => product.specifications.some(productChar => specifications.some(char => productChar.value.includes(char))))
     }
 
     if (query) {

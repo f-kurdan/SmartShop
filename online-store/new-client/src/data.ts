@@ -19,7 +19,7 @@ export const products = [
         "category_id": 1,
         "color": "black",
         "storage": 128,       
-        "characteristics": [
+        "specifications": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
             { name: "Память", value: '128 Гб' },
@@ -40,7 +40,7 @@ export const products = [
         "category_id": 1,
         "color": "white",
         "storage": 128,       
-        "characteristics": [
+        "specifications": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
             { name: "Память", value: '128 Гб' },
@@ -62,7 +62,7 @@ export const products = [
         "category_id": 1,
         "color": "blue",
         "storage": 256,       
-        "characteristics": [
+        "specifications": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
             { name: "Память", value: '256 Гб' },
@@ -84,7 +84,7 @@ export const products = [
         "category_id": 1,
         "color": "white",
         "storage": 256,       
-        "characteristics": [
+        "specifications": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
             { name: "Память", value: '256 Гб' },
@@ -105,7 +105,7 @@ export const products = [
         "category_id": 1,
         "color": "white",
         "storage": 512,
-        "characteristics": [
+        "specifications": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
             { name: "Память", value: '512 Гб' },
@@ -126,7 +126,7 @@ export const products = [
         "category_id": 1,
         "color": "black",
         "storage": 512,
-        "characteristics": [
+        "specifications": [
             { name: "Дисплей", value: '6,1" (2556x1179), OLED' },
             { name: "Процессор", value: 'Qualcomm Snapdragon 8 Gen2' },
             { name: "Память", value: '512 Гб' },

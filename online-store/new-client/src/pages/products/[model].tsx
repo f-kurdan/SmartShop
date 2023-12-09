@@ -54,7 +54,7 @@ const Product = ({ model }: { model: string }) => {
               model={model}
               price={data?.price}
                 name={data?.name}
-                characteristics={data?.characteristics} />
+                specifications={data?.specifications} />
             </>
           )
         )}
