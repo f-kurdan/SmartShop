@@ -78,11 +78,11 @@ const Search = () => {
                 onKeyDown={handleSearch}
                 defaultValue={searchParams.get('query')?.toString()}
             />
-            <MagnifyingGlassIcon onClick={onIconClick} className="absolute hover:cursor-pointer left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+            <MagnifyingGlassIcon onClick={onIconClick} className="absolute cursor-pointer left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             <div className='bg-white w-fit absolute top-full px-3 rounded-md shadow-md hidden group-focus-within:block hover:block'>
                 {!!searchOptions?.length && searchOptions.map((option, index) =>
                 (
-                    <div key={index} className='hover:cursor-pointer text-sm p-2 my-2 hover:bg-gradient-to-br hover:text-white hover:from-indigo-500 hover:via-sky-600 hover:to-blue-700 block active:from-purple-950 active:via-red-700 active:to-yellow-600 rounded-md ' onClick={() => onOptionClick(option.toLowerCase())}>{option}</div>
+                    <div key={index} className='cursor-pointer text-sm p-2 my-2 hover:bg-gradient-to-br hover:text-white hover:from-indigo-500 hover:via-sky-600 hover:to-blue-700 block active:from-purple-950 active:via-red-700 active:to-yellow-600 rounded-md ' onClick={() => onOptionClick(option.toLowerCase())}>{option}</div>
                 ))}
             </div>
         </div>

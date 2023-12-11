@@ -25,8 +25,8 @@ const SpecificationsFilter = ({ onFilterChange, increment }: { onFilterChange: (
                 {char.options.map(option => (
                     <div className='ml-2'>{
                         !!selectedspecifications?.length ?
-                            (<input defaultChecked={!!selectedspecifications?.includes(option.name)} onChange={onChange} className='mr-2 scale-125 hover:cursor-pointer' type="checkbox" name='specification' value={option.name} id={option.name} />) :
-                            (<input onChange={onChange} className='mr-2 scale-125 hover:cursor-pointer' type="checkbox" name='specification' value={option.name} id={option.name} />)
+                            (<input defaultChecked={!!selectedspecifications?.includes(option.name)} onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='specification' value={option.name} id={option.name} />) :
+                            (<input onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='specification' value={option.name} id={option.name} />)
                     }
                         <label htmlFor={option.name}>{option.name}</label>
                     </div>

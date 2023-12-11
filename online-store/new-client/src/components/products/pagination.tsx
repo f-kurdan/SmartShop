@@ -16,7 +16,7 @@ const Pagination = ({ totalProducts }: { totalProducts?: number }) => {
         return `${pathname}?${params.toString()}`;
     };
 
-    const buttonStyle = 'transition-all duration-300 p-3 bg-white rounded-xl hover:shadow-lg hover:shadow-black/30 hover:cursor-pointer active:blur-sm ';
+    const buttonStyle = 'transition-all duration-300 p-3 bg-white rounded-xl hover:shadow-lg hover:shadow-black/30 cursor-pointer active:blur-sm ';
 
     const prevPage = currentPage > 1 ? createPageURL(currentPage - 1) : null;
     const nextPage = currentPage < totalPages ? createPageURL(currentPage + 1) : null;

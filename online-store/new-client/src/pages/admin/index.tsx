@@ -38,7 +38,7 @@ const index = () => {
   return (
     <div onClick={(e) => onClickOutside(e)} className={`${montserrat.className} flex flex-col justify-start items-center px-10 py-14 w-11/12 h-screen my-2 ounded-sm border border-gray-200 bg-gray-50 shadow-lg text-gray-700 gap-y-16`}>
       <h1 className='font-bold text-5xl text-center text-gray-600 '>Панель администратора</h1>
-      <div onClick={() => setShowCategoryModal(true)} className='transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl hover:cursor-pointer active:blur-sm border-2 border-black '>
+      <div onClick={() => setShowCategoryModal(true)} className='transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black '>
         Добавить категорию
       </div>
       <HandlerContext.Provider value={handleCancelClick}>
@@ -47,7 +47,7 @@ const index = () => {
             title='Создание категории' />
         </NameContext.Provider>
       </HandlerContext.Provider>
-      <div onClick={() => setShowBrandModal(true)} className='transition-all duration-30 bg-lime-300  p-4 text-center w-1/2 rounded-xl hover:cursor-pointer active:blur-sm border-2 border-black'>
+      <div onClick={() => setShowBrandModal(true)} className='transition-all duration-30 bg-lime-300  p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black'>
         Добавить бренд
       </div>
       <HandlerContext.Provider value={handleCancelClick}>
@@ -56,7 +56,7 @@ const index = () => {
             title='Создание бренда' />
         </NameContext.Provider>
       </HandlerContext.Provider>
-      <div onClick={() => setShowProductAddingModal(true)} className='transition-all duration-300 bg-cyan-300  p-4 text-center w-1/2 rounded-xl hover:cursor-pointer active:blur-sm border-2 border-black '>
+      <div onClick={() => setShowProductAddingModal(true)} className='transition-all duration-300 bg-cyan-300  p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black '>
         Добавить товар
       </div>
       <HandlerContext.Provider value={handleCancelClick}>

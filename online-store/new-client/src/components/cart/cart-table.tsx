@@ -33,7 +33,7 @@ const CartTable = () => {
                         <td className="p-2"> 100</td>
                         <td className="p-2"> 1</td>
                         <td className="p-2"> 100</td>
-                        <td className="hover:cursor-pointer">
+                        <td className="cursor-pointer">
                             <TrashIcon className='w-5 h-5'/>
                         </td>
                     </tr>
@@ -47,7 +47,7 @@ const CartTable = () => {
                         <td className="p-2"> 100</td>
                         <td className="p-2"> 1</td>
                         <td className="p-2"> 100</td>
-                        <td className="hover:cursor-pointer">
+                        <td className="cursor-pointer">
                             <TrashIcon className='w-5 h-5' />
                         </td>
                     </tr>
@@ -61,7 +61,7 @@ const CartTable = () => {
                         <td className="p-2"> 100</td>
                         <td className="p-2"> 1</td>
                         <td className="p-2"> 100</td>
-                        <td className="hover:cursor-pointer">
+                        <td className="cursor-pointer">
                             <TrashIcon className='w-5 h-5' />
                         </td>
                     </tr>
@@ -75,7 +75,7 @@ const CartTable = () => {
                         <td className="p-2"> 100</td>
                         <td className="p-2"> 1</td>
                         <td className="p-2"> 100</td>
-                        <td className="hover:cursor-pointer">
+                        <td className="cursor-pointer">
                             <TrashIcon className='w-5 h-5' />
                         </td>
                     </tr>

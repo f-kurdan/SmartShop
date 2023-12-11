@@ -21,7 +21,7 @@ const ColorsFilter = ({ onFilterChange, increment }: { onFilterChange: (e: Chang
             <h2 className='font-bold mb-2'>Цвет</h2>
             {data?.map(color =>
             (<div key={color.id} className='ml-2'>
-                <input defaultChecked={!!selectedColors?.includes(color.id.toString())} onChange={onChange} className='mr-2 scale-125 hover:cursor-pointer' name='brand' type="checkbox" id={color.id.toString()} value={color.name} />
+                <input defaultChecked={!!selectedColors?.includes(color.id.toString())} onChange={onChange} className='mr-2 scale-125 cursor-pointer' name='brand' type="checkbox" id={color.id.toString()} value={color.name} />
                 <label htmlFor={color.name}>{color.name}</label>
             </div>))}
         </div>

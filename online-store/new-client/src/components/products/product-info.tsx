@@ -52,7 +52,7 @@ const ProductInfo = ({model, price, name, specifications }: {model:string,
                 <p className='border-2 border-black border-solid  p-1 '>
                     {price}
                 </p>
-                <p className='bg-lime-400 hover:invert p-1 transition duration-400 hover:cursor-pointer'>Купить</p>
+                <p className='bg-lime-400 hover:invert p-1 transition duration-400 cursor-pointer'>Купить</p>
             </div>
             {!!specifications?.length && specifications.map(char => (
                 <p className='mb-3'><span className='font-black'>{char.name}: </span>{char.value}</p>

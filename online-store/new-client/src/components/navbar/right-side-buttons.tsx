@@ -11,12 +11,12 @@ const linkStyle = 'hover:bg-gradient-to-br hover:text-white hover:from-indigo-50
 const RightSideButtons = () => {
     return (
         <div className='flex flex-row absolute right-2 gap-1'>
-            <Link href={'/admin'} className={`${linkStyle} hover:cursor-pointer  active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
+            <Link href={'/admin'} className={`${linkStyle} cursor-pointer  active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
                 <WrenchScrewdriverIcon className={iconStyle} />
                 <h3 className={textStyle}>Админ</h3>
             </Link>
             <Link href='/auth'>
-                <div className={`${linkStyle} hover:cursor-pointer active:from-purple-950 active:via-red-700 active:to-yellow-600 `}>
+                <div className={`${linkStyle} cursor-pointer active:from-purple-950 active:via-red-700 active:to-yellow-600 `}>
                     <ArrowLeftOnRectangleIcon className={`${iconStyle} rotate-180`} />
                     <h3 className={textStyle}>Войти</h3>
                 </div>
@@ -31,7 +31,7 @@ const RightSideButtons = () => {
                 </div>
             </Link>
             <Link href='/cart'>
-                <div className={`${linkStyle} hover:cursor-pointer active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
+                <div className={`${linkStyle} cursor-pointer active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
                     <ShoppingCartIcon className={iconStyle} />
                     <h3 className={textStyle}>Корзина</h3>
                 </div>

@@ -1,5 +1,4 @@
-import { HandlerContext } from '@/contexts/HandlerContexts'
-import { NameContext } from '@/contexts/NameContext'
+import { HandlerContext, NameContext } from '@/contexts/Contexts'
 import React, { useContext } from 'react'
 
 const SaveButton = () => {

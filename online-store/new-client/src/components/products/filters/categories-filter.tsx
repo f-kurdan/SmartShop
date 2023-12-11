@@ -21,7 +21,7 @@ const CategoriesFilter = ({ onFilterChange, increment }: { onFilterChange: (e: C
             <h2 className='font-bold mb-2'>Категории</h2>
             {categories?.map(category =>
             (<div key={category.id} className='ml-2'>
-                <input defaultChecked={!!selectedCategories?.includes(category.id.toString())} onChange={onChange} className='mr-2 scale-125 hover:cursor-pointer' type="checkbox" name='category' id={category.id.toString()} value={category.name} />
+                <input defaultChecked={!!selectedCategories?.includes(category.id.toString())} onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='category' id={category.id.toString()} value={category.name} />
                 <label htmlFor={category.id.toString()}>{category.name}</label>
             </div>))}
         </div>
