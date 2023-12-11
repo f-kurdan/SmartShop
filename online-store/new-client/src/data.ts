@@ -1,9 +1,9 @@
 export const categories = [
-    { id: 1, slug: "phones", name: "Телефоны", src: "/smartphone.avif" },
-    { id: 2, slug: "headphones", name: "Наушники", src: "/headphones.avif" },
-    { id: 3, slug: "tablet", name: "Планшеты", src: "/tablet.avif" },
+    { id: 1, slug: "phones", name: "Смартфоны", src: "/smartphone.avif" },
     { id: 4, slug: "watch", name: "Смарт-часы", src: "/smartwatch.avif" },
+    { id: 3, slug: "tablet", name: "Планшеты", src: "/tablet.avif" },
     { id: 5, slug: "laptop", name: "Ноутбуки", src: "/laptop.avif" },
+    { id: 2, slug: "headphones", name: "Наушники", src: "/headphones.jpg" },
     { id: 6, slug: "camera", name: "Камеры", src: "/camera.avif" },
 ]
 
