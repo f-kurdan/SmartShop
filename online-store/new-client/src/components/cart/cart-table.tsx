@@ -25,7 +25,7 @@ const CartTable = () => {
                 <tbody className="divide-y divide-gray-100 text-sm">
                     <tr>
                         <td className="px-4">
-                            <input type="checkbox" className="h-5 w-5 shadow-inner" value="id-1" />
+                            <input type="checkbox" className="accent-[#0cff0c] h-5 w-5 shadow-inner" value="id-1" />
                         </td>
                         <td className="p-2">
                             <div className="font-medium text-gray-800">Samsung Galaxy Note 4</div>
