@@ -1,5 +1,10 @@
 export type category = { slug: string, name: string, src: string };
 
+export type cartItem = {
+    product: product,
+    quantity: number;
+}
+
 export type product = {
     id: number;
         SKU: string;
@@ -7,7 +12,7 @@ export type product = {
         name: string;
         brand_id: Number
         category_id:number,
-        price: string;
+        price: number;
         photo: string;
         color: string,
         storage: number,  

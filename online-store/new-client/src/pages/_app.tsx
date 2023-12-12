@@ -5,6 +5,8 @@ import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
 import { useState } from 'react'
 import Head from 'next/head'
 import Script from 'next/script'
+import { Provider } from 'react-redux'
+import { store } from '@/redux/cart/store'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient({
@@ -22,13 +24,15 @@ export default function App({ Component, pageProps }: AppProps) {
           {`window.onunload = function(){ window.scrollTo(0,0)}`}
         </Script>
       </Head>
-      <QueryClientProvider client={queryClient}>
-        <Hydrate state={pageProps.dehydratedState}>
-          <RootLayout>
-            <Component {...pageProps} />
-          </RootLayout>
-        </Hydrate>
-      </QueryClientProvider>
+      <Provider store={store} >
+        <QueryClientProvider client={queryClient}>
+          <Hydrate state={pageProps.dehydratedState}>
+            <RootLayout>
+              <Component {...pageProps} />
+            </RootLayout>
+          </Hydrate>
+        </QueryClientProvider>
+      </Provider>
     </>
   )
 }
