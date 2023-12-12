@@ -1,5 +1,5 @@
 import { product } from "@/types";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 const initialState: product[] = []
@@ -12,7 +12,7 @@ export const cartSlice = createSlice({
         productAdded: (state, action) => {
             state.value.push(action.payload)
         },
-        productRemoved: (state, action: {payload: product, type: string}) => {
+        productRemoved: (state, action: PayloadAction<product>) => {
             state.value = [...state.value.filter(p => p.id !== action.payload.id)]
         }
       }  
