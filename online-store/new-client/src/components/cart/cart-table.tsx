@@ -7,7 +7,7 @@ const CartTable = () => {
     const cart = useAppSelector(state => state.cart.value)
     const dispatch = useAppDispatch()
 
-    return (
+    return cart.length ? (
         <table className='table-auto border border-solid rounded-lg shadow-md'>
             <thead className='bg-gray-50 text-xs font-semibold uppercase text-gray-400'>
                 <tr>
@@ -28,7 +28,7 @@ const CartTable = () => {
                 </tr>
             </thead>
             <tbody className="divide-y divide-gray-100 text-sm">
-                {!!cart.length && cart.map(item =>
+                {!!cart.length && cart.map((item, index) =>
                 (
                     <tr key={item.product.id}>
                         <td className="px-4">
@@ -51,7 +51,7 @@ const CartTable = () => {
                 ))}
             </tbody>
         </table>
-    )
+    ) : <div className='font-bold text-lg text-red-400 '>Корзина пуста</div>
 }
 
 export default CartTable
