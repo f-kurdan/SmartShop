@@ -7,39 +7,39 @@ export type cartItem = {
 
 export type product = {
     id: number;
-        SKU: string;
-        model: string,
+    SKU: string;
+    model: string,
+    name: string;
+    brand_id: Number
+    category_id: number,
+    price: number;
+    photo: string;
+    color: string,
+    storage: number,
+    specifications: {
         name: string;
-        brand_id: Number
-        category_id:number,
-        price: number;
-        photo: string;
-        color: string,
-        storage: number,  
-        specifications: {
-            name: string;
-            value: string;
-        }[]
+        value: string;
+    }[]
 }
 
-export type productsList = 
+export type productsList =
     {
         id: number;
         SKU: string;
         model: string,
         name: string;
         brand_id: Number
-        category_id:number,
-        price: string;
+        category_id: number,
+        price: number;
         photo: string;
         color: string,
-        storage: number,  
+        storage: number,
         specifications: {
             name: string;
             value: string;
         }[]
-        
-    }[] 
+
+    }[]
 
 export type brands = {
     id: number;

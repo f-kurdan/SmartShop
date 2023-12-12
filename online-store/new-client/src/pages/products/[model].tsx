@@ -51,10 +51,7 @@ const Product = ({ model }: { model: string }) => {
             <>
               <Carousel />
               <ProductInfo 
-              model={model}
-              price={data?.price}
-                name={data?.name}
-                specifications={data?.specifications} />
+              data={data} />
             </>
           )
         )}
