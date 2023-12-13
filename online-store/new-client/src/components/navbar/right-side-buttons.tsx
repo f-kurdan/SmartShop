@@ -37,9 +37,9 @@ const RightSideButtons = () => {
             <Link href='/cart'>
                 <div className={`${linkStyle} relative cursor-pointer active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
                     <ShoppingCartIcon className={iconStyle} />
-                    <div className='absolute flex flex-row justify-center items-center bg-lime-200 right-0 top-0 p-3 text-sm  w-5 h-5 rounded-full'>
+                    {!!count ? <div className='absolute flex flex-row justify-center items-center bg-lime-200 right-0 top-0 p-3 w-5 h-5  text-sm rounded-full'>
                         <span>{count}</span>
-                    </div>
+                    </div> : ''}
                     <h3 className={textStyle}>Корзина</h3>
                 </div>
             </Link>

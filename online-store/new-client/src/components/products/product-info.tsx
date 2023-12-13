@@ -40,15 +40,15 @@ const ProductInfo = ({ data }: {
         <div className='flex flex-col w-[400px] justify-start items-start text-base px-3'>
             <p className='font-black text-lg w-full'>{data?.name}</p>
             <div className='flex flex-row gap-2 justify-center items-center mt-5'>
-                {colors?.map(color =>
+                {colors?.map((color, index )=>
                 (
-                    <div onClick={() => changeColor(color)} key={color} className={`border-2 p-4 ${color === 'white' || color === 'black' ? `bg-${color}` : 'bg-' + color + '-200'}  ${color === selectedColor ? "outline outline-[3] outline-cyan-200" : ""} rounded-full cursor-pointer`}></div>
+                    <div onClick={() => changeColor(color)} key={index} className={`border-2 p-4 ${color === 'white' || color === 'black' ? `bg-${color}` : 'bg-' + color + '-200'}  ${color === selectedColor ? "outline outline-[3] outline-cyan-200" : ""} rounded-full cursor-pointer`}></div>
                 ))}
             </div>
             <div className='flex flex-row gap-2 justify-center items-center mt-5'>
-                {storageSizes?.map(size =>
+                {storageSizes?.map((size, index) =>
                 (
-                    <div onClick={() => changeStorageSize(size.toString())} key={size} className={`border-2 p-3 rounded-3xl cursor-pointer ${size === selectedStorageSize ? "outline outline-[3] outline-cyan-200" : ""}`}>{size} {size > 32 ? `Гб` : 'Тб'}</div>
+                    <div onClick={() => changeStorageSize(size.toString())} key={index} className={`border-2 p-3 rounded-3xl cursor-pointer ${size === selectedStorageSize ? "outline outline-[3] outline-cyan-200" : ""}`}>{size} {size > 32 ? `Гб` : 'Тб'}</div>
                 ))}
             </div>
             <div className='flex flex-col justify-center items-start my-5 min-w-fit text-center'>
@@ -67,7 +67,7 @@ const ProductInfo = ({ data }: {
                 </div>
             </div>
             {!!data?.specifications?.length && data?.specifications.map(char => (
-                <p className='mb-3'><span className='font-black'>{char.name}: </span>{char.value}</p>
+                <p key={char.name} className='mb-3'><span className='font-black'>{char.name}: </span>{char.value}</p>
             ))}
         </div>
     )

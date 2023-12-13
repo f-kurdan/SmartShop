@@ -20,8 +20,8 @@ const SpecificationsFilter = ({ onFilterChange, increment }: { onFilterChange: (
     return (
         <>
             {specifications?.map(char =>
-            (<div>
-                <h2 key={char.id} className='font-bold mb-2'>{char.specificationName}</h2>
+            (<div key={char.id}>
+                <h2  className='font-bold mb-2'>{char.specificationName}</h2>
                 {char.options.map(option => (
                     <div className='ml-2'>{
                         !!selectedspecifications?.length ?
