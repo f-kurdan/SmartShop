@@ -23,7 +23,7 @@ export const cartSlice = createSlice({
         },
         productInstanceRemoved: (state, action: PayloadAction<cartItem>) => {
             const prod = state.value.findIndex(p => p.product.id === action.payload.product.id)
-            if (prod > 0) {
+            if (prod >= 0) {
                 state.value[prod].quantity -= 1;
                 if (state.value[prod].quantity === 0)
                     state.value = state.value.filter(item => item.product.id !== action.payload.product.id)
