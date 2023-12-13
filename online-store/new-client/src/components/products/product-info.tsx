@@ -3,6 +3,7 @@ import { productAdded, productInstanceRemoved } from '@/redux/cart/cartSlice'
 import { getColors, getStorageSizes } from '@/services/charachteristics.service'
 import { product } from '@/types'
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/solid'
+import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import React from 'react'
 import { useQuery } from 'react-query'
@@ -57,7 +58,7 @@ const ProductInfo = ({ data }: {
                 </p>
                 <div className='flex flex-row justify-center gap-4 items-stretch'>
                     {!!productQuantityInCart?.quantity ?
-                        (<p onClick={() => router.push('/cart')} className='bg-lime-400 hover:invert p-1 transition duration-400 cursor-pointer'>Перейти в корзину</p>)
+                        (<Link href={'/cart'} className='bg-lime-400 hover:invert p-1 transition duration-400 cursor-pointer'>Перейти в корзину</Link>)
                         : (<p onClick={() => dispatch(productAdded({ product: data!, quantity: 1 }))} className='bg-lime-400 hover:invert p-1 transition duration-400 cursor-pointer min-w-[6rem]'>Купить</p>)}
                     {!!productQuantityInCart?.quantity && (<div className='flex flex-row justify-center gap-2 items-center px-3 border-2 rounded-2xl border-gray-500 '>
                         <MinusIcon onClick={() => dispatch(productInstanceRemoved({ product: data!, quantity: 1 }))} width={20} height={20}  className='cursor-pointer active:blur-sm'/>
