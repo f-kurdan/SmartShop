@@ -6,7 +6,8 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Script from 'next/script'
 import { Provider } from 'react-redux'
-import { store } from '@/redux/cart/store'
+import { persistor, store } from '@/redux/cart/store'
+import { PersistGate } from 'redux-persist/integration/react'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient({
@@ -25,13 +26,15 @@ export default function App({ Component, pageProps }: AppProps) {
         </Script>
       </Head>
       <Provider store={store} >
-        <QueryClientProvider client={queryClient}>
-          <Hydrate state={pageProps.dehydratedState}>
-            <RootLayout>
-              <Component {...pageProps} />
-            </RootLayout>
-          </Hydrate>
-        </QueryClientProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <QueryClientProvider client={queryClient}>
+            <Hydrate state={pageProps.dehydratedState}>
+              <RootLayout>
+                <Component {...pageProps} />
+              </RootLayout>
+            </Hydrate>
+          </QueryClientProvider>
+        </PersistGate>
       </Provider>
     </>
   )
