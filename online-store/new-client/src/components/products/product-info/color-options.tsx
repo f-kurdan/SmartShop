@@ -23,7 +23,7 @@ const ColorOptions = ({model}:{model?: string }) => {
     <div className='flex flex-row gap-2 justify-center items-center mt-5'>
                 {colors?.map((color, index) =>
                 (
-                    <div onClick={() => changeColor(color)} key={index} className={`border-2 p-4 ${color === 'white' || color === 'black' ? `bg-${color}` : 'bg-' + color + '-200'}  ${color === selectedColor ? "outline outline-[3] outline-cyan-200" : ""} rounded-full cursor-pointer`}></div>
+                    <div onClick={() => changeColor(color)} key={index} className={`border-2 p-4 ${color === 'white' || color === 'black' ? `bg-${color}` : 'bg-' + color + '-200'}  ${color === selectedColor ? "outline outline-[3] outline-lime-300" : ""} rounded-full cursor-pointer`}></div>
                 ))}
             </div>
      )

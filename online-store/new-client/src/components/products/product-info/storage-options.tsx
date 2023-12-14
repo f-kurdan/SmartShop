@@ -22,7 +22,7 @@ const StorageOptions = ({ model }: { model?: string }) => {
         <div className='flex flex-row gap-2 justify-center items-center mt-5'>
             {storageSizes?.map((size, index) =>
             (
-                <div onClick={() => changeStorageSize(size.toString())} key={index} className={`border-2 p-3 rounded-3xl cursor-pointer ${size === selectedStorageSize ? "outline outline-[3] outline-cyan-200" : ""}`}>{size} {size > 32 ? `Гб` : 'Тб'}</div>
+                <div onClick={() => changeStorageSize(size.toString())} key={index} className={`border-2 p-3 rounded-3xl cursor-pointer ${size === selectedStorageSize ? "outline outline-[3] outline-lime-300" : ""}`}>{size} {size > 32 ? `Гб` : 'Тб'}</div>
             ))}
         </div>
     )
