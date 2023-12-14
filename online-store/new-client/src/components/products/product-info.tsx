@@ -41,7 +41,7 @@ const ProductInfo = ({ data }: {
         <div className='flex flex-col w-[400px] justify-start items-start text-base px-3'>
             <p className='font-black text-lg w-full'>{data?.name}</p>
             <div className='flex flex-row gap-2 justify-center items-center mt-5'>
-                {colors?.map((color, index )=>
+                {colors?.map((color, index) =>
                 (
                     <div onClick={() => changeColor(color)} key={index} className={`border-2 p-4 ${color === 'white' || color === 'black' ? `bg-${color}` : 'bg-' + color + '-200'}  ${color === selectedColor ? "outline outline-[3] outline-cyan-200" : ""} rounded-full cursor-pointer`}></div>
                 ))}
@@ -61,9 +61,9 @@ const ProductInfo = ({ data }: {
                         (<Link href={'/cart'} className='bg-lime-400 hover:invert p-1 transition duration-400 cursor-pointer'>Перейти в корзину</Link>)
                         : (<p onClick={() => dispatch(productAdded({ product: data!, quantity: 1 }))} className='bg-lime-400 hover:invert p-1 transition duration-400 cursor-pointer min-w-[6rem]'>Купить</p>)}
                     {!!productQuantityInCart?.quantity && (<div className='flex flex-row justify-center gap-2 items-center px-3 border-2 rounded-2xl border-gray-500 '>
-                        <MinusIcon onClick={() => dispatch(productInstanceRemoved({ product: data!, quantity: 1 }))} width={20} height={20}  className='cursor-pointer active:blur-sm'/>
+                        <MinusIcon onClick={() => dispatch(productInstanceRemoved({ product: data!, quantity: 1 }))} width={20} height={20} className='cursor-pointer active:blur-sm' />
                         <span className='border-l-2 border-r-2 border-s-gray-300 px-2'>{productQuantityInCart?.quantity}</span>
-                        <PlusIcon onClick={() => dispatch(productAdded({ product: data!, quantity: 1 }))} width={20} height={20} color='black' className=' cursor-pointer active:blur-sm'/>
+                        <PlusIcon onClick={() => dispatch(productAdded({ product: data!, quantity: 1 }))} width={20} height={20} color='black' className=' cursor-pointer active:blur-sm' />
                     </div>)}
                 </div>
             </div>
