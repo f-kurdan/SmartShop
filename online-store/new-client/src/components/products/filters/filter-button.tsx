@@ -15,7 +15,6 @@ const FilterButton = (
 
     setNewCount(buttonIncrement)
 
-
     return (
         <div className={`flex flex-row justify-center gap-2 items-center transition-all duration-300 sticky text-center rounded-md bg-black text-white p-2 active:outline active:outline-8 active:outline-purple-300 cursor-pointer hover:outline hover:outline-8 hover:outline-cyan-200 bottom-3`} onClick={onClick}>
             <AdjustmentsHorizontalIcon className={`${count ? 'animate-pulse' : ''}`} width={21} height={20} />

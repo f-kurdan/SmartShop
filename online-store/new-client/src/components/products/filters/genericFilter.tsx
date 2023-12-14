@@ -2,9 +2,9 @@ import { useBrands } from '@/hooks/useBrands'
 import useCategories from '@/hooks/useCategories'
 import useColors from '@/hooks/useColors'
 import { useSearchParams } from 'next/navigation'
-import React, {ChangeEvent} from 'react'
+import React, { ChangeEvent } from 'react'
 
-const GenericFilter = ({ onFilterChange, increment, param }: { onFilterChange: (e: ChangeEvent<HTMLInputElement>, searchParam: string) => void, increment: (toIncrement: boolean) => void, param:string }) => {
+const GenericFilter = ({ onFilterChange, increment, param }: { onFilterChange: (e: ChangeEvent<HTMLInputElement>, searchParam: string) => void, increment: (toIncrement: boolean) => void, param: string }) => {
     const hook = getHook(param)!
     const { data } = hook();
     const searchParams = useSearchParams();
@@ -12,23 +12,19 @@ const GenericFilter = ({ onFilterChange, increment, param }: { onFilterChange: (
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         onFilterChange(e, param);
-        if (e.target.checked) {
-            increment(true)
-        } else {
-            increment(false)
-        }
-    }
-    
-  return (
+        increment(e.target.checked)
+}
+
+return (
     <div>
-    <h2 className='font-bold mb-2'>{getTitle(param)}</h2>
-    {data?.map(option =>
-    (<div key={option.id} className='ml-2'>
-        <input defaultChecked={!!selectedCategories?.includes(option.id.toString())} onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='category' id={option.id.toString()} value={option.name} />
-        <label htmlFor={option.id.toString()}>{option.name}</label>
-    </div>))}
-</div>
-  )
+        <h2 className='font-bold mb-2'>{getTitle(param)}</h2>
+        {data?.map(option =>
+        (<div key={option.id} className='ml-2'>
+            <input defaultChecked={!!selectedCategories?.includes(option.id.toString())} onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='category' id={option.id.toString()} value={option.name} />
+            <label htmlFor={option.id.toString()}>{option.name}</label>
+        </div>))}
+    </div>
+)
 }
 
 const getHook = (param: string) => {
