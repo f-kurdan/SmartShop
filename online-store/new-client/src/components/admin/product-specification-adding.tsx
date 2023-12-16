@@ -6,8 +6,6 @@ type ProductSpec = { title: string, description: string, id: number }
 const ProductSpecificationAdding = () => {
     const [rows, setRows] = React.useState<ProductSpec[]>([])
 
-    console.log(rows)
-
     const handleAddRow = () => {
         setRows(rows => [...rows, { "title": "", "description": "", id: Date.now() }])
     }
