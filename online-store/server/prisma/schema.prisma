@@ -14,8 +14,10 @@ model User {
   id        Int      @id @default(autoincrement())
   username  String
   email     String   @unique
-  password  String   @<PASSWORD>
+  password  String   
   role      Role     @default(USER)
+  adress    UserAdress[]
+  order Order[]
 }
 
 model UserAdress {
@@ -39,13 +41,13 @@ model Product {
   SKU       String
   price     Int
   image    Image[]
-  brandId   Int
   brand     Brand  @relation(fields: [brandId], references: [id])
+  brandId   Int
   category  Category  @relation(fields: [categoryId], references: [id])
   categoryId Int 
   productInfo ProductInfo[]
-  productInventory ProductInventory @relation(fields: [productInventoryId], references: [id])
-  productInventoryId Int
+  productInventory ProductInventory?
+  order OrderItem?
 }
 
 model Image {
@@ -58,16 +60,16 @@ model Image {
 model ProductInventory {
   id        Int      @id @default(autoincrement())
   product   Product @relation(fields: [productId], references: [id])
-  productId Int
+  productId Int  @unique
   quantity  Int
 }
 
 model ProductInfo {
   id Int      @id @default(autoincrement())
-  name:       String,
-  description: String,
-  productId  Int
+  name       String
+  description String
   product Product @relation(fields: [productId], references: [id])
+  productId  Int
 }
 
 model Order {
@@ -79,7 +81,8 @@ model Order {
   shippingAdress String
   shippingMethod ShippingMehtod
   orderTotal  Int
-  orderStatus Strings
+  orderStatus String
+  orderItem OrderItem[]
 }
 
 enum ShippingMehtod {
@@ -95,22 +98,24 @@ enum PaymentMethod {
 model OrderItem {
   id        Int      @id @default(autoincrement())
   product Product @relation(fields: [productId], references: [id])
-  productId Int
+  productId Int @unique
   order Order @relation(fields: [orderId], references: [id])
   orderId Int
+  quantity Int
   price Int
 }
 
 model Category {
   id        Int      @id @default(autoincrement())
   name String
+  product Product[]
 
 }
 
 model Brand {
   id        Int      @id @default(autoincrement())
   name String
-
+  product Product[]
 }
 
 
