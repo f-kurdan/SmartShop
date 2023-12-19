@@ -107,14 +107,14 @@ model OrderItem {
 
 model Category {
   id        Int      @id @default(autoincrement())
-  name String
+  name String @unique
   product Product[]
 
 }
 
 model Brand {
   id        Int      @id @default(autoincrement())
-  name String
+  name String @unique
   product Product[]
 }
 

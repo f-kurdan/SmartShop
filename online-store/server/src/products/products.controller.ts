@@ -1,5 +1,4 @@
 import { Controller, Get, Post, HttpCode, Param, Body } from '@nestjs/common';
-import { Product } from 'src/products/interfaces/product.interface';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductsService } from './products.service';
 
@@ -7,7 +6,7 @@ import { ProductsService } from './products.service';
 export class ProductsController {
     constructor (private productService: ProductsService) {}
     @Get()
-    findAll (): Product[] {
+    findAll () {
         return this.productService.getAllProducts();
     }
 
