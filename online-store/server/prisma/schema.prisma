@@ -99,7 +99,6 @@ model OrderItem {
   order Order @relation(fields: [orderId], references: [id])
   orderId Int
   price Int
-
 }
 
 model Category {
