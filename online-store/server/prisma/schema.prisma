@@ -18,6 +18,16 @@ model User {
   role      Role     @default(USER)
 }
 
+model UserAdress {
+  id Int      @id @default(autoincrement())
+  user User     @relation(fields: [userId], references: [id])
+  userId Int
+  adressLine  String
+  city String
+  postalCode Int
+  country String
+}
+
 enum Role {
   USER
   ADMIN
@@ -28,7 +38,7 @@ model Product {
   name      String
   SKU       String
   price     Int
-  images    String[]
+  image    Image[]
   brandId   Int
   brand     Brand  @relation(fields: [brandId], references: [id])
   category  Category  @relation(fields: [categoryId], references: [id])
@@ -36,6 +46,13 @@ model Product {
   productInfo ProductInfo[]
   productInventory ProductInventory @relation(fields: [productInventoryId], references: [id])
   productInventoryId Int
+}
+
+model Image {
+  id Int      @id @default(autoincrement())
+  url String
+  product Product @relation(fields: [productId], references: [id])
+  productId Int
 }
 
 model ProductInventory {
@@ -87,11 +104,13 @@ model OrderItem {
 
 model Category {
   id        Int      @id @default(autoincrement())
+  name String
 
 }
 
 model Brand {
   id        Int      @id @default(autoincrement())
+  name String
 
 }
 
