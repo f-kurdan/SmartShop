@@ -16,17 +16,17 @@ model User {
   email     String   @unique
   password  String   
   role      Role     @default(USER)
-  adress    UserAdress[]
-  order Order[]
+  adresses  UserAdress[]
+  orders    Order[]
 }
 
 model UserAdress {
   id Int      @id @default(autoincrement())
   user User     @relation(fields: [userId], references: [id])
-  userId Int
-  adressLine  String
+  userId Int @map("user_id")
+  adressLine  String @map("adress_line")
   city String
-  postalCode Int
+  postalCode Int @map("postal_code")
   country String
 }
 
@@ -39,28 +39,22 @@ model Product {
   id        Int      @id @default(autoincrement())
   name      String
   SKU       String
+  slug      String @unique
   price     Int
-  image    Image[]
+  images    String[]
   brand     Brand  @relation(fields: [brandId], references: [id])
-  brandId   Int
+  brandId   Int @map("brand_id")
   category  Category  @relation(fields: [categoryId], references: [id])
-  categoryId Int 
-  productInfo ProductInfo[]
+  categoryId Int @map("category_id")
+  productInfo ProductInfo[] 
   productInventory ProductInventory?
-  order OrderItem?
-}
-
-model Image {
-  id Int      @id @default(autoincrement())
-  url String
-  product Product @relation(fields: [productId], references: [id])
-  productId Int
+  order OrderItem? 
 }
 
 model ProductInventory {
   id        Int      @id @default(autoincrement())
   product   Product @relation(fields: [productId], references: [id])
-  productId Int  @unique
+  productId Int  @unique @map("product_id")
   quantity  Int
 }
 
@@ -69,20 +63,20 @@ model ProductInfo {
   name       String
   description String
   product Product @relation(fields: [productId], references: [id])
-  productId  Int
+  productId  Int @map("product_id")
 }
 
 model Order {
   id        Int      @id @default(autoincrement())  
   user  User @relation(fields: [userId], references: [id])
-  userId Int
-  orderDate DateTime @default(now())
-  paymentMethod PaymentMethod 
-  shippingAdress String
-  shippingMethod ShippingMehtod
-  orderTotal  Int
-  orderStatus String
-  orderItem OrderItem[]
+  userId Int @map("user_id")
+  orderDate DateTime @default(now()) @map("order_date")
+  paymentMethod PaymentMethod @map("payment_method")
+  shippingAdress String @map("shipping_adress")
+  shippingMethod ShippingMehtod @map("shipping_method")
+  orderTotal  Int @map("order_total")
+  orderStatus String @map("order_status")
+  orderItem OrderItem[] 
 }
 
 enum ShippingMehtod {
@@ -98,9 +92,9 @@ enum PaymentMethod {
 model OrderItem {
   id        Int      @id @default(autoincrement())
   product Product @relation(fields: [productId], references: [id])
-  productId Int @unique
+  productId Int @unique @map("product_id")
   order Order @relation(fields: [orderId], references: [id])
-  orderId Int
+  orderId Int @map("order_id")
   quantity Int
   price Int
 }
@@ -109,6 +103,7 @@ model Category {
   id        Int      @id @default(autoincrement())
   name String @unique
   product Product[]
+  slug String @unique
 
 }
 
@@ -116,6 +111,7 @@ model Brand {
   id        Int      @id @default(autoincrement())
   name String @unique
   product Product[]
+  slug String @unique
 }
 
 

@@ -6,20 +6,20 @@ import { ProductsService } from './products.service';
 export class ProductsController {
     constructor (private productService: ProductsService) {}
     @Get()
-    findAll () {
-        return this.productService.getAllProducts();
+    getAll () {
+        return this.productService.findAllProducts();
     }
 
     @Get(':id')
-    FindOne(@Param('id') id: string) {
-        return `this action will return product with id: ${id}`
+    getOne(@Param('id') id: string) {
+        return this.productService.findOneProduct(Number(id))
     }
 
     @Post()
     @HttpCode(204)
     create(@Body() createProductDto: CreateProductDto) {
         console.log('Create new product' + `${createProductDto}`)
-        this.productService.create(createProductDto)
+        // this.productService.create(createProductDto)
     }
 
 }

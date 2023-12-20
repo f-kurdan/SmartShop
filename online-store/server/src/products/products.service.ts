@@ -6,14 +6,14 @@ import { CreateProductDto } from "./dto/create-product.dto";
 export class ProductsService {
     constructor(private prisma: PrismaService) {}
 
-    async getAllProducts() {
+    async findAllProducts() {
         return this.prisma.product.findMany();
     }
  
-    async getProduct(id: number) {
+    async findOneProduct(id: number) {
         return this.prisma.product.findUnique({
             where: {
-                id: id
+                id: id,
             }
         })
     }
@@ -23,8 +23,5 @@ export class ProductsService {
         // const newProduct = await this.prisma.product.create({
         //     data: 
         // })
-    }
-
-    getAllProducts() {
     }
 }
