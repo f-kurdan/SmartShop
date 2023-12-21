@@ -1,4 +1,9 @@
 export class CreateProductDto {
-    name: string; price: number; category: string; brand: string; payementMethod: string; shippingMethod: string; stock:number; images: string[]; specs: object[]
-    // specifications: Object[]
+    name: string; 
+    price: number; 
+    category: string;
+    brand: string;
+    quantity: number;
+    images: string[];
+    productInfo: Object[];
 }
