@@ -18,7 +18,7 @@ export class ProductsController {
     @Post()
     @HttpCode(204)
     create(@Body() createProductDto: CreateProductDto) {
-        console.log('Create new product' + `${createProductDto}`)
+        console.log('Create new product: ' + `${createProductDto.productInfo[0]}`)
         // this.productService.create(createProductDto)
     }
 
