@@ -1,26 +1,17 @@
 import { PrismaClient } from '@prisma/client';
+import convertToSlug from '../src/utils/convertToSlug';
 
 // initialize Prisma Client
 const prisma = new PrismaClient();
 
 async function main() {
+  const smartphonesCategory = 'Smartphones';
+  const brandName = 'Apple';
+  const phoneName = 'IPhone 15 Pro Max';
+  const images = ['public/phones/samsung_galaxy_s23_black/main.png',
+'public/phones/samsung_galaxy_s23_black/main.png']
   // create two dummy articles
 
-  const category = await prisma.category.upsert({
-    where: { id: 1},
-    update: {},
-    create: {
-      name: 'smartphones',
-    }
-  })
-
-  const brand = await prisma.brand.upsert({
-    where: { id: 1},
-    update: {},
-    create: {
-      name: 'Apple',
-    }
-  })
 
   const product1 = await prisma.product.upsert({
     where: { id: 1 },
@@ -28,9 +19,21 @@ async function main() {
     create: {
       name: 'IPhone 15 Pro Max White',
       price: 150000,
+      slug: convertToSlug('IPhone 15 Pro Max White'),
       SKU: '10515PROMAXWhite',
-      brandId: 1,
-      categoryId: 1,
+      images: images,
+      category: {
+        create: {
+          name: smartphonesCategory,
+          slug:  convertToSlug(smartphonesCategory)        
+        }
+      },
+      brand: {
+        create: {
+          name: brandName,
+          slug: convertToSlug(brandName)
+        }
+      }
     },
   });
 
@@ -41,12 +44,24 @@ async function main() {
       name: 'IPhone 15 Pro Max Black',
       price: 140000,
       SKU: '10515PROMAXBlack',
-      brandId: 1,
-      categoryId: 1,
+      images: images,
+      slug: convertToSlug('IPhone 15 Pro Max Black'),
+      category: {
+        connect: {
+          name: smartphonesCategory,
+          slug:  convertToSlug(smartphonesCategory)        
+        }
+      },
+      brand: {
+        connect: {
+          name: brandName,
+          slug: convertToSlug(brandName)
+        }
+      }
     },
   });
 
-  console.log({category, brand, product1, product2 });
+  console.log({product1, product2 });
 }
 
 // execute the main function
