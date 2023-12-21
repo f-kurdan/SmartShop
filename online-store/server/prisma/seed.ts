@@ -22,6 +22,12 @@ async function main() {
       slug: convertToSlug('IPhone 15 Pro Max White'),
       SKU: '10515PROMAXWhite',
       images: images,
+      quantity: 10,
+      productInfo: {
+        create: [
+          { name: 'CPU', description: "Apple A15 Bionic" },
+        ],
+      },
       category: {
         create: {
           name: smartphonesCategory,
@@ -46,6 +52,12 @@ async function main() {
       SKU: '10515PROMAXBlack',
       images: images,
       slug: convertToSlug('IPhone 15 Pro Max Black'),
+      quantity: 10,
+      productInfo: {
+        create: [
+          { name: 'CPU', description: "Apple A15 Bionic" },
+        ],
+      },
       category: {
         connect: {
           name: smartphonesCategory,
