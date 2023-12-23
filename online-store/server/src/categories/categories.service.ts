@@ -3,7 +3,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import convertToSlug from '../utils/convertToSlug';
 import { CreateCategoryDto } from './dto/create-category-dto';
 @Injectable()
-export class CategorysService {
+export class CategoriesService {
     constructor(private prisma: PrismaService) { }
 
     getAllCategories() {
@@ -31,6 +31,12 @@ export class CategorysService {
             data: {
                 name: dto.name,
             }
+        })
+    }
+
+    deleteCategory(id: string) {
+        return this.prisma.category.delete({
+            where: { id: +id }
         })
     }
 }
