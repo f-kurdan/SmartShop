@@ -33,6 +33,7 @@ export class UsersService {
                 username: dto.name,
                 email: dto.email,
                 password: dto.password,
+                phone: dto.phone,
             }
         })
     }
@@ -45,6 +46,12 @@ export class UsersService {
                 email: dto.email,
                 password: dto.password,
             }
+        })
+    }
+
+    deleteUser(id: string) {
+        return this.prisma.user.delete({
+            where: { id: +id }
         })
     }
 }
