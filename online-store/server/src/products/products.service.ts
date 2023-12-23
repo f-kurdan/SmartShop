@@ -19,6 +19,14 @@ export class ProductsService {
         })
     }
 
+    async findOneProductById(id: string) {
+        return this.prisma.product.findUnique({
+            where: {
+                id: +id,
+            }
+        })
+    }
+
     async createProduct(dto: CreateProductDto) {
         await this.prisma.product.create({
             data: {
@@ -47,10 +55,12 @@ export class ProductsService {
         })
     }
 
-    async update(id: number, dto: CreateProductDto) { 
+    
+
+    async updateProduct(id: string, dto: CreateProductDto) { 
         await this.prisma.product.update({
             where: {
-                id: id,
+                id: +id,
             },
             data: {
                 name: dto.name,
@@ -74,6 +84,14 @@ export class ProductsService {
                         create: dto.brand,
                     }
                 }
+            }
+        })
+    }
+
+    async deleteProduct(id: string) {
+        return this.prisma.product.delete({
+            where: {
+                id: +id,
             }
         })
     }
