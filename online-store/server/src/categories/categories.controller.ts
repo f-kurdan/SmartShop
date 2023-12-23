@@ -21,7 +21,7 @@ export class CategoriesController {
     return this.categorysService.createCategory(dto);
   }
 
-  @Patch()
+  @Patch("id")
   updateCategory(@Param('id', ParseIntPipe) id: string, dto: CreateCategoryDto) {
     return this.categorysService.updateCategory(id, dto)
   }
