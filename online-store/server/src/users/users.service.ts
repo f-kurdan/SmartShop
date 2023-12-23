@@ -36,4 +36,15 @@ export class UsersService {
             }
         })
     }
+
+    updateUser(id: string, dto: CreateUserDTO) {
+        return this.prisma.user.update({
+            where : { id: +id}, 
+            data: {
+                username: dto.name,
+                email: dto.email,
+                password: dto.password,
+            }
+        })
+    }
 }
