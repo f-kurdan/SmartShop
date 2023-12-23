@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param } from '@nestjs/common';
 import { ApiBody } from '@nestjs/swagger';
 import { BrandsService } from './brands.service';
 import { CreateBrandDto } from './dto/createBrandDto';
@@ -22,4 +22,9 @@ export class BrandsController {
   createBrand(@Body() dto: CreateBrandDto) {
     return this.brandsService.createBrand(dto);
   }
+
+  @Patch()
+    updateUser(@Param() id: string, dto: CreateBrandDto) {
+        return this.brandsService.updateBrand(id, dto)
+    }
 }

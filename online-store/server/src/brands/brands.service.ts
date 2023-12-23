@@ -25,4 +25,13 @@ export class BrandsService {
             }
         })
     }
+
+    updateBrand(id: string, dto: CreateBrandDto) {
+        return this.prisma.brand.update({
+            where : { id: +id}, 
+            data: {
+                name: dto.name,
+            }
+        })
+    }
 }
