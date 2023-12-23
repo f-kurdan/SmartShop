@@ -34,4 +34,10 @@ export class BrandsService {
             }
         })
     }
+
+    deleteBrand(id: string) {
+        return this.prisma.brand.delete({
+            where: { id: +id }
+        })
+    }
 }

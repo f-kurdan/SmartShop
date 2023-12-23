@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ApiBody } from '@nestjs/swagger';
 import { BrandsService } from './brands.service';
 import { CreateBrandDto } from './dto/create-brand-dto';
@@ -26,5 +26,10 @@ export class BrandsController {
   @Patch()
   updateBrand(@Param() id: string, dto: CreateBrandDto) {
     return this.brandsService.updateBrand(id, dto)
+  }
+
+  @Delete(':id')
+  deleteBrand(@Param('id') id: string) {
+    return this.brandsService.deleteBrand(id)
   }
 }
