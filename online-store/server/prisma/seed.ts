@@ -73,7 +73,30 @@ async function main() {
     },
   });
 
-  console.log({product1, product2 });
+  const user1 = await prisma.user.upsert({
+    where: { email: 'fdfd@fdfd.com' },
+    update: {},
+    create: {
+      email: 'fdfd@fdfd.com',
+      password: 'msdfokrr',
+      username: 'User1',
+      role: 'ADMIN',
+      phone: 88002235545,
+    },
+  })
+
+  const user2 = await prisma.user.upsert({
+    where: { email: 'wwww@fdfd.com' },
+    update: {},
+    create: {
+      email: 'wwww@fdfd.com',
+      password: 'qwruyy',
+      username: 'User2',
+      phone: 8800223536,
+    },
+  })
+
+  // console.log({product1, product2 });
 }
 
 // execute the main function
