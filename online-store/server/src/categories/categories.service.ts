@@ -24,4 +24,13 @@ export class CategorysService {
             }
         })
     }
+
+    updateCategory(id: string, dto: CreateCategoryDto) {
+        return this.prisma.category.update({
+            where : { id: +id}, 
+            data: {
+                name: dto.name,
+            }
+        })
+    }
 }
