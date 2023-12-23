@@ -1,4 +1,4 @@
-import { Controller, Get, Post, HttpCode, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, HttpCode, Param, Body, Put, Patch } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductsService } from './products.service';
 
@@ -6,20 +6,24 @@ import { ProductsService } from './products.service';
 export class ProductsController {
     constructor (private productService: ProductsService) {}
     @Get()
-    getAll () {
+    getAllProducts () {
         return this.productService.findAllProducts();
     }
 
-    @Get(':id')
-    getOne(@Param('id') id: string) {
-        return this.productService.findOneProduct(Number(id))
+    @Get(':slug')
+    getOneProduct(@Param('slug') slug: string) {
+        return this.productService.findOneProduct(slug)
     }
 
     @Post()
     @HttpCode(204)
-    create(@Body() createProductDto: CreateProductDto) {
-        console.log('Create new product: ' + `${createProductDto.productInfo[0]}`)
-        // this.productService.create(createProductDto)
+    createProduct(@Body() createProductDto: CreateProductDto) {
+        this.productService.createProduct(createProductDto)
+    }
+
+    @Patch(':id')
+    updateProduct(@Param("id") id: string, @Body() updateProductDTO: CreateProductDto) {
+        this.productService.update(Number(id), updateProductDTO)
     }
 
 }
