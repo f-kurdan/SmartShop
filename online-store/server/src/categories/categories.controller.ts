@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete} from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe} from '@nestjs/common'
 import { CreateCategoryDto } from './dto/create-category-dto';
 import { CategoriesService } from './categories.service';
 
@@ -12,7 +12,7 @@ export class CategoriesController {
   }
 
   @Get(':id')
-  getOneCategory(id: string) {
+  getOneCategory(@Param('id', ParseIntPipe)id: string) {
     return this.categorysService.getOneCategory(id)
   }
 
@@ -22,12 +22,12 @@ export class CategoriesController {
   }
 
   @Patch()
-  updateCategory(@Param() id: string, dto: CreateCategoryDto) {
+  updateCategory(@Param('id', ParseIntPipe) id: string, dto: CreateCategoryDto) {
     return this.categorysService.updateCategory(id, dto)
   }
 
   @Delete(':id')
-  deleteCategory(@Param('id') id: string) {
+  deleteCategory(@Param('id', ParseIntPipe) id: string) {
     return this.categorysService.deleteCategory(id)
   }
 }
