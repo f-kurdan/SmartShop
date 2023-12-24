@@ -29,6 +29,8 @@ const Page = () => {
   const specifications = params.get('specifications')?.split(';').map(name => name)
   const { isLoading, data } = useProducts(+page, query, categoriesId, brands, colors, specifications);  
 
+  console.log("products: " + data)
+
   return isLoading ? (<span>Идет загрузка...</span>) : (
     <Catalog products={data?.products!} 
     totalProducts={data?.totalProducts} 
