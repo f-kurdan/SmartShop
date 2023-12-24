@@ -2,15 +2,16 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
 import { CreateProductDto } from "./dto/create-product.dto";
 import convertToSlug from "../utils/convertToSlug";
+import { UpdateProductDto } from "./dto/update-product-dto";
 
 @Injectable()
 export class ProductsService {
-    constructor(private prisma: PrismaService) {}
+    constructor(private prisma: PrismaService) { }
 
     async findAllProducts() {
         return this.prisma.product.findMany();
     }
- 
+
     async findOneProduct(slug: string) {
         return this.prisma.product.findUnique({
             where: {
@@ -41,23 +42,29 @@ export class ProductsService {
                 },
                 category: {
                     connectOrCreate: {
-                        where: { slug: dto.category.slug },
-                        create: dto.category,
+                        where: { name: dto.category.name },
+                        create: {
+                            name: dto.category.name,
+                            slug: convertToSlug(dto.category.name)
+                        },
                     }
                 },
                 brand: {
                     connectOrCreate: {
-                        where: {slug: dto.brand.slug},
-                        create: dto.brand,
+                        where: { name: dto.brand.name },
+                        create: {
+                            name: dto.brand.name,
+                            slug: convertToSlug(dto.brand.name)
+                        },
                     }
                 }
             }
         })
     }
 
-    
 
-    async updateProduct(id: string, dto: CreateProductDto) { 
+
+    async updateProduct(id: string, dto: UpdateProductDto) {
         await this.prisma.product.update({
             where: {
                 id: +id,
@@ -80,7 +87,7 @@ export class ProductsService {
                 },
                 brand: {
                     connectOrCreate: {
-                        where: {slug: dto.brand.slug},
+                        where: { slug: dto.brand.slug },
                         create: dto.brand,
                     }
                 }
