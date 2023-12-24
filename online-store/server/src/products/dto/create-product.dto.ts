@@ -1,5 +1,12 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsNumber, IsObject, IsOptional, IsString, MinLength } from "class-validator";
+import { Type } from "class-transformer";
+import { IsArray, IsNotEmpty, IsNumber, IsObject, IsOptional, IsString, MinLength } from "class-validator";
+
+
+type ProductInfo = {
+    name: string;
+    description: string;
+}[]
 
 export class CreateProductDto {
     @ApiProperty()
@@ -16,14 +23,12 @@ export class CreateProductDto {
     @IsObject()
     category: {
         name: string;
-        slug: string;
     };
 
     @ApiProperty()
     @IsObject()
     brand: {
         name: string;
-        slug: string;
     };
 
     @ApiProperty()
@@ -35,9 +40,9 @@ export class CreateProductDto {
     images: string[];
 
     @ApiProperty()
-    @IsObject()
-    productInfo: {
+    @IsArray()
+    productInfo: [{
         name: string;
         description: string;
-    }
+    }]
 }
