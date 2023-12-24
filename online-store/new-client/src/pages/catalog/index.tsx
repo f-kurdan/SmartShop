@@ -27,11 +27,12 @@ const Page = () => {
   const brands = params.get('brand')?.split(';').map(id => +id)
   const colors = params.get('color')?.split(';');
   const specifications = params.get('specifications')?.split(';').map(name => name)
-  const { isLoading, data } = useProducts(+page, query, categoriesId, brands, colors, specifications);  
+  const { isLoading, data, isFetched } = useProducts(+page, query, categoriesId, brands, colors, specifications);  
 
-  console.log("products: " + data)
+  console.log("products zdes: " + data?.totalProducts)
+  console.log("error: " + isFetched)
 
-  return isLoading ? (<span>Идет загрузка...</span>) : (
+  return (
     <Catalog products={data?.products!} 
     totalProducts={data?.totalProducts} 
     />

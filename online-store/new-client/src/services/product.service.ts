@@ -1,15 +1,16 @@
 // import { products } from "@/data";
 
+import { env } from "process";
+
 export async function getProducts(page?: number, query?: string, categoriesId?: number[], brands?: number[], color?: string[], specifications?: string[]) {
     const productsEnd = page ? page * 12 : 12;
     const productsStart = productsEnd - 12
 
-    const res = await fetch(`http://localhost:5000/products`)
-    const products: [] = await res.json()
     console.log('env: '  + process.env.STOREAPI_URL)
-    console.log('products: ' + products)
-    let filteredProducts = products.concat().reverse();
-    console.log('filteredProducts: ' + filteredProducts)
+    const res = await fetch(process.env.STOREAPI_URL + `/products`)
+    const products: [] = await res.json()
+    // console.log(products[1])
+    let filteredProducts = products;
 
     // if (categoriesId) {
     //     filteredProducts = filteredProducts.filter(p => categoriesId.some(id => id === p.category_id));
@@ -31,7 +32,7 @@ export async function getProducts(page?: number, query?: string, categoriesId?: 
     //     filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
     // }
 
-    return { products: filteredProducts.slice(productsStart, productsEnd), totalProducts: filteredProducts.length }
+    return Promise.resolve({ products: filteredProducts, totalProducts: filteredProducts.length })
 }
 
 // export function getProduct(model: string, color?: string, storageSize?: string) {
