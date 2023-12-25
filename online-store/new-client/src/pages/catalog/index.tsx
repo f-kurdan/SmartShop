@@ -29,7 +29,7 @@ const Page = () => {
   const specifications = params.get('specifications')?.split(';').map(name => name)
   const { isLoading, data, isFetched } = useProducts(+page, query, categoriesId, brands, colors, specifications);  
 
-  console.log("products zdes: " + data?.totalProducts)
+  console.log("products zdes: " + data?.products)
   console.log("error: " + isFetched)
 
   return (

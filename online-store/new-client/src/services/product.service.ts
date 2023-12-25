@@ -1,15 +1,11 @@
 // import { products } from "@/data";
-
-import { env } from "process";
-
 export async function getProducts(page?: number, query?: string, categoriesId?: number[], brands?: number[], color?: string[], specifications?: string[]) {
     const productsEnd = page ? page * 12 : 12;
     const productsStart = productsEnd - 12
 
-    console.log('env: '  + process.env.STOREAPI_URL)
-    const res = await fetch(process.env.STOREAPI_URL + `/products`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products`)
     const products: [] = await res.json()
-    // console.log(products[1])
+    // console.log()
     let filteredProducts = products;
 
     // if (categoriesId) {

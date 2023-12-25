@@ -28,6 +28,10 @@ export class ProductsService {
         })
     }
 
+    // async findProductByCategory() {
+            
+    // }
+
     async createProduct(dto: CreateProductDto) {
         await this.prisma.product.create({
             data: {

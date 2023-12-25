@@ -9,8 +9,9 @@ const ProductsList = ({ products }: { products: productsList }) => {
     const params = new URLSearchParams(searchParams);
 
     const createURL = (model:string, color:string, storage:number) => {
-        params.set('color', color);
-        params.set('storage', storage.toString());
+        // console.log("list: ", model, color, storage)
+        // params.set('color', color);
+        // params.set('storage', storage.toString());
 
         return (`/products/${model}?${params}`)
     }
@@ -20,7 +21,7 @@ const ProductsList = ({ products }: { products: productsList }) => {
             {products.map((product) =>
             (<Link key={product.id} className='' href={createURL(product.model, product.color, product.storage)}>
                 <div className=' transition-all duration-300 flex flex-col gap-2 justify-evenly items-center p-5 bg-white hover:shadow-lg hover:shadow-black/30 cursor-pointer active:opacity-80 w-72 h-80'>
-                    <Image className='max-h-44 max-w-min' src={product.photo} alt={product.name} width={200} height={200} />
+                    <Image className='max-h-44 max-w-min' src={`${process.env.NEXT_PUBLIC_STOREAPI_URL}/${product.images[0]}`} alt={product.name} width={200} height={200} />
                     <div className='justify-self-end'>
                         <div className='text-sm font-bold text-center  hover:text-cyan-500 active:text-lime-400 '>
                             {product.name}</div>
