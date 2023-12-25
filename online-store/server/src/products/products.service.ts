@@ -28,7 +28,7 @@ export class ProductsService {
         })
     }
 
-    // async findProductByCategory() {
+    // async findProductByCategory(categorySlug: string) {
             
     // }
 
