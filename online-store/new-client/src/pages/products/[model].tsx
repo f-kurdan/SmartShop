@@ -11,30 +11,30 @@ import React from 'react'
 import { dehydrate, QueryClient } from 'react-query';
 import { getProduct, getProducts } from '../../services/product.service';
 
-export async function getStaticPaths() {
-  const products = await getProducts();
+// export async function getStaticPaths() {
+//   const products = await getProducts();
 
-  const paths = products?.products.map(product => ({
-    params: { slug: product.slug },
-  }))
+//   const paths = products?.products.map(product => ({
+//     params: { slug: product.slug },
+//   }))
 
-  return { paths, fallback: false }
-}
+//   return { paths, fallback: false }
+// }
 
-export async function getStaticProps({ params }: { params: { id: string } }) {
-  const queryClient = new QueryClient();
+// export async function getStaticProps({ params }: { params: { id: string } }) {
+//   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(['products', params.id, () => getProduct(params.id))
+//   await queryClient.prefetchQuery(['products', params.id, () => getProduct(params.id))
 
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-      id: params.id,
-    },
+//   return {
+//     props: {
+//       dehydratedState: dehydrate(queryClient),
+//       id: params.id,
+//     },
 
-    revalidate: 60 * 60
-  }
-}
+//     revalidate: 60 * 60
+//   }
+// }
 
 const Product = ({ model }: { model: string }) => {
   const searchParams = useSearchParams()
