@@ -7,14 +7,12 @@ const prisma = new PrismaClient();
 async function main() {
   const smartphonesCategory = 'Smartphones';
   const brandName = 'Apple';
-  const phoneName = 'IPhone 15 Pro Max';
-  const images = ['public/phones/samsung_galaxy_s23_black/main.png',
-'public/phones/samsung_galaxy_s23_black/main.png']
+  const images = ['public/phones/iphone15.jpeg']
   // create two dummy articles
 
 
   const product1 = await prisma.product.upsert({
-    where: { id: 1 },
+    where: { name: 'IPhone 15 Pro Max White' },
     update: {},
     create: {
       name: 'IPhone 15 Pro Max White',
@@ -26,6 +24,8 @@ async function main() {
       productInfo: {
         create: [
           { name: 'CPU', description: "Apple A15 Bionic" },
+          { name: 'color', description: "White"}
+
         ],
       },
       category: {
@@ -44,7 +44,7 @@ async function main() {
   });
 
   const product2 = await prisma.product.upsert({
-    where: { id: 2 },
+    where: { name: 'IPhone 15 Pro Max Black' },
     update: {},
     create: {
       name: 'IPhone 15 Pro Max Black',
@@ -56,6 +56,70 @@ async function main() {
       productInfo: {
         create: [
           { name: 'CPU', description: "Apple A15 Bionic" },
+          { name: 'color', description: "Black"}
+        ],
+      },
+      category: {
+        connect: {
+          name: smartphonesCategory,
+          slug:  convertToSlug(smartphonesCategory)        
+        }
+      },
+      brand: {
+        connect: {
+          name: brandName,
+          slug: convertToSlug(brandName)
+        }
+      }
+    },
+  });
+  
+
+  const product3 = await prisma.product.upsert({
+    where: { name: 'IPhone 15 Pro White' },
+    update: {},
+    create: {
+      name: 'IPhone 15 Pro White',
+      price: 140000,
+      SKU: '10515PROWhite',
+      images: images,
+      slug: convertToSlug('IPhone 15 Pro White'),
+      quantity: 10,
+      productInfo: {
+        create: [
+          { name: 'CPU', description: "Apple A15 Bionic" },
+          { name: 'color', description: "Black"}
+        ],
+      },
+      category: {
+        connect: {
+          name: smartphonesCategory,
+          slug:  convertToSlug(smartphonesCategory)        
+        }
+      },
+      brand: {
+        connect: {
+          name: brandName,
+          slug: convertToSlug(brandName)
+        }
+      }
+    },
+  });
+  
+  const product4 = await prisma.product.upsert({
+    where: { name: 'IPhone 15 Pro Black' },
+    update: {},
+    create: {
+      name: 'IPhone 15 Pro Black',
+      price: 140000,
+      SKU: '10515PROBlack',
+      images: images,
+      slug: convertToSlug('IPhone 15 Pro Black'),
+      quantity: 10,
+      productInfo: {
+        create: [
+          { name: 'CPU', description: "Apple A15 Bionic" },
+          { name: 'color', description: "Black"}
         ],
       },
       category: {
