@@ -34,7 +34,7 @@ const Page = () => {
 
   return (
     <Catalog products={data?.products!} 
-    totalProducts={data?.totalProducts} 
+    totalPages={data?.totalPages!} 
     />
   )
 }

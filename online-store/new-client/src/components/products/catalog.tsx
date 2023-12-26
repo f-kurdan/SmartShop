@@ -8,7 +8,7 @@ import Pagination from './pagination'
 import ProductsList from './products-list'
 import GoToTopButton from './go-to-top-button'
 
-const Catalog = ({ products, totalProducts }: { products: productsList, totalProducts?: number }) => {
+const Catalog = ({ products, totalPages }: { products: productsList, totalPages: number }) => {
   const searchParams = useSearchParams()
   const params = new URLSearchParams(searchParams)
 
@@ -18,7 +18,7 @@ const Catalog = ({ products, totalProducts }: { products: productsList, totalPro
       {products?.length ? (
         <div className='flex flex-col gap-2 w-2/3 min-h-fit mr-10'>
           <ProductsList products={products} />
-          <Pagination totalProducts={totalProducts} />
+          <Pagination totalPages={totalPages} />
         </div>
       ) : (<NoItems query={params.get('query')?.toString()} />)}
       <GoToTopButton />

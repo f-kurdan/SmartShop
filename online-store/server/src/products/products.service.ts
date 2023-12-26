@@ -11,7 +11,7 @@ export class ProductsService {
     async findProducts(page: number) {
         const prodsPerPage = 12;
         const offset = (page - 1) * prodsPerPage
-        const totalPages = (await this.prisma.product.findMany()).length / prodsPerPage;
+        const totalPages = Math.ceil((await this.prisma.product.findMany()).length / prodsPerPage);
         const prods = await this.prisma.product.findMany({
             skip: offset,
             take: prodsPerPage,
