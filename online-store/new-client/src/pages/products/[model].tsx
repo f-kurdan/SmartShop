@@ -3,32 +3,33 @@ import Carousel from '@/components/products/carousel';
 import ProductInfo from '@/components/products/product-info/product-info';
 import { ProductContext } from '@/contexts/Contexts';
 import useProduct from '@/hooks/useProductById';
-import { getAllProducts, getProduct } from '@/services/product.service';
+// import { getAllProducts, getProduct } from '@/services/product.service';
 import { montserrat } from '@/styles/fonts';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import React from 'react'
 import { dehydrate, QueryClient } from 'react-query';
+import { getProduct, getProducts } from '../../services/product.service';
 
 export async function getStaticPaths() {
-  const products = await getAllProducts();
+  const products = await getProducts();
 
-  const paths = products?.map(product => ({
-    params: { model: product.model },
+  const paths = products?.products.map(product => ({
+    params: { slug: product.slug },
   }))
 
   return { paths, fallback: false }
 }
 
-export async function getStaticProps({ params }: { params: { model: string } }) {
+export async function getStaticProps({ params }: { params: { id: string } }) {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(['products', params.model], () => getProduct(params.model))
+  await queryClient.prefetchQuery(['products', params.id, () => getProduct(params.id))
 
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
-      model: params.model,
+      id: params.id,
     },
 
     revalidate: 60 * 60
