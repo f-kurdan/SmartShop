@@ -9,36 +9,18 @@ export type product = {
     id: number;
     SKU: string;
     slug: string,
-    model: string,
     name: string;
-    brand_id: Number
-    category_id: number,
+    brandSlug: string,
+    categorySlug: string,
     price: number;
-    photo: string[];
+    images: string[];
     specifications: {
         name: string;
         value: string;
     }[]
 }
 
-export type productsList =
-    {
-        id: number;
-        SKU: string;
-        model: string,
-        name: string;
-        brand_id: Number
-        category_id: number,
-        price: number;
-        photo: string;
-        color: string,
-        storage: number,
-        specifications: {
-            name: string;
-            value: string;
-        }[]
-
-    }[]
+export type productsList = product[]
 
 export type brands = {
     id: number;

@@ -1,47 +1,26 @@
+import { product } from "../types";
+
 // import { products } from "@/data";
 export async function getProducts(page?: number, query?: string, categoriesId?: number[], brands?: number[], color?: string[], specifications?: string[]) {
-    const productsEnd = page ? page * 12 : 12;
-    const productsStart = productsEnd - 12
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products`)
-    const products: [] = await res.json()
-    // console.log()
-    let filteredProducts = products;
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products?page=${page}`)
+    const products: product[] = await res.json()
 
-    // if (categoriesId) {
-    //     filteredProducts = filteredProducts.filter(p => categoriesId.some(id => id === p.category_id));
-    // }
-
-    // if (brands) {
-    //     filteredProducts = filteredProducts.filter(p => brands.some(id => id === p.brand_id));
-    // }
-
-    // if (color) {
-    //     filteredProducts = filteredProducts.filter(p => color.some(color => color === p.color))
-    // }
-
-    // if (specifications) {
-    //     filteredProducts = filteredProducts.filter(product => product.specifications.some(productChar => specifications.some(char => productChar.value.includes(char))))
-    // }
-
-    // if (query) {
-    //     filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
-    // }
-
-    return Promise.resolve({ products: filteredProducts, totalProducts: filteredProducts.length })
+    return Promise.resolve({ products: products, totalProducts: products.length })
 }
 
-// export function getProduct(model: string, color?: string, storageSize?: string) {
-//     if (color && storageSize) {
-//         return Promise.resolve(products.find(p => (p.model.toLowerCase() === model.toLowerCase())
-//             && (p.color === color) && (p.storage.toString() === storageSize)));
-//     }
-//     else 
-//     return Promise.resolve(products.find(p => p.model === model))
-// }
+export async function getProduct(id:string) {
+    // if (color && storageSize) {
+    //     return Promise.resolve(products.find(p => (p.model.toLowerCase() === model.toLowerCase())
+    //         && (p.color === color) && (p.storage.toString() === storageSize)));
+    // }
+    // else 
+    const res = fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products${id}`)
+    return (await res).json()
+}
 
 // export function getAllProducts() {
-//     return Promise.resolve(products)
+//     return fetch('')
 // }
 
 // export function getProductsByName(string: string) {
