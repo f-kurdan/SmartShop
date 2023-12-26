@@ -8,8 +8,21 @@ import { UpdateProductDto } from "./dto/update-product-dto";
 export class ProductsService {
     constructor(private prisma: PrismaService) { }
 
-    async findAllProducts() {
-        return this.prisma.product.findMany();
+    async findProducts(page: number) {
+        const prodsPerPage = 12;
+        const offset = (page - 1) * prodsPerPage
+        const totalPages = (await this.prisma.product.findMany()).length / prodsPerPage;
+        const prods = await this.prisma.product.findMany({
+            skip: offset,
+            take: prodsPerPage,
+            include: {
+                brand: true,
+                category: true,
+                productInfo: true,
+            }
+        })
+
+        return { products: prods, totalPages: totalPages};
     }
 
     async findOneProduct(slug: string) {
@@ -29,7 +42,7 @@ export class ProductsService {
     }
 
     // async findProductByCategory(categorySlug: string) {
-            
+
     // }
 
     async createProduct(dto: CreateProductDto) {
