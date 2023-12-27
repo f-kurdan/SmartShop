@@ -10,12 +10,14 @@ export class ProductsController {
     @Get()
     async getProducts(
         @Query('page', ParseIntPipe) page: number,
-        @Query('searchTerm') searchTerm?: string,
+        @Query('search_term') searchTerm?: string,
+        @Query('category') categorySlug?: string,
+        @Query('brand') brandSlug?: string,
         @Query('specs') specs?: string,
         
     ) {
         const specsArr = specs?.split(',')
-        const products = await this.productService.findProducts(page, searchTerm, specsArr);
+        const products = await this.productService.findProducts(page, searchTerm, categorySlug, brandSlug, specsArr);
 
         if (!products.products)
             throw new Error("No products")

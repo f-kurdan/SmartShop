@@ -1,12 +1,12 @@
 import { product } from "../types";
 
 // import { products } from "@/data";
-export async function getProducts(page?: number, query?: string, categoriesId?: number[], brands?: number[], color?: string[], specifications?: string[]) {
+export async function getProducts(page?: number, query?: string, categoriesId?: number[], brands?: number[],  specifications?: string[]) {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products?page=${page}`)
     const data: { products: product[], totalPages: number } = await res.json()
 
-    return Promise.resolve({ products: data.products, totalPages: data.totalPages })
+    return { products: data.products, totalPages: data.totalPages }
 }
 
 export async function getProduct(id:string) {

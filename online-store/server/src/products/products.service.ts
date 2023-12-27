@@ -9,20 +9,31 @@ import { Prisma } from "@prisma/client";
 export class ProductsService {
     constructor(private prisma: PrismaService) { }
 
-    async findProducts(page: number, searchTerm: string, specs: string[]) {
-        const specsFilter: Prisma.ProductWhereInput = 
+    async findProducts(page: number, searchTerm: string, categorySlug?: string, brandSlug?: string, specs?: string[]) {
+        const categoryFilter: Prisma.ProductWhereInput = categorySlug ? {
+            category: {
+                slug: categorySlug
+            }
+        } : {}
 
-                {
-                    productInfo: {
-                        some: {
-                            description: {
-                                in: specs,
-                                mode: "insensitive",
-                            }
+        const brandFilter: Prisma.ProductWhereInput = brandSlug ? {
+            brand : {
+                slug: brandSlug
+            }
+        } : {}
+
+        const specsFilter: Prisma.ProductWhereInput = specs ?
+            {
+                productInfo: {
+                    some: {
+                        description: {
+                            in: specs,
+                            mode: "insensitive",
                         }
                     }
                 }
-        
+            } : {}
+
 
         const searchFilter: Prisma.ProductWhereInput = searchTerm ? {
             OR: [
@@ -47,7 +58,12 @@ export class ProductsService {
         const offset = (page - 1) * prodsPerPage
         const totalPages = Math.ceil((await this.prisma.product.findMany()).length / prodsPerPage);
         const prods = await this.prisma.product.findMany({
-            where: !!specs?.length ? {...searchFilter, ...specsFilter} : searchFilter ,
+            where: { 
+                ...searchFilter,
+                ...categoryFilter,
+                ...brandFilter, 
+                ...specsFilter,
+             },
             skip: offset,
             take: prodsPerPage,
             include: {
