@@ -9,16 +9,20 @@ import { Prisma } from "@prisma/client";
 export class ProductsService {
     constructor(private prisma: PrismaService) { }
 
-    async findProducts(page: number, searchTerm: string, categorySlug?: string, brandSlug?: string, specs?: string[]) {
-        const categoryFilter: Prisma.ProductWhereInput = categorySlug ? {
+    async findProducts(page: number, searchTerm: string, categoriesSlugs?: string[], brandsSlugs?: string[], specs?: string[]) {
+        const categoriesFilter: Prisma.ProductWhereInput = !categoriesSlugs?.length ? {
             category: {
-                slug: categorySlug
+                slug: {
+                    in: categoriesSlugs
+                }
             }
         } : {}
 
-        const brandFilter: Prisma.ProductWhereInput = brandSlug ? {
-            brand : {
-                slug: brandSlug
+        const brandsFilter: Prisma.ProductWhereInput = !brandsSlugs?.length ? {
+            brand: {
+                slug: {
+                    in: brandsSlugs
+                }
             }
         } : {}
 
@@ -58,12 +62,12 @@ export class ProductsService {
         const offset = (page - 1) * prodsPerPage
         const totalPages = Math.ceil((await this.prisma.product.findMany()).length / prodsPerPage);
         const prods = await this.prisma.product.findMany({
-            where: { 
+            where: {
                 ...searchFilter,
-                ...categoryFilter,
-                ...brandFilter, 
+                ...categoriesFilter,
+                ...brandsFilter,
                 ...specsFilter,
-             },
+            },
             skip: offset,
             take: prodsPerPage,
             include: {
