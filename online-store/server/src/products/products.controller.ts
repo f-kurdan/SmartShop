@@ -1,4 +1,4 @@
-import { Controller, Get, Post, HttpCode, Param, Body, Put, Patch, Delete, ParseIntPipe, Query } from '@nestjs/common';
+import { Controller, Get, Post, HttpCode, Param, Body, Put, Patch, Delete, ParseIntPipe, Query, ValidationPipe } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductsService } from './products.service';
 import { UpdateProductDto } from './dto/update-product-dto';
@@ -14,7 +14,7 @@ export class ProductsController {
         @Query('specs') specs?: string,
         
     ) {
-        const specsArr = specs.split(',')
+        const specsArr = specs?.split(',')
         const products = await this.productService.findProducts(page, searchTerm, specsArr);
 
         if (!products.products)
