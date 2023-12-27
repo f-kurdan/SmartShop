@@ -10,6 +10,21 @@ export class ProductsService {
     constructor(private prisma: PrismaService) { }
 
     async findProducts(page: number, searchTerm: string, specs: string[]) {
+        const specsFilter: Prisma.ProductWhereInput = 
+
+                {
+                    productInfo: {
+                        some: {
+                            description: {
+                                in: specs,
+                                mode: "insensitive",
+                            }
+                        }
+                    }
+                }
+            
+        
+
         const searchFilter: Prisma.ProductWhereInput = searchTerm ? {
             OR: [
                 {
@@ -19,19 +34,21 @@ export class ProductsService {
                             mode: "insensitive",
                         }
                     },
+                },
+                {
                     name: {
                         contains: searchTerm,
                         mode: "insensitive",
                     }
-                }
-            ]
+                },
+            ],
         } : {}
 
         const prodsPerPage = 12;
         const offset = (page - 1) * prodsPerPage
         const totalPages = Math.ceil((await this.prisma.product.findMany()).length / prodsPerPage);
         const prods = await this.prisma.product.findMany({
-            where: searchFilter,
+            where: !!specs.length ? {...searchFilter, ...specsFilter} : searchFilter ,
             skip: offset,
             take: prodsPerPage,
             include: {
