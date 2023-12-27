@@ -8,7 +8,10 @@ export class ProductsController {
     constructor(private productService: ProductsService) { }
 
     @Get()
-    async getProducts(@Query('page', ParseIntPipe) page: number) {
+    async getProducts(
+        @Query('page', ParseIntPipe) page: number,
+        
+    ) {
         const products = await this.productService.findProducts(page);
 
         if (!products.products)

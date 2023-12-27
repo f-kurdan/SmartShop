@@ -3,16 +3,35 @@ import { PrismaService } from "../prisma/prisma.service";
 import { CreateProductDto } from "./dto/create-product.dto";
 import convertToSlug from "../utils/convertToSlug";
 import { UpdateProductDto } from "./dto/update-product-dto";
+import { Prisma } from "@prisma/client";
 
 @Injectable()
 export class ProductsService {
     constructor(private prisma: PrismaService) { }
 
-    async findProducts(page: number) {
+    async findProducts(page: number, searchTerm: string, specs: string[]) {
+        const searchFilter: Prisma.ProductWhereInput = searchTerm ? {
+            OR: [
+                {
+                    category: {
+                        name: {
+                            contains: searchTerm,
+                            mode: "insensitive",
+                        }
+                    },
+                    name: {
+                        contains: searchTerm,
+                        mode: "insensitive",
+                    }
+                }
+            ]
+        } : {}
+
         const prodsPerPage = 12;
         const offset = (page - 1) * prodsPerPage
         const totalPages = Math.ceil((await this.prisma.product.findMany()).length / prodsPerPage);
         const prods = await this.prisma.product.findMany({
+            where: searchFilter,
             skip: offset,
             take: prodsPerPage,
             include: {
@@ -22,7 +41,7 @@ export class ProductsService {
             }
         })
 
-        return { products: prods, totalPages: totalPages};
+        return { products: prods, totalPages: totalPages };
     }
 
     async findOneProduct(slug: string) {
