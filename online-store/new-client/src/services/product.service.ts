@@ -16,11 +16,6 @@ export async function getProducts(page?: number, searchTerm?: string, categories
 }
 
 export async function getProduct(id:string) {
-    // if (color && storageSize) {
-    //     return Promise.resolve(products.find(p => (p.model.toLowerCase() === model.toLowerCase())
-    //         && (p.color === color) && (p.storage.toString() === storageSize)));
-    // }
-    // else 
     const res = fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products${id}`)
     return (await res).json()
 }
