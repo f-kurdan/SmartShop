@@ -13,7 +13,7 @@ const Filter = () => {
   const incRef = useRef<(toIncrement: boolean) => void>()
 
   const onChange = (e: ChangeEvent<HTMLInputElement>, searchParam: string) => {
-    filterService.handleFilterChange(e, params, router, searchParam);
+    filterService.handleFilterChange(e, params, searchParam);
   }
 
   const onClick = () => {

@@ -1,8 +1,7 @@
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { ChangeEvent } from "react"
 
 class FilterService {
-    handleFilterChange = (e: ChangeEvent<HTMLInputElement>, params: URLSearchParams, router:AppRouterInstance, pathName:string) => {
+    handleFilterChange = (e: ChangeEvent<HTMLInputElement>, params: URLSearchParams, pathName:string) => {
         if (e.target.checked) {
             if (params.has(pathName)) {
                 const prevParams = params.get(pathName)?.toString();
@@ -16,7 +15,7 @@ class FilterService {
             let paramsArr = params.get(pathName)?.split(';')
             paramsArr = paramsArr?.filter(p => !(p === e.target.id))
 
-            if (paramsArr && paramsArr.length)
+            if (paramsArr?.length)
                 params.set(pathName, paramsArr.join(';'));
             else
                 params.delete(pathName)

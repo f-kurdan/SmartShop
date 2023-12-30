@@ -5,8 +5,8 @@ export async function getProducts(page?: number, searchTerm?: string, categories
     const searchParams = new URLSearchParams();
     if (page) searchParams.append('page', page.toString());
     if (searchTerm) searchParams.append('search_term', searchTerm);
-    if (categories) searchParams.append('categories', categories.join('%2C'))
-    if (brands) searchParams.append('brands', brands.join('%2C'))
+    if (categories) searchParams.append('category', categories.join('%2C'))
+    if (brands) searchParams.append('brand', brands.join('%2C'))
     if (specifications) searchParams.append('specs', specifications.join('%2C'))
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products?${searchParams}`)

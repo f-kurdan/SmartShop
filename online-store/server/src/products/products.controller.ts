@@ -11,8 +11,8 @@ export class ProductsController {
     async getProducts(
         @Query('page', ParseIntPipe) page: number,
         @Query('search_term') searchTerm?: string,
-        @Query('categories') categoriesSlugs?: string,
-        @Query('brands') brandsSlugs?: string,
+        @Query('category') categoriesSlugs?: string,
+        @Query('brand') brandsSlugs?: string,
         @Query('specs') specs?: string,
     ) {
         const categoriesArr = categoriesSlugs?.split(',')
