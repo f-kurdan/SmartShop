@@ -5,15 +5,15 @@ class FilterService {
         if (e.target.checked) {
             if (params.has(pathName)) {
                 const prevParams = params.get(pathName)?.toString();
-                params.set(pathName, !!prevParams ? `${prevParams};${e.target.id}` : e.target.id);
+                params.set(pathName, !!prevParams ? `${prevParams};${e.target.value}` : e.target.value);
             }
             else {
-                params.set(pathName, e.target.id)
+                params.set(pathName, e.target.value)
             }
         }
         else {
             let paramsArr = params.get(pathName)?.split(';')
-            paramsArr = paramsArr?.filter(p => !(p === e.target.id))
+            paramsArr = paramsArr?.filter(p => !(p === e.target.value))
 
             if (paramsArr?.length)
                 params.set(pathName, paramsArr.join(';'));

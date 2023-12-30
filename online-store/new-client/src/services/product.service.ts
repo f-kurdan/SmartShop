@@ -1,13 +1,14 @@
 import { product } from "../types";
 
 // import { products } from "@/data";
-export async function getProducts(page?: number, searchTerm?: string, categories?: string[], brands?: string[],  specifications?: string[]) {
+export async function getProducts(page = 1, searchTerm?: string, categories?: string[], brands?: string[],  specifications?: string[]) {
     const searchParams = new URLSearchParams();
-    if (page) searchParams.append('page', page.toString());
+    console.log('page---------------------------------: ' + page)
+    searchParams.append('page', page ? page.toString() : (1).toString());
     if (searchTerm) searchParams.append('search_term', searchTerm);
-    if (categories) searchParams.append('category', categories.join('%2C'))
-    if (brands) searchParams.append('brand', brands.join('%2C'))
-    if (specifications) searchParams.append('specs', specifications.join('%2C'))
+    if (categories) searchParams.append('category', categories.join(';'))
+    if (brands) searchParams.append('brand', brands.join(';'))
+    if (specifications) searchParams.append('specs', specifications.join(';'))
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products?${searchParams}`)
     const data: { products: product[], totalPages: number } = await res.json()

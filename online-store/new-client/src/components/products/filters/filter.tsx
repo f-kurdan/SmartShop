@@ -35,9 +35,9 @@ const Filter = () => {
       <GenericFilter onFilterChange={onChange}
         increment={increment}
         param={'category'} />
-      <GenericFilter onFilterChange={onChange}
+      {/* <GenericFilter onFilterChange={onChange}
         increment={increment}
-        param={'brand'} />
+        param={'brand'} /> */}
       {/* <GenericFilter onFilterChange={onChange}
         increment={increment}
         param={'color'} /> */}

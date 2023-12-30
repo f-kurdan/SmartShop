@@ -10,7 +10,8 @@ export class ProductsService {
     constructor(private prisma: PrismaService) { }
 
     async findProducts(page: number, searchTerm: string, categoriesSlugs?: string[], brandsSlugs?: string[], specs?: string[]) {
-        const categoriesFilter: Prisma.ProductWhereInput = !categoriesSlugs?.length ? {
+        
+        const categoriesFilter: Prisma.ProductWhereInput = categoriesSlugs?.length ? {
             category: {
                 slug: {
                     in: categoriesSlugs
@@ -18,7 +19,7 @@ export class ProductsService {
             }
         } : {}
 
-        const brandsFilter: Prisma.ProductWhereInput = !brandsSlugs?.length ? {
+        const brandsFilter: Prisma.ProductWhereInput = brandsSlugs?.length ? {
             brand: {
                 slug: {
                     in: brandsSlugs
@@ -77,6 +78,7 @@ export class ProductsService {
             }
         })
 
+        console.log( prods?.length? 'prods' + prods : 'no prods')
         return { products: prods, totalPages: totalPages };
     }
 

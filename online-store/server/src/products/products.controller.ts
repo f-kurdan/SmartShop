@@ -9,15 +9,15 @@ export class ProductsController {
 
     @Get()
     async getProducts(
-        @Query('page', ParseIntPipe) page: number,
+        @Query('page', ParseIntPipe) page?: number,
         @Query('search_term') searchTerm?: string,
         @Query('category') categoriesSlugs?: string,
         @Query('brand') brandsSlugs?: string,
         @Query('specs') specs?: string,
     ) {
-        const categoriesArr = categoriesSlugs?.split(',')
-        const brandsArr = brandsSlugs?.split(',')
-        const specsArr = specs?.split(',')
+        const categoriesArr = categoriesSlugs?.split(';')
+        const brandsArr = brandsSlugs?.split(';')
+        const specsArr = specs?.split(';')
         const products = await this.productService.findProducts(page, searchTerm, categoriesArr, brandsArr, specsArr);
 
         if (!products.products)

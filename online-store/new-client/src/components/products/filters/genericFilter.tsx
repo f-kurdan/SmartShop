@@ -8,7 +8,7 @@ const GenericFilter = ({ onFilterChange, increment, param }: { onFilterChange: (
     const hook = getHook(param)!
     const { data } = hook();
     const searchParams = useSearchParams();
-    const selectedCategories = searchParams.get(param)?.split(';')
+    const selectedParams = searchParams.get(param)?.split(';')
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         onFilterChange(e, param);
@@ -20,7 +20,7 @@ const GenericFilter = ({ onFilterChange, increment, param }: { onFilterChange: (
             <h2 className='font-bold mb-2'>{getTitle(param)}</h2>
             {data?.map(option =>
             (<div key={option.id} className='ml-2'>
-                <input defaultChecked={!!selectedCategories?.includes(option.id.toString())} onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='category' id={option.id.toString()} value={option.slug} />
+                <input defaultChecked={!!selectedParams?.includes(option.slug)} onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='category' id={option.id.toString()} value={option.slug} />
                 <label htmlFor={option.id.toString()}>{option.name}</label>
             </div>))}
         </div>

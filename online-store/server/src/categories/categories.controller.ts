@@ -4,31 +4,31 @@ import { CategoriesService } from './categories.service';
 
 @Controller('categories')
 export class CategoriesController {
-  constructor(private readonly categorysService: CategoriesService) { }
+  constructor(private readonly categoriesService: CategoriesService) { }
 
   @Get()
   getAllCategorys() {
-    return this.categorysService.getAllCategories()
+    return this.categoriesService.getAllCategories()
   }
 
   @Get(':id')
   getOneCategory(@Param('id', ParseIntPipe)id: string) {
-    return this.categorysService.getOneCategory(id)
+    return this.categoriesService.getOneCategory(id)
   }
 
   @Post()
   createCategory(@Body() dto: CreateCategoryDto) {
-    return this.categorysService.createCategory(dto);
+    return this.categoriesService.createCategory(dto);
   }
 
   @Patch("id")
   updateCategory(@Param('id', ParseIntPipe) id: string, dto: CreateCategoryDto) {
-    return this.categorysService.updateCategory(id, dto)
+    return this.categoriesService.updateCategory(id, dto)
   }
 
   @Delete(':id')
   deleteCategory(@Param('id', ParseIntPipe) id: string) {
-    return this.categorysService.deleteCategory(id)
+    return this.categoriesService.deleteCategory(id)
   }
 }
 
