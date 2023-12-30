@@ -13,18 +13,18 @@ const GenericFilter = ({ onFilterChange, increment, param }: { onFilterChange: (
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         onFilterChange(e, param);
         increment(e.target.checked)
-}
+    }
 
-return (
-    <div>
-        <h2 className='font-bold mb-2'>{getTitle(param)}</h2>
-        {data?.map(option =>
-        (<div key={option.id} className='ml-2'>
-            <input defaultChecked={!!selectedCategories?.includes(option.id.toString())} onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='category' id={option.id.toString()} value={option.name} />
-            <label htmlFor={option.id.toString()}>{option.name}</label>
-        </div>))}
-    </div>
-)
+    return (
+        <div>
+            <h2 className='font-bold mb-2'>{getTitle(param)}</h2>
+            {data?.map(option =>
+            (<div key={option.id} className='ml-2'>
+                <input defaultChecked={!!selectedCategories?.includes(option.id.toString())} onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='category' id={option.id.toString()} value={option.slug} />
+                <label htmlFor={option.id.toString()}>{option.name}</label>
+            </div>))}
+        </div>
+    )
 }
 
 const getHook = (param: string) => {
@@ -33,8 +33,6 @@ const getHook = (param: string) => {
             return useCategories
         case 'brand':
             return useBrands
-        case 'color':
-            return useColors
     }
 }
 
@@ -44,8 +42,6 @@ const getTitle = (param: string) => {
             return 'Категория'
         case 'brand':
             return 'Бренд'
-        case 'color':
-            return 'Цвет'
         default: ''
     }
 }

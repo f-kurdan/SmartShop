@@ -1,5 +1,3 @@
-export type category = { slug: string, name: string, src: string };
-
 export type cartItem = {
     product: product,
     quantity: number;
@@ -38,3 +36,10 @@ export type specifications = {
         name: string;
     }[];
 }[] | undefined
+
+export type category = {
+    id: number;
+    name: string;
+    slug: string;
+    products: productsList;
+}

@@ -38,9 +38,9 @@ const Filter = () => {
       <GenericFilter onFilterChange={onChange}
         increment={increment}
         param={'brand'} />
-      <GenericFilter onFilterChange={onChange}
+      {/* <GenericFilter onFilterChange={onChange}
         increment={increment}
-        param={'color'} />
+        param={'color'} /> */}
       <SpecificationsFilter onFilterChange={onChange} 
       increment={increment}/>
       <FilterButton setNewCount={setNewCount}
