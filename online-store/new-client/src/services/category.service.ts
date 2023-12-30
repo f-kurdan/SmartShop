@@ -2,7 +2,8 @@ import { categories } from "@/data";
 
 class categoryService {
     async getCategories() {
-        return Promise.resolve(categories);
+        const res = await fetch('http://localhost:3000/categories');
+        return await res.json();
     }
 
     async getCategoryById(id: string) {
