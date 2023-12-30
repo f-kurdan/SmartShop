@@ -3,7 +3,6 @@ import { product } from "../types";
 // import { products } from "@/data";
 export async function getProducts(page = 1, searchTerm?: string, categories?: string[], brands?: string[],  specifications?: string[]) {
     const searchParams = new URLSearchParams();
-    console.log('page---------------------------------: ' + page)
     searchParams.append('page', page ? page.toString() : (1).toString());
     if (searchTerm) searchParams.append('search_term', searchTerm);
     if (categories) searchParams.append('category', categories.join(';'))
