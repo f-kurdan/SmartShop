@@ -42,8 +42,8 @@ export class UpdateProductDto {
     @ApiProperty()
     @IsOptional()
     @IsObject()
-    productInfo: {
+    productInfo: [{
         name: string;
         description: string;
-    }
+    }]
 }

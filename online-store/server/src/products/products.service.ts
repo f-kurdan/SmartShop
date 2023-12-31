@@ -102,11 +102,14 @@ export class ProductsService {
     // }
 
     async createProduct(dto: CreateProductDto) {
+        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет');
+        const storageInfo = dto.productInfo.find(i => i.name === 'Память');
+        
         await this.prisma.product.create({
             data: {
                 name: dto.name,
                 price: dto.price,
-                slug: convertToSlug(dto.name),
+                slug: convertToSlug(`${dto.name} ${colorInfo} ${storageInfo}`),
                 SKU: Math.floor(Math.random() * 100000000000).toString(),
                 images: dto.images,
                 quantity: dto.quantity,
@@ -126,6 +129,9 @@ export class ProductsService {
 
 
     async updateProduct(id: string, dto: UpdateProductDto) {
+        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет');
+        const storageInfo = dto.productInfo.find(i => i.name === 'Память');
+
         await this.prisma.product.update({
             where: {
                 id: +id,
@@ -133,7 +139,7 @@ export class ProductsService {
             data: {
                 name: dto.name,
                 price: dto.price,
-                slug: convertToSlug(dto.name),
+                slug: convertToSlug(`${dto.name} ${colorInfo} ${storageInfo}`),
                 SKU: Math.floor(Math.random() * 100000000000).toString(),
                 images: dto.images,
                 quantity: dto.quantity,
