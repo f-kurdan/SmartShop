@@ -26,15 +26,15 @@ export class ProductsController {
         return products;
     }
 
-    @Get('/slug/:slug')
+    @Get(':slug')
     getOneProduct(@Param('slug') slug: string) {
         return this.productService.findOneProduct(slug)
     }
 
-    @Get(':id')
-    getOneProductById(@Param('id', ParseIntPipe) id: string) {
-        return this.productService.findOneProductById(id)
-    }
+    // @Get(':id')
+    // getOneProductById(@Param('id', ParseIntPipe) id: string) {
+    //     return this.productService.findOneProductById(id)
+    // }
 
     @Post()
     @HttpCode(200)

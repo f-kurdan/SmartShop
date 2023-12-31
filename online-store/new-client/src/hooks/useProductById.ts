@@ -1,8 +1,8 @@
 import { getProduct } from '@/services/product.service'
 import { useQuery } from 'react-query'
 
-const useProduct = (model:string, color?:string, storageSize?:string) => {
-  return useQuery(['products', model, color, storageSize], () => getProduct(model, color, storageSize))
+const useProduct = (slug:string, color?:string, storageSize?:string) => {
+  return useQuery(['products', slug, color, storageSize], () => getProduct(slug, color, storageSize))
 }
 
 export default useProduct

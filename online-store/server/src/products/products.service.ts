@@ -85,6 +85,9 @@ export class ProductsService {
         return this.prisma.product.findUnique({
             where: {
                 slug: slug,
+            },
+            include: {
+                productInfo: true
             }
         })
     }
@@ -93,6 +96,9 @@ export class ProductsService {
         return this.prisma.product.findUnique({
             where: {
                 id: +id,
+            },
+            include: {
+                productInfo: true
             }
         })
     }
@@ -102,8 +108,8 @@ export class ProductsService {
     // }
 
     async createProduct(dto: CreateProductDto) {
-        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет');
-        const storageInfo = dto.productInfo.find(i => i.name === 'Память');
+        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет').description;
+        const storageInfo = dto.productInfo.find(i => i.name === 'Память').description;
         
         await this.prisma.product.create({
             data: {
@@ -129,8 +135,8 @@ export class ProductsService {
 
 
     async updateProduct(id: string, dto: UpdateProductDto) {
-        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет');
-        const storageInfo = dto.productInfo.find(i => i.name === 'Память');
+        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет').description;
+        const storageInfo = dto.productInfo.find(i => i.name === 'Память').description;
 
         await this.prisma.product.update({
             where: {

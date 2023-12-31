@@ -36,14 +36,15 @@ import { getProduct, getProducts } from '../../services/product.service';
 //   }
 // }
 
-const Product = ({ model }: { model: string }) => {
+const Product = ({ slug }: { slug: string }) => {
   const searchParams = useSearchParams()
   const params = new URLSearchParams(searchParams)
   const router = useRouter()
   const selectedColor = params?.get('color')?? "white";
   const selectedStorageSize = params?.get('storage')?.toString();
-  const { isLoading, data } = useProduct(model, selectedColor, selectedStorageSize);
+  const { isLoading, data } = useProduct(router.query.slug as string);
 
+  console.log("data:--------" + JSON.stringify(data))
   return (
     <div className={`${montserrat.className} flex flex-col w-4/5 justify-around items-stretch m-5 gap-5 text-gray-700`}>
       <GoBackButton router={router} />

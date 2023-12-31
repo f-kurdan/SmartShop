@@ -12,9 +12,9 @@ export type product = {
     categorySlug: string,
     price: number;
     images: string[];
-    specifications: {
+    productInfo: {
         name: string;
-        value: string;
+        description: string;
     }[]
 }
 

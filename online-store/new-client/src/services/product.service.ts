@@ -1,7 +1,7 @@
 import { product } from "../types";
 
 // import { products } from "@/data";
-export async function getProducts(page = 1, searchTerm?: string, categories?: string[], brands?: string[],  specifications?: string[]) {
+export async function getProducts(page: number, searchTerm?: string, categories?: string[], brands?: string[],  specifications?: string[]) {
     const searchParams = new URLSearchParams();
     searchParams.append('page', page ? page.toString() : (1).toString());
     if (searchTerm) searchParams.append('search_term', searchTerm);
@@ -15,8 +15,8 @@ export async function getProducts(page = 1, searchTerm?: string, categories?: st
     return { products: data.products, totalPages: data.totalPages }
 }
 
-export async function getProduct(id:string) {
-    const res = fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products${id}`)
+export async function getProduct(slug:string, color?: string, storageSize?: string) {
+    const res = fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/${slug}`)
     return (await res).json()
 }
 
