@@ -78,7 +78,6 @@ export class ProductsService {
             }
         })
 
-        console.log( prods?.length? 'prods' + prods : 'no prods')
         return { products: prods, totalPages: totalPages };
     }
 
@@ -115,22 +114,10 @@ export class ProductsService {
                     create: dto.productInfo,
                 },
                 category: {
-                    connectOrCreate: {
-                        where: { name: dto.category.name },
-                        create: {
-                            name: dto.category.name,
-                            slug: convertToSlug(dto.category.name)
-                        },
-                    }
+                    connect: { name: dto.category.name }
                 },
                 brand: {
-                    connectOrCreate: {
-                        where: { name: dto.brand.name },
-                        create: {
-                            name: dto.brand.name,
-                            slug: convertToSlug(dto.brand.name)
-                        },
-                    }
+                    connect: { name: dto.brand.name }
                 }
             }
         })
@@ -154,16 +141,10 @@ export class ProductsService {
                     create: dto.productInfo,
                 },
                 category: {
-                    connectOrCreate: {
-                        where: { slug: dto.category.slug },
-                        create: dto.category,
-                    }
+                    connect: { name: dto.category.name }
                 },
                 brand: {
-                    connectOrCreate: {
-                        where: { slug: dto.brand.slug },
-                        create: dto.brand,
-                    }
+                    connect: { name: dto.brand.name }
                 }
             }
         })
