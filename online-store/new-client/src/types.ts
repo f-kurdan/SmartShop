@@ -42,4 +42,5 @@ export type category = {
     name: string;
     slug: string;
     products: productsList;
+    image: string
 }
