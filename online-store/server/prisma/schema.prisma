@@ -102,7 +102,7 @@ model Category {
   name String @unique
   product Product[]
   slug String @unique
-
+  image String
 }
 
 model Brand {

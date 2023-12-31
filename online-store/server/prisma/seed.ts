@@ -10,6 +10,75 @@ async function main() {
   const images = ['public/phones/iphone15.jpeg']
   // create two dummy articles
 
+  const appleBrand = await prisma.brand.upsert({
+    where: { name: 'Apple' },
+    update: {},
+    create: {
+      name: "Apple",
+      slug: convertToSlug('Apple'),
+    }
+  })
+
+  const phonesCategory = await prisma.category.upsert({
+    where: { name: 'Смартфоны' },
+    update: {},
+    create: {
+      name: 'Смартфоны',
+      slug: convertToSlug('Смартфоны'),
+      image: 'public/smartphone.avif'
+    },
+  })
+
+  const headphonesCategory = await prisma.category.upsert({
+    where: { name: 'Наушники' },
+    update: {},
+    create: {
+      name: 'Наушники',
+      slug: convertToSlug('Наушники'),
+      image: 'public/headphones.jpeg'
+    },
+  })
+
+  const laptopCategory = await prisma.category.upsert({
+    where: { name: 'Ноутбуки' },
+    update: {},
+    create: {
+      name: 'Ноутбуки',
+      slug: convertToSlug('Ноутбуки'),
+      image: 'public/laptop.avif'
+    },
+  })
+
+  const smartqwatchCategory = await prisma.category.upsert({
+    where: { name: 'Смарт-часы' },
+    update: {},
+    create: {
+      name: 'Смарт-часы',
+      slug: convertToSlug('Смарт-часы'),
+      image: 'public/smartwatch.avif'
+    },
+  })
+
+  const tabletCategory = await prisma.category.upsert({
+    where: { name: 'Планшеты' },
+    update: {},
+    create: {
+      name: 'Планшеты',
+      slug: convertToSlug('Планшеты'),
+      image: 'public/tablet.avif'
+    },
+  })
+
+  const camerasCategory = await prisma.category.upsert({
+    where: { name: 'Камеры' },
+    update: {},
+    create: {
+      name: 'Камеры',
+      slug: convertToSlug('Камеры'),
+      image: 'public/camera.avif'
+    },
+  })
+
 
   const product1 = await prisma.product.upsert({
     where: { name: 'IPhone 15 Pro Max White' },
@@ -29,15 +98,13 @@ async function main() {
         ],
       },
       category: {
-        create: {
-          name: smartphonesCategory,
-          slug:  convertToSlug(smartphonesCategory)        
+        connect: {
+          name: 'Смартфоны',
         }
       },
       brand: {
-        create: {
+        connect: {
           name: brandName,
-          slug: convertToSlug(brandName)
         }
       }
     },
@@ -61,8 +128,7 @@ async function main() {
       },
       category: {
         connect: {
-          name: smartphonesCategory,
-          slug:  convertToSlug(smartphonesCategory)        
+          name: 'Смартфоны',
         }
       },
       brand: {
@@ -93,8 +159,7 @@ async function main() {
       },
       category: {
         connect: {
-          name: smartphonesCategory,
-          slug:  convertToSlug(smartphonesCategory)        
+          name: 'Смартфоны',
         }
       },
       brand: {
@@ -124,8 +189,7 @@ async function main() {
       },
       category: {
         connect: {
-          name: smartphonesCategory,
-          slug:  convertToSlug(smartphonesCategory)        
+          name: 'Смартфоны',
         }
       },
       brand: {
