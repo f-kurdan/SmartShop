@@ -79,7 +79,7 @@ async function main() {
   })
 
   const product1 = await prisma.product.upsert({
-    where: { slug: 'IPhone 15 Pro Max Белый 256' },
+    where: { slug: convertToSlug('IPhone 15 Pro Max Белый 256') },
     update: {},
     create: {
       name: 'IPhone 15 Pro Max',
