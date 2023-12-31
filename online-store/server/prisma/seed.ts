@@ -5,7 +5,6 @@ import convertToSlug from '../src/utils/convertToSlug';
 const prisma = new PrismaClient();
 
 async function main() {
-  const smartphonesCategory = 'Smartphones';
   const brandName = 'Apple';
   const images = ['public/phones/iphone15.jpeg']
   // create two dummy articles
@@ -35,7 +34,7 @@ async function main() {
     create: {
       name: 'Наушники',
       slug: convertToSlug('Наушники'),
-      image: 'public/headphones.jpeg'
+      image: 'public/headphones.jpg'
     },
   })
 
@@ -79,21 +78,21 @@ async function main() {
     },
   })
 
-
   const product1 = await prisma.product.upsert({
-    where: { name: 'IPhone 15 Pro Max White' },
+    where: { slug: 'IPhone 15 Pro Max Белый 256' },
     update: {},
     create: {
-      name: 'IPhone 15 Pro Max White',
+      name: 'IPhone 15 Pro Max',
       price: 150000,
-      slug: convertToSlug('IPhone 15 Pro Max White'),
+      slug: convertToSlug('IPhone 15 Pro Max Белый 256'),
       SKU: '10515PROMAXWhite',
       images: images,
       quantity: 10,
       productInfo: {
         create: [
-          { name: 'CPU', description: "Apple A15 Bionic" },
-          { name: 'color', description: "White"}
+          { name: 'Процессор', description: "Apple A15 Bionic" },
+          { name: 'Цвет', description: "Белый"},
+          { name: 'Память', description: '256'}
 
         ],
       },
@@ -111,19 +110,20 @@ async function main() {
   });
 
   const product2 = await prisma.product.upsert({
-    where: { name: 'IPhone 15 Pro Max Black' },
+    where: { slug: convertToSlug(`IPhone 15 Pro Max Черный 128гб`) },
     update: {},
     create: {
-      name: 'IPhone 15 Pro Max Black',
+      name: 'IPhone 15 Pro Max',
       price: 140000,
       SKU: '10515PROMAXBlack',
       images: images,
-      slug: convertToSlug('IPhone 15 Pro Max Black'),
+      slug: convertToSlug('IPhone 15 Pro Max Черный 128гб'),
       quantity: 10,
       productInfo: {
         create: [
-          { name: 'CPU', description: "Apple A15 Bionic" },
-          { name: 'color', description: "Black"}
+          { name: 'Процессор', description: "Apple A15 Bionic" },
+          { name: 'Цвет', description: "Черный"},
+          { name: 'Память', description: '128'}
         ],
       },
       category: {
@@ -142,19 +142,20 @@ async function main() {
   
 
   const product3 = await prisma.product.upsert({
-    where: { name: 'IPhone 15 Pro White' },
+    where: { slug: convertToSlug(`IPhone 15 Pro Черный 128гб`) },
     update: {},
     create: {
-      name: 'IPhone 15 Pro White',
+      name: 'IPhone 15 Pro',
       price: 140000,
       SKU: '10515PROWhite',
       images: images,
-      slug: convertToSlug('IPhone 15 Pro White'),
+      slug: convertToSlug('IPhone 15 Pro Черный 128гб'),
       quantity: 10,
       productInfo: {
         create: [
-          { name: 'CPU', description: "Apple A15 Bionic" },
-          { name: 'color', description: "Black"}
+          { name: 'Процессор', description: "Apple A15 Bionic" },
+          { name: 'Цвет', description: "Черный"},
+          { name: 'Память', description: '128'}
         ],
       },
       category: {
@@ -172,19 +173,20 @@ async function main() {
   });
   
   const product4 = await prisma.product.upsert({
-    where: { name: 'IPhone 15 Pro Black' },
+    where: { slug: convertToSlug(`IPhone 15 Pro Белый 128гб`) },
     update: {},
     create: {
-      name: 'IPhone 15 Pro Black',
+      name: 'IPhone 15 Pro',
       price: 140000,
       SKU: '10515PROBlack',
       images: images,
-      slug: convertToSlug('IPhone 15 Pro Black'),
+      slug: convertToSlug('IPhone 15 Pro Белый 128гб'),
       quantity: 10,
       productInfo: {
         create: [
-          { name: 'CPU', description: "Apple A15 Bionic" },
-          { name: 'color', description: "Black"}
+          { name: 'Процессор', description: "Apple A15 Bionic" },
+          { name: 'Цвет', description: "Белый"},
+          { name: 'Память', description: '128'}
         ],
       },
       category: {
