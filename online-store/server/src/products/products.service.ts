@@ -103,10 +103,28 @@ export class ProductsService {
         })
     }
 
-    async findOneProductsByName(name: string) {
+    async findOneProductsByName(name: string, color?: string, storageSize?: string) {
+        const colorFilter =  color ? {
+            productInfo: {
+                some: {
+                    description: color
+                }
+            }
+        } : {}
+
+        const storageFilter = storageSize ? {
+            productInfo: {
+                some: {
+                    description: storageSize
+                }
+            }
+        } : {}
+
         return this.prisma.product.findMany({
             where: {
                 name: name,
+                ...colorFilter,
+                ...storageFilter
             },
             include: {
                 productInfo: true

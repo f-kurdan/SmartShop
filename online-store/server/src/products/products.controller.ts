@@ -27,8 +27,11 @@ export class ProductsController {
     }
 
     @Get('name/:name')
-    findOneProductsByName(@Param('name') name: string) {
-        return this.productService.findOneProductsByName(name);
+    findOneProductsByName(@Param('name') name: string,
+    @Query('color') color?: string,
+    @Query('storageSize') storageSize?: string,
+    ) {
+        return this.productService.findOneProductsByName(name, color, storageSize);
     }
 
     @Get(':slug')
