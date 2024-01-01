@@ -25,7 +25,7 @@ const ProductsList = ({ products }: { products: productsList }) => {
                     <div className='justify-self-end'>
                         <div className='text-sm font-bold text-center  hover:text-cyan-500 active:text-lime-400 '>
                             {`${product.name}, ${product.productInfo.find(s => s.name === "Память")?.description}гб, ${product.productInfo.find(s => s.name === "Цвет")?.description}`}</div>
-                        <div className='text-md text-center font-extralight'>{product.price}</div>
+                        <div className='text-md text-center font-extralight'>{product.price} ₽</div>
                     </div>
                 </div>
             </Link>)
