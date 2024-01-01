@@ -15,15 +15,21 @@ export async function getProducts(page?: number, searchTerm?: string, categories
     return { products: data.products, totalPages: data.totalPages }
 }
 
-export async function getProduct(slug:string, color?: string, storageSize?: string):  Promise<product> {
-    const res = fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/${slug}`)
-    return (await res).json()
+export async function getProduct(slug:string, color?: string, storageSize?: string) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/${slug}`)
+    const data = await res.json();
+    return data;
 }
 
 // export function getAllProducts() {
 //     return fetch('')
 // }
 
-export function getProductsByName(name: string) { 
-    const res = fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/name/${name}`)
+export async function getProductsByName(name?: string, color?: string, storageSize?: string): Promise<product[]> { 
+    const searchParams = new URLSearchParams();
+    if (color) searchParams.append('color', color)
+    if (storageSize) searchParams.append('storageSize', storageSize)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/name/${name}?${searchParams}`);
+    const data = await res.json();
+    return data;
 }

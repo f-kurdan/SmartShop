@@ -42,7 +42,7 @@ const Product = ({ slug }: { slug: string }) => {
 
   return (
     <div className={`${montserrat.className} flex flex-col w-4/5 justify-around items-stretch m-5 gap-5 text-gray-700`}>
-      <GoBackButton router={router} />
+      <GoBackButton />
       <div className='flex flex-row  bg-white  gap-5 p-10 w-full justify-center items-start'>
         {isLoading ? (<div>Идет загрузка</div>) : (
           (

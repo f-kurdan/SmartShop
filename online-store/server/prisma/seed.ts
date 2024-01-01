@@ -79,12 +79,12 @@ async function main() {
   })
 
   const product1 = await prisma.product.upsert({
-    where: { slug: convertToSlug('IPhone 15 Pro Max Белый 256') },
+    where: { slug: convertToSlug('IPhone 15 Pro Max Белый 256гб') },
     update: {},
     create: {
       name: 'IPhone 15 Pro Max',
       price: 150000,
-      slug: convertToSlug('IPhone 15 Pro Max Белый 256'),
+      slug: convertToSlug('IPhone 15 Pro Max Белый 256гб'),
       SKU: '10515PROMAXWhite',
       images: images,
       quantity: 10,
@@ -92,7 +92,7 @@ async function main() {
         create: [
           { name: 'Процессор', description: "Apple A15 Bionic" },
           { name: 'Цвет', description: "Белый"},
-          { name: 'Память', description: '256'}
+          { name: 'Память', description: '256гб'}
 
         ],
       },
@@ -123,7 +123,7 @@ async function main() {
         create: [
           { name: 'Процессор', description: "Apple A15 Bionic" },
           { name: 'Цвет', description: "Черный"},
-          { name: 'Память', description: '128'}
+          { name: 'Память', description: '128гб'}
         ],
       },
       category: {
@@ -155,7 +155,7 @@ async function main() {
         create: [
           { name: 'Процессор', description: "Apple A15 Bionic" },
           { name: 'Цвет', description: "Черный"},
-          { name: 'Память', description: '128'}
+          { name: 'Память', description: '128гб'}
         ],
       },
       category: {
@@ -173,20 +173,20 @@ async function main() {
   });
   
   const product4 = await prisma.product.upsert({
-    where: { slug: convertToSlug(`IPhone 15 Pro Белый 128гб`) },
+    where: { slug: convertToSlug(`IPhone 15 Pro Черный 256гб`) },
     update: {},
     create: {
       name: 'IPhone 15 Pro',
       price: 140000,
       SKU: '10515PROBlack',
       images: images,
-      slug: convertToSlug('IPhone 15 Pro Белый 128гб'),
+      slug: convertToSlug('IPhone 15 Pro Черный 256гб'),
       quantity: 10,
       productInfo: {
         create: [
           { name: 'Процессор', description: "Apple A15 Bionic" },
-          { name: 'Цвет', description: "Белый"},
-          { name: 'Память', description: '128'}
+          { name: 'Цвет', description: "Черный"},
+          { name: 'Память', description: '256гб'}
         ],
       },
       category: {

@@ -26,7 +26,7 @@ const Page = () => {
   const categories = params.get('category')?.split(';')
   const brands = params.get('brand')?.split(';')
   const specifications = params.get('specifications')?.split(';')
-  const { isLoading, data, isFetched } = useProducts(Number(page), query, categories, brands, specifications);  
+  const { isLoading, data } = useProducts(Number(page), query, categories, brands, specifications);  
 
   return (
     <Catalog products={data?.products!} 

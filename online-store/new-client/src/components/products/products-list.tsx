@@ -6,13 +6,7 @@ import { env } from 'process'
 import React from 'react'
 
 const ProductsList = ({ products }: { products: productsList }) => {
-    const searchParams = useSearchParams();
-    const params = new URLSearchParams(searchParams);
-
     const createURL = (slug: string) => {
-        // console.log("list: ", model, color, storage)
-        // params.set('color', color);
-        // params.set('storage', storage.toString());
         return (`/products/${slug}`)
     }
 
@@ -24,7 +18,7 @@ const ProductsList = ({ products }: { products: productsList }) => {
                     <Image className='max-h-44 max-w-min' src={`${process.env.NEXT_PUBLIC_STOREAPI_URL}/${product.images[0]}`} alt={product.name} width={200} height={200} />
                     <div className='justify-self-end'>
                         <div className='text-sm font-bold text-center  hover:text-cyan-500 active:text-lime-400 '>
-                            {`${product.name}, ${product.productInfo.find(s => s.name === "Память")?.description}гб, ${product.productInfo.find(s => s.name === "Цвет")?.description}`}</div>
+                            {`${product.name}, ${product.productInfo.find(s => s.name === "Память")?.description}, ${product.productInfo.find(s => s.name === "Цвет")?.description}`}</div>
                         <div className='text-md text-center font-extralight'>{product.price} ₽</div>
                     </div>
                 </div>
