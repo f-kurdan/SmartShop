@@ -1,7 +1,7 @@
-import { product } from "../types";
+import { product, productsList } from "../types";
 
 // import { products } from "@/data";
-export async function getProducts(page: number, searchTerm?: string, categories?: string[], brands?: string[],  specifications?: string[]) {
+export async function getProducts(page?: number, searchTerm?: string, categories?: string[], brands?: string[],  specifications?: string[]) {
     const searchParams = new URLSearchParams();
     searchParams.append('page', page ? page.toString() : (1).toString());
     if (searchTerm) searchParams.append('search_term', searchTerm);
@@ -15,7 +15,7 @@ export async function getProducts(page: number, searchTerm?: string, categories?
     return { products: data.products, totalPages: data.totalPages }
 }
 
-export async function getProduct(slug:string, color?: string, storageSize?: string) {
+export async function getProduct(slug:string, color?: string, storageSize?: string):  Promise<product> {
     const res = fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/${slug}`)
     return (await res).json()
 }
@@ -24,6 +24,6 @@ export async function getProduct(slug:string, color?: string, storageSize?: stri
 //     return fetch('')
 // }
 
-// export function getProductsByName(string: string) {
-//     return Promise.resolve(products.filter(p => p.name.toLowerCase().includes(string.toLowerCase())))
-// }
+export function getProductsByName(name: string) { 
+    const res = fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/name/${name}`)
+}

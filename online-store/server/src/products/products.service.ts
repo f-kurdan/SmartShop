@@ -103,6 +103,17 @@ export class ProductsService {
         })
     }
 
+    async findOneProductsByName(name: string) {
+        return this.prisma.product.findMany({
+            where: {
+                name: name,
+            },
+            include: {
+                productInfo: true
+            }
+        })
+    }
+
     // async findProductByCategory(categorySlug: string) {
 
     // }

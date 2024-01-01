@@ -26,6 +26,11 @@ export class ProductsController {
         return products;
     }
 
+    @Get('name/:name')
+    findOneProductsByName(@Param('name') name: string) {
+        return this.productService.findOneProductsByName(name);
+    }
+
     @Get(':slug')
     getOneProduct(@Param('slug') slug: string) {
         return this.productService.findOneProduct(slug)
