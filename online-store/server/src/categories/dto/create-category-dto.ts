@@ -5,6 +5,6 @@ export class CreateCategoryDto {
     @ApiProperty()
     @IsNotEmpty()
     @IsString()
-    @MinLength(6)
+    @MinLength(3)
     name: string
 }
