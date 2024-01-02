@@ -32,12 +32,12 @@ export class CategoriesController {
   }))
   createCategory(@UploadedFile(
     new ParseFilePipeBuilder()
-      .addFileTypeValidator({ fileType: 'image/jpeg' })
+      // .addFileTypeValidator({ fileType: ['image/jpeg', 'sf']})
       .addMaxSizeValidator({ maxSize: MAX_PROFILE_PICTURE_SIZE_IN_BYTES })
       .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
   ) file: Express.Multer.File,
     @Body() dto: CreateCategoryDto) {
-      console.log(file)
+      console.log(file.destination)
     return this.categoriesService.createCategory(dto, file);
   }
 

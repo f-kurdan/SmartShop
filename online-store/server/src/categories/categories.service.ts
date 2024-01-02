@@ -22,7 +22,7 @@ export class CategoriesService {
             data: {
                 name: dto.name,
                 slug: convertToSlug(dto.name),
-                image: file.destination,
+                image: `${file.destination}/${file.originalname}`,
             }
         })
     }
