@@ -1,6 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe} from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseInterceptors, UploadedFile, ParseFilePipeBuilder, HttpStatus} from '@nestjs/common'
 import { CreateCategoryDto } from './dto/create-category-dto';
 import { CategoriesService } from './categories.service';
+import { FileInterceptor } from '@nestjs/platform-express';
+
+const MAX_PROFILE_PICTURE_SIZE_IN_BYTES = 5 * 1024 * 1024;
 
 @Controller('categories')
 export class CategoriesController {
@@ -17,7 +20,14 @@ export class CategoriesController {
   }
 
   @Post()
-  createCategory(@Body() dto: CreateCategoryDto) {
+  @UseInterceptors(FileInterceptor('file'))
+  createCategory(@UploadedFile(
+    new ParseFilePipeBuilder()
+        .addFileTypeValidator({ fileType: 'image/jpeg' })
+        .addMaxSizeValidator({ maxSize: MAX_PROFILE_PICTURE_SIZE_IN_BYTES })
+        .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
+  ) file: Express.Multer.File,
+  @Body() dto: CreateCategoryDto) {
     return this.categoriesService.createCategory(dto);
   }
 
