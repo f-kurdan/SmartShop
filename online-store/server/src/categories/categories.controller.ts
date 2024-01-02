@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseInterceptors, UploadedFile, ParseFilePipeBuilder, HttpStatus} from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseInterceptors, UploadedFile, ParseFilePipeBuilder, HttpStatus } from '@nestjs/common'
 import { CreateCategoryDto } from './dto/create-category-dto';
 import { CategoriesService } from './categories.service';
 import { FileInterceptor } from '@nestjs/platform-express';
+import multer from 'multer';
 
 const MAX_PROFILE_PICTURE_SIZE_IN_BYTES = 5 * 1024 * 1024;
 
@@ -15,20 +16,29 @@ export class CategoriesController {
   }
 
   @Get(':id')
-  getOneCategory(@Param('id', ParseIntPipe)id: string) {
+  getOneCategory(@Param('id', ParseIntPipe) id: string) {
     return this.categoriesService.getOneCategory(id)
   }
 
   @Post()
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file', {
+    storage: multer.diskStorage({
+      destination: './public/images/categories',
+      filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, file.fieldname + '-' + uniqueSuffix)
+      },
+    })
+  }))
   createCategory(@UploadedFile(
     new ParseFilePipeBuilder()
-        .addFileTypeValidator({ fileType: 'image/jpeg' })
-        .addMaxSizeValidator({ maxSize: MAX_PROFILE_PICTURE_SIZE_IN_BYTES })
-        .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
+      .addFileTypeValidator({ fileType: 'image/jpeg' })
+      .addMaxSizeValidator({ maxSize: MAX_PROFILE_PICTURE_SIZE_IN_BYTES })
+      .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
   ) file: Express.Multer.File,
-  @Body() dto: CreateCategoryDto) {
-    return this.categoriesService.createCategory(dto);
+    @Body() dto: CreateCategoryDto) {
+      console.log(file)
+    return this.categoriesService.createCategory(dto, file);
   }
 
   @Patch("id")

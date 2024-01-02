@@ -17,11 +17,12 @@ export class CategoriesService {
         })
     }
 
-    createCategory(dto: CreateCategoryDto) {
+    createCategory(dto: CreateCategoryDto, file: Express.Multer.File) {
         return this.prisma.category.create({
             data: {
                 name: dto.name,
-                slug: convertToSlug(dto.name)
+                slug: convertToSlug(dto.name),
+                image: file.destination,
             }
         })
     }
