@@ -17,19 +17,19 @@ export class CategoriesService {
         })
     }
 
-    createCategory(dto: CreateCategoryDto, file: Express.Multer.File) {
-        return this.prisma.category.create({
+    async createCategory(dto: CreateCategoryDto, file: Express.Multer.File) {
+        return await this.prisma.category.create({
             data: {
                 name: dto.name,
                 slug: convertToSlug(dto.name),
                 image: `${file.destination}/${file.originalname}`,
             }
-        })
+        }).catch((error) => { throw new Error(error) })
     }
 
     updateCategory(id: string, dto: CreateCategoryDto) {
         return this.prisma.category.update({
-            where : { id: +id}, 
+            where: { id: +id },
             data: {
                 name: dto.name,
             }

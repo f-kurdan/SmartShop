@@ -23,15 +23,16 @@ export class CategoriesController {
   @Post()
   @UseInterceptors(FileInterceptor('categoryImage', {
     storage: multer.diskStorage({
-      destination: './public/images/categories',
+      destination: 'public/images/categories',
       filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.fieldname + '-' + uniqueSuffix)
+        cb(null, file.originalname)
       },
     })
   }))
   createCategory(@UploadedFile(
     new ParseFilePipeBuilder()
+      .addFileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' })
       .addMaxSizeValidator({ maxSize: MAX_PROFILE_PICTURE_SIZE_IN_BYTES })
       .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
   ) categoryImage: Express.Multer.File,
