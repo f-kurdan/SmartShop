@@ -9,7 +9,7 @@ const SaveButton = () => {
     }
 
     return (
-        <button type='submit' autoFocus className='p-3 rounded-lg bg-lime-200 cursor-pointer border-2 border-black text-center'>
+        <button type='submit' autoFocus className='p-3 rounded-lg bg-lime-200 cursor-pointer border-2 border-black text-center w-fit'>
             Сохранить
         </button>
     )

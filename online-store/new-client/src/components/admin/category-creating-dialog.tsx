@@ -1,20 +1,32 @@
 import { FormEvent, useRef } from 'react'
+import { useForm } from 'react-hook-form'
 import CancelButton from './cancel-button'
 import SaveButton from './save-button'
 import { useCreateCategory } from '../../hooks/useCreateCategory'
+import { SubmitHandler } from 'react-hook-form/dist/types'
+
+type Inputs = {
+  name: string
+  categoryImage: FileList
+}
 
 const CategoryCreatingDialog = ({ state, title }: { state: boolean, title: string }) => {
   const mutation = useCreateCategory()
   const nameInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>()
 
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
     const formData = new FormData();
-    if (imageInputRef.current?.files && nameInputRef.current) {
-      formData.append('categoryImage', imageInputRef.current?.files[0]);
-      formData.append('name', nameInputRef.current?.value);
+    if (data.name && data.categoryImage) {
+      formData.append('name', data.name);
+      formData.append('categoryImage', data.categoryImage[0]);
     }
     mutation.mutate(formData)
   }
@@ -35,12 +47,28 @@ const CategoryCreatingDialog = ({ state, title }: { state: boolean, title: strin
         <div className='font-bold text-3xl text-center text-gray-600'>
           {title}
         </div>
-        <form onSubmit={onSubmit} action="#" method="POST" encType="multipart/form-data">
-          <label htmlFor="name">
-            <input required ref={nameInputRef} type="text" id='name' placeholder='Введите название' className={`${!nameInputRef.current ? " outline outline-2 outline-red-500" : ''} bg-gray-100 rounded-lg h-14 w-11/12 p-4`} />
+        <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" encType="multipart/form-data"
+          className='flex flex-col gap-3 justify-center items-'>
+          <label>
+            <input
+              type="text"
+              placeholder='Введите название'
+              className={`bg-gray-100 rounded-lg h-14 w-full p-4`}
+              {...register("name", {
+                required: "Введите название категории",
+                minLength: {
+                  value: 3,
+                  message: 'Название должно содержать минимум 3 символа'
+                }
+              })} />
+            {/* {errors.name && <p className='text-red-500'>This field is required</p>} */}
           </label>
-          <label htmlFor="categoryIamge">
-            <input aria-required type="file" ref={imageInputRef} name='categoryImage' id='categoryImage' />
+          <label>
+            <input
+              type="file"
+              className='bg-'
+              {...register("categoryImage", { required: "Добавьте обложку для категории" })} />
+            {errors.categoryImage && <p className='text-red-500'>Добавьте обложку для категории</p>}
           </label>
           <SaveButton />
         </form>
