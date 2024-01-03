@@ -13,12 +13,13 @@ class categoryService {
     }
 
     async createCategory(formData?: FormData) {
-        await fetch(cataegoriesURL, {
+       const res = await fetch(cataegoriesURL, {
             method: "POST",
             body: formData
-        }).catch(error => {
-            console.log("inside service:", error)
-            throw new Error('File upload failed');})
+        })
+
+        if (!res.ok)
+        throw new Error('Не удалось загрузить файл');
     }
 }
 

@@ -10,7 +10,7 @@ export function useCreateCategory() {
             queryClient.invalidateQueries({ queryKey: ['categories'] })
         },
         onError: (err) => {
-            console.log(err)
+            throw new Error("Произошла ошибка");
         }
     })
     return mutation;
