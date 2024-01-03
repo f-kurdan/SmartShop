@@ -1,4 +1,4 @@
-import CategoryCreatingDialog from '@/components/admin/category-creating-dialog';
+import CategoryCreatingDialog from '@/components/admin/categories/category-creating-dialog';
 import ProductCreatingDialog from '@/components/admin/product-creating-dialog';
 import { HandlerContext, NameContext } from '@/contexts/Contexts';
 import { montserrat } from '@/styles/fonts'
