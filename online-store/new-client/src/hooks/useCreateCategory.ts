@@ -1,7 +1,17 @@
-import { useMutation } from "react-query";
+import { QueryClient, useMutation} from "react-query";
 import categoryService from "../services/category.service";
 
+const queryClient = new QueryClient()
+
 export function useCreateCategory() {
-    const mutation = useMutation( {mutationFn: (formData?: FormData) => categoryService.createCategory(formData),  }  )
+    const mutation = useMutation({
+        mutationFn: categoryService.createCategory,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['categories'] })
+        },
+        onError: (err) => {
+            console.log(err)
+        }
+    })
     return mutation;
 }

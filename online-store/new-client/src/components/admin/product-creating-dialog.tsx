@@ -36,7 +36,7 @@ const ProductCreatingDialog = ({ state, title }: { state: boolean, title: string
                 </div>
                 <ProductSpecificationAdding />
                 <CancelButton />
-                <SaveButton />
+                {/* <SaveButton /> */}
             </div>
         </dialog>
     )

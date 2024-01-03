@@ -1,4 +1,4 @@
-import Dialog from '@/components/admin/dialog';
+import CategoryCreatingDialog from '@/components/admin/category-creating-dialog';
 import ProductCreatingDialog from '@/components/admin/product-creating-dialog';
 import { HandlerContext, NameContext } from '@/contexts/Contexts';
 import { montserrat } from '@/styles/fonts'
@@ -10,7 +10,7 @@ const index = () => {
   const [showProductAddingModal, setShowProductAddingModal] = useState(false);
 
   const onClickOutside = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.preventDefault()
+    // e.preventDefault()
     if (e.target === e.currentTarget) {
       if (showCategoryModal)
         setShowCategoryModal(false)
@@ -42,17 +42,14 @@ const index = () => {
         <div onClick={() => setShowCategoryModal(true)} className='transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black '>
           Добавить категорию
         </div>
-        <NameContext.Provider value='category' >
-          <Dialog state={showCategoryModal}
+          <CategoryCreatingDialog
+           state={showCategoryModal}
             title='Создание категории' />
-        </NameContext.Provider>
         <div onClick={() => setShowBrandModal(true)} className='transition-all duration-30 bg-lime-300  p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black'>
           Добавить бренд
         </div>
-        <NameContext.Provider value='brand' >
-          <Dialog state={showBrandModal}
+          <CategoryCreatingDialog state={showBrandModal}
             title='Создание бренда' />
-        </NameContext.Provider>
         <div onClick={() => setShowProductAddingModal(true)} className='transition-all duration-300 bg-cyan-300  p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black '>
           Добавить товар
         </div>

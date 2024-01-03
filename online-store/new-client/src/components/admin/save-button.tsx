@@ -1,16 +1,11 @@
-import { HandlerContext, NameContext } from '@/contexts/Contexts'
-import React, { useContext } from 'react'
-import { useMutation } from 'react-query'
+import React from 'react'
 
 const SaveButton = ({ onSubmit }: { onSubmit: (event: React.FormEvent<HTMLButtonElement>) => void }) => {
-    const handleCancelClick = useContext(HandlerContext)
-    const name = useContext(NameContext)
 
     function handleSubmit(e: React.FormEvent<HTMLButtonElement>) {
         e.preventDefault()
         console.log(e)
         onSubmit(e);
-        // handleCancelClick(name)
     }
 
     return (
