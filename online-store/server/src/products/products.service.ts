@@ -10,7 +10,7 @@ export class ProductsService {
     constructor(private prisma: PrismaService) { }
 
     async findProducts(page: number, searchTerm: string, categoriesSlugs?: string[], brandsSlugs?: string[], specs?: string[]) {
-        
+
         const categoriesFilter: Prisma.ProductWhereInput = categoriesSlugs?.length ? {
             category: {
                 slug: {
@@ -104,7 +104,7 @@ export class ProductsService {
     }
 
     async findOneProductsByName(name: string, color?: string, storageSize?: string) {
-        const colorFilter =  color ? {
+        const colorFilter = color ? {
             productInfo: {
                 some: {
                     description: color
@@ -139,7 +139,7 @@ export class ProductsService {
     async createProduct(dto: CreateProductDto) {
         const colorInfo = dto.productInfo.find(i => i.name === 'Цвет').description;
         const storageInfo = dto.productInfo.find(i => i.name === 'Память').description;
-        
+
         await this.prisma.product.create({
             data: {
                 name: dto.name,
