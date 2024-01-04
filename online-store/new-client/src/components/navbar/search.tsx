@@ -1,8 +1,8 @@
+import React, { useRef, useState } from 'react' 
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import useProducts from '@/hooks/useProducts'
 import { montserrat } from '@/styles/fonts'
-import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import React, { useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
 function onlyUnique(value: string, index: number, array: string[]) {
@@ -14,8 +14,11 @@ const Search = () => {
     const params = new URLSearchParams(searchParams)
     const pathName = usePathname()
     const { replace } = useRouter()
+
     const inputRef = useRef<HTMLInputElement>(null)
+
     const { data } = useProducts()
+
     const [searchOptions, setSearchOptions] = useState<string[]>()
 
     const placeholder = 'Введите название товара'

@@ -1,9 +1,7 @@
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
-import { productAdded, productInstanceRemoved } from '@/redux/cart/cartSlice';
+import { productAdded } from '@/redux/cart/cartSlice';
 import { product } from '@/types';
-import { MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-import React from 'react'
 import AddAndRemoveButtons from './add-remove-buttons';
 
 const AddToCartSection = ({ product }: { product: product }) => {
