@@ -1,16 +1,14 @@
-import { variations, variation_options } from "@/data";
+import { specification } from '../types';
+import { groupBy } from '../utils/groupBy';
+export  const getSpecifications = async (categories?: string) => {
+    const searchParams = new URLSearchParams();
+    if (categories) searchParams.append('categories', categories);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/specifications?${searchParams}`);
+    const specifications = await res.json();
 
-export const getSpecifications = (categories?: string[]) => {
-    const categoryVariations = categories ? variations.filter(v => categories.some(cat => cat === v.category_id.toString())) : variations;
-    
-    const result = categoryVariations.map(v => {
-        const options = variation_options.filter(o => o.variation_id === v.id);
-        return {
-            id: v.id,
-            specificationName: v.name,
-            options: options
-        }
-    })
+    console.log('specifications: ', specifications);
 
-    return Promise.resolve(result)
+    const groupedSpecifications: Array<{ name:string, values: specification[] }> = groupBy(specifications, 'name');
+    console.log('groupedSpecifications: ', groupedSpecifications);
+    return groupedSpecifications
 }

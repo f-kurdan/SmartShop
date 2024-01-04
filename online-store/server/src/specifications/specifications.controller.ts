@@ -7,7 +7,7 @@ export class SpecificationsController {
 
   @Get()
   getAll(@Query('categories') categories?: string) {
-    console.log(categories.split(';'))
-    return this.specificationsService.getAll(categories.split(';'))
+    const filter = categories ? categories.split(';') : null
+    return this.specificationsService.getAll(filter)
   }
 }

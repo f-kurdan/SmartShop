@@ -27,15 +27,11 @@ export type brands = {
     logo: string;
 }[] | undefined
 
-export type specifications = {
+export type specification = {
     id: number;
-    charactehcisticName: string;
-    options: {
-        id: number;
-        variation_id: number;
-        name: string;
-    }[];
-}[] | undefined
+    name: string;
+    description: string;
+}
 
 export type category = {
     id: number;

@@ -4,7 +4,7 @@ import React, { ChangeEvent } from 'react'
 
 const SpecificationsFilter = ({ onFilterChange, increment }: { onFilterChange: (e: ChangeEvent<HTMLInputElement>, searchParam: string) => void, increment: (toIncrement: boolean) => void }) => {
     const searchParams = useSearchParams();
-    const selectedCategories = searchParams.get('category')?.split(';')
+    const selectedCategories = searchParams.get('category')
     const selectedspecifications = searchParams.get('specifications')?.split(';')
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -16,25 +16,25 @@ const SpecificationsFilter = ({ onFilterChange, increment }: { onFilterChange: (
         }
     }
 
-    const { data: specifications } = useSpecifications(selectedCategories)
-    return (
+    const { data: specifications } = useSpecifications(selectedCategories ?? undefined)
+    return specifications ? (
         <>
-            {specifications?.map(char =>
-            (<div key={char.id}>
-                <h2  className='font-bold mb-2'>{char.specificationName}</h2>
-                {char.options.map(option => (
+            {specifications?.map((spec) =>
+            (<div key={spec.name} >
+                <h2 className='font-bold mb-2'>{spec.name}</h2>
+                {spec.values.map(option => (
                     <div className='ml-2'>{
                         !!selectedspecifications?.length ?
                             (<input defaultChecked={!!selectedspecifications?.includes(option.name)} onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='specification' value={option.name} id={option.name} />) :
                             (<input onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='specification' value={option.name} id={option.name} />)
                     }
-                        <label htmlFor={option.name}>{option.name}</label>
+                        <label htmlFor={option.name}>{option.description}</label>
                     </div>
                 ))}
             </div>
             ))}
         </>
-    )
+    ) : null
 }
 
 export default SpecificationsFilter
