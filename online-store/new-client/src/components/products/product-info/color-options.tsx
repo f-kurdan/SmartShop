@@ -1,9 +1,5 @@
-import { getColors } from '@/services/charachteristics.service'
 import Link from 'next/link'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import React, { useRef } from 'react'
-import { useQuery } from 'react-query'
-import useProducts from '../../../hooks/useProducts'
+import { useRef } from 'react'
 import useProductsByName from '../../../hooks/useProductsByName'
 import convertToSlug from '../../../utils/convertToSlug'
 
@@ -15,7 +11,7 @@ const ColorOptions = ({ productName, storageSize, initialColor }:
     }) => {
     const selectedColor = useRef(initialColor)
 
-    const { data: products } = useProductsByName(productName, storageSize = storageSize);
+    const { data: products } = useProductsByName(productName, storageSize);
     const colors = products ? products
         ?.filter(p => p.name === productName)
         .map(p => p.productInfo
