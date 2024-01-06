@@ -1,22 +1,19 @@
+import React from 'react'
+import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks'
 import { productAdded, productInstanceRemoved, productRemoved } from '@/redux/cart/cartSlice'
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/solid'
-import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import React from 'react'
 
 const CartTable = () => {
     const cart = useAppSelector(state => state.cart.value)
-    const totalSum = cart.reduce((total, item) => total += item.product.price * item.quantity, 0)
     const dispatch = useAppDispatch()
+    const totalSum = cart.reduce((total, item) => total += item.product.price * item.quantity, 0)
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
 
-    const createURLtoProductPage = (model: string, color: string, storage: number) => {
-        params.set('color', color);
-        params.set('storage', storage.toString());
-
-        return (`/products/${model}?${params}`)
+    const createURLtoProductPage = (slug: string) => {
+        return (`/products/${slug}`)
     }
 
     return cart.length ? (
@@ -46,10 +43,10 @@ const CartTable = () => {
                         <tr key={item.product.id}>
                             <td></td>
                             <td className="p-2 text-center">
-                                <Link href={createURLtoProductPage(item.product.model, item.product.color, item.product.storage)} className=" text-gray-800 font-semibold hover:text-cyan-300">{item.product.name}
-                                    <div className='font-extralight '>
+                                <Link href={createURLtoProductPage(item.product.slug)} className=" text-gray-800 font-semibold hover:text-cyan-300">{item.product.name}
+                                    <div className='font-extralight text-sm'>
                                         <span>Артикль: </span>
-                                        <span>{item.product.SKU}</span>
+                                        <span >{item.product.SKU}</span>
                                     </div>
                                 </Link>
                             </td>
