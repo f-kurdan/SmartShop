@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import useProducts from '@/hooks/useProducts'
 import { montserrat } from '@/styles/fonts'
 import { useDebouncedCallback } from 'use-debounce'
+import Link from 'next/link'
 
 function onlyUnique(value: string, index: number, array: string[]) {
     return array.indexOf(value) === index;
@@ -61,15 +62,15 @@ const Search = () => {
         replace(`${pathName}?${params.toString()}`)
     }
 
-    const onOptionClick = (value: string) => {
-        if (value) {
-            params.set('query', value)
-        } else {
-            params.delete('query')
-        }
+    // const onOptionClick = (slug: string) => {
+    //     if (value) {
+    //         params.set('query', value)
+    //     } else {
+    //         params.delete('query')
+    //     }
 
-        replace(`${pathName}?${params.toString()}`)
-    }
+    //     replace(`${pathName}?${params.toString()}`)
+    // }
 
     return (
         <div className={`${montserrat.className} group relative flex w-3/5 flex-shrink-0 `}>
@@ -85,7 +86,9 @@ const Search = () => {
             <div className='bg-white w-fit absolute top-full px-3 rounded-md shadow-md hidden group-focus-within:block hover:block'>
                 {!!data?.products?.length && data?.products?.map((option, index) =>
                 (
-                    <div key={index} className='cursor-pointer text-sm p-2 my-2 hover:bg-gradient-to-br hover:text-white hover:from-indigo-500 hover:via-sky-600 hover:to-blue-700 block active:from-purple-950 active:via-red-700 active:to-yellow-600 rounded-md ' onClick={() => onOptionClick(option.name)}>{option.name}</div>
+                    <Link href={`/products/${option.slug}`} key={index}>
+                    <div  className='cursor-pointer text-sm p-2 my-2 hover:bg-gradient-to-br hover:text-white hover:from-indigo-500 hover:via-sky-600 hover:to-blue-700 block active:from-purple-950 active:via-red-700 active:to-yellow-600 rounded-md ' >{option.name}</div>
+                    </Link>
                 ))}
             </div>
         </div>

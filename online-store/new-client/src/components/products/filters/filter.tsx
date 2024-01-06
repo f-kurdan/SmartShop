@@ -3,7 +3,7 @@ import React, { ChangeEvent, useRef } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import FilterButton from './filter-button';
 import GenericFilter from './genericFilter';
-import SpecificationsFilter from './characteristics-filter';
+import SpecificationsFilter from './specifications-filter';
 
 const Filter = () => {
   const searchParams = useSearchParams();

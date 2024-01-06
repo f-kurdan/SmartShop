@@ -1,6 +1,6 @@
-import { getSpecifications } from "@/services/characteristics.service";
 import { useQuery } from "react-query";
+import { getSpecifications } from "../services/specifications.service";
 
 export const useSpecifications = (categories?: string) => {
-    return useQuery(["characteristics", categories], () => getSpecifications(categories));
+    return useQuery(["specifications", categories], () => getSpecifications(categories));
 }
