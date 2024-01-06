@@ -23,12 +23,12 @@ const SpecificationsFilter = ({ onFilterChange, increment }: { onFilterChange: (
             (<div key={spec.name} >
                 <h2 className='font-bold mb-2'>{spec.name}</h2>
                 {spec.values.map(option => (
-                    <div className='ml-2'>{
+                    <div key={option.id} className='ml-2'>{
                         !!selectedspecifications?.length ?
-                            (<input defaultChecked={!!selectedspecifications?.includes(option.name)} onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='specification' value={option.name} id={option.name} />) :
-                            (<input onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='specification' value={option.name} id={option.name} />)
+                            (<input defaultChecked={!!selectedspecifications?.includes(option.name)} onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='specification' value={option.description} id={option.id} />) :
+                            (<input onChange={onChange} className='mr-2 scale-125 cursor-pointer' type="checkbox" name='specification' value={option.description} id={option.id} />)
                     }
-                        <label htmlFor={option.name}>{option.description}</label>
+                        <label htmlFor={option.id}>{option.description}</label>
                     </div>
                 ))}
             </div>
