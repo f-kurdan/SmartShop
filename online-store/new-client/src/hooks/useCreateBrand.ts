@@ -1,15 +1,15 @@
-import { QueryClient, useMutation} from "react-query";
-import categoryService from "../services/category.service";
+import { QueryClient, useMutation } from "react-query"
+import brandService from "../services/brand.service"
 
 const queryClient = new QueryClient()
 
-export const useCreateCategory = () => {
+export const useCreateBrand = () => {
     const mutation = useMutation({
-        mutationFn: categoryService.createCategory,
+        mutationFn: brandService.createBrand,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['categories'] })
         },
-        onError: (err) => {
+        onError: () => {
             throw new Error("Произошла ошибка");
         }
     })

@@ -1,4 +1,4 @@
-import CategoryCreatingDialog from '@/components/admin/categories/category-creating-dialog';
+import Dialog from '@/components/admin/dialog';
 import ProductCreatingDialog from '@/components/admin/product-creating-dialog';
 import { HandlerContext, NameContext } from '@/contexts/Contexts';
 import { montserrat } from '@/styles/fonts'
@@ -42,14 +42,17 @@ const index = () => {
         <div onClick={() => setShowCategoryModal(true)} className='transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black '>
           Добавить категорию
         </div>
-          <CategoryCreatingDialog
-           state={showCategoryModal}
-            title='Создание категории' />
+        <Dialog
+          name='category'
+          state={showCategoryModal}
+          title='Создание категории' />
         <div onClick={() => setShowBrandModal(true)} className='transition-all duration-30 bg-lime-300  p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black'>
           Добавить бренд
         </div>
-          <CategoryCreatingDialog state={showBrandModal}
-            title='Создание бренда' />
+        <Dialog
+          name='brand'
+          state={showBrandModal}
+          title='Создание бренда' />
         <div onClick={() => setShowProductAddingModal(true)} className='transition-all duration-300 bg-cyan-300  p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black '>
           Добавить товар
         </div>

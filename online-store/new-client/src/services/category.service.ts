@@ -1,6 +1,7 @@
 import { category } from "../types";
 
 const cataegoriesURL = 'http://localhost:5000/categories'
+
 class categoryService {
     async getCategories() {
         const res = await fetch(cataegoriesURL);

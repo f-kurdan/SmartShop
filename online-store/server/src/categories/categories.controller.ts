@@ -23,7 +23,6 @@ export class CategoriesController {
     storage: multer.diskStorage({
       destination: 'public/images/categories',
       filename: (req, file, cb) => {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
         cb(null, file.originalname)
       },
     })

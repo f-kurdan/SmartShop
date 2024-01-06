@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import { productAdded } from '@/redux/cart/cartSlice';
 import { product } from '@/types';
 import Link from 'next/link';

@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/hooks/hooks';
+import { useAppSelector } from '@/hooks/reduxHooks';
 import { ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon, ShoppingCartIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import React from 'react'

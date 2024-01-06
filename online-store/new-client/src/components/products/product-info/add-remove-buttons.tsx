@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import { productAdded, productInstanceRemoved } from '@/redux/cart/cartSlice';
 import { product } from '@/types';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/solid'

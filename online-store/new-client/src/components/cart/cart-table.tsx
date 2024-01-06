@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { useAppDispatch, useAppSelector } from '@/hooks/hooks'
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks'
 import { productAdded, productInstanceRemoved, productRemoved } from '@/redux/cart/cartSlice'
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/solid'
 

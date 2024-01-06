@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useForm } from 'react-hook-form'
 import { SubmitHandler } from 'react-hook-form/dist/types'
 import { useCreateCategory } from '../../hooks/useCreateCategory'
 import SaveButton from './save-button'
+import { useCreateBrand } from '../../hooks/useCreateBrand'
 
 type Inputs = {
     name: string
     image: FileList
 }
 
-const Form = ({name}:{name: string}) => {
+const Form = memo(({ name }: { name: string }) => {
     const mutation = getHook(name)
 
     const {
@@ -24,12 +25,16 @@ const Form = ({name}:{name: string}) => {
             formData.append('name', data.name);
             formData.append('image', data.image[0]);
         }
+        if (data.name)
+        console.log(data.name, data.image)
+            formData.append('name', data.name);
         mutation.mutate(formData)
     }
+    console.log(name)
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" encType="multipart/form-data"
-            className='flex flex-col gap-3 justify-center items-'>
+            className='flex flex-col gap-3 justify-center items-stretch w-4/5'>
             <label>
                 <input
                     type="text"
@@ -39,26 +44,31 @@ const Form = ({name}:{name: string}) => {
                         required: true,
                         minLength: {
                             value: 3,
-                            message: 'Название должно содержать минимум 3 символа'
+                            message: "Название должно содержать минимум 3 символа"
                         }
                     })} />
-                {errors.name && <p className='text-red-500'>This field is required</p>}
+                {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
             </label>
-            <label>
-                <input
-                    type="file"
-                    className='bg-'
-                    {...register("image", { required: true })} />
-                {errors.image && <p className='text-red-500'>Добавьте обложку</p>}
-            </label>
+            {
+                name === 'category' ?
+                    (<label className='border-2 border-solid rounded-lg p-2 cursor-pointer inline-block text-center'>
+                        <span>Добавить обложку</span>
+                        <input
+                            type="file"
+                            className='hidden'
+                            {...register("image", { required: true })} />
+                        {errors.image && <p className='text-red-500'>Обложка обязательна</p>}
+                    </label>) : null
+            }
             <SaveButton />
         </form>
     )
-}
+})
 
-function getHook(name: string)   {
+function getHook(name: string) {
     switch (name) {
-        default: return useCreateCategory();
+        case 'category': return useCreateCategory();
+        default: return useCreateBrand()
     }
 }
 
