@@ -12,7 +12,7 @@ class categoryService {
     async getCategoryById(id: string) {
         // return Promise.resolve(categories.filter(c => c.id.toString() === id));
     }
-
+    
     async createCategory(formData?: FormData) {
        const res = await fetch(cataegoriesURL, {
             method: "POST",
@@ -20,7 +20,7 @@ class categoryService {
         })
 
         if (!res.ok)
-        throw new Error('Не удалось загрузить файл');
+        throw new Error('Не удалось создать категорию');
     }
 }
 

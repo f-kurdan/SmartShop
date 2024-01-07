@@ -17,13 +17,14 @@ export class BrandsService {
         })
     }
 
-    createBrand(dto: CreateBrandDto) {
-        return this.prisma.brand.create({
+    async createBrand(dto: CreateBrandDto) {
+        return await this.prisma.brand.create({
             data: {
                 name: dto.name,
                 slug: convertToSlug(dto.name)
             }
-        })
+        }).catch(error => 
+            { throw new Error(error) })
     }
 
     updateBrand(id: string, dto: CreateBrandDto) {

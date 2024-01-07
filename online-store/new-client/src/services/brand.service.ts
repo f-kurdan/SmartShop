@@ -9,11 +9,15 @@ class brandService {
   async createBrand(formData?: FormData) {
     const res = await fetch(brandsURL, {
       method: "POST",
-      body: formData
-  })
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 'name': formData?.get('name')})
+    })
 
-  if (!res.ok)
-  throw new Error('Не удалось загрузить файл');
+    if (!res.ok){
+      console.log(res.text)
+      throw new Error('Не удалось создать бренд');}
   }
 }
 
