@@ -7,7 +7,7 @@ export const useCreateBrand = () => {
     const mutation = useMutation({
         mutationFn: brandService.createBrand,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['categories'] })
+            queryClient.invalidateQueries({ queryKey: ['brands'] })
         },
         onError: () => {
             throw new Error("Произошла ошибка");
