@@ -23,8 +23,7 @@ export class BrandsService {
                 name: dto.name,
                 slug: convertToSlug(dto.name)
             }
-        }).catch(error => 
-            { throw new Error(error) })
+        })
     }
 
     updateBrand(id: string, dto: CreateBrandDto) {
