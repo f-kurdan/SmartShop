@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseInterceptors, UploadedFile, ParseFilePipeBuilder, HttpStatus } from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseInterceptors, UploadedFile, ParseFilePipeBuilder, HttpStatus, HttpCode } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express';
 import multer from 'multer';
 import { CreateCategoryDto } from './dto/create-category-dto';
@@ -19,6 +19,7 @@ export class CategoriesController {
   }
 
   @Post()
+  @HttpCode(200)
   @UseInterceptors(FileInterceptor('categoryImage', {
     storage: multer.diskStorage({
       destination: 'public/images/categories',

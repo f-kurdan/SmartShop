@@ -1,5 +1,4 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
-import { ApiBody } from '@nestjs/swagger';
 import { BrandsService } from './brands.service';
 import { CreateBrandDto } from './dto/create-brand-dto';
 
