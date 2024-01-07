@@ -7,7 +7,7 @@ import { useCreateBrand } from '../../hooks/useCreateBrand'
 
 type Inputs = {
     name: string
-    image: FileList
+    image?: FileList
 }
 
 const Form = memo(({ name }: { name: string }) => {
@@ -21,16 +21,14 @@ const Form = memo(({ name }: { name: string }) => {
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         const formData = new FormData();
-        if (data.name && data.image) {
-            formData.append('name', data.name);
-            formData.append('image', data.image[0]);
+        if (data.image) {
+            formData.append('categoryImage', data.image[0]);
         }
-        if (data.name)
-        console.log(data.name, data.image)
+        if (data.name ){
             formData.append('name', data.name);
+        }
         mutation.mutate(formData)
     }
-    console.log(name)
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" encType="multipart/form-data"
@@ -52,7 +50,7 @@ const Form = memo(({ name }: { name: string }) => {
             {
                 name === 'category' ?
                     (<label className='border-2 border-solid rounded-lg p-2 cursor-pointer inline-block text-center'>
-                        <span>Добавить обложку</span>
+                        <span>Добавить обложку</span>                        
                         <input
                             type="file"
                             className='hidden'
@@ -60,7 +58,7 @@ const Form = memo(({ name }: { name: string }) => {
                         {errors.image && <p className='text-red-500'>Обложка обязательна</p>}
                     </label>) : null
             }
-            <SaveButton />
+            <SaveButton mutation={mutation} />
         </form>
     )
 })
