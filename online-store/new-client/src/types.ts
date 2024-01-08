@@ -20,12 +20,11 @@ export type product = {
 
 export type productsList = product[]
 
-export type brands = {
+export type brand = {
     id: number;
     name: string;
     slug: string;
-    logo: string;
-}[] | undefined
+}
 
 export type specification = {
     id: number;

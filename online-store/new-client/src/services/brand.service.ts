@@ -1,13 +1,14 @@
-import { FetchError } from "../types"
+import { brand, FetchError } from "../types"
 
 const brandsURL = 'http://localhost:5000/brands'
 
 
 class brandService {
-  // getBrands = async () => {
-  //   const brandIDs = products.map(p => p.brand_id)
-  //   return Promise.resolve(brands.filter(b => brandIDs.includes(b.id)))
-  // }
+  async getBrands () {
+    const res = await fetch(brandsURL);
+    const brands: brand[] = await res.json();
+    return brands;
+  }
 
   async createBrand(formData?: FormData) {
     return fetch(brandsURL, {

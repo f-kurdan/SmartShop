@@ -1,6 +1,6 @@
-import { getBrands } from "@/services/brand.service"
 import { useQuery } from "react-query"
+import brandService from "../services/brand.service"
 
 export const useBrands = () => { 
-    return useQuery(["brands"], getBrands)
+    return useQuery(["brands"], brandService.getBrands)
 }
