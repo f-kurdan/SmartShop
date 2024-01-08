@@ -13,14 +13,11 @@ class categoryService {
         // return Promise.resolve(categories.filter(c => c.id.toString() === id));
     }
     
-    async createCategory(formData?: FormData) {
-       const res = await fetch(cataegoriesURL, {
+    createCategory(formData?: FormData) {
+       return fetch(cataegoriesURL, {
             method: "POST",
             body: formData
         })
-
-        if (!res.ok)
-        throw new Error('Не удалось создать категорию');
     }
 }
 

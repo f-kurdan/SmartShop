@@ -8,9 +8,6 @@ export const useCreateBrand = () => {
         mutationFn: brandService.createBrand,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['brands'] })
-        },
-        onError: () => {
-            throw new Error("Произошла ошибка");
         }
     })
     return mutation;

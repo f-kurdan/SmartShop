@@ -29,6 +29,11 @@ const Form = memo(({ name }: { name: string }) => {
         }
         mutation.mutate(formData)
     }
+    if (mutation.isError) {
+        console.log('error', mutation.error?.res?.status)
+
+    }
+    console.log('status', mutation.status)
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" encType="multipart/form-data"

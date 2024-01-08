@@ -1,7 +1,7 @@
 import React from 'react'
 import { UseMutationResult } from 'react-query'
 
-const SaveButton = ({mutation}:{mutation: UseMutationResult<void, unknown, FormData | undefined, unknown>}) => {
+const SaveButton = ({mutation}:{mutation: UseMutationResult<Response, unknown, FormData | undefined, unknown>}) => {
 
     // function handleCLick(e: React.FormEvent<HTMLButtonElement>) {
     //     e.preventDefault()
