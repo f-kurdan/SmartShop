@@ -6,7 +6,7 @@ import SaveButton from '../save-button';
 import ProductSpecificationRow from './product-specification-row';
 import ProductSpecificationAdding from './product-specification-adding';
 
-const ProductCreatingDialog = ({ state, title }: { state: boolean, title: string }) => {
+const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: string, title: string }) => {
     const { data: categories } = useCategories();
     const { data: brands } = useBrands();
 
@@ -35,7 +35,8 @@ const ProductCreatingDialog = ({ state, title }: { state: boolean, title: string
                     <input type="number" placeholder='Введите стоимость' className='bg-gray-100 rounded-lg h-14 p-4' />
                 </div>
                 <ProductSpecificationAdding />
-                <CancelButton />
+                <CancelButton name={name} />
+
                 {/* <SaveButton /> */}
             </div>
         </dialog>

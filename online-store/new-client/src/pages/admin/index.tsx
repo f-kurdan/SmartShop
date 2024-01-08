@@ -58,6 +58,7 @@ const index = () => {
         </div>
         <NameContext.Provider value='product' >
           <ProductCreatingDialog state={showProductAddingModal}
+          name='product'
             title='Добавить товар' />
         </NameContext.Provider>
       </div>
