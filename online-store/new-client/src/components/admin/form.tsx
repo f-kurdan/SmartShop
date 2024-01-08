@@ -24,16 +24,13 @@ const Form = memo(({ name }: { name: string }) => {
         if (data.image) {
             formData.append('categoryImage', data.image[0]);
         }
-        if (data.name ){
+        if (data.name) {
             formData.append('name', data.name);
         }
         mutation.mutate(formData)
     }
-    if (mutation.isError) {
-        console.log('error', mutation.error?.res?.status)
 
-    }
-    console.log('status', mutation.status)
+    const errorCode = mutation.error?.res?.status;
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" encType="multipart/form-data"
@@ -50,20 +47,21 @@ const Form = memo(({ name }: { name: string }) => {
                             message: "Название должно содержать минимум 3 символа"
                         }
                     })} />
-                {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
+                {errors.name && <p className='text-red-500 text-center'>{errors.name.message}</p>}
             </label>
             {
                 name === 'category' ?
                     (<label className='border-2 border-solid rounded-lg p-2 cursor-pointer inline-block text-center'>
-                        <span>Добавить обложку</span>                        
+                        <span>Добавить обложку</span>
                         <input
                             type="file"
                             className='hidden'
                             {...register("image", { required: true })} />
-                        {errors.image && <p className='text-red-500'>Обложка обязательна</p>}
+                        {errors.image && <p className='text-red-500 text-center'>Обложка обязательна</p>}
                     </label>) : null
             }
-            <SaveButton mutation={mutation} />
+            {errorCode === 409 ? <p className='text-red-500 text-center'>{"Такое название уже существует!"}</p> : null}
+            <SaveButton isSuccess={mutation.isSuccess} />
         </form>
     )
 })

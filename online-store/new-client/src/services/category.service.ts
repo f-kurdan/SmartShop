@@ -1,4 +1,4 @@
-import { category } from "../types";
+import { category, FetchError } from "../types";
 
 const cataegoriesURL = 'http://localhost:5000/categories'
 
@@ -12,11 +12,17 @@ class categoryService {
     async getCategoryById(id: string) {
         // return Promise.resolve(categories.filter(c => c.id.toString() === id));
     }
-    
+
     createCategory(formData?: FormData) {
-       return fetch(cataegoriesURL, {
+        return fetch(cataegoriesURL, {
             method: "POST",
             body: formData
+        }).then(res => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                throw new FetchError(res)
+            }
         })
     }
 }

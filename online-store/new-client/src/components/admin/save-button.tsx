@@ -1,20 +1,10 @@
 import React from 'react'
 import { UseMutationResult } from 'react-query'
 
-const SaveButton = ({mutation}:{mutation: UseMutationResult<Response, unknown, FormData | undefined, unknown>}) => {
-
-    // function handleCLick(e: React.FormEvent<HTMLButtonElement>) {
-    //     e.preventDefault()
-    //     console.log(e)
-    //     // onSubmit(e);
-    // }
-
-    console.log("inside button: " + mutation?.status)
-    const color = mutation?.isError? 'bg-red-200' : 'bg-lime-200';
-
+const SaveButton = ({isSuccess}:{isSuccess: boolean}) => {
     return (
-        <button type='submit' autoFocus className={`${color} p-3 rounded-lg cursor-pointer border-2 border-black text-center min-w-1/3 self-end`}>
-            {mutation?.isSuccess ? 'Успех!' : 'Сохранить'}
+        <button type='submit' autoFocus className={`bg-lime-200 p-3 rounded-lg cursor-pointer border-2 border-black text-center min-w-1/3 self-end`}>
+            {isSuccess ? 'Успех!' : 'Сохранить'}
         </button>
     )
 }

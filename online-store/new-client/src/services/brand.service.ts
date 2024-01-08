@@ -1,10 +1,7 @@
+import { FetchError } from "../types"
+
 const brandsURL = 'http://localhost:5000/brands'
 
-class FetchError extends Error {
-  constructor(public res: Response, message?: string) {
-    super(message)
-  }
-}
 
 class brandService {
   // getBrands = async () => {
@@ -12,7 +9,7 @@ class brandService {
   //   return Promise.resolve(brands.filter(b => brandIDs.includes(b.id)))
   // }
 
-  createBrand(formData?: FormData) {
+  async createBrand(formData?: FormData) {
     return fetch(brandsURL, {
       method: "POST",
       headers: {
