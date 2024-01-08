@@ -1,9 +1,10 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { SubmitHandler } from 'react-hook-form/dist/types'
 import { useCreateCategory } from '../../hooks/useCreateCategory'
 import SaveButton from './save-button'
 import { useCreateBrand } from '../../hooks/useCreateBrand'
+import { FetchError } from '../../types'
 
 type Inputs = {
     name: string
@@ -30,9 +31,12 @@ const Form = memo(({ name }: { name: string }) => {
         mutation.mutate(formData)
     }
 
-    const errorCode = mutation.error?.res?.status;
+    const err = mutation.error as FetchError;
+    const errorCode = err?.res?.status;
 
     return (
+        <>
+        {mutation.isSuccess? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
         <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" encType="multipart/form-data"
             className='flex flex-col gap-3 justify-center items-stretch w-4/5'>
             <label>
@@ -51,7 +55,7 @@ const Form = memo(({ name }: { name: string }) => {
             </label>
             {
                 name === 'category' ?
-                    (<label className='border-2 border-solid rounded-lg p-2 cursor-pointer inline-block text-center'>
+                (<label className='border-2 border-solid rounded-lg p-2 cursor-pointer inline-block text-center'>
                         <span>Добавить обложку</span>
                         <input
                             type="file"
@@ -60,9 +64,12 @@ const Form = memo(({ name }: { name: string }) => {
                         {errors.image && <p className='text-red-500 text-center'>Обложка обязательна</p>}
                     </label>) : null
             }
-            {errorCode === 409 ? <p className='text-red-500 text-center'>{"Такое название уже существует!"}</p> : null}
-            <SaveButton isSuccess={mutation.isSuccess} />
+            {errorCode === 409 ? <p className='text-red-500 text-center'>
+                Такое название уже существует!
+            </p> : null}
+            <SaveButton />
         </form>
+            </>
     )
 })
 

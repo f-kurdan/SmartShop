@@ -44,14 +44,14 @@ const index = () => {
         </div>
         <Dialog
           name='category'
-          state={showCategoryModal}
+          toShow={showCategoryModal}
           title='Создание категории' />
         <div onClick={() => setShowBrandModal(true)} className='transition-all duration-30 bg-lime-300  p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black'>
           Добавить бренд
         </div>
         <Dialog
           name='brand'
-          state={showBrandModal}
+          toShow={showBrandModal}
           title='Создание бренда' />
         <div onClick={() => setShowProductAddingModal(true)} className='transition-all duration-300 bg-cyan-300  p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black '>
           Добавить товар
