@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react' 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import React, { useRef, useState } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import useProducts from '@/hooks/useProducts'
 import { montserrat } from '@/styles/fonts'
@@ -13,21 +12,14 @@ function onlyUnique(value: string, index: number, array: string[]) {
 
 const Search = () => {
     const [query, setQuery] = useState('')
-    const searchParams = useSearchParams()
-    const params = new URLSearchParams(searchParams)
-    const pathName = usePathname()
-    const { replace } = useRouter()
-
     const inputRef = useRef<HTMLInputElement>(null)
-
     const { data } = useProducts({query: query})
-
-    const placeholder = 'Введите название товара'
 
     const handleChange = useDebouncedCallback((e:React.ChangeEvent<HTMLInputElement>) => {
         setQuery(e.target.value)
     }, 500)
-
+    
+    const placeholder = 'Введите название товара'
     return (
         <div className={`${montserrat.className} group relative flex w-3/5 flex-shrink-0 `}>
             <input
