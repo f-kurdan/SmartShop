@@ -11,8 +11,7 @@ const ProductSpecificationAdding = () => {
     }
 
     const handleDeleteRow = (id: number) => {
-        console.log(id)
-    setRows(rows.filter(r => r.id!== id))
+        setRows(rows.filter(r => r.id !== id))
     }
 
     return (

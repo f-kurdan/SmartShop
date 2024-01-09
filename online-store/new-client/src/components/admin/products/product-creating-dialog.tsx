@@ -5,6 +5,7 @@ import { useBrands } from '@/hooks/useBrands';
 import SaveButton from '../save-button';
 import ProductSpecificationRow from './product-specification-row';
 import ProductSpecificationAdding from './product-specification-adding';
+import ProductImageAdding from './product-image-adding';
 
 const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: string, title: string }) => {
     const { data: categories } = useCategories();
@@ -34,6 +35,7 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
                     <input type="text" placeholder='Введите название' className='bg-gray-100 rounded-lg h-14 p-4' />
                     <input type="number" placeholder='Введите стоимость' className='bg-gray-100 rounded-lg h-14 p-4' />
                 </div>
+                <ProductImageAdding />
                 <ProductSpecificationAdding />
                 <CancelButton name={name} />
 

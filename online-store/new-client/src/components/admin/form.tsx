@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useState, ChangeEvent } from 'react'
 import { useForm } from 'react-hook-form'
 import { SubmitHandler } from 'react-hook-form/dist/types'
 import { useCreateCategory } from '../../hooks/useCreateCategory'
@@ -12,6 +12,7 @@ type Inputs = {
 }
 
 const Form = memo(({ name }: { name: string }) => {
+    const [image, setImage] = useState('');
     const mutation = getHook(name)
 
     const {
@@ -31,6 +32,11 @@ const Form = memo(({ name }: { name: string }) => {
         mutation.mutate(formData)
     }
 
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setImage(e.target.files[0].name)
+        }
+    }
     const err = mutation.error as FetchError;
     const errorCode = err?.res?.status;
 
@@ -55,14 +61,17 @@ const Form = memo(({ name }: { name: string }) => {
             </label>
             {
                 name === 'category' ?
-                (<label className='border-2 border-solid rounded-lg p-2 cursor-pointer inline-block text-center'>
+                (<>
+                <label onChange={onChange} className='border-2 border-solid rounded-lg p-2 cursor-pointer inline-block text-center'>
                         <span>Добавить обложку</span>
                         <input
                             type="file"
                             className='hidden'
                             {...register("image", { required: true })} />
                         {errors.image && <p className='text-red-500 text-center'>Обложка обязательна</p>}
-                    </label>) : null
+                    </label>
+                    {image ? (<p className='text-lime-500 text-center'>{image}</p>) : ''}
+                </>) : null
             }
             {errorCode === 409 ? <p className='text-red-500 text-center'>
                 Такое название уже существует!

@@ -6,10 +6,6 @@ import { useDebouncedCallback } from 'use-debounce'
 import Link from 'next/link'
 import Image from 'next/image'
 
-function onlyUnique(value: string, index: number, array: string[]) {
-    return array.indexOf(value) === index;
-}
-
 const Search = () => {
     const [query, setQuery] = useState('')
     const inputRef = useRef<HTMLInputElement>(null)
