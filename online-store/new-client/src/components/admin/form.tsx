@@ -34,8 +34,12 @@ const Form = memo(({ name }: { name: string }) => {
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
-            setImage(e.target.files[0].name)
+            setImage(e.target.files[0]?.name)
         }
+    }
+
+    const onCancelClick = () => {
+        setImage('');
     }
     const err = mutation.error as FetchError;
     const errorCode = err?.res?.status;
@@ -70,7 +74,10 @@ const Form = memo(({ name }: { name: string }) => {
                             {...register("image", { required: true })} />
                         {errors.image && <p className='text-red-500 text-center'>Обложка обязательна</p>}
                     </label>
-                    {image ? (<p className='text-lime-500 text-center'>{image}</p>) : ''}
+                    {image ? (<div className='flex flex-row gap-4  text-center'>
+                        <p className='text-lime-500'>{image}</p>
+                    <span className='cursor-pointer' onClick={onCancelClick}>x</span>
+                    </div>) : ''}
                 </>) : null
             }
             {errorCode === 409 ? <p className='text-red-500 text-center'>
