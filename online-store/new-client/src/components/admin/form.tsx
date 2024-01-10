@@ -38,54 +38,46 @@ const Form = memo(({ name }: { name: string }) => {
         }
     }
 
-    const onCancelClick = () => {
-        setImage('');
-    }
     const err = mutation.error as FetchError;
     const errorCode = err?.res?.status;
 
     return (
         <>
-        {mutation.isSuccess? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
-        <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" encType="multipart/form-data"
-            className='flex flex-col gap-3 justify-center items-stretch w-4/5'>
-            <label>
-                <input
-                    type="text"
-                    placeholder='Введите название'
-                    className={`bg-gray-100 rounded-lg h-14 w-full p-4`}
-                    {...register("name", {
-                        required: true,
-                        minLength: {
-                            value: 3,
-                            message: "Название должно содержать минимум 3 символа"
-                        }
-                    })} />
-                {errors.name && <p className='text-red-500 text-center'>{errors.name.message}</p>}
-            </label>
-            {
-                name === 'category' ?
-                (<>
-                <label onChange={onChange} className='border-2 border-solid rounded-lg p-2 cursor-pointer inline-block text-center'>
-                        <span>Добавить обложку</span>
-                        <input
-                            type="file"
-                            className='hidden'
-                            {...register("image", { required: true })} />
-                        {errors.image && <p className='text-red-500 text-center'>Обложка обязательна</p>}
-                    </label>
-                    {image ? (<div className='flex flex-row gap-4  text-center'>
-                        <p className='text-lime-500'>{image}</p>
-                    <span className='cursor-pointer' onClick={onCancelClick}>x</span>
-                    </div>) : ''}
-                </>) : null
-            }
-            {errorCode === 409 ? <p className='text-red-500 text-center'>
-                Такое название уже существует!
-            </p> : null}
-            <SaveButton />
-        </form>
-            </>
+            {mutation.isSuccess ? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
+            <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" encType="multipart/form-data"
+                className='flex flex-col gap-3 justify-center items-stretch w-4/5'>
+                <label>
+                    <input
+                        type="text"
+                        placeholder='Введите название'
+                        className={`bg-gray-100 rounded-lg h-14 w-full p-4`}
+                        {...register("name", {
+                            required: "Введите название",
+                            minLength: {
+                                value: 3,
+                                message: "Название должно содержать минимум 3 символа"
+                            }
+                        })} />
+                    {errors.name && <p className='text-red-500 text-center'>{errors.name.message}</p>}
+                </label>
+                {
+                    name === 'category' ?
+                        (<>
+                            <label onChange={onChange} className={`border-2 border-solid rounded-lg p-2 cursor-pointer inline-block text-center ${image ? 'outline outline-lime-400' : errors.image ? 'outline outline-red-500' : ''}`}>
+                                <span>Добавить обложку</span>
+                                <input
+                                    type="file"
+                                    className='hidden'
+                                    {...register("image", { required: true })} />
+                            </label>
+                        </>) : null
+                }
+                {errorCode === 409 ? <p className='text-red-500 text-center'>
+                    Такое название уже существует!
+                </p> : null}
+                <SaveButton />
+            </form>
+        </>
     )
 })
 
