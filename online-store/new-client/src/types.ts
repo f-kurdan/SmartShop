@@ -45,3 +45,9 @@ export class FetchError extends Error {
     super(message)
   }
 }
+
+export type ProductSpec = { 
+    id: number 
+    title: string, 
+    description: string, 
+}

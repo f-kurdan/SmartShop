@@ -12,8 +12,8 @@ const ProductImageAdding = () => {
   }
 
   return (
-    <>
-      <label className='border-2 border-solid rounded-md p-3'>
+    <div className='grid grid-cols-2 gap-2 w-11/12 justify-start items-start'>
+      <label className='inline border-2 border-solid rounded-md p-3'>
         Добавить изображения
         <input ref={imageRef} onChange={onInputChange} hidden type="file" multiple name="files[]" />
       </label>
@@ -23,7 +23,7 @@ const ProductImageAdding = () => {
         )}
       </div>) : null
       }
-    </>
+    </div>
   )
 }
 

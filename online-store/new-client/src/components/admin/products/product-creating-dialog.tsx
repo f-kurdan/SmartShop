@@ -11,10 +11,9 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
     const { data: categories } = useCategories();
     const { data: brands } = useBrands();
 
-
     return (
         <dialog open={state} className='fixed top-20 transition-all duration-100 z-10 bg-white rounded-lg shadow-lg  w-1/2' >
-            <div className={`flex gap-7 flex-col items-center justify-start p-5`}>
+            <div className={`flex gap-7 flex-col items-start justify-start p-5`}>
                 <div className='font-bold text-3xl text-center text-gray-600'>
                     {title}
                 </div>
