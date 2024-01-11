@@ -46,8 +46,18 @@ export class FetchError extends Error {
   }
 }
 
-export type ProductSpec = { 
+export type ProductInfo = { 
     id: number 
     title: string, 
     description: string, 
+}
+
+
+export type ProductFormInputs = {
+    category: category,
+    brand: brand,
+    name: string,
+    price: number,
+    images: FileList,
+    specs: ProductInfo[]
 }

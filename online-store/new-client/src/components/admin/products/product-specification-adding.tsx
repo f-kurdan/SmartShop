@@ -1,9 +1,9 @@
 import React from 'react'
-import { ProductSpec } from '../../../types'
+import { ProductInfo } from '../../../types'
 import ProductSpecificationRow from './product-specification-row'
 
 const ProductSpecificationAdding = () => {
-    const [rows, setRows] = React.useState<ProductSpec[]>([])
+    const [rows, setRows] = React.useState<ProductInfo[]>([])
 
     const handleAddRow = () => {
         setRows(rows => [...rows, { "title": "", "description": "", id: Date.now() }])
