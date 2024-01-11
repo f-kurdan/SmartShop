@@ -2,7 +2,9 @@ import React, { ChangeEvent, MouseEvent, useRef, useState } from 'react'
 import { FieldError, UseFormRegister } from 'react-hook-form'
 import { ProductFormInputs } from '../../../types'
 
-const ProductImageAdding = ({register, error}:{register: UseFormRegister<ProductFormInputs>, error?: FieldError}) => {
+const ProductImageAdding = ({register, error}:{
+  register: UseFormRegister<ProductFormInputs>, 
+  error?: FieldError}) => {
   const [images, setImages] = useState<string[]>([])
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {

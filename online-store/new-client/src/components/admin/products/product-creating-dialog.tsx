@@ -7,6 +7,7 @@ import ProductImageInputs from './product-image-inputs';
 import { brand, category, ProductFormInputs, ProductInfo } from '../../../types';
 import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
 import ProductNameAndPriceInputs from './product-name-and-priceInputs';
+import ProductCategoryAndBrandInputs from './product-category-and-brand-inputs';
 
 const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: string, title: string }) => {
     const {
@@ -33,6 +34,10 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
                 <div className='font-bold text-3xl text-center text-gray-600'>
                     {title}
                 </div>
+                <ProductCategoryAndBrandInputs
+                    register={register}
+                    errors={errors}
+                />
                 <ProductNameAndPriceInputs
                     register={register}
                     errors={errors} />
