@@ -59,5 +59,8 @@ export type ProductFormInputs = {
     name: string,
     price: number,
     images: FileList,
-    specs: ProductInfo[]
+    specs: {
+        specName: string,
+        specDescription: string
+    }[]
 }
