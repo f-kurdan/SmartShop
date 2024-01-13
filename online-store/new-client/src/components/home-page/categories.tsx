@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
-import useCategories from '../../hooks/useCategories';
+import useCategories from '../../hooks/categories/useCategories';
 
 const Categories = () => {
   const searchParams = useSearchParams();

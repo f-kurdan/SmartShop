@@ -27,7 +27,7 @@ const ProductImageAdding = ({register, error}:{
       </label>
       {images?.length ? (<div className='flex flex-col gap-1 justify-start items-start'>
         {images?.map(i =>
-          <span key={i} className='text-lime-500 text-center'>{i}</span>
+          <span key={i} className='text-blue-500 text-center'>{i}</span>
         )}
       </div>) : null
       }

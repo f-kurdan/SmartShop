@@ -21,15 +21,11 @@ export class CreateProductDto {
 
     @ApiProperty()
     @IsObject()
-    category: {
-        name: string;
-    };
+    categorySlug: string;
 
     @ApiProperty()
     @IsObject()
-    brand: {
-        name: string;
-    };
+    brandSlug: string;
 
     @ApiProperty()
     @IsNumber()

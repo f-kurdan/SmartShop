@@ -1,5 +1,5 @@
-import { useBrands } from '@/hooks/useBrands'
-import useCategories from '@/hooks/useCategories'
+import { useBrands } from '@/hooks/brands/useBrands'
+import useCategories from '@/hooks/categories/useCategories'
 import useColors from '@/hooks/useColors'
 import { useSearchParams } from 'next/navigation'
 import React, { ChangeEvent } from 'react'

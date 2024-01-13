@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
-import useProducts from '@/hooks/useProducts'
+import useProducts from '@/hooks/products/useProducts'
 import { montserrat } from '@/styles/fonts'
 import { useDebouncedCallback } from 'use-debounce'
 import Link from 'next/link'

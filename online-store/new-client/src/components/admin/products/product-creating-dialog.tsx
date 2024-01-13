@@ -8,6 +8,7 @@ import { brand, category, ProductFormInputs, ProductInfo } from '../../../types'
 import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
 import ProductNameAndPriceInputs from './product-name-and-priceInputs';
 import ProductCategoryAndBrandInputs from './product-category-and-brand-inputs';
+import SaveButton from '../save-button';
 
 const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: string, title: string }) => {
     const {
@@ -18,14 +19,33 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
     } = useForm<ProductFormInputs>({
         defaultValues: {
             specs: [{
-                specName: 'Цвет',
-                specDescription: "Белый"
+                specName: '',
+                specDescription: ''
             }]
         }
     })
 
     const onSubmit: SubmitHandler<ProductFormInputs> = (data) => {
         const formData = new FormData();
+        if (data.category) 
+            formData.append('categorySlug', data.category.slug);
+        if (data.brand)   
+            formData.append('brandSlug', data.brand.slug);
+        if (data.name) 
+            formData.append('name', data.name);
+        if (data.price)
+            formData.append('price', data.price.toString());
+        if (data.images) {
+            Array.from(data.images).forEach(image => 
+                formData.append('images[]', image));
+        }
+        if (data.specs) {
+            Array.from(data.specs).forEach(spec => {
+                formData.append('productInfo[]', JSON.stringify({'name': spec.specName, 'description': spec.specDescription}));
+            });
+        }
+        
+        mutation.mutate(formData)
     }
 
     return (
@@ -49,7 +69,7 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
                     register={register}
                     control={control} />
             </form>
-            {/* <SaveButton /> */}
+            <SaveButton />
             <CancelButton name={name} />
         </dialog>
     )

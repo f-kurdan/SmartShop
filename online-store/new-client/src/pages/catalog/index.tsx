@@ -1,5 +1,5 @@
 import Catalog from '@/components/products/catalog';
-import useProducts from '@/hooks/useProducts';
+import useProducts from '@/hooks/products/useProducts';
 import { useSearchParams } from 'next/navigation';
 
 const Page = () => {

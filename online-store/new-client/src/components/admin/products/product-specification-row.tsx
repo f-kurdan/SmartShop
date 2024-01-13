@@ -12,13 +12,13 @@ const ProductSpecificationRow =  memo(({index, register, field, remove}:{
                 <input
                     type="text"
                     placeholder='Название'
-                    className="border-2 border-black rounded-lg p-2 text-center"
+                    className="border-2 border-black rounded-lg p-2 font-italic"
                     {...register(`specs.${index}.specName` as const)}
                 />
                 <input
                     type="text"
                     placeholder='Описание'
-                    className="border-2 border-black rounded-lg p-2 text-center"
+                    className="border-2 border-black rounded-lg p-2 font-italic"    
                     {...register(`specs.${index}.specDescription` as const)}
                 />
                 <div onClick={() => remove(index)} className='p-3 rounded-lg bg-red-200 cursor-pointer border-2 border-black text-center'>

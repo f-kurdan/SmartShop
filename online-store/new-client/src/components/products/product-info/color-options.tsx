@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRef } from 'react'
-import useProductsByName from '../../../hooks/useProductsByName'
+import useProductsByName from '../../../hooks/products/useProductsByName'
 import convertToSlug from '../../../utils/convertToSlug'
 
 const ColorOptions = ({ productName, storageSize, initialColor }:
