@@ -152,10 +152,10 @@ export class ProductsService {
                     create: dto.productInfo,
                 },
                 category: {
-                    connect: { name: dto.category.name }
+                    connect: { slug: dto.categorySlug }
                 },
                 brand: {
-                    connect: { name: dto.brand.name }
+                    connect: { slug: dto.brandSlug }
                 }
             }
         })
