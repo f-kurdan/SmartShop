@@ -59,6 +59,7 @@ export type ProductFormInputs = {
     name: string,
     price: number,
     images: FileList,
+    quantity: number,
     specs: {
         specName: string,
         specDescription: string

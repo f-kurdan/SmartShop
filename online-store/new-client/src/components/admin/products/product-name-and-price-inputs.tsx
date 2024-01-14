@@ -9,10 +9,9 @@ const ProductNameAndPriceInputs = ({ errors, register }: {
   return (
     <div className='grid grid-cols-2 gap-2 w-11/12 '>
       <label>
-
         <input
           type="text"
-          placeholder='Введите название'
+          placeholder='Название'
           className={`bg-gray-100 rounded-lg w-full h-14 p-4 ${errors.name ? 'outline outline-red-500' : ''}`}
           {...register("name", {
             required: "Введите название",
@@ -25,7 +24,7 @@ const ProductNameAndPriceInputs = ({ errors, register }: {
       <label>
         <input
           type="number"
-          placeholder='Введите стоимость'
+          placeholder='Стоимость'
           className={`bg-gray-100 w-full rounded-lg h-14 p-4 ${errors.price ? 'outline outline-red-500' : ''}`}
           {...register("price", {
             required: "Укажите цену",

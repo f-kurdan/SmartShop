@@ -6,7 +6,7 @@ const queryClient = new QueryClient()
 const useCreateProduct = () => {
     return useMutation({
         mutationFn: productService.createProduct,
-        onSuccess: (data) => {
+        onSuccess: () => {
             queryClient.invalidateQueries(['products'])
         }
     })
