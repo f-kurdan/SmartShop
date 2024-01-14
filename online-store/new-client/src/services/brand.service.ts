@@ -4,7 +4,7 @@ const brandsURL = 'http://localhost:5000/brands'
 
 
 class brandService {
-  async getBrands () {
+  async getBrands() {
     const res = await fetch(brandsURL);
     const brands: brand[] = await res.json();
     return brands;
