@@ -60,7 +60,7 @@ const ProductQuantityAndImageAdding = ({ register, error, setValue, resetField }
       {images?.length ? (<div className='flex flex-col gap-1 justify-start items-start'>
         {images?.map(i =>
         <p className='flex flex-row gap-3 justify-center items-center'>
-          <span key={i.name} className='text-blue-500 text-center'>{i.name}</span>
+          <span key={i.name} className='text-blue-500 text-center p-2 border border-gray-300 rounded-lg'>{i.name}</span>
           <XCircleIcon onClick={() => onRemove(i)} width={30} height={30} className='inline-block cursor-pointer' />
         </p>
         )}
