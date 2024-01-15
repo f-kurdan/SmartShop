@@ -1,6 +1,9 @@
 import { ChangeEvent, useState } from 'react'
-import { FieldError, UseFormRegister, UseFormReset, UseFormResetField, UseFormSetValue } from 'react-hook-form'
+import { FieldError, UseFormRegister, UseFormResetField, UseFormSetValue } from 'react-hook-form'
 import { ProductFormInputs } from '../../../types'
+import {  } from '@mui/icons-material'
+import { XCircleIcon } from '@heroicons/react/24/solid'
+
 
 const ProductQuantityAndImageAdding = ({ register, error, setValue, resetField }: {
   register: UseFormRegister<ProductFormInputs>,
@@ -56,15 +59,15 @@ const ProductQuantityAndImageAdding = ({ register, error, setValue, resetField }
       </label>
       {images?.length ? (<div className='flex flex-col gap-1 justify-start items-start'>
         {images?.map(i =>
-        <p>
+        <p className='flex flex-row gap-3 justify-center items-center'>
           <span key={i.name} className='text-blue-500 text-center'>{i.name}</span>
-          <span onClick={() => onRemove(i)}>X</span>
+          <XCircleIcon onClick={() => onRemove(i)} width={30} height={30} className='inline-block cursor-pointer' />
         </p>
         )}
         <span
           className='bg-red-400 rounded-lg text-white text-center p-2'
           onClick={(e) => onReset()}
-          >Очистить список</span>
+          >Очистить список</span>          
       </div>) : null
       }
     </div>
