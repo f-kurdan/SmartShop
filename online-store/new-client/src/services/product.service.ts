@@ -41,7 +41,7 @@ class productService {
                 price: formData?.get('price'),
                 brandSlug: formData?.get('brandSlug'),
                 categorySlug: formData?.get('categorySlug'),
-                images: formData?.get('images[]'),
+                images: formData?.getAll('images[]'),
                 quantity: formData?.get('quantity'),
                 productInfo: formData?.get('productInfo[]'),
             })
