@@ -1,19 +1,18 @@
 import { ChangeEvent, useState } from 'react'
-import { FieldError, UseFormRegister, UseFormResetField, UseFormSetValue } from 'react-hook-form'
+import { FieldErrors, UseFormRegister, UseFormResetField, UseFormSetValue } from 'react-hook-form'
 import { ProductFormInputs } from '../../../types'
 import {  } from '@mui/icons-material'
 import { XCircleIcon } from '@heroicons/react/24/solid'
 
 
-const ProductQuantityAndImageAdding = ({ register, error, setValue, resetField }: {
+const ProductQuantityAndImageAdding = ({ register, errors, setValue, resetField }: {
   register: UseFormRegister<ProductFormInputs>,
-  error?: FieldError,
+  errors: FieldErrors<ProductFormInputs>,
   setValue: UseFormSetValue<ProductFormInputs>,
   resetField: UseFormResetField<ProductFormInputs>
 }) => {
   const [images, setImages] = useState<File[]>([])
 
-  console.log('rerender')
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const files = Array.from(e.target.files)
@@ -22,7 +21,6 @@ const ProductQuantityAndImageAdding = ({ register, error, setValue, resetField }
   }
 
   const onRemove = (file: File) => {
-    console.log(file)
     const dt = new DataTransfer()
     images.filter(image => image !== file).forEach(image =>
       dt.items.add(image)
@@ -39,7 +37,7 @@ const ProductQuantityAndImageAdding = ({ register, error, setValue, resetField }
 
   return (
     <div className='grid grid-cols-2 gap-2 w-11/12 justify-start items-start'>
-      <label onChange={onInputChange} className={`${error ? 'outline outline-red-500' : ''} flex flex-row items-center border-2 border-solid rounded-lg p-4 h-14`}>
+      <label onChange={onInputChange} className={`${errors.images ? 'outline outline-red-500' : ''} flex flex-row items-center border-2 border-solid rounded-lg p-4 h-14`}>
         <span>Добавить изображения</span>
         <input
           hidden type="file"
@@ -52,7 +50,7 @@ const ProductQuantityAndImageAdding = ({ register, error, setValue, resetField }
         <input
           type="number"
           placeholder='Количество'
-          className={`bg-gray-100 w-full rounded-lg h-14 p-4`}
+          className={`bg-gray-100 w-full rounded-lg h-14 p-4 ${errors.quantity ? 'outline outline-red-500' : ''}`}
           {...register("quantity", {
             required: true
           })} />

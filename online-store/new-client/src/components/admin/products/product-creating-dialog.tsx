@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { ProductFormInputs } from '../../../types';
+import { FetchError, ProductFormInputs } from '../../../types';
 /*Product components*/
 import ProductSpecificationInputs from './product-specification-inputs';
 import ProductQuantityAndImageAdding from './product-quantity-and-image-inputs';
@@ -30,10 +30,10 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
 
     const onSubmit: SubmitHandler<ProductFormInputs> = (data) => {
         const formData = new FormData();
-        if (data.category)
-            formData.append('categorySlug', data.category.slug);
-        if (data.brand)
-            formData.append('brandSlug', data.brand.slug);
+        if (data.categorySlug)
+            formData.append('categorySlug', data.categorySlug);
+        if (data.brandSlug)
+            formData.append('brandSlug', data.brandSlug);
         if (data.name)
             formData.append('name', data.name);
         if (data.price)
@@ -41,7 +41,10 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
         if (data.images) {
             Array.from(data.images).forEach(image =>
                 formData.append('images[]', image));
+            console.log('formData: ', formData.getAll('images[]'))
         }
+        if (data.quantity)
+            formData.append('quantity', data.quantity.toString());
         if (data.specs) {
             Array.from(data.specs).forEach(spec => {
                 formData.append('productInfo[]', JSON.stringify({ 'name': spec.specName, 'description': spec.specDescription }));
@@ -51,8 +54,12 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
         mutation.mutate(formData)
     }
 
+    const err = mutation.error as FetchError;
+    const errorCode = err?.res?.status;
+
     return (
         <dialog open={state} className='fixed top-20 transition-all duration-100 z-10 bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
+            {mutation.isSuccess ? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
             <form onSubmit={handleSubmit(onSubmit)} className={`flex gap-5 flex-col items-start justify-start p-5 `}>
                 <div className='font-bold text-3xl text-center text-gray-600'>
                     {title}
@@ -67,16 +74,20 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
                 />
                 <ProductQuantityAndImageAdding
                     register={register}
-                    error={errors.images}
+                    errors={errors}
                     setValue={setValue}
                     resetField={resetField}
                 />
                 <ProductSpecificationInputs
                     register={register}
-                    control={control} />
+                    control={control}
+                    errors={errors} />
                 <div>
                     <SaveButton />
                 </div>
+                {errorCode === 409 ? <p className='text-red-500 text-center'>
+                    Такое название уже существует!
+                </p> : null}
             </form>
             <CancelButton name={name} />
         </dialog>

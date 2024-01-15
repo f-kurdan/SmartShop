@@ -54,8 +54,8 @@ export type ProductInfo = {
 
 
 export type ProductFormInputs = {
-    category: { slug: string },
-    brand: { slug: string },
+    categorySlug: string,
+    brandSlug: string,
     name: string,
     price: number,
     images: FileList,

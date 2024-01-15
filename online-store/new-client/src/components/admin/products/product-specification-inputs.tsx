@@ -1,11 +1,12 @@
 import React from 'react'
-import { Control, useFieldArray, UseFormRegister } from 'react-hook-form'
-import { ProductFormInputs, ProductInfo } from '../../../types'
+import { Control, FieldErrors, useFieldArray, UseFormRegister } from 'react-hook-form'
+import { ProductFormInputs } from '../../../types'
 import ProductSpecificationRow from './product-specification-row'
 
-const ProductSpecificationAdding = ({ register, control }: {
+const ProductSpecificationAdding = ({ register, control, errors }: {
     register: UseFormRegister<ProductFormInputs>,
-    control: Control<ProductFormInputs, any>
+    control: Control<ProductFormInputs, any>,
+    errors: FieldErrors<ProductFormInputs>
 }) => {
     const {
         fields,
@@ -29,7 +30,8 @@ const ProductSpecificationAdding = ({ register, control }: {
                 index={index}
                 register={register}
                 field={field}
-                remove={remove} />)
+                remove={remove}
+                errors={errors} />)
             )}
         </div>
     )

@@ -12,19 +12,19 @@ const ProductCategoryAndBrandInputs = ({errors, register}:{
     
     return (
         <div className='grid grid-cols-2 gap-2 w-11/12 '>
-                    <select defaultValue={"1"} className={`${errors.category ? 'outline outline-red-500' : ''} bg-gray-100 rounded-lg h-14 p-3`}
-                    {...register("category", {
+                    <select className={`${errors.categorySlug ? 'outline outline-red-500' : ''} bg-gray-100 rounded-lg h-14 p-3`}
+                    {...register("categorySlug", {
                         required: true,
                     })}>
-                        <option value='1' disabled hidden>Выберите категорию</option>
+                        <option value='' disabled selected hidden>Выберите категорию</option>
                         {categories?.map(category =>
                             <option key={category.id} value={category.slug} className='my-5'>{category.name}</option>)}
                     </select>
-                    <select defaultValue={"1"} className={`${errors.brand ? 'outline outline-red-500' : ''} bg-gray-100 rounded-lg h-14 p-3`} 
-                    {...register("brand", {
+                    <select className={`${errors.brandSlug ? 'outline outline-red-500' : ''} bg-gray-100 rounded-lg h-14 p-3`} 
+                    {...register("brandSlug", {
                         required: true,
                     })}>
-                        <option value='1' disabled hidden>Выберите бренд</option>
+                        <option value='' disabled selected hidden>Выберите бренд</option>
                         {brands?.map(brand =>
                             <option key={brand.id} value={brand.slug} >{brand.name}</option>)}
                     </select>
