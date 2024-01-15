@@ -1,7 +1,9 @@
-import { Controller, Get, Post, HttpCode, Param, Body, Put, Patch, Delete, ParseIntPipe, Query, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Post, HttpCode, Param, Body, Put, Patch, Delete, ParseIntPipe, Query, ValidationPipe, UseInterceptors, UploadedFile, ParseFilePipeBuilder, HttpStatus } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductsService } from './products.service';
 import { UpdateProductDto } from './dto/update-product-dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import multer from 'multer';
 
 @Controller("products")
 export class ProductsController {
@@ -28,8 +30,8 @@ export class ProductsController {
 
     @Get('name/:name')
     findOneProductsByName(@Param('name') name: string,
-    @Query('color') color?: string,
-    @Query('storageSize') storageSize?: string,
+        @Query('color') color?: string,
+        @Query('storageSize') storageSize?: string,
     ) {
         return this.productService.findOneProductsByName(name, color, storageSize);
     }
@@ -46,8 +48,21 @@ export class ProductsController {
 
     @Post()
     @HttpCode(200)
-    createProduct(@Body() createProductDto: CreateProductDto) {
-        this.productService.createProduct(createProductDto)
+    @UseInterceptors(FileInterceptor('images[]', {
+        storage: multer.diskStorage({
+            destination: 'public/images/products',
+            filename: (req, file, cb) => {
+                cb(null, file.originalname)
+            },
+        })
+    }))
+    createProduct(@UploadedFile(
+        new ParseFilePipeBuilder()
+            .addFileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' })
+            .addMaxSizeValidator({ maxSize: 5 * 1024 * 1024 })
+            .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
+    ) images: Express.Multer.File[], @Body() createProductDto: CreateProductDto) {
+        this.productService.createProduct(createProductDto, images)
     }
 
     @Patch(':id')

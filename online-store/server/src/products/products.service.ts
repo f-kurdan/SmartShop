@@ -136,7 +136,7 @@ export class ProductsService {
 
     // }
 
-    async createProduct(dto: CreateProductDto) {
+    async createProduct(dto: CreateProductDto, images: Express.Multer.File[]) {
         const colorInfo = dto.productInfo.find(i => i.name === 'Цвет').description;
         const storageInfo = dto.productInfo.find(i => i.name === 'Память').description;
 
@@ -146,7 +146,7 @@ export class ProductsService {
                 price: dto.price,
                 slug: convertToSlug(`${dto.name} ${colorInfo} ${storageInfo}`),
                 SKU: Math.floor(Math.random() * 100000000000).toString(),
-                images: dto.images,
+                images: images.map(image => `${image.destination}/${image.originalname}`),
                 quantity: dto.quantity,
                 productInfo: {
                     create: dto.productInfo,
