@@ -9,6 +9,7 @@ import useCreateProduct from '../../../hooks/products/useCreateProducts';
 /*Buttons */
 import CancelButton from '../cancel-button';
 import SaveButton from '../save-button';
+import imageCompression from 'browser-image-compression';
 
 const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: string, title: string }) => {
     const mutation = useCreateProduct();
@@ -39,15 +40,16 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
         if (data.price)
             formData.append('price', data.price.toString());
         if (data.images) {
-            Array.from(data.images).forEach(image =>
-                formData.append('images[]', image));
+            Array.from(data.images).forEach(image => {
+                formData.append('images[]', image);
+            })                
         }
         if (data.quantity)
             formData.append('quantity', data.quantity.toString());
         if (data.specs) {
-            formData.append('productInfo[]', JSON.stringify(data.specs))
+            data.specs.forEach(spec => formData.append('productInfo[]', JSON.stringify(spec)))
         }
-        
+
         mutation.mutate(formData)
     }
 
@@ -57,7 +59,7 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
     return (
         <dialog open={state} className='fixed top-20 transition-all duration-100 z-10 bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
             {mutation.isSuccess ? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
-            <form onSubmit={handleSubmit(onSubmit)} className={`flex gap-5 flex-col items-start justify-start p-5 `}>
+            <form onSubmit={handleSubmit(onSubmit)} className={`flex gap-5 flex-col items-start justify-start p-5 `} encType="multipart/form-data">
                 <div className='font-bold text-3xl text-center text-gray-600'>
                     {title}
                 </div>

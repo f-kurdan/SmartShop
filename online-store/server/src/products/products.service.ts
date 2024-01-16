@@ -137,8 +137,8 @@ export class ProductsService {
     // }
 
     async createProduct(dto: CreateProductDto, images: Express.Multer.File[]) {
-        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет').description;
-        const storageInfo = dto.productInfo.find(i => i.name === 'Память').description;
+        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет')?.description;
+        const storageInfo = dto.productInfo.find(i => i.name === 'Память')?.description;
 
         await this.prisma.product.create({
             data: {
@@ -146,7 +146,7 @@ export class ProductsService {
                 price: dto.price,
                 slug: convertToSlug(`${dto.name} ${colorInfo} ${storageInfo}`),
                 SKU: Math.floor(Math.random() * 100000000000).toString(),
-                images: images.map(image => `${image.destination}/${image.originalname}`),
+                images: images?.map(image => `${image.destination}/${image.originalname}`),
                 quantity: dto.quantity,
                 productInfo: {
                     create: dto.productInfo,

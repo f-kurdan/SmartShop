@@ -8,6 +8,9 @@ const useCreateProduct = () => {
         mutationFn: productService.createProduct,
         onSuccess: () => {
             queryClient.invalidateQueries(['products'])
+        },
+        onError: (err) => {
+            throw new Error("Произошла ошибка");
         }
     })
   

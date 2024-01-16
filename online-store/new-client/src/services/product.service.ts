@@ -31,20 +31,10 @@ class productService {
     }
 
     async createProduct(formData?: FormData) {
-        return fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products`, {
+        console.log(formData?.getAll('images[]'))
+        return await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products`, {
             method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: formData?.get('name'),
-                price: formData?.get('price'),
-                brandSlug: formData?.get('brandSlug'),
-                categorySlug: formData?.get('categorySlug'),
-                images: formData?.getAll('images[]'),
-                quantity: formData?.get('quantity'),
-                productInfo: formData?.get('productInfo[]'),
-            })
+            body: formData
         }).then(res => {
             if (res.ok) {
                 return res.json()

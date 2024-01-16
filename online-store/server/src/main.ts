@@ -5,6 +5,7 @@ import { HttpStatus, ValidationPipe } from '@nestjs/common';
 import { env } from 'process';
 import { PrismaClientExceptionFilter } from 'nestjs-prisma';
 import { ClassSerializerInterceptor } from '@nestjs/common/serializer';
+import { json, urlencoded } from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,6 +16,8 @@ async function bootstrap() {
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
   app.enableCors(corsOptions);
+  app.use(json({ limit: '50mb' }));
+  app.use(urlencoded({ extended: true, limit: '50mb' }));
 
   const config = new DocumentBuilder()
     .setTitle('Median')
