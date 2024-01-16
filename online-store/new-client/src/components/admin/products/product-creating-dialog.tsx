@@ -41,14 +41,11 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
         if (data.images) {
             Array.from(data.images).forEach(image =>
                 formData.append('images[]', image));
-            console.log('formData: ', formData.getAll('images[]'))
         }
         if (data.quantity)
             formData.append('quantity', data.quantity.toString());
         if (data.specs) {
-            Array.from(data.specs).forEach(spec => {
-                formData.append('productInfo[]', JSON.stringify({ 'name': spec.specName, 'description': spec.specDescription }));
-            });
+            formData.append('productInfo[]', JSON.stringify(data.specs))
         }
         
         mutation.mutate(formData)

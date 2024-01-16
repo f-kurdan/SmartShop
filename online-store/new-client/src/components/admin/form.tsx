@@ -88,8 +88,4 @@ function getHook(name: string) {
     }
 }
 
-function getCode(error: FetchError) {
-    return error.res?.status;
-}
-
 export default Form
