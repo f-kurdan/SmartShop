@@ -60,8 +60,8 @@ export type ProductFormInputs = {
     price: number,
     images: FileList,
     quantity: number,
-    specs: {
+    specs: [{
         specName: string,
         specDescription: string
-    }[]
+    }]
 }

@@ -33,6 +33,7 @@ export class CreateProductDto {
 
     @ApiProperty()
     @IsObject({each: true})
+    @Transform(params  => JSON.parse(params.value))
     // @ArrayMinSize(1)
     productInfo: [{
         name: string;
