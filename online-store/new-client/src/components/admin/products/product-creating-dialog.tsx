@@ -47,7 +47,7 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
         if (data.quantity)
             formData.append('quantity', data.quantity.toString());
         if (data.specs) {
-            data.specs.forEach(spec => formData.append('productInfo[]', JSON.stringify(spec)))
+            data.specs.forEach(spec => formData.append('productInfo[]', JSON.stringify({ name: spec.specName, description: spec.specDescription})))
         }
 
         mutation.mutate(formData)
