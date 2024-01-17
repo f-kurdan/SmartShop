@@ -5,3 +5,4 @@ online-store/server/prisma/migrations/20231219133409_init/migration.sql
 online-store/server/prisma/migrations/migration_lock.toml
 online-store/server/prisma/migrations
 online-store/new-client/.env
+online-store/server/public/images/products/
