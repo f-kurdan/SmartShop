@@ -1,9 +1,11 @@
-import { Controller, Get, Post, HttpCode, Param, Body, Put, Patch, Delete, ParseIntPipe, Query, ValidationPipe, UseInterceptors, UploadedFile, ParseFilePipeBuilder, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, HttpCode, Param, Body, Patch, Delete, ParseIntPipe, Query, UseInterceptors, ParseFilePipeBuilder, HttpStatus, UploadedFiles } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductsService } from './products.service';
 import { UpdateProductDto } from './dto/update-product-dto';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { FilesInterceptor } from '@nestjs/platform-express';
 import multer from 'multer';
+import convertToSlug from '../utils/convertToSlug';
+import fs, { existsSync } from 'fs';
 
 @Controller("products")
 export class ProductsController {
@@ -48,15 +50,26 @@ export class ProductsController {
 
     @Post()
     @HttpCode(200)
-    @UseInterceptors(FileInterceptor('images[]', {
+    @UseInterceptors(FilesInterceptor('images[]', null, {
         storage: multer.diskStorage({
-            destination: 'public/images/products',
+            destination: (res, file, cb) => {
+                const { name, categorySlug } = res.body;
+                const path = `public/images/products/${categorySlug}/${convertToSlug(name)}`;
+
+                if (fs.existsSync(path)){
+                    cb(null, path)
+                }
+                else {
+                    fs.mkdirSync(path, { recursive: true})
+                    cb(null, path)
+                }
+            },
             filename: (req, file, cb) => {
-                cb(null, file.originalname)
+                cb(null,`${new Date().toLocaleString('ru-RU').replace(/, |:/g, '.')}-${file.originalname}`)
             },
         })
     }))
-    createProduct(@UploadedFile(
+    createProduct(@UploadedFiles(
         new ParseFilePipeBuilder()
             .addFileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' })
             .addMaxSizeValidator({ maxSize: 5 * 1024 * 1024 })
