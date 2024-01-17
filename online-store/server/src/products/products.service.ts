@@ -137,8 +137,13 @@ export class ProductsService {
     // }
 
     async createProduct(dto: CreateProductDto, images: Express.Multer.File[]) {
-        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет')?.description;
-        const storageInfo = dto.productInfo.find(i => i.name === 'Память')?.description;
+        // const specs = dto.productInfo.map(spec => JSON.parse(spec))
+        // console.log('specs', specs)
+        console.log(dto.productInfo)
+        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет')?.description || '';
+        const storageInfo = dto.productInfo.find(i => i.name === 'Память')?.description || '';
+
+        console.log(dto.productInfo)
 
         await this.prisma.product.create({
             data: {
