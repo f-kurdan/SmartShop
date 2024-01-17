@@ -37,7 +37,7 @@ async function bootstrap() {
       P2002: HttpStatus.CONFLICT,
       P2025: HttpStatus.NOT_FOUND,
     })
-    );
+  );
 
   await app.listen(5000, () => { console.log("Servr sarted on port 5000") });
 }
