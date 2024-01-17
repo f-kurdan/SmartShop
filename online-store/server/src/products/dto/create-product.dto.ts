@@ -1,13 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Expose, Transform, Type } from "class-transformer";
+import { Expose, Transform, TransformationType, Type } from "class-transformer";
 import { IsArray, IsNotEmpty, IsNumber, IsOptional, IsString, MinLength, ValidateNested } from "class-validator";
 
-class ProductInfo {
-    @Expose()
-    name: string;
-    @Expose()
-    description: string;
-}
 export class CreateProductDto {
     @ApiProperty()
     @IsString()
@@ -35,8 +29,15 @@ export class CreateProductDto {
 
     @ApiProperty()
     @IsArray()
-    @Type(() => ProductInfo)
+    @Transform(params  => (params.value.map((info) => {
+        if (params.type === TransformationType.PLAIN_TO_CLASS)
+            return JSON.parse(info)
+        return info
+        })))
     //@ValidateNested()
     // @ArrayMinSize(1)
-    productInfo: ProductInfo[]
+    productInfo: [{
+        name: string;
+        description: string;
+    }]
 }
