@@ -3,6 +3,7 @@ import ProductCreatingDialog from '@/components/admin/dialogs/products/product-c
 import { HandlerContext, NameContext } from '@/contexts/Contexts';
 import { montserrat } from '@/styles/fonts'
 import React, { useState } from 'react'
+import EntitiyCreationSection from '../../components/admin/entitiy-creation-section';
 
 const index = () => {
   const [showCategoryModal, setShowCategoryModal] = useState(false);
@@ -37,33 +38,14 @@ const index = () => {
 
   const toBloor = showBrandModal || showCategoryModal || showProductAddingModal
   return (
-    <HandlerContext.Provider value={handleCancelClick}>
-      <div onClick={onClickOutside} className={`${montserrat.className} flex flex-col justify-start items-center px-10 py-14 w-11/12 h-screen my-2 ounded-sm border border-gray-200 bg-gray-50 shadow-lg text-gray-700 gap-y-16`}>
-        <h1 className={`font-bold text-5xl text-center text-gray-600  ${toBloor? 'blur-md' : '' }`} >Панель администратора</h1>
-        <div onClick={() => setShowCategoryModal(true)} className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${toBloor? 'blur-md' : '' }`} >
-          Добавить категорию
-        </div>
-        <Dialog
-          name='category'
-          toShow={showCategoryModal}
-          title='Создание категории' />
-        <div onClick={() => setShowBrandModal(true)} className={`transition-all duration-30 bg-lime-300  p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black ${toBloor? 'blur-md' : '' }`}>
-          Добавить бренд
-        </div>
-        <Dialog
-          name='brand'
-          toShow={showBrandModal}
-          title='Создание бренда' />
-        <div onClick={() => setShowProductAddingModal(true)} className={`transition-all duration-300 bg-cyan-300  p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${toBloor? 'blur-md' : '' }`}>
-          Добавить товар
-        </div>
-        <NameContext.Provider value='product' >
-          <ProductCreatingDialog state={showProductAddingModal}
-          name='product'
-            title='Добавить товар' />
-        </NameContext.Provider>
+    <div className='flex flex-row gap-2 p-2'>
+      <div className='flex flex-col justify-center gap-2 p-3 w-[35%] bg-gray-50 text-center '>
+        <h1 className='rounded-lg bg-white p-3 cursor-pointer'>Список категорий</h1>
+        <h1 className='rounded-lg bg-white p-3 cursor-pointer'>Список брендов</h1>
+        <h1 className='rounded-lg bg-white p-3 cursor-pointer'>Список товаров</h1>
       </div>
-    </HandlerContext.Provider>
+      <EntitiyCreationSection />
+    </div>
   )
 }
 
