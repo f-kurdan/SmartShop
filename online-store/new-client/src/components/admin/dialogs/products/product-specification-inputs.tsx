@@ -1,6 +1,6 @@
 import React from 'react'
 import { Control, FieldErrors, useFieldArray, UseFormRegister } from 'react-hook-form'
-import { ProductFormInputs } from '../../../types'
+import { ProductFormInputs } from '../../../../types'
 import ProductSpecificationRow from './product-specification-row'
 
 const ProductSpecificationAdding = ({ register, control, errors }: {

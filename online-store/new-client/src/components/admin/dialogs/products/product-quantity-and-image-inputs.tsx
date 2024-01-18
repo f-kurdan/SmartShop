@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 import { FieldErrors, UseFormRegister, UseFormResetField, UseFormSetValue } from 'react-hook-form'
-import { ProductFormInputs } from '../../../types'
+import { ProductFormInputs } from '../../../../types'
 import { } from '@mui/icons-material'
 import { XCircleIcon } from '@heroicons/react/24/solid'
 

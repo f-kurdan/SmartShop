@@ -1,10 +1,10 @@
 import React, { memo, useState, ChangeEvent } from 'react'
 import { useForm } from 'react-hook-form'
 import { SubmitHandler } from 'react-hook-form/dist/types'
-import { useCreateCategory } from '../../hooks/categories/useCreateCategory'
+import { useCreateCategory } from '../../../hooks/categories/useCreateCategory'
 import SaveButton from './save-button'
-import { useCreateBrand } from '../../hooks/brands/useCreateBrand'
-import { FetchError } from '../../types'
+import { useCreateBrand } from '../../../hooks/brands/useCreateBrand'
+import { FetchError } from '../../../types'
 
 type Inputs = {
     name: string

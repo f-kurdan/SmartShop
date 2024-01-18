@@ -1,8 +1,8 @@
 import React from 'react'
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
-import useBrands from '../../../hooks/brands/useBrands';
-import useCategories from '../../../hooks/categories/useCategories';
-import { ProductFormInputs } from '../../../types';
+import useBrands from '../../../../hooks/brands/useBrands';
+import useCategories from '../../../../hooks/categories/useCategories';
+import { ProductFormInputs } from '../../../../types';
 
 const ProductCategoryAndBrandInputs = ({errors, register}:{
     register: UseFormRegister<ProductFormInputs>,

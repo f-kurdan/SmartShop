@@ -1,6 +1,6 @@
 import React from 'react'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
-import { ProductFormInputs } from '../../../types'
+import { ProductFormInputs } from '../../../../types'
 
 const ProductNameAndPriceInputs = ({ errors, register }: {
   register: UseFormRegister<ProductFormInputs>,

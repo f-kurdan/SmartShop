@@ -1,5 +1,5 @@
-import Dialog from '@/components/admin/dialog';
-import ProductCreatingDialog from '@/components/admin/products/product-creating-dialog';
+import Dialog from '@/components/admin/dialogs/dialog';
+import ProductCreatingDialog from '@/components/admin/dialogs/products/product-creating-dialog';
 import { HandlerContext, NameContext } from '@/contexts/Contexts';
 import { montserrat } from '@/styles/fonts'
 import React, { useState } from 'react'

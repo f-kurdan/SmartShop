@@ -4,6 +4,7 @@ import { CreateProductDto } from "./dto/create-product.dto";
 import { UpdateProductDto } from "./dto/update-product-dto";
 import { Prisma } from "@prisma/client";
 import convertToSlug from "../utils/convertToSlug";
+import fs from "fs";
 
 @Injectable()
 export class ProductsService {
@@ -82,7 +83,7 @@ export class ProductsService {
     }
 
     async findOneProduct(slug: string) {
-        return this.prisma.product.findUnique({
+        return await this.prisma.product.findUnique({
             where: {
                 slug: slug,
             },
@@ -120,7 +121,7 @@ export class ProductsService {
             }
         } : {}
 
-        return this.prisma.product.findMany({
+        return await   this.prisma.product.findMany({
             where: {
                 name: name,
                 ...colorFilter,
@@ -196,7 +197,18 @@ export class ProductsService {
     }
 
     async deleteProduct(id: string) {
-        return this.prisma.product.delete({
+        const product = await this.prisma.product.findUnique({
+            where: {id: +id}
+        })
+
+        product.images.forEach(image => fs.unlink(image, (err => {
+            if (err) console.log(err);
+            else {
+                console.log("\nDeleted file: " + image);
+            }
+        })))
+        
+        return await this.prisma.product.delete({
             where: {
                 id: +id,
             }

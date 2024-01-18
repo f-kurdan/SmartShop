@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { FieldArrayWithId, FieldErrors, UseFormRegister } from 'react-hook-form'
-import { ProductFormInputs } from '../../../types'
+import { ProductFormInputs } from '../../../../types'
 
 const ProductSpecificationRow =  memo(({index, register, field, remove, errors}:{
     index:number, 

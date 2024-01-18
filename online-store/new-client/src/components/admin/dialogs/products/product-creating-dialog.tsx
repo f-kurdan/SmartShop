@@ -1,11 +1,11 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { FetchError, ProductFormInputs } from '../../../types';
+import { FetchError, ProductFormInputs } from '../../../../types';
 /*Product components*/
 import ProductSpecificationInputs from './product-specification-inputs';
 import ProductQuantityAndImageAdding from './product-quantity-and-image-inputs';
 import ProductNameAndPriceInputs from './product-name-and-price-inputs';
 import ProductCategoryAndBrandInputs from './product-category-and-brand-inputs';
-import useCreateProduct from '../../../hooks/products/useCreateProducts';
+import useCreateProduct from '../../../../hooks/products/useCreateProducts';
 /*Buttons */
 import CancelButton from '../cancel-button';
 import SaveButton from '../save-button';
