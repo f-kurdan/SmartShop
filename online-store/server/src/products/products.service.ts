@@ -87,7 +87,7 @@ export class ProductsService {
                 slug: slug,
             },
             include: {
-                productInfo: true
+                productInfo: true,
             }
         })
     }
@@ -181,7 +181,6 @@ export class ProductsService {
                 price: dto.price,
                 slug: convertToSlug(`${dto.name} ${colorInfo} ${storageInfo}`),
                 SKU: Math.floor(Math.random() * 100000000000).toString(),
-                images: dto.images,
                 quantity: dto.quantity,
                 productInfo: {
                     create: dto.productInfo,
