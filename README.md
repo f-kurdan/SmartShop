@@ -14,5 +14,5 @@ Routing is implemented in such a way that all information about the page content
 There is a shopping cart with a table of added products and a form for placing an order. And also an admin panel through which you can add categories, brands and products.
 And of course JWT authentication and authorization.
 
-TO RUN CLIENT: npm run
+TO RUN CLIENT: npm run 
 TO RUN SERVER: yarn run start
