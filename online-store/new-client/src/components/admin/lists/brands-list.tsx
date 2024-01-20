@@ -23,7 +23,7 @@ const BrandsAdminList = () => {
     useEffect(() => {
         const modal = document.getElementById('creation-dialog')
         const button = document.getElementById('create-brand-button')
-        window.addEventListener("click", (e) => handleClickOutside(e, modal, button), true)
+        window.addEventListener("click", (e) => handleClickOutside(e, modal, button))
 
         return () => {
             window.removeEventListener("click", (e) => handleClickOutside(e, modal, button))}
@@ -40,7 +40,7 @@ const BrandsAdminList = () => {
         <HandlerContext.Provider value={onCancelClick}>
             <div className={`${montserrat.className} flex flex-col justify-start items-center px-10 py-14 w-full h-[85vh] ounded-sm borde bg-gray-50 shadow-lg text-gray-700 gap-y-16`}>
                 <h1 className={`font-bold text-5xl text-center text-gray-600 ${showBrandModal ? 'blur-md' : ''} `} >
-                    Брены
+                    Бренды
                 </h1>
                 <div onClick={() => setShowBrandModal(true)} id='create-brand-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showBrandModal ? 'blur-md' : ''}`} >
                     Добавить бренд

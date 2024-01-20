@@ -57,7 +57,7 @@ const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: s
     const errorCode = err?.res?.status;
 
     return (
-        <dialog open={state} className='fixed top-20 transition-all duration-100 z-10 bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
+        <dialog open={state} id='product-creation-dialog' className='fixed top-20 transition-all duration-100 z-10 bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
             {mutation.isSuccess ? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
             <form onSubmit={handleSubmit(onSubmit)} className={`flex gap-5 flex-col items-start justify-start p-5 `} encType="multipart/form-data">
                 <div className='font-bold text-3xl text-center text-gray-600'>
