@@ -9,9 +9,6 @@ export const useCreateCategory = () => {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['categories'] })
         },
-        onError: (err) => {
-            throw new Error("Произошла ошибка");
-        }
     })
     return mutation;
 }

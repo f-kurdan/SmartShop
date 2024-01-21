@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { montserrat } from '../../../styles/fonts'
-import Dialog from '../dialogs/dialog'
-import { HandlerContext } from '../../../contexts/Contexts'
+import { montserrat } from '../../../../styles/fonts'
+import Dialog from '../../dialogs/dialog'
+import { HandlerContext } from '../../../../contexts/Contexts'
+import List from './list'
 
 const CategoriesAdminList = () => {
     const [showCategoryModal, setShowCategoryModal] = useState(false)
+    
     const onCancelClick = () => setShowCategoryModal(false)
 
     const handleClickOutside = (e: MouseEvent, modal: HTMLElement | null, button: HTMLElement | null) => {
@@ -38,7 +40,7 @@ const CategoriesAdminList = () => {
 
     return (
         <HandlerContext.Provider value={onCancelClick}>
-            <div className={`${montserrat.className} flex flex-col justify-start items-center px-10 py-14 w-full h-[85vh] ounded-sm borde bg-gray-50 shadow-lg text-gray-700 gap-y-16`}>
+            <div className={`${montserrat.className} flex flex-col justify-start items-center px-10 py-14 w-full ounded-sm borde bg-gray-50 shadow-lg text-gray-700 gap-y-16`}>
                 <h1 className={`font-bold text-5xl text-center text-gray-600 ${showCategoryModal ? 'blur-md' : ''} `} >
                     Категории
                 </h1>
@@ -49,6 +51,7 @@ const CategoriesAdminList = () => {
                     name='category'
                     toShow={showCategoryModal}
                     title='Создание категории' />
+                <List />
             </div>
         </HandlerContext.Provider>
     )
