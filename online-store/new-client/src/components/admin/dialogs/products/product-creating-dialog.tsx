@@ -9,7 +9,6 @@ import useCreateProduct from '../../../../hooks/products/useCreateProducts';
 /*Buttons */
 import CancelButton from '../cancel-button';
 import SaveButton from '../save-button';
-import imageCompression from 'browser-image-compression';
 
 const ProductCreatingDialog = ({ state, name, title }: { state: boolean, name: string, title: string }) => {
     const mutation = useCreateProduct();
