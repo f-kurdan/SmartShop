@@ -1,5 +1,4 @@
-
-import { HandlerContext, NameContext } from '@/contexts/Contexts'
+import { HandlerContext } from '@/contexts/Contexts'
 import React, { useContext } from 'react'
 
 const CancelButton = ({name}: {name: string}) => {

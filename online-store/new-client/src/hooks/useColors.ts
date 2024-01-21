@@ -1,5 +1,4 @@
 import { variation_options } from '@/data'
-import React from 'react'
 import { useQuery } from 'react-query'
 
 const getColors = () => {

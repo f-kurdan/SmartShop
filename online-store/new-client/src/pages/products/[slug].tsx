@@ -5,7 +5,7 @@ import useProduct from '@/hooks/products/useProductById';
 import { montserrat } from '@/styles/fonts';
 import { useRouter } from 'next/router';
 
-const Product = ({ slug }: { slug: string }) => {
+const Product = () => {
   const router = useRouter();
   const { isLoading, data } = useProduct(router.query.slug as string);
 

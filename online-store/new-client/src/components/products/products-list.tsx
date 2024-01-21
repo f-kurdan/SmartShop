@@ -1,9 +1,6 @@
-import { product, productsList } from '@/types'
+import { productsList } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import { env } from 'process'
-import React from 'react'
 
 const ProductsList = ({ products }: { products: productsList }) => {
     const createURL = (slug: string) => {

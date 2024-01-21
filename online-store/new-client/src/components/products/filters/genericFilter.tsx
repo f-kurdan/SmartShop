@@ -1,8 +1,7 @@
-import { useBrands } from '@/hooks/brands/useBrands'
 import useCategories from '@/hooks/categories/useCategories'
-import useColors from '@/hooks/useColors'
 import { useSearchParams } from 'next/navigation'
 import React, { ChangeEvent } from 'react'
+import useBrands from '../../../hooks/brands/useBrands'
 
 const GenericFilter = ({ onFilterChange, increment, param }: { onFilterChange: (e: ChangeEvent<HTMLInputElement>, searchParam: string) => void, increment: (toIncrement: boolean) => void, param: string }) => {
     const hook = getHook(param)!
