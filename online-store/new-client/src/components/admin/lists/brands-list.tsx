@@ -38,7 +38,7 @@ const BrandsAdminList = () => {
 
     return (
         <HandlerContext.Provider value={onCancelClick}>
-            <div className={`${montserrat.className} flex flex-col justify-start items-center px-10 py-14 w-full h-[85vh] ounded-sm borde bg-gray-50 shadow-lg text-gray-700 gap-y-16`}>
+            <div className={`${montserrat.className} flex flex-col justify-start items-center px-10 py-14 w-full h-[85vh] rounded-sm borde bg-gray-50 shadow-lg text-gray-700 gap-y-16`}>
                 <h1 className={`font-bold text-5xl text-center text-gray-600 ${showBrandModal ? 'blur-md' : ''} `} >
                     Бренды
                 </h1>
