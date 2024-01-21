@@ -24,7 +24,7 @@ export class CategoriesService {
                 slug: convertToSlug(dto.name),
                 image: `${file.destination}/${file.originalname}`,
             }
-        }).catch((error) => { throw new Error(error) })
+        })
     }
 
     updateCategory(id: string, dto: CreateCategoryDto) {

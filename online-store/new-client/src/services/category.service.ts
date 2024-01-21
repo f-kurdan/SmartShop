@@ -13,8 +13,8 @@ class categoryService {
         // return Promise.resolve(categories.filter(c => c.id.toString() === id));
     }
 
-    createCategory(formData?: FormData) {
-        return fetch(cataegoriesURL, {
+    async createCategory(formData?: FormData) {
+        return await fetch(cataegoriesURL, {
             method: "POST",
             body: formData
         }).then(res => {
