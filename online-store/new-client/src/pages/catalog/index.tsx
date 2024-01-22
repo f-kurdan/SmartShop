@@ -13,9 +13,14 @@ const Page = () => {
   const {data } = useProducts({page: Number(page), query, categories, brands, specifications});  
 
   return (
+    <>
     <Catalog products={data?.products!} 
     totalPages={data?.totalPages!} 
     />
+      <div className='h-[100vh] border-2 border-black'></div>
+
+
+    </>
   )
 }
 

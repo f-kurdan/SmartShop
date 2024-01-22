@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.0",
     "@heroicons/react": "^2.0.18",
     "@mui/icons-material": "^5.14.15",
     "@reduxjs/toolkit": "^2.0.1",

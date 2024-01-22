@@ -21,7 +21,6 @@ const Catalog = ({ products, totalPages }: { products: productsList, totalPages:
           <Pagination totalPages={totalPages} />
         </div>
       ) : (<NoItems query={params.get('query')?.toString()} />)}
-      <GoToTopButton />
     </div>
   )
 }
