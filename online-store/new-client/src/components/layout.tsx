@@ -11,9 +11,9 @@ export default function RootLayout({
 
   return (
     <div className={`${unbounded.className} bg-gradient-to-br from-white  to-neutral-200 `}>
-      <main className='min-h-[80vh]'>
+      <main className=''>
         <Navbar />
-        <div className='flex flex-col justify-center items-center h-fit mx-auto'>
+        <div className='flex flex-col items-center min-h-[90vh] mx-auto'>
           {children}
         </div>
       </main>

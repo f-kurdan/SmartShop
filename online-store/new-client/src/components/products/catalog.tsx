@@ -13,7 +13,7 @@ const Catalog = ({ products, totalPages }: { products: productsList, totalPages:
   const params = new URLSearchParams(searchParams)
 
   return (
-    <div className={`${montserrat.className} flex flex-row relative w-full justify-center h-max gap-4 items-start my-3 text-gray-700`}>
+    <div className={`${montserrat.className} flex flex-row relative w-full justify-center min-h-[80vh] gap-4 items-start my-3 text-gray-700`}>
       <Filter />
       {products?.length ? (
         <div className='flex flex-col gap-2 w-2/3 min-h-fit mr-10'>
