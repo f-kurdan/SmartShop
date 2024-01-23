@@ -27,11 +27,16 @@ export class CategoriesService {
         })
     }
 
-    updateCategory(id: string, dto: CreateCategoryDto) {
+    async updateCategory(id: string, dto: CreateCategoryDto, newImage?: Express.Multer.File) {
+        const image = newImage ? `${newImage.destination}/${newImage.originalname}` 
+        : await this.prisma.category.findUnique({where: {id: +id}}).then(category => category.image)
+
         return this.prisma.category.update({
             where: { id: +id },
             data: {
                 name: dto.name,
+                slug: convertToSlug(dto.name),
+                image: image
             }
         })
     }

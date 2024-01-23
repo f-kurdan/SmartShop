@@ -10,6 +10,10 @@ const GoToTopButton = () => {
       if (window.scrollY <= 400 && button) {
         button.style.opacity = '0'
       } else if (button) {
+        if (window.scrollY < 500) {
+          const decimal = Math.ceil((window.scrollY / 1000) * 10) / 10         
+          button.style.opacity = `${decimal}`
+        }
         button.style.opacity = '1'
       }
     }
