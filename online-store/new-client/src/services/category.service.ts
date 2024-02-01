@@ -25,6 +25,19 @@ class categoryService {
             }
         })
     }
+
+    async updateCategory(formData?: FormData) {
+        return await fetch(cataegoriesURL, {
+            method: "PATCH",
+            body: formData
+        }).then(res => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                throw new FetchError(res)
+            }
+        })
+    }
 }
 
 export default new categoryService();

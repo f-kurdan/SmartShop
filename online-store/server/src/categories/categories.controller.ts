@@ -47,7 +47,7 @@ export class CategoriesController {
       },
     })
   }))
-  @Put("id")
+  @Patch("id")
   updateCategory(@UploadedFile(
     new ParseFilePipeBuilder()
       .addFileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' })

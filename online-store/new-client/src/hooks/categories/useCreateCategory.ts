@@ -10,5 +10,6 @@ export const useCreateCategory = () => {
             queryClient.invalidateQueries({ queryKey: ['categories'] })
         },
     })
+    
     return mutation;
 }
