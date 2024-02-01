@@ -33,7 +33,7 @@ export class CategoriesService {
         : await this.prisma.category.findUnique({where: {id: +dto.id}}).then(category => category.image)
 
         return this.prisma.category.update({
-            where: { id: +dto.id },
+            where: { id: dto.id },
             data: {
                 name: dto.name,
                 slug: convertToSlug(dto.name),

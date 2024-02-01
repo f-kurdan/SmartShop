@@ -4,8 +4,6 @@ import multer from 'multer';
 import { CreateCategoryDto } from './dto/create-category-dto';
 import { CategoriesService } from './categories.service';
 import { UpdateCategoryDto } from './dto/update-category-dto';
-import { buildMessage } from 'class-validator';
-import { error } from 'console';
 
 @Controller('categories')
 export class CategoriesController {
@@ -50,8 +48,8 @@ export class CategoriesController {
       },
     })
   }))
-  @Patch()
-  updateCategory(dto: UpdateCategoryDto, @UploadedFile(
+  @Put()
+  updateCategory(@Body() dto: UpdateCategoryDto, @UploadedFile(
     new ParseFilePipe({
       validators: [new FileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' }),
       new MaxFileSizeValidator({ maxSize: 5 * 1024 * 1024 })],

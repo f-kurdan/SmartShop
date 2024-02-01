@@ -21,7 +21,7 @@ const CategoryUpdateForm = ({ id, defaultName }: { id: number, defaultName: stri
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const formData = new FormData();
     if (data.id) {
-      formData.append('categoryId', data.id.toString());
+      formData.append('id', data.id.toString());
     }
     if (data.image) {
       formData.append('categoryImage', data.image[0]);

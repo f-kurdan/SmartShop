@@ -27,8 +27,9 @@ class categoryService {
     }
 
     async updateCategory(formData?: FormData) {
-        return await fetch(`${categoriesURL}`, {
-            method: "PATCH",
+        console.log(formData?.get('id'))
+        return await fetch(categoriesURL, {
+            method: "PUT",
             body: formData
         }).then(res => {
             if (res.ok) {
