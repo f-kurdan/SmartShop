@@ -3,13 +3,20 @@ import useCategories from '../../../../hooks/categories/useCategories'
 import Image from 'next/image';
 import { TrashIcon } from '@heroicons/react/24/solid';
 import CategoryUpdateForm from './category-update-form';
+import useDeleteCategory from '../../../../hooks/categories/useDeleteCategory';
 
 const List = memo(({ blur }: { blur: boolean }) => {
   const [toChange, setToChange] = useState<Number>();
   const { data } = useCategories();
 
+  const mutation = useDeleteCategory()
+
   const onChangeButtonClick = (id: number) => {
     setToChange(id)
+  }
+
+  const handleDelete = (id: number) => {
+    mutation.mutate(id)
   }
 
   return (
@@ -26,7 +33,7 @@ const List = memo(({ blur }: { blur: boolean }) => {
           </span>
           <Image className='max-w-[100%] max-h-[100%] object-cover rounded-md' src={`${process.env.NEXT_PUBLIC_STOREAPI_URL}/${category.image}`} alt={category.name} width={100} height={100} />
           <span onClick={() => { onChangeButtonClick(category.id) }} className='p-2 bg-yellow-200 rounded-md cursor-pointer justify-self-end'>Изменить</span>
-          <TrashIcon color='red' className='w-6 h-6 cursor-pointer justify-self-end' />
+          <TrashIcon onClick={() => handleDelete(category.id)} color='red' className='w-6 h-6 cursor-pointer justify-self-end' />
         </li>)
       )}
     </ul>

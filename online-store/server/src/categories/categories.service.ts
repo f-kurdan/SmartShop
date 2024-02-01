@@ -3,17 +3,18 @@ import convertToSlug from '../utils/convertToSlug';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateCategoryDto } from './dto/create-category-dto';
 import { UpdateCategoryDto } from './dto/update-category-dto';
+import fs from 'fs';
 
 @Injectable()
 export class CategoriesService {
     constructor(private prisma: PrismaService) { }
 
-    getAllCategories() {
-        return this.prisma.category.findMany()
+    async getAllCategories() {
+        return await this.prisma.category.findMany()
     }
 
-    getOneCategory(id: string) {
-        return this.prisma.category.findUnique({
+    async getOneCategory(id: string) {
+        return await this.prisma.category.findUnique({
             where: { id: +id }
         })
     }
@@ -42,8 +43,17 @@ export class CategoriesService {
         })
     }
 
-    deleteCategory(id: string) {
-        return this.prisma.category.delete({
+    async deleteCategory(id: number) {
+        const category = await this.prisma.category.findUnique({ where: { id: id } })
+
+        fs.unlink(category.image, (err => {
+            if (err) console.log(err);
+            else {
+                console.log("\nDeleted file: " + category.image);
+            }
+        }))
+        
+        return await this.prisma.category.delete({
             where: { id: +id }
         })
     }

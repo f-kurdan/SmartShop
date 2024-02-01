@@ -1,6 +1,6 @@
 import { category, FetchError } from "../types";
 
-const categoriesURL = 'http://localhost:5000/categories'
+const categoriesURL = `${process.env.NEXT_PUBLIC_STOREAPI_URL}/categories`
 
 class categoryService {
     async getCategories() {
@@ -27,10 +27,21 @@ class categoryService {
     }
 
     async updateCategory(formData?: FormData) {
-        console.log(formData?.get('id'))
         return await fetch(categoriesURL, {
             method: "PUT",
             body: formData
+        }).then(res => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                throw new FetchError(res)
+            }
+        })
+    }
+
+    async deleteCategory(id: number) {
+        return await fetch(`${categoriesURL}/${id}`, {
+            method: "DELETE",
         }).then(res => {
             if (res.ok) {
                 return res.json()
