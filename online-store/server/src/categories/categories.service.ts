@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import convertToSlug from '../utils/convertToSlug';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateCategoryDto } from './dto/create-category-dto';
+import { UpdateCategoryDto } from './dto/update-category-dto';
 
 @Injectable()
 export class CategoriesService {
@@ -27,12 +28,12 @@ export class CategoriesService {
         })
     }
 
-    async updateCategory(id: string, dto: CreateCategoryDto, newImage?: Express.Multer.File) {
+    async updateCategory(dto: UpdateCategoryDto, newImage?: Express.Multer.File) {
         const image = newImage ? `${newImage.destination}/${newImage.originalname}` 
-        : await this.prisma.category.findUnique({where: {id: +id}}).then(category => category.image)
+        : await this.prisma.category.findUnique({where: {id: +dto.id}}).then(category => category.image)
 
         return this.prisma.category.update({
-            where: { id: +id },
+            where: { id: +dto.id },
             data: {
                 name: dto.name,
                 slug: convertToSlug(dto.name),

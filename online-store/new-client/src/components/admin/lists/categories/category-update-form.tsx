@@ -4,11 +4,12 @@ import useUpdateCategory from '../../../../hooks/categories/useUpdateCategory'
 import SaveButton from '../../dialogs/save-button'
 
 type Inputs = {
+  id: number
   name: string
   image?: FileList
 }
 
-const CategoryUpdateForm = ({ defaultName }: { defaultName: string }) => {
+const CategoryUpdateForm = ({ id, defaultName }: { id: number, defaultName: string }) => {
   const mutation = useUpdateCategory()
 
   const {
@@ -18,8 +19,10 @@ const CategoryUpdateForm = ({ defaultName }: { defaultName: string }) => {
   } = useForm<Inputs>()
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log('zashel syuda')
     const formData = new FormData();
+    if (data.id) {
+      formData.append('categoryId', data.id.toString());
+    }
     if (data.image) {
       formData.append('categoryImage', data.image[0]);
     }
@@ -33,6 +36,7 @@ const CategoryUpdateForm = ({ defaultName }: { defaultName: string }) => {
     <form onSubmit={handleSubmit(onSubmit)} className='border-2 border-gray-400 p-3 h-[100px] rounded-md'>
       <div className='flex flex-row justify-start items-center gap-5'>
         <label >
+          <input type="hidden" value={id} {...register("id")} />
           <input
             type="text"
             defaultValue={defaultName}

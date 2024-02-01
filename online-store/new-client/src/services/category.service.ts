@@ -1,10 +1,10 @@
 import { category, FetchError } from "../types";
 
-const cataegoriesURL = 'http://localhost:5000/categories'
+const categoriesURL = 'http://localhost:5000/categories'
 
 class categoryService {
     async getCategories() {
-        const res = await fetch(cataegoriesURL);
+        const res = await fetch(categoriesURL);
         const data: category[] = await res.json();
         return data;
     }
@@ -14,7 +14,7 @@ class categoryService {
     }
 
     async createCategory(formData?: FormData) {
-        return await fetch(cataegoriesURL, {
+        return await fetch(categoriesURL, {
             method: "POST",
             body: formData
         }).then(res => {
@@ -27,7 +27,7 @@ class categoryService {
     }
 
     async updateCategory(formData?: FormData) {
-        return await fetch(cataegoriesURL, {
+        return await fetch(`${categoriesURL}`, {
             method: "PATCH",
             body: formData
         }).then(res => {

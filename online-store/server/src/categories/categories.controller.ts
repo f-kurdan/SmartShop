@@ -1,8 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseInterceptors, UploadedFile, ParseFilePipeBuilder, HttpStatus, HttpCode, Put } from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseInterceptors, UploadedFile, ParseFilePipeBuilder, HttpStatus, HttpCode, Put, ParseFilePipe, FileTypeValidator, MaxFileSizeValidator } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express';
 import multer from 'multer';
 import { CreateCategoryDto } from './dto/create-category-dto';
 import { CategoriesService } from './categories.service';
+import { UpdateCategoryDto } from './dto/update-category-dto';
+import { buildMessage } from 'class-validator';
+import { error } from 'console';
 
 @Controller('categories')
 export class CategoriesController {
@@ -47,15 +50,16 @@ export class CategoriesController {
       },
     })
   }))
-  @Patch("id")
-  updateCategory(@UploadedFile(
-    new ParseFilePipeBuilder()
-      .addFileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' })
-      .addMaxSizeValidator({ maxSize: 5 * 1024 * 1024 })
-      .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
-  ) categoryImage: Express.Multer.File,    
-    @Param('id', ParseIntPipe) id: string, dto: CreateCategoryDto) {
-    return this.categoriesService.updateCategory(id, dto, categoryImage)
+  @Patch()
+  updateCategory(dto: UpdateCategoryDto, @UploadedFile(
+    new ParseFilePipe({
+      validators: [new FileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' }),
+      new MaxFileSizeValidator({ maxSize: 5 * 1024 * 1024 })],
+      fileIsRequired: false,
+      errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+    }),
+  ) categoryImage?: Express.Multer.File) {
+    return this.categoriesService.updateCategory(dto, categoryImage)
   }
 
   @Delete(':id')
