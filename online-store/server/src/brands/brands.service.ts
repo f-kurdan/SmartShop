@@ -35,9 +35,9 @@ export class BrandsService {
         })
     }
 
-    deleteBrand(id: string) {
+    deleteBrand(id: number) {
         return this.prisma.brand.delete({
-            where: { id: +id }
+            where: { id: id }
         })
     }
 }
