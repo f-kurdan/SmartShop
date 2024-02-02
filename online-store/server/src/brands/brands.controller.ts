@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { BrandsService } from './brands.service';
 import { CreateBrandDto } from './dto/create-brand-dto';
+import { UpdateBrandDto } from './dto/update-brand-dto';
 
 @Controller('brands')
 export class BrandsController {
@@ -22,9 +23,9 @@ export class BrandsController {
     return this.brandsService.createBrand(dto);
   }
 
-  @Patch(':id')
-  updateBrand(@Param('id', ParseIntPipe) id: string, dto: CreateBrandDto) {
-    return this.brandsService.updateBrand(id, dto)
+  @Patch()
+  updateBrand(@Body() dto: UpdateBrandDto) {
+    return this.brandsService.updateBrand(dto)
   }
 
   @Delete(':id')

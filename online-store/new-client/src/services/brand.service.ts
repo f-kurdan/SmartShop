@@ -11,7 +11,7 @@ class brandService {
   }
 
   async createBrand(formData?: FormData) {
-    return fetch(brandsURL, {
+    return await fetch(brandsURL, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -25,6 +25,19 @@ class brandService {
       }
     })
   }
+
+  async updateBrand(formData?: FormData) {
+    return await fetch(brandsURL, {
+        method: "PATCH",
+        body: formData
+    }).then(res => {
+        if (res.ok) {
+            return res.json()
+        } else {
+            throw new FetchError(res)
+        }
+    })
+}
 
   async deleteCategory(id: number) {
     return await fetch(`${brandsURL}/${id}`, {
