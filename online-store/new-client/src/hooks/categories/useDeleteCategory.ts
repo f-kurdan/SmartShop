@@ -1,10 +1,9 @@
-import React from 'react'
-import { QueryClient, useMutation } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
 import categoryService from '../../services/category.service'
 
-const queryClient = new QueryClient()
-
 const useDeleteCategory = () => {
+  const queryClient = useQueryClient()
+
   return useMutation({
     mutationFn: categoryService.deleteCategory,
     onSuccess: () => {

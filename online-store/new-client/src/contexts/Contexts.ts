@@ -1,8 +1,10 @@
 import { product } from '@/types';
 import { createContext } from 'react';
 
-const func = (value:string) => {}
-export const HandlerContext = createContext(func)
+const handler = (value:string) => {}
+export const HandlerContext = createContext(handler)
+  
+export const SetterContext = createContext((value: string) => {})
 
 export const NameContext = createContext('')
 

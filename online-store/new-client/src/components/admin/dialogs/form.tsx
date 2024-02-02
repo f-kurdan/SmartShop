@@ -1,10 +1,11 @@
-import React, { memo, useState, ChangeEvent } from 'react'
+import React, { memo, useState, ChangeEvent, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { SubmitHandler } from 'react-hook-form/dist/types'
 import { useCreateCategory } from '../../../hooks/categories/useCreateCategory'
 import SaveButton from './save-button'
 import { useCreateBrand } from '../../../hooks/brands/useCreateBrand'
 import { FetchError } from '../../../types'
+import { SetterContext } from '../../../contexts/Contexts'
 
 type Inputs = {
     name: string
@@ -13,6 +14,7 @@ type Inputs = {
 
 const Form = memo(({ name }: { name: string }) => {
     const [image, setImage] = useState('');
+    const setAddedItem = useContext(SetterContext)
     const mutation = getHook(name)
 
     const {
