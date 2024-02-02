@@ -22,7 +22,7 @@ const CategoriesList = memo(({ blur }: { blur: boolean }) => {
   return (
     <ul className={`${blur ? "blur-md" : ""} flex flex-col gap-4 w-full h-full`}>
       {data?.map(category => toChange === category.id ?
-        (<li>
+        (<li key={category.id}>
           <CategoryUpdateForm 
           id={category.id}
           defaultName={category.name} />

@@ -14,7 +14,6 @@ type Inputs = {
 
 const Form = memo(({ name }: { name: string }) => {
     const [image, setImage] = useState('');
-    const setAddedItem = useContext(SetterContext)
     const mutation = getHook(name)
 
     const {
