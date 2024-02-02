@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { montserrat } from '../../../../styles/fonts'
 import Dialog from '../../dialogs/dialog'
 import { HandlerContext, SetterContext } from '../../../../contexts/Contexts'
-import List from './list'
+import CategoriesList from './list'
 
 const CategoriesAdminList = () => {
     const [showCategoryModal, setShowCategoryModal] = useState(false)
@@ -55,7 +55,7 @@ const CategoriesAdminList = () => {
                     name='category'
                     toShow={showCategoryModal}
                     title='Создание категории' />
-                <List blur={showCategoryModal} />
+                <CategoriesList blur={showCategoryModal} />
             </div>
             </SetterContext.Provider>
         </HandlerContext.Provider>

@@ -5,7 +5,7 @@ import { TrashIcon } from '@heroicons/react/24/solid';
 import CategoryUpdateForm from './category-update-form';
 import useDeleteCategory from '../../../../hooks/categories/useDeleteCategory';
 
-const List = memo(({ blur }: { blur: boolean }) => {
+const CategoriesList = memo(({ blur }: { blur: boolean }) => {
   const [toChange, setToChange] = useState<Number>();
   const { data } = useCategories();
 
@@ -40,4 +40,4 @@ const List = memo(({ blur }: { blur: boolean }) => {
   )
 })
 
-export default List
+export default CategoriesList

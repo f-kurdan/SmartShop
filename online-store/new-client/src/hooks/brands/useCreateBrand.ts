@@ -1,13 +1,14 @@
-import { QueryClient, useMutation } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import brandService from "../../services/brand.service"
 
-const queryClient = new QueryClient()
 
 export const useCreateBrand = () => {
+    const queryClient = useQueryClient()
+
     const mutation = useMutation({
         mutationFn: brandService.createBrand,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['brands'] })
+        onSuccess: async() => {
+            await queryClient.invalidateQueries({ queryKey: ['brands'] })
         }
     })
     return mutation;

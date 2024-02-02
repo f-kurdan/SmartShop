@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CategoriesAdminList from '../../components/admin/lists/categories/categories-list';
-import BrandsAdminList from '../../components/admin/lists/brands-list';
+import BrandsAdminList from '../../components/admin/lists/brands/brands-list';
 import ProductsAdminList from '../../components/admin/lists/products-list';
 
 const index = () => {
