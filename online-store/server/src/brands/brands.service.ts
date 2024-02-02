@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import convertToSlug from '../utils/convertToSlug';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateBrandDto } from './dto/create-brand-dto';
+import { UpdateBrandDto } from './dto/update-brand-dto';
 
 @Injectable()
 export class BrandsService {
@@ -26,17 +27,17 @@ export class BrandsService {
         })
     }
 
-    updateBrand(id: string, dto: CreateBrandDto) {
-        return this.prisma.brand.update({
-            where : { id: +id}, 
+    async updateBrand(dto: UpdateBrandDto) {
+        return await this.prisma.brand.update({
+            where : { id: dto.id}, 
             data: {
                 name: dto.name,
             }
         })
     }
 
-    deleteBrand(id: number) {
-        return this.prisma.brand.delete({
+    async deleteBrand(id: number) {
+        return await this.prisma.brand.delete({
             where: { id: id }
         })
     }
