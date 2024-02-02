@@ -25,5 +25,17 @@ class brandService {
       }
     })
   }
+
+  async deleteCategory(id: number) {
+    return await fetch(`${brandsURL}/${id}`, {
+        method: "DELETE",
+    }).then(res => {
+        if (res.ok) {
+            return res.json()
+        } else {
+            throw new FetchError(res)
+        }
+    })
+}
 }
 export default new brandService()
