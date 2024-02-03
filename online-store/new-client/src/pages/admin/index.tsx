@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CategoriesAdminList from '../../components/admin/lists/categories/categories-list';
 import BrandsAdminList from '../../components/admin/lists/brands/brands-list';
-import ProductsAdminList from '../../components/admin/lists/products-list';
+import ProductsAdminList from '../../components/admin/lists/products/products-list';
 
 const index = () => {
   const [selectedList, setSelectedList] = useState('categories');

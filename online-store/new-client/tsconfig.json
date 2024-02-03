@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/convertToSlug.js", "src/utils/groupBy.js", "src/utils/groupBy.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/convertToSlug.js", "src/utils/groupBy.js", "src/utils/groupBy.js", "src/hooks/products/useDeleteProduct.ts"],
   "exclude": ["node_modules"]
 }

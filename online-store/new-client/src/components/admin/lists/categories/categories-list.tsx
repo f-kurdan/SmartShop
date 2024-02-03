@@ -33,9 +33,8 @@ const CategoriesAdminList = () => {
         }
 
         return () => {
-            window.addEventListener("click", (e) => handleOpeningModal(e, button, buttonsList))
-            window.removeEventListener("click", (e) => handleClickOutside(e, modal, button, buttonsList)
-            )
+            window.removeEventListener("click", (e) => handleOpeningModal(e, button, buttonsList))
+            window.removeEventListener("click", (e) => handleClickOutside(e, modal, button, buttonsList))
         }
     }, [])
 
@@ -43,12 +42,12 @@ const CategoriesAdminList = () => {
         <HandlerContext.Provider value={onCancelClick}>
             <div className={`${montserrat.className} flex flex-col justify-start items-center px-10 py-14 w-full rounded-sm borde bg-gray-50 shadow-lg text-gray-700 gap-y-16`}>
                 <div className='flex flex-row justify-between items-center gap-5'>
-                <h1 className={`font-bold text-5xl text-center text-gray-600 ${showCategoryModal ? 'blur-md' : ''} `} >
-                    Категории {addedItem}
-                </h1>
-                <span onClick={() => setShowCategoryModal(true)} id='create-category-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showCategoryModal ? 'blur-md' : ''}`} >
-                    Добавить категорию
-                </span>
+                    <h1 className={`font-bold text-5xl text-center text-gray-600 ${showCategoryModal ? 'blur-md' : ''} `} >
+                        Категории {addedItem}
+                    </h1>
+                    <span onClick={() => setShowCategoryModal(true)} id='create-category-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showCategoryModal ? 'blur-md' : ''}`} >
+                        Добавить категорию
+                    </span>
                 </div>
                 <Dialog
                     name='category'

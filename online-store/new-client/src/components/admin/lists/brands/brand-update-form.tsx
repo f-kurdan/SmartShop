@@ -20,10 +20,10 @@ const BrandUpdateForm = ({ id, defaultName }: { id: number, defaultName: string 
     const onSubmit: SubmitHandler<Input> = (data) => {
       const formData = new FormData();
       if (data.id) {
-        formData.append('id', data.id.toString());
+        formData.append("id", data.id.toString());
       }
       if (data.name) {
-        formData.append('name', data.name);
+        formData.append("name", data.name);
       }
       mutation.mutate(formData)
     }
