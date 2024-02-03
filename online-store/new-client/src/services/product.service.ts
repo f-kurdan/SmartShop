@@ -1,4 +1,6 @@
-import { FetchError, product, productsList } from "../types";
+import { FetchError, product } from "../types";
+
+const productsURL = `${process.env.NEXT_PUBLIC_STOREAPI_URL}/products`;
 
 class productService {
     async getProducts(page?: number, searchTerm?: string, categories?: string[], brands?: string[], specifications?: string[]) {
@@ -16,7 +18,7 @@ class productService {
     }
 
     async getProduct(slug: string, color?: string, storageSize?: string) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/${slug}`)
+        const res = await fetch(`${productsURL}/${slug}`)
         const data = await res.json();
         return data;
     }
@@ -25,16 +27,28 @@ class productService {
         const searchParams = new URLSearchParams();
         if (color) searchParams.append('color', color)
         if (storageSize) searchParams.append('storageSize', storageSize)
-        const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/name/${name}?${searchParams}`);
+        const res = await fetch(`${productsURL}/name/${name}?${searchParams}`);
         const data = await res.json();
         return data;
     }
 
     async createProduct(formData?: FormData) {
         console.log(formData?.getAll('images[]'))
-        return await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products`, {
+        return await fetch(productsURL, {
             method: "POST",
             body: formData
+        }).then(res => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                throw new FetchError(res)
+            }
+        })
+    }
+
+    async deleteProduct(id: number) {
+        return await fetch(`${productsURL}/${id}`, {
+            method: "DELETE",
         }).then(res => {
             if (res.ok) {
                 return res.json()
