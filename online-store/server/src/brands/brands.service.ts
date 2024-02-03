@@ -10,7 +10,7 @@ export class BrandsService {
 
     async getAllBrands() {
         return await this.prisma.brand.findMany({
-            orderBy: { name: 'desc' }
+            orderBy: { name: 'asc' }
         })
     }
 

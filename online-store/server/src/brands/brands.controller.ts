@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, HttpCode } from '@nestjs/common';
 import { BrandsService } from './brands.service';
 import { CreateBrandDto } from './dto/create-brand-dto';
 import { UpdateBrandDto } from './dto/update-brand-dto';
@@ -18,11 +18,13 @@ export class BrandsController {
     return this.brandsService.getOneBrand(id)
   }
 
+  @HttpCode(200)
   @Post()
   createBrand(@Body() dto: CreateBrandDto) {
     return this.brandsService.createBrand(dto);
   }
 
+  @HttpCode(200)
   @Patch()
   updateBrand(@Body() dto: UpdateBrandDto) {
     return this.brandsService.updateBrand(dto)
