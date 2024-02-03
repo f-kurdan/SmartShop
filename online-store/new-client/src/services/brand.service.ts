@@ -29,7 +29,13 @@ class brandService {
   async updateBrand(formData?: FormData) {
     return await fetch(brandsURL, {
         method: "PATCH",
-        body: formData
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          'id': formData?.get('id'),
+          'name': formData?.get('name')
+        })
     }).then(res => {
         if (res.ok) {
             return res.json()
