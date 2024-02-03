@@ -8,12 +8,14 @@ import { UpdateBrandDto } from './dto/update-brand-dto';
 export class BrandsService {
     constructor(private prisma: PrismaService) { }
 
-    getAllBrands() {
-        return this.prisma.brand.findMany()
+    async getAllBrands() {
+        return await this.prisma.brand.findMany({
+            orderBy: { name: 'desc' }
+        })
     }
 
-    getOneBrand(id: string) {
-        return this.prisma.brand.findUnique({
+    async getOneBrand(id: string) {
+        return await this.prisma.brand.findUnique({
             where: { id: +id }
         })
     }

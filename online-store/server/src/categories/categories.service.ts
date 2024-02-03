@@ -10,7 +10,9 @@ export class CategoriesService {
     constructor(private prisma: PrismaService) { }
 
     async getAllCategories() {
-        return await this.prisma.category.findMany()
+        return await this.prisma.category.findMany({
+            orderBy: { name: 'desc' }
+        })
     }
 
     async getOneCategory(id: string) {
