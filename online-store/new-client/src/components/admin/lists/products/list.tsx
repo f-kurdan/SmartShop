@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import useProducts from '../../../../hooks/products/useProducts'
 import Image from 'next/image'
 import { TrashIcon } from '@heroicons/react/24/solid';
-import useDeleteProduct from '../../../../hooks/products/useDeleteProduct.js';
+import useDeleteProduct from '../../../../hooks/products/useDeleteProduct';
 
 
 const ProductsList = ({ blur }: { blur: boolean }) => {

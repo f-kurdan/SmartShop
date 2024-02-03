@@ -5,7 +5,6 @@ import { useCreateCategory } from '../../../hooks/categories/useCreateCategory'
 import SaveButton from './save-button'
 import { useCreateBrand } from '../../../hooks/brands/useCreateBrand'
 import { FetchError } from '../../../types'
-import { SetterContext } from '../../../contexts/Contexts'
 
 type Inputs = {
     name: string

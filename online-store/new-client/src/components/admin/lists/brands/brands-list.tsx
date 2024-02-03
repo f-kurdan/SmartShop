@@ -1,38 +1,39 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { HandlerContext } from '../../../../contexts/Contexts'
 import { montserrat } from '../../../../styles/fonts'
 import Dialog from '../../dialogs/dialog'
 import BrandsList from './list'
 
-const BrandsAdminList = () => {
+const BrandsAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [showBrandModal, setShowBrandModal] = useState(false)
+    const dialogRef = useRef<HTMLDialogElement>(null)
+    const buttonRef = useRef<HTMLButtonElement>(null)
 
-    const onCancelClick = () => setShowBrandModal(false)
-
-    const handleClickOutside = (e: MouseEvent, modal: HTMLElement | null, button: HTMLElement | null) => {
-        if (e.target !== modal && e.target !== button && !modal?.contains(e.target as Node)) {
-            document.getElementById("buttons-list")!.style.filter = 'none'
+    const onClickOutside = (e: MouseEvent) => {
+        const element = dialogRef.current;
+        if (element && !element.contains(e.target as Node) && e.target !== buttonRef.current) {
             setShowBrandModal(false)
-        }
-    }
-
-    const handleOpeningModal = (e: MouseEvent, button: HTMLElement | null) => {
-        if (e.target === button) {
-            document.getElementById("buttons-list")!.style.filter = 'blur(5px)'
+            setToBlurList(false)
         }
     }
 
     useEffect(() => {
-        const modal = document.getElementById('creation-dialog')
-        const button = document.getElementById('create-brand-button')
-        window.addEventListener("click", (e) => handleClickOutside(e, modal, button))
-        window.addEventListener("click", (e) => handleOpeningModal(e, button))
+        document.addEventListener('click', onClickOutside)
 
-        return () => {
-            window.removeEventListener("click", (e) => handleClickOutside(e, modal, button))
-            window.removeEventListener("click", (e) => handleOpeningModal(e, button))
-        }
+        return () => document.removeEventListener('click', onClickOutside)
     }, [])
+
+    const onCancelClick = () => {
+        setShowBrandModal(false)
+        setToBlurList(false)
+    }
+
+    const onClick = () => {
+        setToBlurList(true)
+        setShowBrandModal(true)
+    }
+
+
     
     return (
         <HandlerContext.Provider value={onCancelClick}>
@@ -41,11 +42,12 @@ const BrandsAdminList = () => {
                 <h1 className={`font-bold text-5xl text-center text-gray-600 ${showBrandModal ? 'blur-md' : ''} `} >
                     Бренды
                 </h1>
-                <div onClick={() => setShowBrandModal(true)} id='create-brand-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showBrandModal ? 'blur-md' : ''}`} >
+                <button ref={buttonRef} onClick={onClick} id='create-brand-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showBrandModal ? 'blur-md' : ''}`} >
                     Добавить бренд
-                </div>
+                </button>
             </div>
                 <Dialog
+                    dialogRef={dialogRef}
                     name='brand'
                     toShow={showBrandModal}
                     title='Создание бренда' />

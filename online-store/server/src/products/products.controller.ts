@@ -5,7 +5,7 @@ import { UpdateProductDto } from './dto/update-product-dto';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import multer from 'multer';
 import convertToSlug from '../utils/convertToSlug';
-import fs, { existsSync } from 'fs';
+import fs from 'fs';
 
 @Controller("products")
 export class ProductsController {
@@ -65,7 +65,7 @@ export class ProductsController {
                 }
             },
             filename: (req, file, cb) => {
-                cb(null,`${new Date().toLocaleString('ru-RU').replace(/, |:/g, '.')}-${file.originalname}`)
+                cb(null,`${file.originalname}`)
             },
         })
     }))

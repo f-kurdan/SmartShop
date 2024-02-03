@@ -1,37 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { HandlerContext, NameContext } from '../../../../contexts/Contexts'
 import ProductCreatingDialog from '../../dialogs/products/product-creating-dialog'
 import { montserrat } from '../../../../styles/fonts'
+import ProductsList from './list'
 
-const ProductsAdminList = () => {
+const ProductsAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const [showProductModal, setShowProductModal] = useState(false)
+    const dialogRef = useRef<HTMLDialogElement>(null)
+    const buttonRef = useRef<HTMLButtonElement>(null)
 
-    const onCancelClick = () => setShowProductModal(false)
-
-    const handleClickOutside = (e: MouseEvent, modal: HTMLElement | null, button: HTMLElement | null) => {
-        if (e.target !== modal && e.target !== button && !modal?.contains(e.target as Node)) {
-            document.getElementById("buttons-list")!.style.filter = 'none'
+    const onClickOutside = (e: MouseEvent) => {
+        const element = dialogRef.current;
+        if (element && !element.contains(e.target as Node) && e.target !== buttonRef.current) {
             setShowProductModal(false)
-        }
-    }
-
-    const handleOpeningModal = (e: MouseEvent, button: HTMLElement | null) => {
-        if (e.target === button) {
-            document.getElementById("buttons-list")!.style.filter = 'blur(5px)'
+            setToBlurList(false)
         }
     }
 
     useEffect(() => {
-        const modal = document.getElementById('product-creation-dialog')
-        const button = document.getElementById('create-product-button')
-        window.addEventListener("click", (e) => handleClickOutside(e, modal, button))
-        window.addEventListener("click", (e) => handleOpeningModal(e, button))
+        document.addEventListener('click', onClickOutside)
 
-        return () => {
-            window.removeEventListener("click", (e) => handleClickOutside(e, modal, button))
-            window.removeEventListener("click", (e) => handleOpeningModal(e, button))
-        }
+        return () => document.removeEventListener('click', onClickOutside)
     }, [])
+
+    const onCancelClick = () => {
+        setShowProductModal(false)
+        setToBlurList(false)
+    }
+
+    const onClick = () => {
+        setToBlurList(true)
+        setShowProductModal(true)
+    }
+
 
     return (
         <HandlerContext.Provider value={onCancelClick}>
@@ -40,15 +41,18 @@ const ProductsAdminList = () => {
                     <h1 className={`font-bold text-5xl text-center text-gray-600 ${showProductModal ? 'blur-md' : ''} `} >
                         Товары
                     </h1>
-                    <div onClick={() => setShowProductModal(true)} id='create-product-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showProductModal ? 'blur-md' : ''}`} >
+                    <button ref={buttonRef} onClick={onClick} id='create-product-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showProductModal ? 'blur-md' : ''}`} >
                         Добавить товар
-                    </div>
+                    </button>
                 </div>
                 <NameContext.Provider value='product' >
-                    <ProductCreatingDialog state={showProductModal}
+                    <ProductCreatingDialog 
+                        state={showProductModal}
+                        dialogRef={dialogRef}
                         name='product'
                         title='Добавить товар' />
                 </NameContext.Provider>
+                <ProductsList blur={showProductModal} />
             </div>
         </HandlerContext.Provider>
     )

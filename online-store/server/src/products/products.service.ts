@@ -141,8 +141,8 @@ export class ProductsService {
         // const specs = dto.productInfo.map(spec => JSON.parse(spec))
         // console.log('specs', specs)
         console.log(dto.productInfo)
-        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет')?.description || '';
-        const storageInfo = dto.productInfo.find(i => i.name === 'Память')?.description || '';
+        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет')?.description ?? '';
+        const storageInfo = dto.productInfo.find(i => i.name === 'Память')?.description ?? '';
 
         console.log(dto.productInfo)
 

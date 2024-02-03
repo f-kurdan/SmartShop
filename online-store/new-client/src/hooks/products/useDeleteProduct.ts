@@ -7,7 +7,7 @@ const useDeleteProduct = () => {
     return useMutation({
         mutationFn: productService.deleteProduct,
         onSuccess: async () => {
-            await queryClient.invalidateQueries(['products'])
+            await queryClient.invalidateQueries(["products"])
         }
     })
 }
