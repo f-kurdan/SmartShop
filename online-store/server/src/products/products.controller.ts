@@ -1,4 +1,4 @@
-import { Controller, Get, Post, HttpCode, Param, Body, Patch, Delete, ParseIntPipe, Query, UseInterceptors, ParseFilePipeBuilder, HttpStatus, UploadedFiles } from '@nestjs/common';
+import { Controller, Get, Post, HttpCode, Param, Body, Patch, Delete, ParseIntPipe, Query, UseInterceptors, ParseFilePipeBuilder, HttpStatus, UploadedFiles, StreamableFile} from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductsService } from './products.service';
 import { UpdateProductDto } from './dto/update-product-dto';
@@ -6,6 +6,8 @@ import { FilesInterceptor } from '@nestjs/platform-express';
 import multer from 'multer';
 import convertToSlug from '../utils/convertToSlug';
 import fs from 'fs';
+import { join } from 'path';
+import MultiStream from 'multistream';
 
 @Controller("products")
 export class ProductsController {
@@ -28,6 +30,15 @@ export class ProductsController {
             throw new Error("No products")
 
         return products;
+    }
+
+    @Get('/images/:slug')
+    async getImages(@Param('slug') slug: string) {
+        const product = await this.productService.findOneProduct(slug)
+        const images = product.images    
+        const streams = images?.map(path => fs.createReadStream(join(process.cwd(), path)))
+        const multi = new MultiStream(streams)    
+        return new StreamableFile(multi);
     }
 
     @Get('name/:name')
@@ -85,6 +96,6 @@ export class ProductsController {
 
     @Delete(':id')
     deleteProduct(@Param("id", ParseIntPipe) id: string) {
-        this.productService.deleteProduct(id)
+        return this.productService.deleteProduct(id)
     }
 }
