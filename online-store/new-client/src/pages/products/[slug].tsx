@@ -1,7 +1,7 @@
 import GoBackButton from '@/components/go-back-button';
 import Carousel from '@/components/products/carousel';
 import ProductInfo from '@/components/products/product-info/product-info';
-import useProduct from '@/hooks/products/useProductById';
+import useProduct from '@/hooks/products/useProduct';
 import { montserrat } from '@/styles/fonts';
 import { useRouter } from 'next/router';
 

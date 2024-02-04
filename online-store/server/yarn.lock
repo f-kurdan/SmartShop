@@ -2025,6 +2025,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/multistream@npm:^4":
+  version: 4.1.3
+  resolution: "@types/multistream@npm:4.1.3"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 50c6f7695842cf371fd1998ea709a7203a8e958b0958cfe3e0ecc5253425301011769cdb7397f7c7c1509f568f8c65e1d19d9c530d1c9c8bf912f1bf74dab68e
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:^20.3.1":
   version: 20.11.5
   resolution: "@types/node@npm:20.11.5"
@@ -6614,6 +6623,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"multistream@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "multistream@npm:4.1.0"
+  dependencies:
+    once: "npm:^1.4.0"
+    readable-stream: "npm:^3.6.0"
+  checksum: 84224c1268960f056e63fd8bd290231f5227da78e313aa6a2ac23bc90667491afde759622b205eff8f1593337e81af7a47ec7d4862b68800e8a3fdd2a5dacfd3
+  languageName: node
+  linkType: hard
+
 "mute-stream@npm:0.0.8":
   version: 0.0.8
   resolution: "mute-stream@npm:0.0.8"
@@ -8022,6 +8041,7 @@ __metadata:
     "@types/express": "npm:^4.17.17"
     "@types/jest": "npm:^29.5.2"
     "@types/multer": "npm:^1.4.11"
+    "@types/multistream": "npm:^4"
     "@types/node": "npm:^20.3.1"
     "@types/supertest": "npm:^2.0.12"
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
@@ -8034,6 +8054,7 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.0.0"
     i: "npm:^0.3.7"
     jest: "npm:^29.5.0"
+    multistream: "npm:^4.1.0"
     nestjs-prisma: "npm:^0.22.0"
     nodemon: "npm:^3.0.1"
     npm: "npm:^10.3.0"

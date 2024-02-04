@@ -17,7 +17,7 @@ const ProductSpecificationAdding = ({ register, control, errors }: {
         })
 
     const handleAddRow = () => {
-        append({ specName: '', specDescription: '' });
+        append({ name: '', description: '' });
     }
 
     return (

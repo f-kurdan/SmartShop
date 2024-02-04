@@ -11,11 +11,12 @@ export type product = {
     brandSlug: string,
     categorySlug: string,
     price: number;
+    quantity: number;
     images: string[];
-    productInfo: {
-        name: string;
-        description: string;
-    }[]
+    productInfo: [({ 
+        name?: string ; 
+        description?: string ; 
+    } | undefined)?]
 }
 
 export type productsList = product[]
@@ -61,7 +62,7 @@ export type ProductFormInputs = {
     images: FileList,
     quantity: number,
     specs: [{
-        specName: string,
-        specDescription: string
+        name: string,
+        description: string
     }]
 }

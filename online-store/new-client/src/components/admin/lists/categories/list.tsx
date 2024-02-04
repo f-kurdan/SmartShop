@@ -23,9 +23,9 @@ const CategoriesList = memo(({ blur }: { blur: boolean }) => {
     <ul className={`${blur ? "blur-md" : ""} flex flex-col gap-4 w-full h-full`}>
       {data?.map(category => toChange === category.id ?
         (<li key={category.id}>
-          <CategoryUpdateForm 
-          id={category.id}
-          defaultName={category.name} />
+          <CategoryUpdateForm
+            id={category.id}
+            defaultName={category.name} />
         </li>) :
         (<li className='flex flex-row justify-start items-center gap-5 border-2 border-gray-400 p-3 h-[100px] rounded-md' key={category.id}>
           <span className='min-w-[100px]'>

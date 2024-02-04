@@ -13,13 +13,13 @@ const ProductSpecificationRow =  memo(({index, register, field, remove, errors}:
                     type="text"
                     placeholder='Название'
                     className={`${errors.specs ? 'outline outline-red-500' : ''}  border-2 border-black rounded-lg p-2 font-italic`}
-                    {...register(`specs.${index}.specName` as 'specs.0.specName', { required: true})}
+                    {...register(`specs.${index}.name` as 'specs.0.name', { required: true})}
                 />
                 <input
                     type="text"
                     placeholder='Описание'
                     className={`${errors.specs ? 'outline outline-red-500' : ''} border-2 border-black rounded-lg p-2 font-italic`}    
-                    {...register(`specs.${index}.specDescription` as 'specs.0.specName', { required: true})}
+                    {...register(`specs.${index}.description` as 'specs.0.description', { required: true})}
                 />
                 <div onClick={() => remove(index)} className='p-3 rounded-lg bg-red-200 cursor-pointer border-2 border-black text-center'>
                     Удалить

@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { FetchError, ProductFormInputs } from '../../../../types';
+import { FetchError, ProductFormInputs, product } from '../../../../types';
 /*Product components*/
 import ProductSpecificationInputs from './product-specification-inputs';
 import ProductQuantityAndImageAdding from './product-quantity-and-image-inputs';
@@ -9,9 +9,23 @@ import useCreateProduct from '../../../../hooks/products/useCreateProducts';
 /*Buttons */
 import CancelButton from '../cancel-button';
 import SaveButton from '../save-button';
+import { useQuery } from 'react-query';
 
-const ProductCreatingDialog = ({ dialogRef, state, name, title }: {dialogRef: React.RefObject<HTMLDialogElement>, state: boolean, name: string, title: string }) => {
+const fetchImages = async (slug?: string): Promise<FileList> => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/images/${slug}`);
+    const data = await res.json();
+    return data.images;
+}
+
+const ProductCreatingDialog = ({ dialogRef, state, name, title, defaultProduct }: {
+    dialogRef: React.RefObject<HTMLDialogElement>, 
+    state: boolean, 
+    name: string, 
+    title: string,
+    defaultProduct?: product }) => {
     const mutation = useCreateProduct();
+    const { data } = defaultProduct ? useQuery([defaultProduct?.name, defaultProduct?.slug], () => fetchImages(defaultProduct?.slug)) : { data: new FileList()};
+
     const {
         register,
         handleSubmit,
@@ -21,9 +35,15 @@ const ProductCreatingDialog = ({ dialogRef, state, name, title }: {dialogRef: Re
         formState: { errors },
     } = useForm<ProductFormInputs>({
         defaultValues: {
-            specs: [{
-                specName: '',
-                specDescription: ''
+            categorySlug: defaultProduct?.categorySlug ?? '',
+            brandSlug: defaultProduct?.brandSlug ?? '',
+            name: defaultProduct?.name ?? '',
+            price: defaultProduct?.price?? 0,
+            images: data,
+            quantity: defaultProduct?.quantity?? 0,            
+            specs: defaultProduct?.productInfo ?? [{
+                name: '',
+                description: ''
             }]
         }
     })
@@ -46,7 +66,7 @@ const ProductCreatingDialog = ({ dialogRef, state, name, title }: {dialogRef: Re
         if (data.quantity)
             formData.append('quantity', data.quantity.toString());
         if (data.specs) {
-            data.specs.forEach(spec => formData.append('productInfo[]', JSON.stringify({ name: spec.specName, description: spec.specDescription})))
+            data.specs.forEach(spec => formData.append('productInfo[]', JSON.stringify({ name: spec.name, description: spec.description})))
         }
 
         mutation.mutate(formData)

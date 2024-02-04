@@ -17,7 +17,7 @@ class productService {
         return { products: data.products, totalPages: data.totalPages }
     }
 
-    async getProduct(slug: string, color?: string, storageSize?: string) {
+    async getProduct(slug: string): Promise<product> {
         const res = await fetch(`${productsURL}/${slug}`)
         const data = await res.json();
         return data;
