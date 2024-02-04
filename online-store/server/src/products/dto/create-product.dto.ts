@@ -34,8 +34,6 @@ export class CreateProductDto {
             return JSON.parse(info)
         return info
         })))
-    //@ValidateNested()
-    // @ArrayMinSize(1)
     productInfo: [{
         name: string;
         description: string;

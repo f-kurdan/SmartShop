@@ -54,7 +54,7 @@ const ProductCreatingDialog = ({ dialogRef, state, name, title }: {dialogRef: Re
 
     const err = mutation.error as FetchError;
     const errorCode = err?.res?.status;
-
+    console.log('isSuccess: ' +  mutation.isSuccess)
     return (
         <dialog open={state} ref={dialogRef} id='product-creation-dialog' className='fixed top-20 transition-all duration-100 z-10 bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
             {mutation.isSuccess ? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}

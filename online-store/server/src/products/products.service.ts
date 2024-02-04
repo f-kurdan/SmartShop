@@ -121,7 +121,7 @@ export class ProductsService {
             }
         } : {}
 
-        return await   this.prisma.product.findMany({
+        return await this.prisma.product.findMany({
             where: {
                 name: name,
                 ...colorFilter,
@@ -138,15 +138,10 @@ export class ProductsService {
     // }
 
     async createProduct(dto: CreateProductDto, images: Express.Multer.File[]) {
-        // const specs = dto.productInfo.map(spec => JSON.parse(spec))
-        // console.log('specs', specs)
-        console.log(dto.productInfo)
         const colorInfo = dto.productInfo.find(i => i.name === 'Цвет')?.description ?? '';
         const storageInfo = dto.productInfo.find(i => i.name === 'Память')?.description ?? '';
 
-        console.log(dto.productInfo)
-
-        await this.prisma.product.create({
+        return await this.prisma.product.create({
             data: {
                 name: dto.name,
                 price: dto.price,
@@ -198,7 +193,7 @@ export class ProductsService {
 
     async deleteProduct(id: string) {
         const product = await this.prisma.product.findUnique({
-            where: {id: +id}
+            where: { id: +id }
         })
 
         product.images.forEach(image => fs.unlink(image, (err => {
@@ -207,7 +202,7 @@ export class ProductsService {
                 console.log("\nDeleted file: " + image);
             }
         })))
-        
+
         return await this.prisma.product.delete({
             where: {
                 id: +id,

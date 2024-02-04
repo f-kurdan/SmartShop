@@ -33,7 +33,6 @@ const ProductsAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<Re
         setShowProductModal(true)
     }
 
-
     return (
         <HandlerContext.Provider value={onCancelClick}>
             <div className={`${montserrat.className} flex flex-col justify-start items-center px-10 py-14 w-full h-[85vh] rounded-sm borde bg-gray-50 shadow-lg text-gray-700 gap-y-16`}>

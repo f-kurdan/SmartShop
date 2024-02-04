@@ -7,7 +7,6 @@ import useDeleteProduct from '../../../../hooks/products/useDeleteProduct';
 
 const ProductsList = ({ blur }: { blur: boolean }) => {
     const [toChange, setToChange] = useState<Number>();
-
     const { data } = useProducts({})
 
     const mutation = useDeleteProduct()

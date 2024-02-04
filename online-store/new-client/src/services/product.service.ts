@@ -33,7 +33,6 @@ class productService {
     }
 
     async createProduct(formData?: FormData) {
-        console.log(formData?.getAll('images[]'))
         return await fetch(productsURL, {
             method: "POST",
             body: formData

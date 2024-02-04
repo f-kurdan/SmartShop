@@ -56,16 +56,16 @@ export class ProductsController {
                 const { name, categorySlug } = res.body;
                 const path = `public/images/products/${categorySlug}/${convertToSlug(name)}`;
 
-                if (fs.existsSync(path)){
+                if (fs.existsSync(path)) {
                     cb(null, path)
                 }
                 else {
-                    fs.mkdirSync(path, { recursive: true})
+                    fs.mkdirSync(path, { recursive: true })
                     cb(null, path)
                 }
             },
             filename: (req, file, cb) => {
-                cb(null,`${file.originalname}`)
+                cb(null, `${file.originalname}`)
             },
         })
     }))
@@ -75,7 +75,7 @@ export class ProductsController {
             .addMaxSizeValidator({ maxSize: 5 * 1024 * 1024 })
             .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
     ) images: Express.Multer.File[], @Body() createProductDto: CreateProductDto) {
-        this.productService.createProduct(createProductDto, images)
+        return this.productService.createProduct(createProductDto, images)
     }
 
     @Patch(':id')
