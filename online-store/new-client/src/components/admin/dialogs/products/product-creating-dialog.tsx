@@ -10,21 +10,25 @@ import useCreateProduct from '../../../../hooks/products/useCreateProducts';
 import CancelButton from '../cancel-button';
 import SaveButton from '../save-button';
 import { useQuery } from 'react-query';
+import { memo } from 'react';
 
 const fetchImages = async (slug?: string): Promise<FileList> => {
+    if (!slug) return new FileList();
     const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/images/${slug}`);
     const data = await res.json();
     return data.images;
 }
 
-const ProductCreatingDialog = ({ dialogRef, state, name, title, defaultProduct }: {
+const ProductCreatingDialog = memo(({ dialogRef, state, name, title, defaultProduct }: {
     dialogRef: React.RefObject<HTMLDialogElement>, 
     state: boolean, 
     name: string, 
     title: string,
     defaultProduct?: product }) => {
     const mutation = useCreateProduct();
-    const { data } = defaultProduct ? useQuery([defaultProduct?.name, defaultProduct?.slug], () => fetchImages(defaultProduct?.slug)) : { data: new FileList()};
+    const { data } = useQuery([defaultProduct?.name, defaultProduct?.slug], () => fetchImages(defaultProduct?.slug))
+    
+    console.log(defaultProduct)
 
     const {
         register,
@@ -74,7 +78,7 @@ const ProductCreatingDialog = ({ dialogRef, state, name, title, defaultProduct }
 
     const err = mutation.error as FetchError;
     const errorCode = err?.res?.status;
-    console.log('isSuccess: ' +  mutation.isSuccess)
+
     return (
         <dialog open={state} ref={dialogRef} id='product-creation-dialog' className='fixed top-20 transition-all duration-100 z-10 bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
             {mutation.isSuccess ? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
@@ -110,6 +114,6 @@ const ProductCreatingDialog = ({ dialogRef, state, name, title, defaultProduct }
             <CancelButton name={name} />
         </dialog>
     )
-}
+})
 
 export default ProductCreatingDialog
