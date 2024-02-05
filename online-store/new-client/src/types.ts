@@ -55,11 +55,12 @@ export type ProductInfo = {
 
 
 export type ProductFormInputs = {
+    id: number,
     categorySlug: string,
     brandSlug: string,
     name: string,
     price: number,
-    images: FileList,
+    images: FileList | File[],
     quantity: number,
     specs: [{
         name: string,

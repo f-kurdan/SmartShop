@@ -14,11 +14,12 @@ const ProductsAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<Re
 
     const onClickOutside = (e: MouseEvent, buttons: Element[]) => {
         const element = dialogRef.current;
+        console.log("includes: ", buttons.some(el => el == e.target))
         if (element
             && !element.contains(e.target as Node)
             && e.target !== buttonRef.current
             && e.target !== changeButtonRef.current
-            && !buttons.includes(e.target as Element)) {
+            && !buttons.some(el => el == e.target)) {
             setShowProductModal(false)
             setToBlurList(false)
         }

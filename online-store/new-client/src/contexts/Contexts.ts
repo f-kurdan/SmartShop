@@ -3,6 +3,8 @@ import { createContext } from 'react';
 
 const handler = (value:string) => {}
 export const HandlerContext = createContext(handler)
+
+export const CancelButtonHandlerContext = createContext(() => {})
   
 export const SetterContext = createContext((value: string) => {})
 

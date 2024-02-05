@@ -1,10 +1,11 @@
 import React from 'react'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
-import { ProductFormInputs } from '../../../../types'
+import { ProductFormInputs, product } from '../../../../types'
 
-const ProductNameAndPriceInputs = ({ errors, register }: {
+const ProductNameAndPriceInputs = ({ errors, register, defaultProduct }: {
   register: UseFormRegister<ProductFormInputs>,
-  errors: FieldErrors<ProductFormInputs>
+  errors: FieldErrors<ProductFormInputs>,
+  defaultProduct?: product
 }) => {
   return (
     <div className='grid grid-cols-2 gap-2 w-11/12 '>
@@ -12,6 +13,7 @@ const ProductNameAndPriceInputs = ({ errors, register }: {
         <input
           type="text"
           placeholder='Название'
+          //defaultValue={defaultProduct?.name ?? ''}
           className={`bg-gray-100 rounded-lg w-full h-14 p-4 ${errors.name ? 'outline outline-red-500' : ''}`}
           {...register("name", {
             required: "Введите название",
@@ -25,6 +27,7 @@ const ProductNameAndPriceInputs = ({ errors, register }: {
         <input
           type="number"
           placeholder='Стоимость'
+          //defaultValue={defaultProduct?.price ?? 0}
           className={`bg-gray-100 w-full rounded-lg h-14 p-4 ${errors.price ? 'outline outline-red-500' : ''}`}
           {...register("price", {
             required: "Укажите цену",

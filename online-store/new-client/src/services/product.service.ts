@@ -45,6 +45,19 @@ class productService {
         })
     }
 
+    async updateProduct(formData?: FormData) {
+        return await fetch(productsURL, {
+            method: "PATCH",
+            body: formData
+        }).then(res => {
+            if (res.ok) {
+                return res.json()
+            } else {
+                throw new FetchError(res)
+            }
+        })
+    }
+
     async deleteProduct(id: number) {
         return await fetch(`${productsURL}/${id}`, {
             method: "DELETE",
