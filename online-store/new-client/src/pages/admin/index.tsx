@@ -8,7 +8,7 @@ const index = () => {
   const [toBlurList, setToBlurList] = useState(false);
 
   const getSelectedStyle = (name: string) => (selectedList === name? 'outline outline-2 outline-blue-500 shadow-md ' : '') + `rounded-lg bg-white p-3 cursor-pointer`
-  console.log(getSelectedStyle('categories'))
+  
   return (
     <div className={`$ flex flex-row gap-2 p-2 w-[80%] `}>
       <div id='buttons-list' className={`${toBlurList ? 'blur-md' : ''} sticky flex flex-col justify-center gap-2 p-3 w-[35%] h-56 bg-gray-50 text-center`}>
