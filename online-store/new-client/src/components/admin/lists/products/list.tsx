@@ -32,10 +32,9 @@ const ProductsList = ({ blur, onChangeClick }: {
         mutation.mutate(id)
     }
 
-
     useEffect(() => {
         const onClickOutside = (e: MouseEvent) => {
-            if (!(e.target instanceof Element && e.target.closest('.product-instance'))
+            if (!(e.target instanceof Element && e.target.closest('.update-button'))
                 && dialogRef.current
                 && !dialogRef.current.contains(e.target as Node)) {
                 setToOpenDialog(false)
@@ -63,7 +62,7 @@ const ProductsList = ({ blur, onChangeClick }: {
                     {product.name}
                 </h3>
                 <Image className='max-w-[100%] max-h-[100%] object-cover rounded-md' src={`${process.env.NEXT_PUBLIC_STOREAPI_URL}/${product.images[0]}`} alt={product.name} width={100} height={100} />
-                <button onClick={() => { onChangeButtonClick(product) }} className='p-2 bg-yellow-200 rounded-md cursor-pointer justify-self-end'>Изменить</button>
+                <button onClick={() => { onChangeButtonClick(product) }} className='update-button p-2 bg-yellow-200 rounded-md cursor-pointer justify-self-end'>Изменить</button>
                 <TrashIcon onClick={() => handleDelete(product.id)} color='red' className='w-6 h-6 cursor-pointer justify-self-end' />
             </li>)
             )}
