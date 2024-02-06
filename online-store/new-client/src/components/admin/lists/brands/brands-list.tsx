@@ -9,15 +9,15 @@ const BrandsAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<Reac
     const dialogRef = useRef<HTMLDialogElement>(null)
     const buttonRef = useRef<HTMLButtonElement>(null)
 
-    const onClickOutside = (e: MouseEvent) => {
-        const element = dialogRef.current;
-        if (element && !element.contains(e.target as Node) && e.target !== buttonRef.current) {
-            setShowBrandModal(false)
-            setToBlurList(false)
-        }
-    }
-
+    
     useEffect(() => {
+        const onClickOutside = (e: MouseEvent) => {
+            const element = dialogRef.current;
+            if (element && !element.contains(e.target as Node) && e.target !== buttonRef.current) {
+                setShowBrandModal(false)
+                setToBlurList(false)
+            }
+        }
         document.addEventListener('click', onClickOutside)
 
         return () => document.removeEventListener('click', onClickOutside)

@@ -9,15 +9,16 @@ const CategoriesAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<
     const dialogRef = useRef<HTMLDialogElement>(null)
     const buttonRef = useRef<HTMLButtonElement>(null)
 
-    const onClickOutside = (e: MouseEvent) => {
-        const element = dialogRef.current;
-        if (element && !element.contains(e.target as Node) && e.target !== buttonRef.current) {
-            setShowCategoryModal(false)
-            setToBlurList(false)
-        }
-    }
-
+    
     useEffect(() => {
+        const onClickOutside = (e: MouseEvent) => {
+            const element = dialogRef.current;
+            if (element && !element.contains(e.target as Node) && e.target !== buttonRef.current) {
+                setShowCategoryModal(false)
+                setToBlurList(false)
+            }
+        }
+        
         document.addEventListener('click', onClickOutside)
 
         return () => document.removeEventListener('click', onClickOutside)

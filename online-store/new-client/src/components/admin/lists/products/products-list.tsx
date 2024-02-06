@@ -12,20 +12,21 @@ const ProductsAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<Re
     const buttonRef = useRef<HTMLButtonElement>(null)
     const changeButtonRef = useRef<HTMLButtonElement>(null)
 
-    const onClickOutside = (e: MouseEvent, buttons: Element[]) => {
-        const element = dialogRef.current;
-        console.log("includes: ", buttons.some(el => el == e.target))
-        if (element
-            && !element.contains(e.target as Node)
-            && e.target !== buttonRef.current
-            && e.target !== changeButtonRef.current
-            && !buttons.some(el => el == e.target)) {
-            setShowProductModal(false)
-            setToBlurList(false)
-        }
-    }
-
+    
     useEffect(() => {
+        const onClickOutside = (e: MouseEvent, buttons: Element[]) => {
+            const element = dialogRef.current;
+            console.log("includes: ", buttons.some(el => el == e.target))
+            if (element
+                && !element.contains(e.target as Node)
+                && e.target !== buttonRef.current
+                && e.target !== changeButtonRef.current
+                && !buttons.some(el => el == e.target)) {
+                setShowProductModal(false)
+                setToBlurList(false)
+            }
+        }
+        
         const buttons = Array.from(document.getElementsByClassName('product-list-button'))
         document.addEventListener('click', (e) => onClickOutside(e, buttons))
 
