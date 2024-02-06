@@ -3,17 +3,15 @@ import { HandlerContext } from '../../../../contexts/Contexts'
 import { montserrat } from '../../../../styles/fonts'
 import Dialog from '../../dialogs/dialog'
 import BrandsList from './list'
+import Backdrop from '../backdrop'
 
 const BrandsAdminList = () => {
     const [showBrandModal, setShowBrandModal] = useState(false)
-    const dialogRef = useRef<HTMLDialogElement>(null)
-    const buttonRef = useRef<HTMLButtonElement>(null)
-
+    const backdropRef = useRef<HTMLDivElement>(null)
     
     useEffect(() => {
         const onClickOutside = (e: MouseEvent) => {
-            const element = dialogRef.current;
-            if (element && !element.contains(e.target as Node) && e.target !== buttonRef.current) {
+            if (backdropRef.current && backdropRef.current === e.target) {
                 setShowBrandModal(false)
             }
         }
@@ -29,8 +27,6 @@ const BrandsAdminList = () => {
     const onClick = () => {
         setShowBrandModal(true)
     }
-
-
     
     return (
         <HandlerContext.Provider value={onCancelClick}>
@@ -39,15 +35,16 @@ const BrandsAdminList = () => {
                 <h1 className={`font-bold text-5xl text-center text-gray-600 ${showBrandModal ? 'blur-md' : ''} `} >
                     Бренды
                 </h1>
-                <button ref={buttonRef} onClick={onClick} id='create-brand-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showBrandModal ? 'blur-md' : ''}`} >
+                <button onClick={onClick} id='create-brand-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showBrandModal ? 'blur-md' : ''}`} >
                     Добавить бренд
                 </button>
             </div>
                 <Dialog
-                    dialogRef={dialogRef}
                     name='brand'
                     toShow={showBrandModal}
                     title='Создание бренда' />
+                <Backdrop isOpen={showBrandModal}
+                backdropRef={backdropRef}/>
                 <BrandsList blur={showBrandModal} />
             </div>
         </HandlerContext.Provider>

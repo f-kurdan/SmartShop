@@ -3,17 +3,15 @@ import { montserrat } from '../../../../styles/fonts'
 import Dialog from '../../dialogs/dialog'
 import { HandlerContext, SetterContext } from '../../../../contexts/Contexts'
 import CategoriesList from './list'
+import Backdrop from '../backdrop'
 
 const CategoriesAdminList = () => {
     const [showCategoryModal, setShowCategoryModal] = useState(false)
-    const dialogRef = useRef<HTMLDialogElement>(null)
-    const buttonRef = useRef<HTMLButtonElement>(null)
+    const backdropRef = useRef<HTMLDivElement>(null)
 
-    
     useEffect(() => {
         const onClickOutside = (e: MouseEvent) => {
-            const element = dialogRef.current;
-            if (element && !element.contains(e.target as Node) && e.target !== buttonRef.current) {
+            if (backdropRef.current && backdropRef.current === e.target) {
                 setShowCategoryModal(false)
             }
         }
@@ -35,18 +33,19 @@ const CategoriesAdminList = () => {
         <HandlerContext.Provider value={onCancelClick}>
             <div className={`${montserrat.className} flex flex-col justify-start items-center px-10 py-14 w-full rounded-sm borde bg-gray-50 shadow-lg text-gray-700 gap-y-16`}>
                 <div className='flex flex-row justify-between items-center gap-5'>
-                    <h1 className={`font-bold text-5xl text-center text-gray-600 ${showCategoryModal ? 'blur-md' : ''} `} >
+                    <h1 className={`font-bold text-5xl text-center text-gray-600 `} >
                         Категории
                     </h1>
-                    <button ref={buttonRef} onClick={onClick} id='create-category-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showCategoryModal ? 'blur-md' : ''}`} >
+                    <button onClick={onClick} id='create-category-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black`} >
                         Добавить категорию
                     </button>
                 </div>
                 <Dialog
-                    dialogRef={dialogRef}
                     name='category'
                     toShow={showCategoryModal}
                     title='Создание категории' />
+                <Backdrop isOpen={showCategoryModal}
+                backdropRef={backdropRef}/>
                 <CategoriesList blur={showCategoryModal} />
             </div>
         </HandlerContext.Provider>

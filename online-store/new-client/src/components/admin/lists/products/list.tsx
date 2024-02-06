@@ -6,7 +6,7 @@ import useDeleteProduct from '../../../../hooks/products/useDeleteProduct';
 import { product } from '../../../../types';
 import ProductUpdateForm from '../../dialogs/products/product-update-form';
 import { CancelButtonHandlerContext, HandlerContext } from '../../../../contexts/Contexts';
-import Backdrop from './backdrop';
+import Backdrop from '../backdrop';
 
 
 const ProductsList = ({ blur }: {

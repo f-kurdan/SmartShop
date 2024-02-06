@@ -3,7 +3,7 @@ import { HandlerContext, NameContext } from '../../../../contexts/Contexts'
 import ProductCreatingDialog from '../../dialogs/products/product-creating-dialog'
 import { montserrat } from '../../../../styles/fonts'
 import ProductsList from './list'
-import Backdrop from './backdrop'
+import Backdrop from '../backdrop'
 
 const ProductsAdminList = () => {
     const [showProductModal, setShowProductModal] = useState(false)
@@ -26,7 +26,7 @@ const ProductsAdminList = () => {
     }
 
     const onClick = () => {
-        setToBlurList(true)
+        setShowProductModal(true)
     }
 
     return (
