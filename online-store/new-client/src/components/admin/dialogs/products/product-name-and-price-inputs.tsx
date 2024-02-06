@@ -2,10 +2,9 @@ import React from 'react'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import { ProductFormInputs, product } from '../../../../types'
 
-const ProductNameAndPriceInputs = ({ errors, register, defaultProduct }: {
+const ProductNameAndPriceInputs = ({ errors, register }: {
   register: UseFormRegister<ProductFormInputs>,
-  errors: FieldErrors<ProductFormInputs>,
-  defaultProduct?: product
+  errors: FieldErrors<ProductFormInputs>
 }) => {
   return (
     <div className='grid grid-cols-2 gap-2 w-11/12 '>

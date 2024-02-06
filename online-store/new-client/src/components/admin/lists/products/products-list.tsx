@@ -3,46 +3,30 @@ import { HandlerContext, NameContext } from '../../../../contexts/Contexts'
 import ProductCreatingDialog from '../../dialogs/products/product-creating-dialog'
 import { montserrat } from '../../../../styles/fonts'
 import ProductsList from './list'
-import { product } from '../../../../types'
+import Backdrop from './backdrop'
 
-const ProductsAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const ProductsAdminList = () => {
     const [showProductModal, setShowProductModal] = useState(false)
-    const [productToChange, setProductToChange] = useState<product | undefined>()
-    const dialogRef = useRef<HTMLDialogElement>(null)
-    const buttonRef = useRef<HTMLButtonElement>(null)
-    const changeButtonRef = useRef<HTMLButtonElement>(null)
-
+    const backdropRef = useRef<HTMLDivElement>(null)
     
     useEffect(() => {
-        const onClickOutside = (e: MouseEvent, buttons: Element[]) => {
-            const element = dialogRef.current;
-            console.log("includes: ", buttons.some(el => el == e.target))
-            if (element
-                && !element.contains(e.target as Node)
-                && e.target !== buttonRef.current
-                && e.target !== changeButtonRef.current
-                && !buttons.some(el => el == e.target)) {
+        const onClickOutside = (e: MouseEvent) => {
+            if (backdropRef.current && backdropRef.current === e.target) {
                 setShowProductModal(false)
-                setToBlurList(false)
             }
         }
         
-        const buttons = Array.from(document.getElementsByClassName('product-list-button'))
-        document.addEventListener('click', (e) => onClickOutside(e, buttons))
+        document.addEventListener('click', onClickOutside)
 
-        return () => document.removeEventListener('click', (e) => onClickOutside(e, buttons))
+        return () => document.removeEventListener('click', onClickOutside)
     }, [])
 
     const onCancelClick = () => {
         setShowProductModal(false)
-        setToBlurList(false)
     }
 
-    const onClick = (product?: product) => {
+    const onClick = () => {
         setToBlurList(true)
-        setShowProductModal(true)
-        if (product)
-            setProductToChange(product)
     }
 
     return (
@@ -52,20 +36,19 @@ const ProductsAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<Re
                     <h1 className={`font-bold text-5xl text-center text-gray-600 ${showProductModal ? 'blur-md' : ''} `} >
                         Товары
                     </h1>
-                    <button ref={buttonRef} onClick={(e) => onClick()} id='create-product-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showProductModal ? 'blur-md' : ''}`} >
+                    <button onClick={onClick} id='create-product-button' className={`transition-all duration-300 bg-purple-300 p-4 text-center w-1/2 rounded-xl cursor-pointer active:blur-sm border-2 border-black  ${showProductModal ? 'blur-md' : ''}`} >
                         Добавить товар
                     </button>
                 </div>
                 <NameContext.Provider value='product' >
                     <ProductCreatingDialog
                         state={showProductModal}
-                        dialogRef={dialogRef}
                         name='product'
-                        title='Добавить товар'
-                        defaultProduct={productToChange} />
+                        title='Добавить товар'/>
                 </NameContext.Provider>
+                <Backdrop isOpen={showProductModal}
+                    backdropRef={backdropRef} />
                 <ProductsList
-                    onChangeClick={onClick}
                     blur={showProductModal} />
             </div>
         </HandlerContext.Provider>

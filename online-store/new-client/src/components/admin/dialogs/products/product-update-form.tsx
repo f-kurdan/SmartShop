@@ -1,13 +1,12 @@
-import React, { memo } from 'react'
+import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { FetchError, ProductFormInputs, product } from '../../../../types';
+import { ProductFormInputs, product } from '../../../../types';
 import { useQuery } from 'react-query';
 import ProductCategoryAndBrandInputs from './product-category-and-brand-inputs';
 import ProductNameAndPriceInputs from './product-name-and-price-inputs';
 import ProductQuantityAndImageAdding from './product-quantity-and-image-inputs';
 import ProductSpecificationInputs from './product-specification-inputs';
 import SaveButton from '../save-button';
-import CancelButton from '../cancel-button';
 import useUpdateProduct from '../../../../hooks/products/useUpdateProduct';
 import DIalogCancelButton from './dialog-cancel-button';
 
@@ -76,7 +75,7 @@ const ProductUpdateForm = ({ dialogRef, toOpen, name, defaultProduct }: {
   }
 
   return (
-    <dialog open={toOpen} ref={dialogRef} id='product-creation-dialog' className='fixed top-20 transition-all duration-100 z-10 bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
+    <dialog open={toOpen} ref={dialogRef} id='product-creation-dialog' className='fixed top-20 transition-all duration-100 z-[1000] bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
       {mutation.isSuccess ? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
       <form onSubmit={handleSubmit(onSubmit)} className={`flex gap-5 flex-col items-start justify-start p-5 `} encType="multipart/form-data">
         <h1 className='font-bold text-3xl text-center text-gray-600'>
@@ -90,7 +89,6 @@ const ProductUpdateForm = ({ dialogRef, toOpen, name, defaultProduct }: {
         <ProductNameAndPriceInputs
           register={register}
           errors={errors}
-          defaultProduct={defaultProduct}
         />
         <ProductQuantityAndImageAdding
           register={register}

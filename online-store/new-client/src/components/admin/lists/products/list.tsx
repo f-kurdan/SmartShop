@@ -6,15 +6,16 @@ import useDeleteProduct from '../../../../hooks/products/useDeleteProduct';
 import { product } from '../../../../types';
 import ProductUpdateForm from '../../dialogs/products/product-update-form';
 import { CancelButtonHandlerContext, HandlerContext } from '../../../../contexts/Contexts';
+import Backdrop from './backdrop';
 
 
-const ProductsList = ({ blur, onChangeClick }: {
-    blur: boolean,
-    onChangeClick: (product?: product | undefined) => void,
+const ProductsList = ({ blur }: {
+    blur: boolean
 }) => {
     const [toChange, setToChange] = useState<product>();
     const [toOpenDialog, setToOpenDialog] = useState<boolean>(false);
     const dialogRef = useRef<HTMLDialogElement>(null)
+    const backdropRef = useRef<HTMLDivElement>(null)
     const { data } = useProducts({})
 
     const mutation = useDeleteProduct()
@@ -34,9 +35,7 @@ const ProductsList = ({ blur, onChangeClick }: {
 
     useEffect(() => {
         const onClickOutside = (e: MouseEvent) => {
-            if (!(e.target instanceof Element && e.target.closest('.update-button'))
-                && dialogRef.current
-                && !dialogRef.current.contains(e.target as Node)) {
+            if (backdropRef.current && backdropRef.current === e.target) {
                 setToOpenDialog(false)
             }
         }
@@ -48,13 +47,17 @@ const ProductsList = ({ blur, onChangeClick }: {
     return (
         <ul className={`${blur ? "blur-md" : ""} flex flex-col gap-4 w-full h-full`}>
             {toOpenDialog ? (
-                <CancelButtonHandlerContext.Provider value={onCancelClick}>
-                    <ProductUpdateForm
-                        name='products'
-                        toOpen={toOpenDialog}
-                        dialogRef={dialogRef}
-                        defaultProduct={toChange} />
-                </CancelButtonHandlerContext.Provider>
+                <>
+                    <CancelButtonHandlerContext.Provider value={onCancelClick}>
+                        <ProductUpdateForm
+                            name='products'
+                            toOpen={toOpenDialog}
+                            dialogRef={dialogRef}
+                            defaultProduct={toChange} />
+                    </CancelButtonHandlerContext.Provider>
+                    <Backdrop isOpen={toOpenDialog}
+                    backdropRef={backdropRef} />
+                </>
             ) : null}
             {data?.products?.map(product =>
             (<li className='product-instance flex flex-row justify-start items-center gap-5 border-2 border-gray-400 p-3 h-[100px] rounded-md' key={product.id}>

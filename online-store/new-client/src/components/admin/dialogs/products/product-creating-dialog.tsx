@@ -9,26 +9,13 @@ import useCreateProduct from '../../../../hooks/products/useCreateProducts';
 /*Buttons */
 import CancelButton from '../cancel-button';
 import SaveButton from '../save-button';
-import { useQuery } from 'react-query';
 import { memo } from 'react';
 
-const fetchImages = async (slug?: string): Promise<FileList> => {
-    if (!slug) return new FileList();
-    const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/images/${slug}`);
-    const data = await res.json();
-    return data.images;
-}
-
-const ProductCreatingDialog = memo(({ dialogRef, state, name, title, defaultProduct }: {
-    dialogRef: React.RefObject<HTMLDialogElement>, 
+const ProductCreatingDialog = memo(({ state, name, title }: {
     state: boolean, 
     name: string, 
-    title: string,
-    defaultProduct?: product }) => {
+    title: string}) => {
     const mutation = useCreateProduct();
-    const { data } = useQuery([defaultProduct?.name, defaultProduct?.slug], () => fetchImages(defaultProduct?.slug))
-    
-    console.log(defaultProduct) 
 
     const {
         register,
@@ -38,14 +25,8 @@ const ProductCreatingDialog = memo(({ dialogRef, state, name, title, defaultProd
         control,
         formState: { errors },
     } = useForm<ProductFormInputs>({
-        defaultValues: {
-            categorySlug: defaultProduct?.categorySlug ?? '',
-            brandSlug: defaultProduct?.brandSlug ?? '',
-            name: defaultProduct?.name ?? '',
-            price: defaultProduct?.price?? 0,
-            images: data,
-            quantity: defaultProduct?.quantity?? 0,            
-            specs: defaultProduct?.productInfo ?? [{
+        defaultValues: {            
+            specs: [{
                 name: '',
                 description: ''
             }]
@@ -80,7 +61,7 @@ const ProductCreatingDialog = memo(({ dialogRef, state, name, title, defaultProd
     const errorCode = err?.res?.status;
 
     return (
-        <dialog open={state} ref={dialogRef} id='product-creation-dialog' className='fixed top-20 transition-all duration-100 z-10 bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
+        <dialog open={state} className='fixed top-20 transition-all duration-100 z-[1000] bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
             {mutation.isSuccess ? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
             <form onSubmit={handleSubmit(onSubmit)} className={`flex gap-5 flex-col items-start justify-start p-5 `} encType="multipart/form-data">
                 <div className='font-bold text-3xl text-center text-gray-600'>
@@ -93,7 +74,6 @@ const ProductCreatingDialog = memo(({ dialogRef, state, name, title, defaultProd
                 <ProductNameAndPriceInputs
                     register={register}
                     errors={errors}
-                    defaultProduct={defaultProduct}
                 />
                 <ProductQuantityAndImageAdding
                     register={register}

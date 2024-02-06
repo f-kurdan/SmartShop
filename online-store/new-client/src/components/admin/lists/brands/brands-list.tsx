@@ -4,7 +4,7 @@ import { montserrat } from '../../../../styles/fonts'
 import Dialog from '../../dialogs/dialog'
 import BrandsList from './list'
 
-const BrandsAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const BrandsAdminList = () => {
     const [showBrandModal, setShowBrandModal] = useState(false)
     const dialogRef = useRef<HTMLDialogElement>(null)
     const buttonRef = useRef<HTMLButtonElement>(null)
@@ -15,7 +15,6 @@ const BrandsAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<Reac
             const element = dialogRef.current;
             if (element && !element.contains(e.target as Node) && e.target !== buttonRef.current) {
                 setShowBrandModal(false)
-                setToBlurList(false)
             }
         }
         document.addEventListener('click', onClickOutside)
@@ -25,11 +24,9 @@ const BrandsAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<Reac
 
     const onCancelClick = () => {
         setShowBrandModal(false)
-        setToBlurList(false)
     }
 
     const onClick = () => {
-        setToBlurList(true)
         setShowBrandModal(true)
     }
 

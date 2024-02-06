@@ -4,7 +4,7 @@ import Dialog from '../../dialogs/dialog'
 import { HandlerContext, SetterContext } from '../../../../contexts/Contexts'
 import CategoriesList from './list'
 
-const CategoriesAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const CategoriesAdminList = () => {
     const [showCategoryModal, setShowCategoryModal] = useState(false)
     const dialogRef = useRef<HTMLDialogElement>(null)
     const buttonRef = useRef<HTMLButtonElement>(null)
@@ -15,7 +15,6 @@ const CategoriesAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<
             const element = dialogRef.current;
             if (element && !element.contains(e.target as Node) && e.target !== buttonRef.current) {
                 setShowCategoryModal(false)
-                setToBlurList(false)
             }
         }
         
@@ -26,11 +25,9 @@ const CategoriesAdminList = ({ setToBlurList }: { setToBlurList: React.Dispatch<
 
     const onCancelClick = () => {
         setShowCategoryModal(false)
-        setToBlurList(false)
     }
 
     const onClick = () => {
-        setToBlurList(true)
         setShowCategoryModal(true)
     }
 
