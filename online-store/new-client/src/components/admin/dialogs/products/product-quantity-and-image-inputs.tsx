@@ -9,9 +9,9 @@ const ProductQuantityAndImageAdding = ({ register, errors, setValue, resetField 
   register: UseFormRegister<ProductFormInputs>,
   errors: FieldErrors<ProductFormInputs>,
   setValue: UseFormSetValue<ProductFormInputs>,
-  resetField: UseFormResetField<ProductFormInputs>
+  resetField: UseFormResetField<ProductFormInputs>,
 }) => {
-  const [images, setImages] = useState<File[]>([])
+  const [images, setImages] = useState<File[]>()
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -22,12 +22,12 @@ const ProductQuantityAndImageAdding = ({ register, errors, setValue, resetField 
 
   const onRemove = (file: File) => {
     const dt = new DataTransfer()
-    images.filter(image => image !== file).forEach(image =>
+    images?.filter(image => image !== file).forEach(image =>
       dt.items.add(image)
     );
 
     setValue("images", dt.files);
-    setImages(images.filter(image => image !== file))
+    setImages(images?.filter(image => image !== file))
   }
 
   const onReset = () => {
@@ -58,7 +58,7 @@ const ProductQuantityAndImageAdding = ({ register, errors, setValue, resetField 
       <div></div>
       {images?.length ? (<div className='flex flex-col gap-1 justify-start items-start'>
         {images?.map(i =>
-          <p className='flex flex-row gap-3 justify-center items-center'>
+          <p key={i.name} className='flex flex-row gap-3 justify-center items-center'>
             <span key={i.name} className='text-blue-500 text-center p-2 border border-gray-300 rounded-lg'>
               {i.name}</span>
             <XCircleIcon onClick={() => onRemove(i)} width={30} height={30} className='inline-block cursor-pointer' />

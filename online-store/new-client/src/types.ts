@@ -8,8 +8,10 @@ export type product = {
     SKU: string;
     slug: string,
     name: string;
-    brandSlug: string,
-    categorySlug: string,
+    brand: brand,
+    brandId: number,
+    category: category,
+    categoryId: number,
     price: number;
     quantity: number;
     images: string[];

@@ -37,8 +37,7 @@ export class ProductsController {
         const product = await this.productService.findOneProduct(slug)
         const images = product.images    
         const streams = images?.map(path => fs.createReadStream(join(process.cwd(), path)))
-        const multi = new MultiStream(streams)    
-        return new StreamableFile(multi);
+        return new MultiStream(streams)
     }
 
     @Get('name/:name')
@@ -89,9 +88,34 @@ export class ProductsController {
         return this.productService.createProduct(createProductDto, images)
     }
 
-    @Patch(':id')
-    updateProduct(@Param("id", ParseIntPipe) id: string, @Body() dto: UpdateProductDto) {
-        this.productService.updateProduct(id, dto)
+    @Patch()
+    @HttpCode(200)
+    @UseInterceptors(FilesInterceptor('images[]', null, {
+        storage: multer.diskStorage({
+            destination: (res, file, cb) => {
+                const { name, categorySlug } = res.body;
+                const path = `public/images/products/${categorySlug}/${convertToSlug(name)}`;
+
+                if (fs.existsSync(path)) {
+                    cb(null, path)
+                }
+                else {
+                    fs.mkdirSync(path, { recursive: true })
+                    cb(null, path)
+                }
+            },
+            filename: (req, file, cb) => {
+                cb(null, `${file.originalname}`)
+            },
+        })
+    }))
+    udatePoduct(@UploadedFiles(
+        new ParseFilePipeBuilder()
+            .addFileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' })
+            .addMaxSizeValidator({ maxSize: 5 * 1024 * 1024 })
+            .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
+    ) images: Express.Multer.File[], @Body() updateProductDto: UpdateProductDto) {
+        return this.productService.updateProduct(updateProductDto, images)
     }
 
     @Delete(':id')

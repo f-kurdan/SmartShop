@@ -50,7 +50,6 @@ const ProductsList = ({ blur }: {
                 <>
                     <CancelButtonHandlerContext.Provider value={onCancelClick}>
                         <ProductUpdateForm
-                            name='products'
                             toOpen={toOpenDialog}
                             dialogRef={dialogRef}
                             defaultProduct={toChange} />

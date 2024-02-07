@@ -93,10 +93,10 @@ export class ProductsService {
         })
     }
 
-    async findOneProductById(id: string) {
+    async findOneProductById(id: number) {
         return this.prisma.product.findUnique({
             where: {
-                id: +id,
+                id: id,
             },
             include: {
                 productInfo: true
@@ -133,10 +133,6 @@ export class ProductsService {
         })
     }
 
-    // async findProductByCategory(categorySlug: string) {
-
-    // }
-
     async createProduct(dto: CreateProductDto, images: Express.Multer.File[]) {
         const colorInfo = dto.productInfo.find(i => i.name === 'Цвет')?.description ?? '';
         const storageInfo = dto.productInfo.find(i => i.name === 'Память')?.description ?? '';
@@ -162,30 +158,48 @@ export class ProductsService {
         })
     }
 
+    async updateProduct(dto: UpdateProductDto, images: Express.Multer.File[]) {
+        const product = await this.findOneProductById(dto.id)
+        const productImages = product.images
 
+        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет')?.description;
+        const storageInfo = dto.productInfo.find(i => i.name === 'Память')?.description;
 
-    async updateProduct(id: string, dto: UpdateProductDto) {
-        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет').description;
-        const storageInfo = dto.productInfo.find(i => i.name === 'Память').description;
+        const newInfo = product.productInfo.filter(info => dto.productInfo)
 
-        await this.prisma.product.update({
+        if (images) {
+            productImages.forEach(image => fs.unlink(image, (err => {
+                if (err) console.log(err);
+                else {
+                    console.log("\nDeleted file: " + image);
+                }
+            })))
+        }
+
+        return await this.prisma.product.update({
             where: {
-                id: +id,
+                id: dto.id,
             },
             data: {
                 name: dto.name,
                 price: dto.price,
-                slug: convertToSlug(`${dto.name} ${colorInfo} ${storageInfo}`),
+                slug: convertToSlug(`${dto.name} ${colorInfo ?? ''} ${storageInfo ?? ''}`),
                 SKU: Math.floor(Math.random() * 100000000000).toString(),
                 quantity: dto.quantity,
+                images: images ? images.map(image => `${image.destination}/${image.originalname}`) : productImages,
                 productInfo: {
-                    create: dto.productInfo,
+                    connectOrCreate: dto.productInfo.map((info) => {
+                        return {
+                            where: { name: info.name },
+                            create: info,
+                        };
+                    })
                 },
                 category: {
-                    connect: { name: dto.category.name }
+                    connect: { slug: dto.categorySlug }
                 },
                 brand: {
-                    connect: { name: dto.brand.name }
+                    connect: { slug: dto.brandSlug }
                 }
             }
         })

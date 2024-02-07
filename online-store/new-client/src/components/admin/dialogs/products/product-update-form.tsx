@@ -10,22 +10,21 @@ import SaveButton from '../save-button';
 import useUpdateProduct from '../../../../hooks/products/useUpdateProduct';
 import DIalogCancelButton from './dialog-cancel-button';
 
-const fetchImages = async (slug?: string): Promise<FileList> => {
+const fetchImages = async (slug?: string) => {
   if (!slug) return new FileList();
   const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/images/${slug}`);
   const data = await res.json();
-  return data.images;
+  console.log('Data: ', data._queue)
+
+  return data._queue;
 }
 
-const ProductUpdateForm = ({ dialogRef, toOpen, name, defaultProduct }: {
+const ProductUpdateForm = ({ dialogRef, toOpen, defaultProduct }: {
   dialogRef: React.RefObject<HTMLDialogElement>,
   toOpen: boolean,
-  name: string,
   defaultProduct?: product
 }) => {
   const mutation = useUpdateProduct();
-  const { data } = useQuery([defaultProduct?.name, defaultProduct?.slug], () => fetchImages(defaultProduct?.slug))
-
   const {
     register,
     handleSubmit,
@@ -35,11 +34,10 @@ const ProductUpdateForm = ({ dialogRef, toOpen, name, defaultProduct }: {
     formState: { errors },
   } = useForm<ProductFormInputs>({
     defaultValues: {
-      categorySlug: defaultProduct?.categorySlug ?? '',
-      brandSlug: defaultProduct?.brandSlug ?? '',
+      categorySlug: defaultProduct?.category.slug ?? '',
+      brandSlug: defaultProduct?.brand.slug ?? '',
       name: defaultProduct?.name ?? '',
       price: defaultProduct?.price ?? 0,
-      images: data,
       quantity: defaultProduct?.quantity ?? 0,
       specs: defaultProduct?.productInfo ?? [{
         name: '',
@@ -85,6 +83,7 @@ const ProductUpdateForm = ({ dialogRef, toOpen, name, defaultProduct }: {
         <ProductCategoryAndBrandInputs
           register={register}
           errors={errors}
+          defaultProduct={defaultProduct}
         />
         <ProductNameAndPriceInputs
           register={register}

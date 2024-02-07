@@ -59,7 +59,7 @@ model Product {
 
 model ProductInfo {
   id Int      @id @default(autoincrement())
-  name       String
+  name       String @unique
   description String
   products Product[]
 }
