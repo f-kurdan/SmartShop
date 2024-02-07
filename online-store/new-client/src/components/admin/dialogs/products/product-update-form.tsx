@@ -25,6 +25,7 @@ const ProductUpdateForm = ({ dialogRef, toOpen, defaultProduct }: {
   defaultProduct?: product
 }) => {
   const mutation = useUpdateProduct();
+  
   const {
     register,
     handleSubmit,
@@ -66,7 +67,7 @@ const ProductUpdateForm = ({ dialogRef, toOpen, defaultProduct }: {
     if (data.quantity)
       formData.append('quantity', data.quantity.toString());
     if (data.specs) {
-      data.specs.forEach(spec => formData.append('productInfo[]', JSON.stringify({ name: spec.name, description: spec.description })))
+      data.specs.forEach(spec => formData.append('productInfo[]', JSON.stringify({ id: spec.id, name: spec.name, description: spec.description })))
     }
 
     mutation.mutate(formData)

@@ -16,6 +16,7 @@ export type product = {
     quantity: number;
     images: string[];
     productInfo: [({ 
+        id: number,
         name?: string ; 
         description?: string ; 
     } | undefined)?]
@@ -65,6 +66,7 @@ export type ProductFormInputs = {
     images: FileList | File[],
     quantity: number,
     specs: [{
+        id: number,
         name: string,
         description: string
     }]

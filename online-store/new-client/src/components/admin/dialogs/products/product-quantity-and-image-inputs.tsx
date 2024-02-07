@@ -52,7 +52,7 @@ const ProductQuantityAndImageAdding = ({ register, errors, setValue, resetField 
           hidden type="file"
           multiple
           {...register("images", {
-            required: true
+            required: false
           })} />
       </label>
       <div></div>

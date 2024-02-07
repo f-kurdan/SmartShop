@@ -1,4 +1,4 @@
-import { Controller, Get, Post, HttpCode, Param, Body, Patch, Delete, ParseIntPipe, Query, UseInterceptors, ParseFilePipeBuilder, HttpStatus, UploadedFiles, StreamableFile} from '@nestjs/common';
+import { Controller, Get, Post, HttpCode, Param, Body, Patch, Delete, ParseIntPipe, Query, UseInterceptors, ParseFilePipeBuilder, HttpStatus, UploadedFiles, StreamableFile, ParseFilePipe, FileTypeValidator, MaxFileSizeValidator} from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductsService } from './products.service';
 import { UpdateProductDto } from './dto/update-product-dto';
@@ -30,14 +30,6 @@ export class ProductsController {
             throw new Error("No products")
 
         return products;
-    }
-
-    @Get('/images/:slug')
-    async getImages(@Param('slug') slug: string) {
-        const product = await this.productService.findOneProduct(slug)
-        const images = product.images    
-        const streams = images?.map(path => fs.createReadStream(join(process.cwd(), path)))
-        return new MultiStream(streams)
     }
 
     @Get('name/:name')
@@ -110,10 +102,12 @@ export class ProductsController {
         })
     }))
     udatePoduct(@UploadedFiles(
-        new ParseFilePipeBuilder()
-            .addFileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' })
-            .addMaxSizeValidator({ maxSize: 5 * 1024 * 1024 })
-            .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
+        new ParseFilePipe({
+            validators: [new FileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' }),
+            new MaxFileSizeValidator({ maxSize: 5 * 1024 * 1024 })],
+            fileIsRequired: false,
+            errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+          }),
     ) images: Express.Multer.File[], @Body() updateProductDto: UpdateProductDto) {
         return this.productService.updateProduct(updateProductDto, images)
     }

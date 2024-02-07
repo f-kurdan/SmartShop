@@ -33,7 +33,7 @@ export class CategoriesController {
     new ParseFilePipeBuilder()
       .addFileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' })
       .addMaxSizeValidator({ maxSize: 5 * 1024 * 1024 })
-      .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
+      .build({ errorHttpStatusCode: HttpStatus. UNPROCESSABLE_ENTITY }),
   ) categoryImage: Express.Multer.File,
     @Body() dto: CreateCategoryDto) {
     return this.categoriesService.createCategory(dto, categoryImage);

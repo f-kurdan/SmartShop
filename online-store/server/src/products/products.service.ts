@@ -88,7 +88,7 @@ export class ProductsService {
                 slug: slug,
             },
             include: {
-                productInfo: true,
+                productInfo: true
             }
         })
     }
@@ -165,9 +165,7 @@ export class ProductsService {
         const colorInfo = dto.productInfo.find(i => i.name === 'Цвет')?.description;
         const storageInfo = dto.productInfo.find(i => i.name === 'Память')?.description;
 
-        const newInfo = product.productInfo.filter(info => dto.productInfo)
-
-        if (images) {
+        if (images.length) {
             productImages.forEach(image => fs.unlink(image, (err => {
                 if (err) console.log(err);
                 else {
@@ -186,11 +184,11 @@ export class ProductsService {
                 slug: convertToSlug(`${dto.name} ${colorInfo ?? ''} ${storageInfo ?? ''}`),
                 SKU: Math.floor(Math.random() * 100000000000).toString(),
                 quantity: dto.quantity,
-                images: images ? images.map(image => `${image.destination}/${image.originalname}`) : productImages,
+                images: images.length ? images.map(image => `${image.destination}/${image.originalname}`) : productImages,
                 productInfo: {
                     connectOrCreate: dto.productInfo.map((info) => {
                         return {
-                            where: { name: info.name },
+                            where: { id: info.id },
                             create: info,
                         };
                     })

@@ -46,6 +46,7 @@ export class UpdateProductDto {
         return info
         })))
     productInfo: [{
+        id: number;
         name: string;
         description: string;
     }]
