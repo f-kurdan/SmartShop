@@ -11,9 +11,9 @@ const ProductInfo = ({ data }: {
     const color = data?.productInfo?.find(info => info?.name?.trim().toLocaleLowerCase() === "цвет")
     ?.description ?? '';
     const storageSize = data?.productInfo?.find(info => info?.name?.trim().toLocaleLowerCase() === "память")
-    ?.description ?? '';
-    const fullName = `${data?.name}, ${storageSize + ','} ${color}`
-    
+    ?.description?? '';
+    const fullName = `${data?.name}, ${storageSize}, ${color}`
+
     return (
         <div className='flex flex-col w-[400px] justify-start items-start text-base px-3'>
             <p className='font-black text-lg w-full'>{fullName}</p>

@@ -29,6 +29,7 @@ export class CreateProductDto {
 
     @ApiProperty()
     @IsArray()
+    @IsOptional()
     @Transform(params  => (params.value.map((info) => {
         if (params.type === TransformationType.PLAIN_TO_CLASS)
             return JSON.parse(info)

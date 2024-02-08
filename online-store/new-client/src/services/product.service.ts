@@ -29,6 +29,7 @@ class productService {
         if (storageSize) searchParams.append('storageSize', storageSize)
         const res = await fetch(`${productsURL}/name/${name}?${searchParams}`);
         const data = await res.json();
+        console.log('data', data)
         return data;
     }
 

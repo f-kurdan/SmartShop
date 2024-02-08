@@ -11,12 +11,16 @@ const ColorOptions = ({ productName, storageSize, initialColor }:
     }) => {
     const selectedColor = useRef(initialColor)
 
-    const { data: products } = useProductsByName(productName, storageSize);
+    const { data: products } = useProductsByName(productName, initialColor, storageSize);
+   
     const colors = products ? products
         ?.filter(p => p.name === productName)
         .map(p => p.productInfo.find(i => i?.name?.trim().toLocaleLowerCase() === 'цвет')?.description)
         ?.filter((value, index, array) => array.indexOf(value) === index)
         : []
+
+        console.log("color: ", products, colors)
+    
 
     const createURL = (productName?: string, color?: string, storage?: string) => {
         const slug = convertToSlug(`${productName} ${color} ${storage}`)
