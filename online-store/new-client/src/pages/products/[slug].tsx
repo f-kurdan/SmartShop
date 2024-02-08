@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 
 const Product = () => {
   const router = useRouter();
+  //надо вместо slug сделать id
   const { isLoading, data } = useProduct(router.query.slug as string);
 
   return (

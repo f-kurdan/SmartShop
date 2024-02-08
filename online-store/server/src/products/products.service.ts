@@ -186,10 +186,17 @@ export class ProductsService {
                 quantity: dto.quantity,
                 images: images.length ? images.map(image => `${image.destination}/${image.originalname}`) : productImages,
                 productInfo: {
-                    connectOrCreate: dto.productInfo.map((info) => {
+                    upsert: dto.productInfo.map((info) => {
                         return {
-                            where: { id: info.id },
-                            create: info,
+                            where: {id: info.id},
+                            create: {
+                                name: info.name,
+                                description: info.description,
+                            },
+                            update: {
+                                name: info.name,
+                                description: info.description,
+                            }
                         };
                     })
                 },

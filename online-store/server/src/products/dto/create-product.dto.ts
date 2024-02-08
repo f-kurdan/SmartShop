@@ -35,6 +35,7 @@ export class CreateProductDto {
         return info
         })))
     productInfo: [{
+        id: number,
         name: string;
         description: string;
     }]
