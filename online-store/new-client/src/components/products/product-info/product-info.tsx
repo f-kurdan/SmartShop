@@ -8,9 +8,11 @@ import StorageOptions from './storage-options'
 const ProductInfo = ({ data }: {
     data: product | undefined
 }) => {
-    const fullName = `${data?.name},  ${data?.productInfo?.find(s => s.name === "Память")?.description}, ${data?.productInfo?.find(s => s.name === "Цвет")?.description}`
-    const color = data?.productInfo?.find(info => info.name === "Цвет")?.description;
-    const storageSize = data?.productInfo?.find(info => info.name === "Память")?.description;
+    const color = data?.productInfo?.find(info => info?.name?.trim().toLocaleLowerCase() === "цвет")
+    ?.description ?? '';
+    const storageSize = data?.productInfo?.find(info => info?.name?.trim().toLocaleLowerCase() === "память")
+    ?.description ?? '';
+    const fullName = `${data?.name}, ${storageSize + ','} ${color}`
     
     return (
         <div className='flex flex-col w-[400px] justify-start items-start text-base px-3'>

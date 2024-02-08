@@ -14,8 +14,8 @@ const ColorOptions = ({ productName, storageSize, initialColor }:
     const { data: products } = useProductsByName(productName, storageSize);
     const colors = products ? products
         ?.filter(p => p.name === productName)
-        .map(p => p.productInfo
-        .find(i => i.name === 'Цвет')?.description)?.filter((value, index, array) => array.indexOf(value) === index)
+        .map(p => p.productInfo.find(i => i?.name?.trim().toLocaleLowerCase() === 'цвет')?.description)
+        ?.filter((value, index, array) => array.indexOf(value) === index)
         : []
 
     const createURL = (productName?: string, color?: string, storage?: string) => {

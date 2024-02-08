@@ -1,10 +1,14 @@
-import { productsList } from '@/types'
+import { product, productsList } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const ProductsList = ({ products }: { products: productsList }) => {
     const createURL = (slug: string) => {
         return (`/products/${slug}`)
+    }
+
+    const getFullName = (product: product) => {
+        return `${product.name}, ${product.productInfo.find(s => s?.name?.trim().toLocaleLowerCase() === "память")?.description}, ${product.productInfo.find(s => s?.name?.trim().toLocaleLowerCase() === "цвет")?.description}`
     }
 
     return (
@@ -15,7 +19,7 @@ const ProductsList = ({ products }: { products: productsList }) => {
                     <Image className='max-h-44 max-w-min' src={`${process.env.NEXT_PUBLIC_STOREAPI_URL}/${product.images[0]}`} alt={product.name} width={200} height={200} />
                     <div className='justify-self-end'>
                         <div className='text-sm font-bold text-center  hover:text-cyan-500 active:text-lime-400 '>
-                            {`${product.name}, ${product.productInfo.find(s => s.name === "Память")?.description}, ${product.productInfo.find(s => s.name === "Цвет")?.description}`}</div>
+                            {getFullName(product)}</div>
                         <div className='text-md text-center font-extralight'>{product.price} ₽</div>
                     </div>
                 </div>

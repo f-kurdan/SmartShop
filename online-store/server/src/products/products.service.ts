@@ -162,8 +162,8 @@ export class ProductsService {
         const product = await this.findOneProductById(dto.id)
         const productImages = product.images
 
-        const colorInfo = dto.productInfo.find(i => i.name === 'Цвет')?.description;
-        const storageInfo = dto.productInfo.find(i => i.name === 'Память')?.description;
+        const colorInfo = dto.productInfo.find(i => i.name.trim().toLowerCase() === 'цвет')?.description;
+        const storageInfo = dto.productInfo.find(i => i.name.trim().toLowerCase()  === 'память')?.description;
 
         if (images.length) {
             productImages.forEach(image => fs.unlink(image, (err => {
