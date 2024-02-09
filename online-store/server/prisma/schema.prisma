@@ -61,7 +61,8 @@ model ProductInfo {
   id Int      @id @default(autoincrement())
   name       String
   description String
-  products Product[]
+  productId Int @map("product_id")
+  product Product @relation(fields: [productId], references: [id])
 }
 
 model Order {
