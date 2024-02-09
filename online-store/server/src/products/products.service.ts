@@ -134,8 +134,8 @@ export class ProductsService {
     }
 
     async createProduct(dto: CreateProductDto, images: Express.Multer.File[]) {
-        const colorInfo = dto.productInfo?.find(i => i.name === 'Цвет')?.description ?? '';
-        const storageInfo = dto.productInfo?.find(i => i.name === 'Память')?.description ?? '';
+        const colorInfo = dto.productInfo?.find(i => i?.name?.trim()?.toLowerCase() === 'цвет')?.description ?? '';
+        const storageInfo = dto.productInfo?.find(i => i?.name?.trim()?.toLowerCase()  === 'память')?.description ?? '';
 
         return await this.prisma.product.create({
             data: {
@@ -146,19 +146,7 @@ export class ProductsService {
                 images: images?.map(image => `${image.destination}/${image.originalname}`),
                 quantity: dto.quantity,
                 productInfo: {
-                    connectOrCreate: dto.productInfo?.map((info) => {
-                        return {
-                            // where: {id: info.id},
-                            // create: {
-                            //     name: info.name,
-                            //     description: info.description,
-                            // },
-                            // update: {
-                            //     name: info.name,
-                            //     description: info.description,
-                            // }
-                        };
-                    })
+                    create: dto.productInfo
                 },
                 category: {
                     connect: { slug: dto.categorySlug }
@@ -174,8 +162,12 @@ export class ProductsService {
         const product = await this.findOneProductById(dto.id)
         const productImages = product.images
 
-        const colorInfo = dto.productInfo.find(i => i.name.trim().toLowerCase() === 'цвет')?.description;
-        const storageInfo = dto.productInfo.find(i => i.name.trim().toLowerCase()  === 'память')?.description;
+        const colorInfo = dto.productInfo?.find(i => i?.name?.trim()?.toLowerCase() === 'цвет')?.description;
+        const storageInfo = dto.productInfo?.find(i => i?.name?.trim()?.toLowerCase()  === 'память')?.description;
+
+        const filteredInfo = product.productInfo.filter(info => !dto.productInfo?.some(dtoInfo => dtoInfo.id === info.id))
+        const infoToDelete = filteredInfo?.length ? { deleteMany: filteredInfo} : {}
+        
 
         if (images.length) {
             productImages.forEach(image => fs.unlink(image, (err => {
@@ -198,9 +190,10 @@ export class ProductsService {
                 quantity: dto.quantity,
                 images: images.length ? images.map(image => `${image.destination}/${image.originalname}`) : productImages,
                 productInfo: {
+                    ...infoToDelete,
                     upsert: dto.productInfo?.map((info) => {
                         return {
-                            where: {id: info.id},
+                            where: { id: info.id },
                             create: {
                                 name: info.name,
                                 description: info.description,
@@ -211,12 +204,6 @@ export class ProductsService {
                             }
                         };
                     })
-                },
-                category: {
-                    connect: { slug: dto.categorySlug }
-                },
-                brand: {
-                    connect: { slug: dto.brandSlug }
                 }
             }
         })

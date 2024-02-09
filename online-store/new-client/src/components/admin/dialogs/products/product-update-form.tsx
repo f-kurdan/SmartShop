@@ -70,6 +70,9 @@ const ProductUpdateForm = ({ dialogRef, toOpen, defaultProduct }: {
       data.specs.forEach(spec => formData.append('productInfo[]', JSON.stringify({ id: spec.id, name: spec.name, description: spec.description })))
     }
 
+    console.log(formData.get('productInfo[]'))
+
+
     mutation.mutate(formData)
   }
 
