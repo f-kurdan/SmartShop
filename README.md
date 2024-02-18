@@ -1,4 +1,4 @@
-Интернет магазин SmartShop https://github.com/f-kurdan/online-store<br> 
+Интернет магазин SmartShop<br> 
 	Stack:<br> 
 	Lang: TypeScript<br> 
 	Frontend: React.js и Next.js, а также сопутствующие инструменты, такие как Redux, React Query, React Context и др.<br> 
