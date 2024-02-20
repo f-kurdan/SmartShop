@@ -25,11 +25,12 @@ class productService {
 
     async getProductsByName(name?: string, color?: string, storageSize?: string): Promise<product[]> {
         const searchParams = new URLSearchParams();
-        if (color) searchParams.append('color', color)
-        if (storageSize) searchParams.append('storageSize', storageSize)
+        if (color) 
+            searchParams.append('color', color)
+        if (storageSize) 
+            searchParams.append('storageSize', storageSize)
         const res = await fetch(`${productsURL}/name/${name}?${searchParams}`);
         const data = await res.json();
-        console.log('data', data)
         return data;
     }
 
