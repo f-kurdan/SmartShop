@@ -8,7 +8,9 @@ const ProductsList = ({ products }: { products: productsList }) => {
     }
 
     const getFullName = (product: product) => {
-        return `${product.name}, ${product.productInfo.find(s => s?.name?.trim().toLocaleLowerCase() === "память")?.description}, ${product.productInfo.find(s => s?.name?.trim().toLocaleLowerCase() === "цвет")?.description}`
+        const color = `${product.productInfo.find(s => s?.name?.trim().toLocaleLowerCase() === "цвет")?.description}`
+        const storageSize = `${product.productInfo.find(s => s?.name?.trim().toLocaleLowerCase() === "память")?.description},`
+        return `${product.name}, ${storageSize} ${color}`
     }
 
     return (

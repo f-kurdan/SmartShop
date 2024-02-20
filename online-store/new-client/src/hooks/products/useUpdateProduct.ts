@@ -7,8 +7,10 @@ const useUpdateProduct = () => {
 
     return useMutation({
         mutationFn: productService.updateProduct,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['products'] })
+        onSuccess: async() => {
+            await queryClient.invalidateQueries(['products'])
+            await queryClient.invalidateQueries(['specifications'])
+
         }
     })
   

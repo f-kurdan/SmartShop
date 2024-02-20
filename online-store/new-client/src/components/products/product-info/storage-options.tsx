@@ -11,7 +11,7 @@ const StorageOptions = ({ productName, color, initialStorage }:
     }) => {
     const selectedStorageSize = useRef(initialStorage);
 
-    const { data: products } = useProductsByName(productName, color, initialStorage);
+    const { data: products } = useProductsByName(productName, color, undefined);
 
     const storageSizes = products ? products?.filter(p => p.name === productName)
     .map(p => p.productInfo?.find(i => i?.name?.trim().toLocaleLowerCase() === 'память')?.description)

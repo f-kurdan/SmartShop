@@ -18,11 +18,13 @@ const Carousel = ({images}:{images:string[]}) => {
     }
 
     return (
-        <div className='transition-all duration-300 group relative '>
+        <div className='transition-all duration-300 group relative w-fit max-h-fit '>
             <div onClick={onLeftClick} className='transition-all duration-300 group-hover:block hidden cursor-pointer p-4 absolute left-1 top-1/2 rounded-full bg-cyan-100 opacity-70' >
                 <ArrowLeftIcon width={20} height={20} />
             </div>
-            <Image className='max-h-96 rounded-2xl max-w-min object-cover' src={`${process.env.NEXT_PUBLIC_STOREAPI_URL}/${images[currentIndex]}`} alt={'data!.name'} width={400} height={400} />
+            <div className='max-w-[300px] overflow-hidden'>
+            <Image className='rounded-2xl object-contain' src={`${process.env.NEXT_PUBLIC_STOREAPI_URL}/${images[currentIndex]}`} alt={'data!.name'} width={500} height={500} />
+            </div>
             <div onClick={onRightClick} className='group-hover:block hidden cursor-pointer p-4 absolute right-1 top-1/2 rounded-full bg-cyan-100 opacity-70' >
                 <ArrowRightIcon width={20} height={20} />
             </div>

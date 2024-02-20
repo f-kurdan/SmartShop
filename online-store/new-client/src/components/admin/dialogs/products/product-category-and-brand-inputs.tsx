@@ -35,7 +35,7 @@ const ProductCategoryAndBrandInputs = ({errors, register, defaultProduct }:{
                         {
                             defaultBrand?
                                 <option value={defaultBrand.slug} selected>{defaultBrand.name}</option> :
-                                <option value='' disabled selected hidden>Выберите категорию</option>
+                                <option value='' disabled selected hidden>Выберите бренд</option>
                         }
                         {brands?.map(brand =>
                             <option key={brand.id} value={brand.slug} >{brand.name}</option>)}

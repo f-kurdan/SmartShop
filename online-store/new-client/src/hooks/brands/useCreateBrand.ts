@@ -8,7 +8,8 @@ export const useCreateBrand = () => {
     const mutation = useMutation({
         mutationFn: brandService.createBrand,
         onSuccess: async() => {
-            await queryClient.invalidateQueries({ queryKey: ['brands'] })
+            await queryClient.invalidateQueries(['brands'])
+            await queryClient.invalidateQueries(['specifications'])
         }
     })
     return mutation;

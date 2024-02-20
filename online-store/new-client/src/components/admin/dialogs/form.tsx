@@ -43,9 +43,9 @@ const Form = memo(({ name }: { name: string }) => {
 
     return (
         <>
-            {mutation.isSuccess ? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
             <form onSubmit={handleSubmit(onSubmit)} action="#" method="POST" encType="multipart/form-data"
-                className='flex flex-col gap-3 justify-center items-stretch w-4/5'>
+                className=' flex flex-col gap-3 justify-center items-stretch w-4/5'>
+                {mutation.isSuccess ? <h1 className='absolute top-[55px]  left-[0] right-[0] text-3xl text-lime-500 text-center'>Успех!</h1> : null}
                 <label>
                     <input
                         type="text"
