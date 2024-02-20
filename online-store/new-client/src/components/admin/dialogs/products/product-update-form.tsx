@@ -14,7 +14,6 @@ const fetchImages = async (slug?: string) => {
   if (!slug) return new FileList();
   const res = await fetch(`${process.env.NEXT_PUBLIC_STOREAPI_URL}/products/images/${slug}`);
   const data = await res.json();
-  console.log('Data: ', data._queue)
 
   return data._queue;
 }
@@ -25,7 +24,7 @@ const ProductUpdateForm = ({ dialogRef, toOpen, defaultProduct }: {
   defaultProduct?: product
 }) => {
   const mutation = useUpdateProduct();
-  
+
   const {
     register,
     handleSubmit,
@@ -70,19 +69,18 @@ const ProductUpdateForm = ({ dialogRef, toOpen, defaultProduct }: {
       data.specs.forEach(spec => formData.append('productInfo[]', JSON.stringify({ id: spec.id, name: spec.name, description: spec.description })))
     }
 
-    console.log(formData.get('productInfo[]'))
-
+    console.log('zapros')
 
     mutation.mutate(formData)
   }
 
   return (
     <dialog open={toOpen} ref={dialogRef} id='product-creation-dialog' className='fixed top-20 transition-all duration-100 z-[1000] bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
-      {mutation.isSuccess ? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
-      <form onSubmit={handleSubmit(onSubmit)} className={`flex gap-5 flex-col items-start justify-start p-5 `} encType="multipart/form-data">
-        <h1 className='font-bold text-3xl text-center text-gray-600'>
+      <form onSubmit={handleSubmit(onSubmit)} className={`flex relative gap-5 flex-col items-start justify-start p-5 `} encType="multipart/form-data">
+        <h1 className='font-bold inline-block text-3xl text-center text-gray-600'>
           Изменить товар
         </h1>
+        {mutation.isSuccess ? <h1 className='absolute top-[20px] right-[200px] text-3xl text-lime-500 text-center'>Успех!</h1> : null}
         <input type="hidden" value={defaultProduct?.id} {...register('id')} />
         <ProductCategoryAndBrandInputs
           register={register}

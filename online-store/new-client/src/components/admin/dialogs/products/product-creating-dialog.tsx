@@ -12,9 +12,10 @@ import SaveButton from '../save-button';
 import { memo } from 'react';
 
 const ProductCreatingDialog = memo(({ state, name, title }: {
-    state: boolean, 
-    name: string, 
-    title: string}) => {
+    state: boolean,
+    name: string,
+    title: string
+}) => {
     const mutation = useCreateProduct();
 
     const {
@@ -25,7 +26,7 @@ const ProductCreatingDialog = memo(({ state, name, title }: {
         control,
         formState: { errors },
     } = useForm<ProductFormInputs>({
-        defaultValues: {            
+        defaultValues: {
             specs: [{
                 name: '',
                 description: ''
@@ -46,12 +47,12 @@ const ProductCreatingDialog = memo(({ state, name, title }: {
         if (data.images) {
             Array.from(data.images).forEach(image => {
                 formData.append('images[]', image);
-            })                
+            })
         }
         if (data.quantity)
             formData.append('quantity', data.quantity.toString());
         if (data.specs) {
-            data.specs.forEach(spec => formData.append('productInfo[]', JSON.stringify({ name: spec.name, description: spec.description})))
+            data.specs.forEach(spec => formData.append('productInfo[]', JSON.stringify({ name: spec.name.trim(), description: spec.description.trim() })))
         }
 
         mutation.mutate(formData)
@@ -62,11 +63,11 @@ const ProductCreatingDialog = memo(({ state, name, title }: {
 
     return (
         <dialog open={state} className='fixed top-20 transition-all duration-100 z-[1000] bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
-            {mutation.isSuccess ? <h1 className='absolute top-16 text-2xl text-lime-500 text-center'>Успех!</h1> : null}
             <form onSubmit={handleSubmit(onSubmit)} className={`flex gap-5 flex-col items-start justify-start p-5 `} encType="multipart/form-data">
                 <div className='font-bold text-3xl text-center text-gray-600'>
                     {title}
                 </div>
+                {mutation.isSuccess ? <h1 className='absolute top-[20px] right-[200px] text-3xl text-lime-500 text-center'>Успех!</h1> : null}
                 <ProductCategoryAndBrandInputs
                     register={register}
                     errors={errors}
