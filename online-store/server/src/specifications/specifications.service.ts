@@ -7,19 +7,17 @@ export class SpecificationsService {
 
     getAll(categories?: string[]) {
         const filter = categories ? {
-            products: {
-                some: {
-                    category: {
-                        slug: {
-                            in: [...categories]
-                        }
+            product: {
+                category: {
+                    slug: {
+                        in: [...categories]
                     }
                 }
             }
         } : {}
-        
+
         return this.prismaService.productInfo.findMany({
-            where: {...filter},
+            where: { ...filter },
             distinct: ['name', "description"],
         })
     }
