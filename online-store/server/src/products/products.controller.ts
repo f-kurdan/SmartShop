@@ -73,7 +73,7 @@ export class ProductsController {
     }))
     createProduct(@UploadedFiles(
         new ParseFilePipeBuilder()
-            .addFileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' })
+            .addFileTypeValidator({ fileType: '.(png|jpeg|jpg|avif|webp)' })
             .addMaxSizeValidator({ maxSize: 5 * 1024 * 1024 })
             .build({ errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY }),
     ) images: Express.Multer.File[], @Body() createProductDto: CreateProductDto) {
@@ -103,7 +103,7 @@ export class ProductsController {
     }))
     udatePoduct(@UploadedFiles(
         new ParseFilePipe({
-            validators: [new FileTypeValidator({ fileType: '.(png|jpeg|jpg|avif)' }),
+            validators: [new FileTypeValidator({ fileType: '.(png|jpeg|jpg|avif|webp)' }),
             new MaxFileSizeValidator({ maxSize: 5 * 1024 * 1024 })],
             fileIsRequired: false,
             errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
