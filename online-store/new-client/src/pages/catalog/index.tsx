@@ -12,6 +12,8 @@ const Page = () => {
   const specifications = params.get('specifications')?.split(';')
   const { data } = useProducts({ page: Number(page), query, categories, brands, specifications });
 
+  console.log('data', data)
+
   return (
     <Catalog products={data?.products!}
       totalPages={data?.totalPages!}

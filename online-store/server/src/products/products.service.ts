@@ -62,7 +62,15 @@ export class ProductsService {
 
         const prodsPerPage = 12;
         const offset = (page - 1) * prodsPerPage
-        const totalPages = Math.ceil((await this.prisma.product.findMany()).length / prodsPerPage);
+        const totalPages = Math.ceil((await this.prisma.product.findMany({
+            where: {
+                ...searchFilter,
+                ...categoriesFilter,
+                ...brandsFilter,
+                ...specsFilter,
+            },
+        })).length / prodsPerPage);
+
         const prods = await this.prisma.product.findMany({
             where: {
                 ...searchFilter,

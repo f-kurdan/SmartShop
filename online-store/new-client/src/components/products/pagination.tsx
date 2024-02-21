@@ -33,6 +33,8 @@ const Pagination = ({ totalPages }: { totalPages: number }) => {
             </Link>)
     })
 
+    console.log(totalPages)
+
     return (
         <div className='flex gap-2 items-center justify-center'>
             <div>
