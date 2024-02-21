@@ -25,7 +25,7 @@ const StorageOptions = ({ productName, color, initialStorage }:
     const onClick = (size?: string) => selectedStorageSize.current = size
 
     return (
-        <div className='flex flex-row gap-2 justify-center items-center mt-5'>
+        <div className='flex flex-row gap-2 justify-start items-center flex-wrap mt-5'>
             {storageSizes?.map((size, index) =>
             (
                 <Link onClick={() => onClick(size)} replace href={createURL(productName, color, size)} key={size} className={`border-2 p-3 rounded-3xl cursor-pointer ${size === selectedStorageSize.current ? "outline outline-[3] outline-lime-300" : ""}`}>{size}</Link>
