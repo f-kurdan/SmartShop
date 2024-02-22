@@ -10,7 +10,7 @@ const Page = () => {
   const categories = params.get('category')?.split(';')
   const brands = params.get('brand')?.split(';')
   const specifications = params.get('specifications')?.split(';')
-  const { data } = useProducts({ page: Number(page), query, categories, brands, specifications });
+  const { data, isLoading } = useProducts({ page: Number(page), query, categories, brands, specifications });
 
   console.log('data', data)
 
