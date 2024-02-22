@@ -16,7 +16,7 @@ const Filter = () => {
     filterService.handleFilterChange(e, params, searchParam);
     const selectedOptionsCount = Array.from(params?.values())[0]?.split(';').length
     if (!selectedOptionsCount) {
-      router.replace(`${pathName}?}`);
+      router.replace(`${pathName}?`);
     }
   }
 

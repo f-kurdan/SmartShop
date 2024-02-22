@@ -11,6 +11,22 @@ export class ProductsService {
     constructor(private prisma: PrismaService) { }
 
     async findProducts(page: number, searchTerm: string, categoriesSlugs?: string[], brandsSlugs?: string[], specs?: string[]) {
+        const productInfos = await this.prisma.productInfo.findMany({
+            where: {
+                description: {
+                    in: specs
+                }
+            }
+        });
+
+        const groupedSpecs: [][] = Object.values(productInfos.reduce((acc, obj) => {
+            const key = obj.name;
+            if (!acc[key]) {
+                acc[key] = [];
+            }
+            acc[key].push(obj.description);
+            return acc;
+        }, {}));
 
         const categoriesFilter: Prisma.ProductWhereInput = categoriesSlugs?.length ? {
             category: {
@@ -30,16 +46,16 @@ export class ProductsService {
 
         const specsFilter: Prisma.ProductWhereInput = specs ?
             {
-                productInfo: {
-                    some: {
-                        description: {
-                            in: specs,
-                            mode: "insensitive",
+                AND: groupedSpecs.map(group => ({
+                    productInfo: {
+                        some: {
+                            description: {
+                                in: group
+                            }
                         }
                     }
-                }
+                }))
             } : {}
-
 
         const searchFilter: Prisma.ProductWhereInput = searchTerm ? {
             OR: [
@@ -143,7 +159,7 @@ export class ProductsService {
 
     async createProduct(dto: CreateProductDto, images: Express.Multer.File[]) {
         const colorInfo = dto.productInfo?.find(i => i?.name?.trim()?.toLowerCase() === 'цвет')?.description ?? '';
-        const storageInfo = dto.productInfo?.find(i => i?.name?.trim()?.toLowerCase()  === 'память')?.description ?? '';
+        const storageInfo = dto.productInfo?.find(i => i?.name?.trim()?.toLowerCase() === 'память')?.description ?? '';
 
         return await this.prisma.product.create({
             data: {
@@ -171,11 +187,11 @@ export class ProductsService {
         const productImages = product.images
 
         const colorInfo = dto.productInfo?.find(i => i?.name?.trim()?.toLowerCase() === 'цвет')?.description;
-        const storageInfo = dto.productInfo?.find(i => i?.name?.trim()?.toLowerCase()  === 'память')?.description;
+        const storageInfo = dto.productInfo?.find(i => i?.name?.trim()?.toLowerCase() === 'память')?.description;
 
         const filteredInfo = product.productInfo.filter(info => !dto.productInfo?.some(dtoInfo => dtoInfo.id === info.id))
-        const infoToDelete = filteredInfo?.length ? { deleteMany: filteredInfo} : {}
-        
+        const infoToDelete = filteredInfo?.length ? { deleteMany: filteredInfo } : {}
+
 
         if (images.length) {
             productImages.forEach(image => fs.unlink(image, (err => {
