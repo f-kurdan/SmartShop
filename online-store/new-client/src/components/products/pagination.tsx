@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import React from 'react'
 
-const Pagination = ({ totalPages }: { totalPages: number }) => {
+const Pagination = ({ totalPages }: { totalPages?: number }) => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const currentPage = Number(searchParams.get('page')) || 1;
@@ -17,9 +17,9 @@ const Pagination = ({ totalPages }: { totalPages: number }) => {
     const buttonStyle = 'transition-all duration-300 p-3 bg-white rounded-xl hover:shadow-lg hover:shadow-black/30 cursor-pointer active:blur-sm ';
 
     const prevPage = currentPage > 1 ? createPageURL(currentPage - 1) : null;
-    const nextPage = currentPage < totalPages ? createPageURL(currentPage + 1) : null;
+    const nextPage = totalPages && currentPage < totalPages ? createPageURL(currentPage + 1) : null;
 
-    const pages = Array.from({ length: totalPages }, (_, i) => (i + 1))
+    const pages = Array.from({ length: totalPages ?? 0 }, (_, i) => (i + 1))
     const links = pages.map(page => {
         if ((pages.length >= 5) && (page !== 1) && (page !== pages.length) && (page > currentPage - 2 && page < currentPage + 2)
         ) {
@@ -33,8 +33,6 @@ const Pagination = ({ totalPages }: { totalPages: number }) => {
             </Link>)
     })
 
-    console.log(totalPages)
-
     return (
         <div className='flex gap-2 items-center justify-center'>
             <div>
@@ -46,7 +44,7 @@ const Pagination = ({ totalPages }: { totalPages: number }) => {
                     </Link>
                 ) : null}
             </div>
-            {totalPages > 1 ?
+            {totalPages && totalPages > 1 ?
                 (<>
                     <Link href={createPageURL(1)}>
                         <div className={`py-3 px-5 ${currentPage === 1 ? 'py-4 px-6 bg-pink-100 text-cyan-500' : 'bg-white  py-3 px-5  '} ${buttonStyle}`}>{1}</div>

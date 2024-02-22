@@ -90,7 +90,7 @@ const ProductCreatingDialog = memo(({ state, name, title }: {
                     <SaveButton />
                 </div>
                 {errorCode === 409 ? <p className='text-red-500 text-center'>
-                    Такое название уже существует!
+                    Такое товар уже существует!
                 </p> : null}
             </form>
             <CancelButton name={name} />
