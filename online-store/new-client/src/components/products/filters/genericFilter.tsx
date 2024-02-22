@@ -8,9 +8,6 @@ const GenericFilter = ({ onFilterChange, increment, param }: { onFilterChange: (
     const { data } = hook();
     const searchParams = useSearchParams();
     const selectedParams = searchParams.get(param)?.split(';')
-    console.log(selectedParams)
-    console.log(JSON.stringify(data))
-    console.log(selectedParams?.includes("smartphones"))
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         onFilterChange(e, param);
