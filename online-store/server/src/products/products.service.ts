@@ -106,6 +106,11 @@ export class ProductsService {
         return { products: prods, totalPages: totalPages };
     }
 
+    async getTotalPages() {
+        const prodsPerPage = 12
+        return Math.ceil((await this.prisma.product.count()) / prodsPerPage)
+    }
+
     async findOneProduct(slug: string) {
         return await this.prisma.product.findUnique({
             where: {

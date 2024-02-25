@@ -32,6 +32,11 @@ export class ProductsController {
         return products;
     }
 
+    @Get('/pages')
+    getTotalPAges() {
+        return this.productService.getTotalPages()
+    }
+
     @Get('name/:name')
     findOneProductsByName(@Param('name') name: string,
         @Query('color') color?: string,
@@ -44,11 +49,6 @@ export class ProductsController {
     getOneProduct(@Param('slug') slug: string) {
         return this.productService.findOneProduct(slug)
     }
-
-    // @Get(':id')
-    // getOneProductById(@Param('id', ParseIntPipe) id: string) {
-    //     return this.productService.findOneProductById(id)
-    // }
 
     @Post()
     @HttpCode(200)
