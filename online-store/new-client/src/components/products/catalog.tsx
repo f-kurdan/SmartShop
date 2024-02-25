@@ -1,24 +1,18 @@
-import React, { useState, ChangeEvent } from 'react'
-import NoItems from './no-items'
 import { productsList } from '@/types'
 import Filter from './filters/filter'
 import { montserrat } from '@/styles/fonts'
-import { useSearchParams } from 'next/navigation'
-import Pagination from './pagination'
 import ProductsList from './products-list'
-import GoToTopButton from './go-to-top-button'
 import ProductsLoading from './fillers/products-loading'
+import Pagination from './pagination'
 
-const Catalog = ({ products, totalPages }: { products: productsList, totalPages: number }) => {
-  const searchParams = useSearchParams()
-  const params = new URLSearchParams(searchParams)
-
+const Catalog = ({ products, totalPages, currentPage }: { products: productsList, totalPages: number, currentPage: number }) => {
   return (
     <div className={`${montserrat.className} flex flex-row relative w-full justify-center min-h-[80vh] gap-4 items-start my-3 text-gray-700`}>
       <Filter />
       <div className='flex flex-col gap-2 w-2/3 min-h-fit mr-10'>
         {products?.length ? <ProductsList products={products} /> : <ProductsLoading />}
-        <Pagination totalPages={totalPages} />
+        <Pagination totalPages={totalPages}
+        currentPage={currentPage} />
       </div>
     </div>
   )
