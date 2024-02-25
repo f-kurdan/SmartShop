@@ -7,7 +7,7 @@ import { product } from '../../../../types';
 import ProductUpdateForm from '../../dialogs/products/product-update-form';
 import { CancelButtonHandlerContext, HandlerContext } from '../../../../contexts/Contexts';
 import Backdrop from '../backdrop';
-import Pagination from '../../../products/pagination';
+import PaginationAdmin from '../pagination-admin';
 import { useSearchParams } from 'next/navigation';
 
 
@@ -75,7 +75,7 @@ const ProductsList = ({ blur }: {
                 </li>)
                 )}
             </ul>
-            <Pagination totalPages={data?.totalPages} />
+            <PaginationAdmin totalPages={data?.totalPages} />
         </>
     )
 }

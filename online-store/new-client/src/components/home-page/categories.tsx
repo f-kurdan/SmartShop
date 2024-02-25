@@ -11,7 +11,7 @@ const Categories = () => {
 
   const createURL = (categoryId: number | string) => {
     params.set('category', categoryId.toString());
-    return `/catalog/?${params.toString()}`;
+    return `/catalog/1?${params.toString()}`;
   };
 
   return (

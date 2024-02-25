@@ -4,7 +4,7 @@ import React from 'react'
 
 const BannerImage = () => {
   return (
-    <Link href="/catalog">
+    <Link href="/catalog/1">
       <div className='text-white group relative rounded-3xl w-fit max-h-fit mt-7 overflow-hidden cursor-pointer'>
         <Image src="/banner.jpg" alt='баннер с гаджетами' width={850} height={850}
           className='rounded-3xl object-cover transition duration-500 group-hover:scale-110 ' />
