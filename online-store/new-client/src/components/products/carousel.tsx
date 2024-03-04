@@ -22,7 +22,7 @@ const Carousel = ({ images }: { images: string[] }) => {
             <div onClick={onLeftClick} className='transition-all duration-300 group-hover:block hidden cursor-pointer p-4 absolute left-1 top-1/2 rounded-full bg-cyan-100 opacity-70' >
                 <ArrowLeftIcon width={20} height={20} />
             </div>
-            <Image className=' rounded-2xl object-contain overflow-hidden max-h-[400px] ' src={`${process.env.NEXT_PUBLIC_STOREAPI_URL}/${images[currentIndex]}`} alt={'data!.name'} width={400} height={250} />
+            <Image className=' rounded-2xl object-contain max-h-[400px]' src={`${process.env.NEXT_PUBLIC_STOREAPI_URL}/${images[currentIndex]}`} alt={'data!.name'} width={400} height={250} />
             <div onClick={onRightClick} className='group-hover:block hidden cursor-pointer p-4 absolute right-1 top-1/2 rounded-full bg-cyan-100 opacity-70' >
                 <ArrowRightIcon width={20} height={20} />
             </div>

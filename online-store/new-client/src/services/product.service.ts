@@ -3,9 +3,10 @@ import { FetchError, product } from "../types";
 const productsURL = `${process.env.NEXT_PUBLIC_STOREAPI_URL}/products`;
 
 class productService {
-    async getProducts(page?: number, searchTerm?: string, categories?: string[], brands?: string[], specifications?: string[]) {
+    async getProducts(page?: number, limit?: number, searchTerm?: string, categories?: string[], brands?: string[], specifications?: string[]) {
         const searchParams = new URLSearchParams();
         searchParams.append('page', page ? page.toString() : (1).toString());
+        if (limit) searchParams.append('limit', limit.toString());
         if (searchTerm) searchParams.append('search_term', searchTerm);
         if (categories) searchParams.append('category', categories.join(';'))
         if (brands) searchParams.append('brand', brands.join(';'))

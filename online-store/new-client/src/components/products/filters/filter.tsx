@@ -33,20 +33,17 @@ const Filter = () => {
     if (buttonIncrement)
       incRef.current = (toIncrement: boolean) => buttonIncrement(toIncrement)
   }
-  
+
   return (
-    <div className='flex flex-col sticky top-16 text-base gap-4 bg-white w-1/5 ml-10 transition-all duration-300 hover:shadow-lg hover:shadow-black/30 px-10 py-7'>
+    <div className='flex flex-col  top-16 text-base gap-4 bg-white w-1/5 ml-10 transition-all duration-300 hover:shadow-lg hover:shadow-black/30 px-10 py-7'>
       <GenericFilter onFilterChange={onChange}
         increment={increment}
         param={'category'} />
       <GenericFilter onFilterChange={onChange}
         increment={increment}
         param={'brand'} />
-      {/* <GenericFilter onFilterChange={onChange}
-        increment={increment}
-        param={'color'} /> */}
-      <SpecificationsFilter onFilterChange={onChange} 
-      increment={increment}/>
+      <SpecificationsFilter onFilterChange={onChange}
+        increment={increment} />
       <FilterButton setNewCount={setNewCount}
         onClick={onClick}
         selectedOptionsCount={Array.from(params?.values())[0]?.split(';').length} />

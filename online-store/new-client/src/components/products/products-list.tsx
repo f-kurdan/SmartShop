@@ -1,11 +1,9 @@
 import { product, productsList } from '@/types'
 import Link from 'next/link'
-import { useState } from 'react'
 import NoItems from './no-items'
 import ProductImage from './product-image'
 
 const ProductsList = ({ products }: { products: productsList }) => {
-    const [isLoading, setIsLoading] = useState(false)
     const createURL = (slug: string) => {
         return (`/products/${slug}`)
     }
