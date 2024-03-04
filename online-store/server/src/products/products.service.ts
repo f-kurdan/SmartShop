@@ -10,7 +10,7 @@ import fs from "fs";
 export class ProductsService {
     constructor(private prisma: PrismaService) { }
 
-    async findProducts(page: number, searchTerm: string, categoriesSlugs?: string[], brandsSlugs?: string[], specs?: string[]) {
+    async findProducts(page: number, limit: number, searchTerm: string, categoriesSlugs?: string[], brandsSlugs?: string[], specs?: string[]) {
         const productInfos = await this.prisma.productInfo.findMany({
             where: {
                 description: {
@@ -73,10 +73,19 @@ export class ProductsService {
                         mode: "insensitive",
                     }
                 },
+                {
+                    productInfo: {
+                        some: {
+                            description: {
+                                contains: searchTerm,
+                                mode: "insensitive",
+                            }
+                        }
+                    }
+                }
             ],
         } : {}
-
-        const prodsPerPage = 12;
+        const prodsPerPage = limit ? limit : 12;
         const offset = (page - 1) * prodsPerPage
         const totalPages = Math.ceil((await this.prisma.product.findMany({
             where: {

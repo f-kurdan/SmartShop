@@ -1,4 +1,4 @@
-import { Controller, Get, Post, HttpCode, Param, Body, Patch, Delete, ParseIntPipe, Query, UseInterceptors, ParseFilePipeBuilder, HttpStatus, UploadedFiles, StreamableFile, ParseFilePipe, FileTypeValidator, MaxFileSizeValidator} from '@nestjs/common';
+import { Controller, Get, Post, HttpCode, Param, Body, Patch, Delete, ParseIntPipe, Query, UseInterceptors, ParseFilePipeBuilder, HttpStatus, UploadedFiles, StreamableFile, ParseFilePipe, FileTypeValidator, MaxFileSizeValidator } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductsService } from './products.service';
 import { UpdateProductDto } from './dto/update-product-dto';
@@ -16,6 +16,7 @@ export class ProductsController {
     @Get()
     async getProducts(
         @Query('page', ParseIntPipe) page?: number,
+        @Query('limit') limit?: string,
         @Query('search_term') searchTerm?: string,
         @Query('category') categoriesSlugs?: string,
         @Query('brand') brandsSlugs?: string,
@@ -24,7 +25,7 @@ export class ProductsController {
         const categoriesArr = categoriesSlugs?.split(';')
         const brandsArr = brandsSlugs?.split(';')
         const specsArr = specs?.split(';')
-        const products = await this.productService.findProducts(page, searchTerm, categoriesArr, brandsArr, specsArr);
+        const products = await this.productService.findProducts(page, parseInt(limit), searchTerm, categoriesArr, brandsArr, specsArr);
 
         if (!products.products)
             throw new Error("No products")
@@ -33,7 +34,7 @@ export class ProductsController {
     }
 
     @Get('/pages')
-    getTotalPAges() {
+    getTotalPAges() {   
         return this.productService.getTotalPages()
     }
 
@@ -107,7 +108,7 @@ export class ProductsController {
             new MaxFileSizeValidator({ maxSize: 5 * 1024 * 1024 })],
             fileIsRequired: false,
             errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
-          }),
+        }),
     ) images: Express.Multer.File[], @Body() updateProductDto: UpdateProductDto) {
         return this.productService.updateProduct(updateProductDto, images)
     }
