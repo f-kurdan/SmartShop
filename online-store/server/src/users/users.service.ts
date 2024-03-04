@@ -17,8 +17,8 @@ export class UsersService {
         });
     }
 
-    getOneUser(id: number) {
-        return this.prisma.user.findUnique({ 
+   async getOneUser(id: number) {
+        return await this.prisma.user.findUnique({ 
             where: { id: id},
             select: {
                 username: true,

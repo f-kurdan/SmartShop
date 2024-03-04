@@ -85,6 +85,7 @@ export class ProductsService {
                 }
             ],
         } : {}
+        
         const prodsPerPage = limit ? limit : 12;
         const offset = (page - 1) * prodsPerPage
         const totalPages = Math.ceil((await this.prisma.product.findMany({
@@ -132,7 +133,7 @@ export class ProductsService {
     }
 
     async findOneProductById(id: number) {
-        return this.prisma.product.findUnique({
+        return await this.prisma.product.findUnique({
             where: {
                 id: id,
             },
