@@ -10,7 +10,7 @@ const Catalog = ({ products, totalPages, currentPage }: { products: productsList
     <div className={`${montserrat.className} flex flex-row relative w-full justify-center min-h-[80vh] gap-4 items-start my-3 text-gray-700`}>
       <Filter />
       <div className='flex flex-col gap-2 w-2/3 min-h-fit mr-10'>
-        {products?.length ? <ProductsList products={products} /> : <ProductsLoading />}
+        {products ? <ProductsList products={products} /> : <ProductsLoading />}
         <Pagination totalPages={totalPages}
         currentPage={currentPage} />
       </div>

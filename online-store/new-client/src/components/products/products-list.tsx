@@ -1,6 +1,7 @@
 import { product, productsList } from '@/types'
 import Link from 'next/link'
 import { useState } from 'react'
+import NoItems from './no-items'
 import ProductImage from './product-image'
 
 const ProductsList = ({ products }: { products: productsList }) => {
@@ -15,7 +16,7 @@ const ProductsList = ({ products }: { products: productsList }) => {
         return `${product.name}, ${storageSize} ${color}`
     }
 
-    return (
+    return  products?.length ? (
         <div className='flex flex-row gap-2 flex-wrap justify-start items-center'>
             {products.map((product) =>
             (<Link key={product.id} href={createURL(product.slug)}>
@@ -31,6 +32,8 @@ const ProductsList = ({ products }: { products: productsList }) => {
             </Link>)
             )}
         </div>
+    ) : (
+        <NoItems />
     )
 }
 
