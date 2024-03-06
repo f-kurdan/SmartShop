@@ -1,10 +1,11 @@
 import { montserrat } from '@/styles/fonts'
+import Link from 'next/link'
 import React from 'react'
 
 const Login = () => {
   return (
-    <div className={`${montserrat.className} flex flex-col gap-10  justify-start items-center px-10 py-5 my-3 w-fit h-screen ounded-sm border border-gray-200 bg-white shadow-lg rounded-2xl`}>
-      <div className='font-bold text-5xl text-center text-gray-600 mt-20'>
+    <div className={`${montserrat.className} flex flex-col gap-8  justify-start items-center px-10 py-5 my-3 w-fit h-[80dvh] ounded-sm border border-gray-200 bg-white shadow-lg rounded-2xl`}>
+      <div className='font-bold text-5xl text-center text-gray-600 mt-20 h-[65px]'>
         Вход
       </div>
       <div className='flex flex-col w-96 gap-2'>
@@ -24,11 +25,15 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className='transition-all duration-400 col-span-2 w-96 gap-2 bg-violet-600 rounded-2xl p-4 text-white  hover:bg-violet-800 cursor-pointer active:blur-sm '>
-        <h1 className='text-center'>Войти</h1>
-      </div>
-      <div className='col-span-2 w-96 text-center'>
-        <p>Нет аккаунта? <a href="./" className='text-violet-600 hover:text-violet-400'>Создать аккаунт</a> </p>
+      <div className='col-span-2'>
+        <div className='transition-all duration-400 w-96 gap-2 bg-violet-600 rounded-2xl p-4 text-white  hover:bg-violet-800 cursor-pointer active:blur-sm '>
+          <h1 className='text-center'>Войти</h1>
+        </div>
+        <div className='w-96 text-center'>
+          <p>Нет аккаунта? <Link href="/auth/signup" className='text-violet-600 hover:text-violet-400'>
+            Создать аккаунт</Link>
+          </p>
+        </div>
       </div>
     </div>
   )
