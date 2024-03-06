@@ -6,15 +6,18 @@ import { join } from "path";
 import { ProductsModule } from "./products/products.module";
 import { CategoriesModule } from './categories/categories.module';
 import { BrandsModule } from './brands/brands.module';
+import { UsersModule } from "./users/users.module";
 import { SpecificationsModule } from './specifications/specifications.module';
 import { providePrismaClientExceptionFilter } from "nestjs-prisma";
 
 @Module({
-    imports: [ProductsModule,
-        ConfigModule.forRoot(),
+    imports: [
+        ProductsModule,
         CategoriesModule,
         BrandsModule,
         SpecificationsModule,
+        UsersModule,
+        ConfigModule.forRoot(),
         ServeStaticModule.forRoot({ rootPath: join(__dirname, '..', '/public'), serveRoot: '/public' }),
     ],
     providers: [providePrismaClientExceptionFilter({
