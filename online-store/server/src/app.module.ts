@@ -9,6 +9,7 @@ import { BrandsModule } from './brands/brands.module';
 import { UsersModule } from "./users/users.module";
 import { SpecificationsModule } from './specifications/specifications.module';
 import { providePrismaClientExceptionFilter } from "nestjs-prisma";
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
     imports: [
@@ -17,8 +18,11 @@ import { providePrismaClientExceptionFilter } from "nestjs-prisma";
         BrandsModule,
         SpecificationsModule,
         UsersModule,
+        AuthModule,
         ConfigModule.forRoot(),
-        ServeStaticModule.forRoot({ rootPath: join(__dirname, '..', '/public'), serveRoot: '/public' }),
+        ServeStaticModule.forRoot({ 
+            rootPath: join(__dirname, '..', '/public'), 
+            serveRoot: '/public' }),
     ],
     providers: [providePrismaClientExceptionFilter({
         // Prisma Error Code: HTTP Status Response
