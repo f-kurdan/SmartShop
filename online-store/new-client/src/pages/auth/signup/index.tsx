@@ -18,7 +18,6 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false)
   const mutation = useCreateUser()
 
-
   const {
     register,
     handleSubmit,
@@ -110,8 +109,8 @@ const Signup = () => {
             }
           })} />
         {errors.password && <p className='text-red-500 text-center'>{errors.password.message}</p>}
-        {showPassword ? <EyeSlashIcon width={20} height={20} className='cursor-pointer absolute right-4 bottom-[10%] translate-y-[-50%]' onClick={() => setShowPassword(!showPassword)} /> :
-          <EyeIcon width={20} height={20} className='cursor-pointer absolute right-4 bottom-[10%] translate-y-[-50%]' onClick={() => setShowPassword(!showPassword)} />}
+        {showPassword ? <EyeSlashIcon width={20} height={20} className='cursor-pointer absolute right-4 top-[60px] translate-y-[-50%]' onClick={() => setShowPassword(!showPassword)} /> :
+          <EyeIcon width={20} height={20} className='cursor-pointer absolute right-4 top-[60px] translate-y-[-50%]' onClick={() => setShowPassword(!showPassword)} />}
       </label>
       <button className='transition-all duration-400 col-span-2 w-96 gap-2 bg-violet-600 rounded-2xl p-4 text-white  hover:bg-violet-800 cursor-pointer active:blur-sm '>
         <p className='text-center'>Создать аккаунт</p>

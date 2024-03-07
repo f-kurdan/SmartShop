@@ -1,41 +1,81 @@
 import { montserrat } from '@/styles/fonts'
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import useLogin from '../../hooks/auth/useLogin'
+
+type Inputs = {
+  email: string,
+  password: string
+}
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false)
+  const mutation = useLogin()
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>()
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const formData = new FormData();
+    if (data.email) {
+      formData.append('email', data.email);
+    }
+    if (data.password) {
+      formData.append('password', data.password);
+    }
+
+    mutation.mutate(formData)
+  }
+
   return (
-    <div className={`${montserrat.className} flex flex-col gap-8  justify-start items-center px-10 py-5 my-3 w-fit h-[80dvh] ounded-sm border border-gray-200 bg-white shadow-lg rounded-2xl`}>
+    <form onSubmit={handleSubmit(onSubmit)} className={`${montserrat.className} flex flex-col gap-8  justify-start items-center px-10 py-5 my-3 w-fit h-[80dvh] ounded-sm border border-gray-200 bg-white shadow-lg rounded-2xl`}>
       <div className='font-bold text-5xl text-center text-gray-600 mt-20 h-[65px]'>
         Вход
       </div>
-      <div className='flex flex-col w-96 gap-2'>
-        <h1 className=''>Email*</h1>
-        <input type="email" className='bg-slate-100 rounded-2xl p-4  focus:bg-slate-200 focus:outline-none' placeholder='qwerty@pochta.ru' />
-      </div>
-      <div className='flex flex-col w-96 gap-2'>
-        <h1 className=''>Пароль*</h1>
-        <input type="password" className='bg-slate-100 rounded-2xl p-4 focus:bg-slate-200 focus:outline-none' placeholder='Введите пароль' />
-        <div className='grid grid-cols-2 gap-2 w-96 text-violet-800 font-medium'>
-          <div>
-            <input type="checkbox" id='save' className='cursor-pointer mr-3 scale-125' />
-            <label htmlFor="save" className='cursor-pointer hover:text-violet-400'>Запомнить меня</label>
-          </div>
-          <div className='text-end cursor-pointer hover:text-violet-400'>
-            <a href="." >Забыли пароль?</a>
-          </div>
-        </div>
-      </div>
+      <label className='flex flex-col w-96 gap-2'>
+        <p className={`${errors.email ? "after:content-['_*'] after:text-red-500" : ''}`}>Email</p>
+        <input
+          type="email"
+          className={`bg-slate-100 rounded-2xl p-4 focus:bg-slate-200 focus:outline-none`} placeholder='qwerty@pochta.ru'
+          {...register('email', { required: true })} />
+      </label>
+      <label className='flex flex-col w-96 gap-2 relative'>
+        <p className={`${errors.password ? "after:content-['_*'] after:text-red-500" : ''}`}>Пароль</p>
+        <input
+          type={showPassword ? 'text' : 'password'}
+          className={`bg-slate-100 rounded-2xl p-4 focus:bg-slate-200 focus:outline-none`}
+          placeholder='Введите пароль'
+          {...register('password', {
+            required: true, minLength: {
+              value: 6,
+              message: "Пароль должен содержать минимум 6 символов"
+            },
+            maxLength: { value: 20, message: "Пароль должен содержать максимум 20 символов" },
+            pattern: {
+              value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
+              message: "Пароль должен содержать цифры, строчные и заглавные буквы"
+            }
+          })} />
+        {errors.password && <p className='text-red-500 text-center'>{errors.password.message}</p>}
+        {showPassword ? <EyeSlashIcon width={20} height={20} className='cursor-pointer absolute right-4 top-[60px] translate-y-[-50%]' onClick={() => setShowPassword(!showPassword)} /> :
+          <EyeIcon width={20} height={20} className='cursor-pointer absolute right-4 top-[60px] translate-y-[-50%]' onClick={() => setShowPassword(!showPassword)} />}
+      </label>
       <div className='col-span-2'>
-        <div className='transition-all duration-400 w-96 gap-2 bg-violet-600 rounded-2xl p-4 text-white  hover:bg-violet-800 cursor-pointer active:blur-sm '>
-          <h1 className='text-center'>Войти</h1>
-        </div>
+        <button className='transition-all duration-400 w-96 gap-2 bg-violet-600 rounded-2xl p-4 text-white  hover:bg-violet-800 cursor-pointer active:blur-sm '>
+          <p className='text-center'>Войти</p>
+        </button>
         <div className='w-96 text-center'>
           <p>Нет аккаунта? <Link href="/auth/signup" className='text-violet-600 hover:text-violet-400'>
             Создать аккаунт</Link>
           </p>
         </div>
       </div>
-    </div>
+    </form>
   )
 }
 
