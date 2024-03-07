@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
+
 import { montserrat } from '../../../styles/fonts'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import useCreateUser from '../../../hooks/users/useCreateUser'
@@ -12,7 +15,9 @@ type Inputs = {
 }
 
 const Signup = () => {
+  const [showPassword, setShowPassword] = useState(false)
   const mutation = useCreateUser()
+
 
   const {
     register,
@@ -87,10 +92,10 @@ const Signup = () => {
           className={`bg-slate-100 rounded-2xl p-4 focus:bg-slate-200 focus:outline-none`} placeholder='qwerty@pochta.ru'
           {...register('email', { required: true })} />
       </label>
-      <label className='flex flex-col w-96 gap-2'>
+      <label className='flex flex-col w-96 gap-2 relative'>
         <p className={`${errors.password ? "after:content-['_*'] after:text-red-500" : ''}`}>Пароль</p>
         <input
-          type="password"
+          type={showPassword ? 'text' : 'password'}
           className={`bg-slate-100 rounded-2xl p-4 focus:bg-slate-200 focus:outline-none`}
           placeholder='Введите пароль'
           {...register('password', {
@@ -105,12 +110,8 @@ const Signup = () => {
             }
           })} />
         {errors.password && <p className='text-red-500 text-center'>{errors.password.message}</p>}
-        <div className='grid grid-cols-2 gap-2 w-96 text-violet-800 font-medium'>
-          <div>
-            <input type="checkbox" id='save' className='cursor-pointer mr-3 scale-125' />
-            <label htmlFor="save" className='cursor-pointer hover:text-violet-400'>Запомнить меня</label>
-          </div>
-        </div>
+        {showPassword ? <EyeSlashIcon width={20} height={20} className='cursor-pointer absolute right-4 bottom-[10%] translate-y-[-50%]' onClick={() => setShowPassword(!showPassword)} /> :
+          <EyeIcon width={20} height={20} className='cursor-pointer absolute right-4 bottom-[10%] translate-y-[-50%]' onClick={() => setShowPassword(!showPassword)} />}
       </label>
       <button className='transition-all duration-400 col-span-2 w-96 gap-2 bg-violet-600 rounded-2xl p-4 text-white  hover:bg-violet-800 cursor-pointer active:blur-sm '>
         <p className='text-center'>Создать аккаунт</p>
