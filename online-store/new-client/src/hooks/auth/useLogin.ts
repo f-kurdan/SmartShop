@@ -1,16 +1,16 @@
 import { useRouter } from 'next/navigation'
-import React from 'react'
-import { useMutation, useQuery } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
 import authService from '../../services/auth.service'
 
 const useLogin = () => {
     const router = useRouter()
+    const queryClient = useQueryClient()
 
     return useMutation({
         mutationFn: authService.login,
         onSuccess: (req) => {
-            console.log('useLogin', req.accessToken)
             const accessToken = req.accessToken;
+            queryClient.invalidateQueries(['user'])
             document.cookie = `accessToken=${accessToken}; HttpOnly;`;
             router.push('/')
         }

@@ -6,6 +6,7 @@ import { env } from 'process';
 import { PrismaClientExceptionFilter } from 'nestjs-prisma';
 import { ClassSerializerInterceptor } from '@nestjs/common/serializer';
 import { json, urlencoded } from 'express';
+import * as cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,6 +20,7 @@ async function bootstrap() {
   
   app.use(json({ limit: '50mb' }));
   app.use(urlencoded({ extended: true, limit: '50mb' }));
+  app.use(cookieParser());
 
   const config = new DocumentBuilder()
     .setTitle('Median')

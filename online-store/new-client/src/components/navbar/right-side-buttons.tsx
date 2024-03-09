@@ -3,6 +3,7 @@ import { ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon, ShoppingCartIcon, 
 import Link from 'next/link'
 import React from 'react'
 import Logout from './logout'
+import cookie from 'js-cookie';
 
 
 const textStyle = 'text-sm';
@@ -11,29 +12,35 @@ const linkStyle = 'hover:bg-gradient-to-br hover:text-white hover:from-indigo-50
 
 const RightSideButtons = () => {
     const cart = useAppSelector(state => state.cart.value)
-    const count = cart.reduce((acc, next) => acc + next.quantity ,0)
-    
+    const token = cookie.get('jwt');
+
+    const count = cart.reduce((acc, next) => acc + next.quantity, 0)
+
     return (
         <div className='flex flex-row absolute right-2 gap-1'>
-            <Link href={'/admin'} className={`${linkStyle} cursor-pointer  active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
-                <WrenchScrewdriverIcon className={iconStyle} />
-                <h3 className={textStyle}>Админ</h3>
-            </Link>
-            <Link href='/auth'>
-                <div className={`${linkStyle} cursor-pointer active:from-purple-950 active:via-red-700 active:to-yellow-600 `}>
-                    <ArrowLeftOnRectangleIcon className={`${iconStyle} rotate-180`} />
-                    <h3 className={textStyle}>Войти</h3>
-                </div>
-            </Link>
-            <Link href='/auth'>
-                <div className={`${linkStyle} group `}>
-                    <ArrowRightOnRectangleIcon className={`${iconStyle} rotate-180`} />
-                    <h3 className={`${textStyle}`}>Выйти</h3>
-                    <div className='shadow-md py-4 px-4 absolute w-fit bg-white hidden top-12 z-10 group-hover:block rounded-md'>
-                        <Logout />
+
+            {token ? (
+                <>
+                    <Link href={'/admin'} className={`${linkStyle} cursor-pointer  active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
+                        <WrenchScrewdriverIcon className={iconStyle} />
+                        <h3 className={textStyle}>Админ</h3>
+                    </Link>
+                    <Link href='/'>
+                        <div className={`${linkStyle} group `}>
+                            <ArrowRightOnRectangleIcon className={`${iconStyle} rotate-180`} />
+                            <h3 className={`${textStyle}`}>Выйти</h3>
+                            <div className='shadow-md py-4 px-4 absolute w-fit bg-white hidden top-12 z-10 group-hover:block rounded-md'>
+                                <Logout />
+                            </div>
+                        </div>
+                    </Link>
+                </>) : (
+                <Link href='/auth'>
+                    <div className={`${linkStyle} cursor-pointer active:from-purple-950 active:via-red-700 active:to-yellow-600 `}>
+                        <ArrowLeftOnRectangleIcon className={`${iconStyle} rotate-180`} />
+                        <h3 className={textStyle}>Войти</h3>
                     </div>
-                </div>
-            </Link>
+                </Link>)}
             <Link href='/cart'>
                 <div className={`${linkStyle} relative cursor-pointer active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
                     <ShoppingCartIcon className={iconStyle} />
