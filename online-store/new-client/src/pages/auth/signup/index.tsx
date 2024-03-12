@@ -6,6 +6,8 @@ import { montserrat } from '../../../styles/fonts'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import useCreateUser from '../../../hooks/users/useCreateUser'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import cookie from 'js-cookie'
 
 type Inputs = {
   username: string,
@@ -17,6 +19,12 @@ type Inputs = {
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false)
   const mutation = useCreateUser()
+  const router = useRouter()
+  const token = cookie.get('jwt');
+
+  if (!token) {
+    router.replace('/');
+  }
 
   const {
     register,

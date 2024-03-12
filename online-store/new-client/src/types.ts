@@ -15,10 +15,10 @@ export type product = {
     price: number;
     quantity: number;
     images: string[];
-    productInfo: [({ 
+    productInfo: [({
         id: number,
-        name?: string ; 
-        description?: string ; 
+        name?: string;
+        description?: string;
     } | undefined)?]
 }
 
@@ -45,15 +45,15 @@ export type category = {
 }
 
 export class FetchError extends Error {
-  constructor(public res: Response, message?: string) {
-    super(message)
-  }
+    constructor(public res: Response, message?: string) {
+        super(message)
+    }
 }
 
-export type ProductInfo = { 
-    id: number 
-    title: string, 
-    description: string, 
+export type ProductInfo = {
+    id: number
+    title: string,
+    description: string,
 }
 
 
@@ -70,4 +70,11 @@ export type ProductFormInputs = {
         name: string,
         description: string
     }]
+}
+
+export type Payload = {
+    username: string;
+    sub: number;
+    iat: number;
+    exp: number;
 }

@@ -42,7 +42,7 @@ export class UsersService {
         })
 
         return {
-            accessToken: this.jwtService.sign({ userId: user.id, sub: user.username })
+            accessToken: this.jwtService.sign({ userId: user.id, sub: user.username }, { expiresIn: '30d' })
         }
     }
 
