@@ -59,7 +59,7 @@ const ProductCreatingDialog = memo(({ state, name, title }: {
     }
 
     const err = mutation.error as FetchError;
-    const errorCode = err?.res?.status;
+    const errorCode = err?.res?.status === 409;
 
     return (
         <dialog open={state} className='fixed top-20 transition-all duration-100 z-[1000] bg-white rounded-lg shadow-lg  w-1/2 h-[80vh] overflow-y-scroll' >
@@ -89,7 +89,7 @@ const ProductCreatingDialog = memo(({ state, name, title }: {
                 <div>
                     <SaveButton />
                 </div>
-                {errorCode === 409 ? <p className='text-red-500 text-center'>
+                {errorCode ? <p className='text-red-500 text-center'>
                     Такое товар уже существует!
                 </p> : null}
             </form>

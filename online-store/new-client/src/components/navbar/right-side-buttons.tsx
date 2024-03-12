@@ -16,7 +16,6 @@ const RightSideButtons = () => {
 
     const count = cart.reduce((acc, next) => acc + next.quantity, 0)
 
-    console.log('token', token)
     return (
         <div className='flex flex-row absolute right-2 gap-1'>
 

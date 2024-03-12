@@ -6,7 +6,7 @@ import { env } from 'process';
 import { PrismaClientExceptionFilter } from 'nestjs-prisma';
 import { ClassSerializerInterceptor } from '@nestjs/common/serializer';
 import { json, urlencoded } from 'express';
-import * as cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

@@ -1,6 +1,7 @@
 import { useRouter } from 'next/navigation'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import authService from '../../services/auth.service'
+import cookie from 'js-cookie';
 
 const useLogin = () => {
     const router = useRouter()
@@ -10,9 +11,9 @@ const useLogin = () => {
         mutationFn: authService.login,
         onSuccess: (req) => {
             const accessToken = req.accessToken;
+            cookie.set('jwt', accessToken, { expires: 30 });
             queryClient.invalidateQueries(['user'])
-            document.cookie = `accessToken=${accessToken}; HttpOnly;`;
-            router.push('/')
+            router.back()
         }
     })
 }
