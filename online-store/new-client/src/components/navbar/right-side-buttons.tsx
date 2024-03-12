@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/hooks/reduxHooks';
-import { ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon, ShoppingCartIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/solid'
+import { ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon, ShoppingCartIcon, UserCircleIcon, WrenchScrewdriverIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import React from 'react'
 import Logout from './logout'
@@ -21,19 +21,21 @@ const RightSideButtons = () => {
 
             {token ? (
                 <>
+                    <Link href={'/profile'} className={`${linkStyle} cursor-pointer active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
+                        <UserCircleIcon className={iconStyle} />
+                        <h3 className={textStyle}>Профиль</h3>
+                    </Link>
                     <Link href={'/admin'} className={`${linkStyle} cursor-pointer  active:from-purple-950 active:via-red-700 active:to-yellow-600`}>
                         <WrenchScrewdriverIcon className={iconStyle} />
                         <h3 className={textStyle}>Админ</h3>
                     </Link>
-                    <Link href='/'>
-                        <div className={`${linkStyle} group `}>
-                            <ArrowRightOnRectangleIcon className={`${iconStyle} rotate-180`} />
-                            <h3 className={`${textStyle}`}>Выйти</h3>
-                            <div className='shadow-md py-4 px-4 absolute w-fit bg-white hidden top-12 z-10 group-hover:block rounded-md'>
-                                <Logout />
-                            </div>
+                    <div className={`${linkStyle} group `}>
+                        <ArrowRightOnRectangleIcon className={`${iconStyle} rotate-180`} />
+                        <h3 className={`${textStyle}`}>Выйти</h3>
+                        <div className='shadow-md py-4 px-4 absolute w-fit bg-white hidden top-12 z-10 group-hover:block rounded-md'>
+                            <Logout />
                         </div>
-                    </Link>
+                    </div>
                 </>) : (
                 <Link href='/auth'>
                     <div className={`${linkStyle} cursor-pointer active:from-purple-950 active:via-red-700 active:to-yellow-600 `}>
