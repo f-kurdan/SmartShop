@@ -20,10 +20,10 @@ const index = () => {
 
   if (!token) {
     router.replace('/auth');
+    return null;
   }
 
-  const decoded: Payload = jwtDecode(token ?? '');
-
+  const decoded: Payload = jwtDecode(token);
 
   return (
     <div className='w-[60%] min-h-[90vh] flex flex-row gap-4 justify-center items-start'>

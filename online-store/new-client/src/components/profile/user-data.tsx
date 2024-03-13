@@ -1,5 +1,6 @@
 import React from 'react'
 import useGetUser from '../../hooks/users/useGetUser'
+import { montserrat } from '../../styles/fonts'
 
 const labelStyle = `flex flex-col w-96 gap-2`
 const inputStyle = `bg-slate-100 rounded-2xl p-4 focus:bg-slate-200 focus:outline-none`
@@ -8,7 +9,7 @@ const UserData = ({userId}: {userId: string}) => {
     const { data: user } = useGetUser(userId)
 
     return (
-        <form className='flex flex-col flex-grow gap-5 justify-center items-center bg-white p-3 rounded-lg shadow-lg'>
+        <form className={`${montserrat.className} flex flex-col flex-grow gap-5 justify-center items-center bg-white p-3 rounded-lg shadow-lg`}>
             <input type="hidden" value={user?.id} />
             <label className={labelStyle}>
                 Никнейм

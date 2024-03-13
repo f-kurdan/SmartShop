@@ -4,6 +4,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import useLogin from '../../hooks/auth/useLogin'
+import { FetchError } from '../../types'
 
 type Inputs = {
   email: string,
@@ -32,11 +33,16 @@ const Login = () => {
     mutation.mutate(formData)
   }
 
+  const err = mutation.error as FetchError;
+  const invalidCredentials = err?.res?.status === 401;
+  console.log('invalidCredentials', invalidCredentials)
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={`${montserrat.className} flex flex-col gap-8  justify-start items-center px-10 py-5 my-3 w-fit h-[80dvh] ounded-sm border border-gray-200 bg-white shadow-lg rounded-2xl`}>
+    <form onSubmit={handleSubmit(onSubmit)} className={`relative ${montserrat.className} flex flex-col gap-8  justify-start items-center px-10 py-5 my-3 w-fit h-[80dvh] ounded-sm border border-gray-200 bg-white shadow-lg rounded-2xl`}>
       <div className='font-bold text-5xl text-center text-gray-600 mt-20 h-[65px]'>
         Вход
       </div>
+      {invalidCredentials ? <div className='text-red-500 text-center absolute top-[160px]'>Неверный email или пароль</div> : ''}
       <label className='flex flex-col w-96 gap-2'>
         <p className={`${errors.email ? "after:content-['_*'] after:text-red-500" : ''}`}>Email</p>
         <input
