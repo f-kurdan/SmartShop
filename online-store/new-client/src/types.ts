@@ -73,8 +73,38 @@ export type ProductFormInputs = {
 }
 
 export type Payload = {
-    username: string;
+    userId: string;
     sub: number;
     iat: number;
     exp: number;
+}
+
+export type User = {
+    id: number | string;
+    username: string;
+    email: string;
+    role: string;
+    phone: string;
+    orders: Order[]
+}
+
+export type Order = {
+    id: number;
+    user: User;
+    userId: number;
+    orderDate: Date;
+    paymentMethod: string;
+    shippingAddress: string;
+    shippingMethod: string;
+    orderTotal: number;
+    orderStatus: string;
+    orderItem: OrderItem[];
+}
+
+export type OrderItem = {
+    id: number;
+    productId: number;
+    orderId: number;
+    quantity: number;
+    price: number;
 }

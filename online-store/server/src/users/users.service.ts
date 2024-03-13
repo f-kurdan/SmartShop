@@ -51,6 +51,7 @@ export class UsersService {
             select: {
                 username: true,
                 email: true,
+                phone: true,
                 role: true,
                 orders: true,
             }
@@ -63,6 +64,7 @@ export class UsersService {
             select: {
                 username: true,
                 email: true,
+                phone: true,
                 role: true,
                 orders: true,
             }

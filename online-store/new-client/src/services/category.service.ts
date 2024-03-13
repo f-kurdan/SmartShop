@@ -9,9 +9,8 @@ class categoryService {
         return data;
     }
 
-    async getCategoryById(id: string) {
-        // return Promise.resolve(categories.filter(c => c.id.toString() === id));
-    }
+    // async getCategoryById(id: string) {
+    // }
 
     async createCategory(formData?: FormData) {
         return await fetch(categoriesURL, {
