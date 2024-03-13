@@ -26,7 +26,7 @@ const index = () => {
 
   return (
     <div className={`$ flex flex-row gap-2 p-2 w-[80%] `}>
-      <div className={` sticky flex flex-col justify-center gap-2 p-3 w-[35%] h-56 bg-gray-50 text-center`}>
+      <div className={` sticky flex flex-col justify-center gap-2 p-3 w-[35%] h-56 text-center`}>
         <h1 onClick={() => onSelect('categories')} className={getSelectedStyle('categories')}>Список категорий</h1>
         <h1 onClick={() => onSelect('brands')} className={getSelectedStyle('brands')}>Список брендов</h1>
         <h1 onClick={() => onSelect('products')} className={getSelectedStyle('products')}>Список товаров</h1>

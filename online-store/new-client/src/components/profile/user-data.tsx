@@ -9,7 +9,7 @@ const UserData = ({userId}: {userId: string}) => {
     const { data: user } = useGetUser(userId)
 
     return (
-        <form className={`${montserrat.className} flex flex-col flex-grow gap-5 justify-center items-center bg-white p-3 rounded-lg shadow-lg`}>
+        <form className={`${montserrat.className} flex flex-col flex-grow gap-5 justify-center items-center bg-white p-3 rounded-xl shadow-lg`}>
             <input type="hidden" value={user?.id} />
             <label className={labelStyle}>
                 Никнейм

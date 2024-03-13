@@ -27,7 +27,7 @@ const CategoriesList = memo(({ blur }: { blur: boolean }) => {
             id={category.id}
             defaultName={category.name} />
         </li>) :
-        (<li className='flex flex-row justify-start items-center gap-5 border-2 border-gray-400 p-3 h-[100px] rounded-md' key={category.id}>
+        (<li className='flex flex-row justify-start items-center gap-5 border-2 border-gray-400 p-3 h-[100px] rounded-xl' key={category.id}>
           <span className='min-w-[100px]'>
             {category.name}
           </span>

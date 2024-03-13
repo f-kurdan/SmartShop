@@ -27,9 +27,9 @@ const index = () => {
 
   return (
     <div className='w-[60%] min-h-[90vh] flex flex-row gap-4 justify-center items-start'>
-      <div className='min-w-[15%] flex flex-col gap-4 rounded-md '>
-        <span className='bg-white p-3 rounded-lg shadow-lg cursor-pointer'>Настройки</span>
-        <span className='bg-white p-3 rounded-lg shadow-lg cursor-pointer'>Заказы</span>
+      <div className='min-w-[25%] flex flex-col gap-4'>
+        <span className='bg-white p-3 text-center rounded-xl shadow-lg cursor-pointer'>Настройки</span>
+        <span className='bg-white p-3 text-center rounded-xl shadow-lg cursor-pointer'>Заказы</span>
       </div>
       <UserData userId={decoded.userId} />
     </div>
